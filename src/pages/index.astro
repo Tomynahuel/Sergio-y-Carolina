@@ -1,16 +1,60 @@
 ---
-// Tu lógica de JavaScript/TypeScript va aquí
+import '../styles/global.css';
 ---
 
 <html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<title>Nuestro Casamiento</title>
-	</head>
-	<body class="bg-stone-50 text-stone-900">
-		<main class="max-w-4xl mx-auto p-4">
-			<h1 class="text-4xl font-bold text-center mt-10">¡Nos Casamos!</h1>
-            <p class="text-center mt-4">Estamos muy felices de compartir este día con ustedes.</p>
-		</main>
-	</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sergio y Carolina - Nuestro Casamiento</title>
+</head>
+<body class="font-sans bg-ivory text-gray-800 leading-relaxed pt-20">
+
+    <header class="fixed w-full top-0 z-50 bg-ivory/95 backdrop-blur-sm shadow-sm" x-data="{ open: false }">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-20">
+                <a href="#home" class="font-serif text-4xl font-bold text-botanical">S & C</a>
+                <button @click="open = !open" class="lg:hidden text-botanical text-3xl">☰</button>
+                <nav class="hidden lg:flex space-x-6">
+                    <a href="#home" class="uppercase text-sm text-botanical">Inicio</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="relative min-h-screen flex items-center justify-center">
+            <div class="relative z-10 text-center text-white px-4">
+                <h1 class="font-serif text-6xl md:text-8xl mb-8">Sergio y Carolina</h1>
+                <div id="countdown" class="grid grid-cols-4 gap-4 max-w-xl mx-auto text-white">
+                    <div class="p-4 bg-white/10 rounded-lg"><div data-unit="days">00</div>Días</div>
+                    <div class="p-4 bg-white/10 rounded-lg"><div data-unit="hours">00</div>Horas</div>
+                    <div class="p-4 bg-white/10 rounded-lg"><div data-unit="minutes">00</div>Min</div>
+                    <div class="p-4 bg-white/10 rounded-lg"><div data-unit="seconds">00</div>Seg</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const targetTime = new Date("2026-10-03T15:00:00").getTime();
+        const container = document.getElementById('countdown');
+        
+        setInterval(() => {
+            const now = Date.now();
+            const d = targetTime - now;
+            if (d < 0) return;
+            
+            const days = Math.floor(d / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((d / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((d / (1000 * 60)) % 60);
+            const seconds = Math.floor((d / 1000) % 60);
+
+            container.querySelector('[data-unit="days"]').textContent = days.toString().padStart(2, '0');
+            container.querySelector('[data-unit="hours"]').textContent = hours.toString().padStart(2, '0');
+            container.querySelector('[data-unit="minutes"]').textContent = minutes.toString().padStart(2, '0');
+            container.querySelector('[data-unit="seconds"]').textContent = seconds.toString().padStart(2, '0');
+        }, 1000);
+    </script>
+</body>
 </html>
