@@ -57,5 +57,19 @@ import '../styles/global.css';
             container.querySelector('[data-unit="seconds"]').textContent = seconds.toString().padStart(2, '0');
         }, 1000);
     </script>
+    <div x-data="{ playing: false, audio: null }" class="fixed bottom-5 right-5 z-50">
+    <audio id="musica-boda" src="public/mus/ambiente.mp3" loop></audio>
+    
+    <button 
+        @click="
+            audio = document.getElementById('musica-boda');
+            if (playing) { audio.pause(); } else { audio.play(); }
+            playing = !playing;
+        "
+        class="bg-botanical text-ivory p-3 rounded-full shadow-lg hover:bg-sage transition"
+    >
+        <span x-text="playing ? '🔊 Pausar' : '🔈 Reproducir música'"></span>
+    </button>
+</div>
 </body>
 </html>
