@@ -3,5 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import alpinejs from '@astrojs/alpinejs';
 
 export default defineConfig({
-  integrations: [tailwind(), alpinejs()]
+  integrations: [tailwind(), alpinejs()],
+  site: 'https://tomynahuel.github.io/Sergio-y-Carolina',
+  base: '/Sergio-y-Carolina',
 });
+
