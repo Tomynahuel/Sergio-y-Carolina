@@ -2,74 +2,185 @@
 import '../styles/global.css';
 ---
 
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sergio y Carolina te invitan a celebrar su boda con una experiencia elegante y emotiva."
+    />
     <title>Sergio y Carolina - Nuestro Casamiento</title>
-</head>
-<body class="font-sans bg-ivory text-gray-800 leading-relaxed pt-20" style="background-color: #8BA88E; background-image: url('img/hero.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
-
-    <header class="fixed w-full top-0 z-50 bg-ivory/95 backdrop-blur-sm shadow-sm" x-data="{ open: false }" >   
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-20">
-                <a href="#home" class="font-serif text-4xl font-bold text-botanical">S & C</a>
-                <button @click="open = !open" class="lg:hidden text-botanical text-3xl">☰</button>
-                <nav class="hidden lg:flex space-x-6">
-                    <a href="#home" class="uppercase text-sm text-botanical">Inicio</a>
-                </nav>
-            </div>
-        </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen bg-ivory text-gray-800 leading-relaxed pt-20">
+    <header class="fixed top-0 z-50 w-full border-b border-white/50 bg-ivory/90 backdrop-blur-md" x-data="{ open: false }">
+      <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a href="#home" class="font-serif text-3xl font-semibold tracking-[0.25em] text-botanical">S & C</a>
+        <button @click="open = !open" class="text-3xl text-botanical lg:hidden">☰</button>
+        <nav class="hidden gap-8 lg:flex">
+          <a href="#home" class="text-sm uppercase tracking-[0.25em] text-botanical transition hover:text-sage">Inicio</a>
+          <a href="#story" class="text-sm uppercase tracking-[0.25em] text-botanical transition hover:text-sage">Historia</a>
+          <a href="#details" class="text-sm uppercase tracking-[0.25em] text-botanical transition hover:text-sage">Detalles</a>
+          <a href="#rsvp" class="text-sm uppercase tracking-[0.25em] text-botanical transition hover:text-sage">RSVP</a>
+        </nav>
+      </div>
     </header>
 
     <main>
-        <section id="home" class="relative min-h-screen flex items-center justify-center">
-            <div class="absolute inset-0 bg-black/40"></div>
-            <div class="relative z-10 text-center text-white px-4">
-                <h1 class="font-serif text-6xl md:text-8xl mb-8">Sergio y Carolina</h1>
-                <div id="countdown" class="grid grid-cols-4 gap-4 max-w-xl mx-auto text-white">
-                    <div class="p-4 bg-white/10 rounded-lg"><div data-unit="days">00</div>Días</div>
-                    <div class="p-4 bg-white/10 rounded-lg"><div data-unit="hours">00</div>Horas</div>
-                    <div class="p-4 bg-white/10 rounded-lg"><div data-unit="minutes">00</div>Min</div>
-                    <div class="p-4 bg-white/10 rounded-lg"><div data-unit="seconds">00</div>Seg</div>
-                </div>
+      <section id="home" class="relative flex min-h-screen items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-[url('img/hero.jpg')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60"></div>
+        <div class="relative z-10 w-full px-4 py-24 text-center text-white sm:px-6 lg:px-8">
+          <div class="mx-auto max-w-4xl rounded-[2rem] border border-white/20 bg-white/10 p-8 backdrop-blur-sm sm:p-12">
+            <p class="mb-4 text-sm uppercase tracking-[0.4em] text-white/80">Nos casamos</p>
+            <h1 class="font-serif text-5xl leading-tight sm:text-6xl lg:text-8xl">Sergio y Carolina</h1>
+            <p class="mx-auto mt-6 max-w-2xl text-lg text-white/90 sm:text-xl">Una celebración llena de amor, recuerdos y el comienzo de una nueva historia juntos.</p>
+            <div id="countdown" class="mt-10 grid grid-cols-2 gap-4 text-center sm:grid-cols-4">
+              <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="days">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Días</div></div>
+              <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="hours">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Horas</div></div>
+              <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="minutes">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Min</div></div>
+              <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="seconds">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Seg</div></div>
             </div>
-        </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="story" class="section-shell py-24">
+        <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div class="soft-card overflow-hidden p-8 sm:p-10">
+            <p class="text-sm uppercase tracking-[0.3em] text-botanical">Nuestra historia</p>
+            <h2 class="mt-4 font-serif text-4xl text-botanical sm:text-5xl">Amor, tiempo y recuerdos</h2>
+            <p class="mt-6 text-lg text-gray-700">Lo que comenzó con una conversación sencilla se convirtió en una historia hermosa. Cada paso nos llevó a este día, cargado de emoción, familia y esperanza.</p>
+            <p class="mt-4 text-lg text-gray-700">Queremos compartirlo contigo con una ceremonia íntima, un ambiente acogedor y momentos que recordaremos por siempre.</p>
+          </div>
+          <div class="soft-card p-8 sm:p-10">
+            <div class="rounded-3xl bg-[linear-gradient(135deg,#8BA88E_0%,#5C7356_100%)] p-8 text-white">
+              <p class="text-sm uppercase tracking-[0.3em]">03 de octubre</p>
+              <h3 class="mt-4 font-serif text-3xl">El día que nos uniremos</h3>
+              <p class="mt-4 text-lg text-white/90">Será un encuentro lleno de detalles pensados para que cada momento se sienta especial, elegante y cercano.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="details" class="section-shell pb-24">
+        <div class="mb-10 text-center">
+          <p class="text-sm uppercase tracking-[0.3em] text-botanical">Detalles</p>
+          <h2 class="mt-3 font-serif text-4xl text-botanical sm:text-5xl">Ceremonia y celebración</h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2">
+          <div class="soft-card p-8">
+            <h3 class="font-serif text-3xl text-botanical">Ceremonia</h3>
+            <p class="mt-4 text-lg text-gray-700">Nos reuniremos a las 15:00 horas para compartir el momento más importante de nuestro camino.</p>
+            <ul class="mt-6 space-y-3 text-gray-700">
+              <li>• Lugar: Salón de eventos elegante</li>
+              <li>• Vestimenta: Formal</li>
+              <li>• Estacionamiento disponible</li>
+            </ul>
+          </div>
+          <div class="soft-card p-8">
+            <h3 class="font-serif text-3xl text-botanical">Recepción</h3>
+            <p class="mt-4 text-lg text-gray-700">Después de la ceremonia, habrá música, buena comida y un ambiente para disfrutar en familia.</p>
+            <ul class="mt-6 space-y-3 text-gray-700">
+              <li>• Comenzamos a las 18:00</li>
+              <li>• Baile y cena</li>
+              <li>• Ambiente íntimo y acogedor</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell pb-24">
+        <div class="soft-card overflow-hidden">
+          <div class="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="bg-[url('img/hero.jpg')] bg-cover bg-center p-10 sm:p-14 lg:min-h-[360px]"></div>
+            <div class="p-8 sm:p-10">
+              <p class="text-sm uppercase tracking-[0.3em] text-botanical">Itinerario</p>
+              <h2 class="mt-3 font-serif text-4xl text-botanical">Un día para recordar</h2>
+              <div class="mt-8 space-y-6">
+                <div>
+                  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">15:00</p>
+                  <p class="mt-2 text-lg text-gray-700">Ceremonia</p>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">18:00</p>
+                  <p class="mt-2 text-lg text-gray-700">Recepción y cena</p>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">21:00</p>
+                  <p class="mt-2 text-lg text-gray-700">Baile y celebración</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="rsvp" class="section-shell pb-24">
+        <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div class="soft-card p-8 sm:p-10">
+            <p class="text-sm uppercase tracking-[0.3em] text-botanical">RSVP</p>
+            <h2 class="mt-3 font-serif text-4xl text-botanical">Confirma tu asistencia</h2>
+            <p class="mt-4 text-lg text-gray-700">Tu presencia hará que este día sea aún más especial. Nos encantaría compartirlo contigo.</p>
+          </div>
+          <div class="soft-card p-8 sm:p-10">
+            <form class="space-y-4">
+              <input class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none focus:border-botanical" placeholder="Tu nombre" />
+              <input class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none focus:border-botanical" placeholder="Tu email" />
+              <textarea class="min-h-[120px] w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none focus:border-botanical" placeholder="Mensaje"></textarea>
+              <button class="rounded-full bg-botanical px-6 py-3 font-semibold text-white transition hover:bg-sage">Enviar confirmación</button>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <script>
-        const targetTime = new Date("2026-10-03T15:00:00").getTime();
-        const container = document.getElementById('countdown');
-        
-        setInterval(() => {
-            const now = Date.now();
-            const d = targetTime - now;
-            if (d < 0) return;
-            
-            const days = Math.floor(d / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((d / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((d / (1000 * 60)) % 60);
-            const seconds = Math.floor((d / 1000) % 60);
+    <footer class="border-t border-gray-200 bg-white/70 py-10">
+      <div class="section-shell flex flex-col items-center justify-between gap-4 text-center text-sm text-gray-600 sm:flex-row">
+        <p>© 2026 Sergio y Carolina. Gracias por acompañarnos.</p>
+        <p>Con amor, siempre.</p>
+      </div>
+    </footer>
 
-            container.querySelector('[data-unit="days"]').textContent = days.toString().padStart(2, '0');
-            container.querySelector('[data-unit="hours"]').textContent = hours.toString().padStart(2, '0');
-            container.querySelector('[data-unit="minutes"]').textContent = minutes.toString().padStart(2, '0');
-            container.querySelector('[data-unit="seconds"]').textContent = seconds.toString().padStart(2, '0');
-        }, 1000);
+    <script>
+      const targetTime = new Date('2026-10-03T15:00:00').getTime();
+      const container = document.getElementById('countdown');
+
+      setInterval(() => {
+        const now = Date.now();
+        const d = targetTime - now;
+        if (d < 0) return;
+
+        const days = Math.floor(d / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((d / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((d / (1000 * 60)) % 60);
+        const seconds = Math.floor((d / 1000) % 60);
+
+        container.querySelector('[data-unit="days"]').textContent = days.toString().padStart(2, '0');
+        container.querySelector('[data-unit="hours"]').textContent = hours.toString().padStart(2, '0');
+        container.querySelector('[data-unit="minutes"]').textContent = minutes.toString().padStart(2, '0');
+        container.querySelector('[data-unit="seconds"]').textContent = seconds.toString().padStart(2, '0');
+      }, 1000);
     </script>
+
     <div x-data="{ playing: false, audio: null }" class="fixed bottom-5 right-5 z-50">
-    <audio id="musica-boda" src="mus/ambiente.mp3" loop></audio>
-    
-    <button 
+      <audio id="musica-boda" src="mus/ambiente.mp3" loop></audio>
+      <button
         @click="
-            audio = document.getElementById('musica-boda');
-            if (playing) { audio.pause(); } else { audio.play(); }
-            playing = !playing;
+          audio = document.getElementById('musica-boda');
+          if (playing) { audio.pause(); } else { audio.play(); }
+          playing = !playing;
         "
-        class="bg-botanical text-ivory p-3 rounded-full shadow-lg hover:bg-sage transition"
-    >
+        class="rounded-full bg-botanical p-3 text-ivory shadow-lg transition hover:bg-sage"
+      >
         <span x-text="playing ? '🔊 Pausar' : '🔈 Reproducir música'"></span>
-    </button>
-</div>
-</body>
+      </button>
+    </div>
+  </body>
 </html>

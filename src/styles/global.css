@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f7f2e8;
+}
+
+h1,
+h2,
+h3,
+h4,
+.font-serif {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+::selection {
+  background: #8ba88e;
+  color: white;
+}
+
+@layer components {
+  .section-shell {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .soft-card {
+    @apply rounded-[2rem] border border-white/60 bg-white/80 shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-md;
+  }
+}
