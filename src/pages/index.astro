@@ -53,17 +53,24 @@ import '../styles/global.css';
 
       <section id="story" class="section-shell py-24">
         <div class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div class="soft-card overflow-hidden p-8 sm:p-10">
+          <div class="soft-card relative overflow-hidden p-8 sm:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
+            <div class="absolute right-4 top-4 text-5xl text-botanical/20">✿</div>
             <p class="text-sm uppercase tracking-[0.3em] text-botanical">Nuestra historia</p>
             <h2 class="mt-4 font-serif text-4xl text-botanical sm:text-5xl">Amor, tiempo y recuerdos</h2>
             <p class="mt-6 text-lg text-gray-700">Lo que comenzó con una conversación sencilla se convirtió en una historia hermosa. Cada paso nos llevó a este día, cargado de emoción, familia y esperanza.</p>
             <p class="mt-4 text-lg text-gray-700">Queremos compartirlo contigo con una ceremonia íntima, un ambiente acogedor y momentos que recordaremos por siempre.</p>
           </div>
-          <div class="soft-card p-8 sm:p-10">
-            <div class="rounded-3xl bg-[linear-gradient(135deg,#8BA88E_0%,#5C7356_100%)] p-8 text-white">
-              <p class="text-sm uppercase tracking-[0.3em]">03 de octubre</p>
+          <div class="soft-card p-8 sm:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
+            <div class="overflow-hidden rounded-[1.75rem] bg-[linear-gradient(135deg,#8BA88E_0%,#5C7356_100%)] p-8 text-white shadow-inner">
+              <div class="h-48 overflow-hidden rounded-[1.25rem] bg-cover bg-center" style="background-image: url('img/hero.jpg');"></div>
+              <p class="mt-6 text-sm uppercase tracking-[0.3em]">03 de octubre</p>
               <h3 class="mt-4 font-serif text-3xl">El día que nos uniremos</h3>
               <p class="mt-4 text-lg text-white/90">Será un encuentro lleno de detalles pensados para que cada momento se sienta especial, elegante y cercano.</p>
+              <div class="mt-6 flex flex-wrap gap-3">
+                <span class="rounded-full border border-white/30 px-4 py-2 text-sm">Ceremonia</span>
+                <span class="rounded-full border border-white/30 px-4 py-2 text-sm">Recepción</span>
+                <span class="rounded-full border border-white/30 px-4 py-2 text-sm">Familia y amigos</span>
+              </div>
             </div>
           </div>
         </div>
@@ -76,6 +83,7 @@ import '../styles/global.css';
         </div>
         <div class="grid gap-6 md:grid-cols-2">
           <div class="soft-card p-8">
+            <div class="mb-4 inline-flex rounded-full bg-botanical/10 px-3 py-1 text-sm font-semibold text-botanical">15:00 hs</div>
             <h3 class="font-serif text-3xl text-botanical">Ceremonia</h3>
             <p class="mt-4 text-lg text-gray-700">Nos reuniremos a las 15:00 horas para compartir el momento más importante de nuestro camino.</p>
             <ul class="mt-6 space-y-3 text-gray-700">
@@ -85,6 +93,7 @@ import '../styles/global.css';
             </ul>
           </div>
           <div class="soft-card p-8">
+            <div class="mb-4 inline-flex rounded-full bg-botanical/10 px-3 py-1 text-sm font-semibold text-botanical">18:00 hs</div>
             <h3 class="font-serif text-3xl text-botanical">Recepción</h3>
             <p class="mt-4 text-lg text-gray-700">Después de la ceremonia, habrá música, buena comida y un ambiente para disfrutar en familia.</p>
             <ul class="mt-6 space-y-3 text-gray-700">
@@ -104,11 +113,11 @@ import '../styles/global.css';
               <p class="text-sm uppercase tracking-[0.3em] text-botanical">Itinerario</p>
               <h2 class="mt-3 font-serif text-4xl text-botanical">Un día para recordar</h2>
               <div class="mt-8 space-y-6">
-                <div>
+                <div class="border-b border-gray-100 pb-4">
                   <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">15:00</p>
                   <p class="mt-2 text-lg text-gray-700">Ceremonia</p>
                 </div>
-                <div>
+                <div class="border-b border-gray-100 pb-4">
                   <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">18:00</p>
                   <p class="mt-2 text-lg text-gray-700">Recepción y cena</p>
                 </div>
@@ -122,18 +131,62 @@ import '../styles/global.css';
         </div>
       </section>
 
+      <section class="section-shell pb-24">
+        <div class="soft-card overflow-hidden p-8 sm:p-10">
+          <div class="mb-8 text-center">
+            <p class="text-sm uppercase tracking-[0.3em] text-botanical">Galería</p>
+            <h2 class="mt-3 font-serif text-4xl text-botanical sm:text-5xl">Nuestros momentos favoritos</h2>
+          </div>
+          <div class="grid gap-4 md:grid-cols-3">
+            <div class="group h-72 overflow-hidden rounded-[1.5rem] bg-cover bg-center transition duration-300 hover:scale-[1.02]" style="background-image: url('img/hero.jpg');"></div>
+            <div class="group h-72 overflow-hidden rounded-[1.5rem] bg-cover bg-center transition duration-300 hover:scale-[1.02]" style="background-image: url('img/hero.jpg');"></div>
+            <div class="group h-72 overflow-hidden rounded-[1.5rem] bg-cover bg-center transition duration-300 hover:scale-[1.02]" style="background-image: url('img/hero.jpg');"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell pb-24">
+        <div class="soft-card overflow-hidden p-8 sm:p-10">
+          <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+            <div>
+              <p class="text-sm uppercase tracking-[0.3em] text-botanical">Ubicación</p>
+              <h2 class="mt-3 font-serif text-4xl text-botanical">Estamos esperándote</h2>
+              <p class="mt-4 text-lg text-gray-700">El evento será en un lugar especial, con ambiente íntimo y hermoso para compartir este día tan importante.</p>
+              <div class="mt-6 rounded-[1.5rem] bg-botanical/10 p-6 text-gray-700">
+                <p class="font-semibold text-botanical">Salón de eventos elegante</p>
+                <p class="mt-2">Av. Siempre Viva 123, Ciudad</p>
+                <p class="mt-1">Estacionamiento gratuito y acceso sencillo</p>
+              </div>
+            </div>
+            <div class="overflow-hidden rounded-[1.5rem] border border-gray-100">
+              <iframe
+                src="https://www.google.com/maps?q=Buenos+Aires&output=embed"
+                class="h-72 w-full"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Mapa del lugar"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="rsvp" class="section-shell pb-24">
         <div class="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div class="soft-card p-8 sm:p-10">
+          <div class="soft-card p-8 sm:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
             <p class="text-sm uppercase tracking-[0.3em] text-botanical">RSVP</p>
             <h2 class="mt-3 font-serif text-4xl text-botanical">Confirma tu asistencia</h2>
             <p class="mt-4 text-lg text-gray-700">Tu presencia hará que este día sea aún más especial. Nos encantaría compartirlo contigo.</p>
+            <div class="mt-8 rounded-[1.5rem] bg-botanical/10 p-6 text-gray-700">
+              <p class="font-semibold text-botanical">Fecha límite</p>
+              <p class="mt-2">Por favor responde antes del 15 de septiembre.</p>
+            </div>
           </div>
-          <div class="soft-card p-8 sm:p-10">
+          <div class="soft-card p-8 sm:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
             <form class="space-y-4">
-              <input class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none focus:border-botanical" placeholder="Tu nombre" />
-              <input class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none focus:border-botanical" placeholder="Tu email" />
-              <textarea class="min-h-[120px] w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none focus:border-botanical" placeholder="Mensaje"></textarea>
+              <input class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Tu nombre" />
+              <input class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Tu email" />
+              <textarea class="min-h-[120px] w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Mensaje"></textarea>
               <button class="rounded-full bg-botanical px-6 py-3 font-semibold text-white transition hover:bg-sage">Enviar confirmación</button>
             </form>
           </div>
