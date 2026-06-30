@@ -47,3 +47,52 @@ textarea {
     @apply rounded-[2rem] border border-white/60 bg-white/80 shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-md;
   }
 }
+
+#home {
+  position: relative;
+}
+
+.leaves {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  opacity: 1;
+  pointer-events: none;
+}
+
+.leaf {
+  position: absolute;
+  display: block;
+  width: clamp(36px, 4vw, 70px);
+  height: clamp(36px, 4vw, 70px);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform-origin: center;
+  animation: leaf-fall linear infinite;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.18));
+}
+
+.leaf-1 { left: 8%; animation-duration: 8.8s; animation-delay: 0s; transform: rotate(20deg); }
+.leaf-2 { left: 22%; animation-duration: 10.8s; animation-delay: 0.6s; transform: rotate(-15deg); }
+.leaf-3 { left: 36%; animation-duration: 9.8s; animation-delay: 0.3s; transform: rotate(10deg); }
+.leaf-4 { left: 53%; animation-duration: 11.5s; animation-delay: 0.9s; transform: rotate(-25deg); }
+.leaf-5 { left: 67%; animation-duration: 8.4s; animation-delay: 0.2s; transform: rotate(15deg); }
+.leaf-6 { left: 78%; animation-duration: 10.6s; animation-delay: 0.7s; transform: rotate(-10deg); }
+.leaf-7 { left: 42%; animation-duration: 9.2s; animation-delay: 0.4s; transform: rotate(30deg); }
+.leaf-8 { left: 92%; animation-duration: 10s; animation-delay: 0.8s; transform: rotate(-20deg); }
+
+@keyframes leaf-fall {
+  0% {
+    transform: translate3d(0, -140%, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate3d(30px, 120vh, 0) rotate(360deg);
+    opacity: 0;
+  }
+}

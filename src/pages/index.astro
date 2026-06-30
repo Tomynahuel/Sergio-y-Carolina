@@ -1,5 +1,17 @@
 ---
 import '../styles/global.css';
+
+const baseUrl = import.meta.env.BASE_URL;
+const leafImages = [
+  `${baseUrl}img/hoja1.jpeg`,
+  `${baseUrl}img/hoja2.jpeg`,
+  `${baseUrl}img/hoja3.jpeg`,
+  `${baseUrl}img/hoja4.jpeg`,
+  `${baseUrl}img/hoja5.jpeg`,
+  `${baseUrl}img/hoja6.jpeg`,
+  `${baseUrl}img/hoja7.jpeg`,
+  `${baseUrl}img/hoja8.jpeg`,
+];
 ---
 
 <html lang="es" class="scroll-smooth">
@@ -48,9 +60,17 @@ import '../styles/global.css';
     </header>
 
     <main>
-      <section id="home" class="relative flex min-h-screen items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('img/hero.jpg');"></div>
+      <section id="home" tabindex="-1" class="relative flex min-h-screen items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center" style={`background-image: url('${baseUrl}img/hero.jpg');`}></div>
         <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60"></div>
+        <div class="leaves pointer-events-none" aria-hidden="true">
+          {leafImages.map((image, index) => (
+            <span
+              class={`leaf leaf-${index + 1}`}
+              style={`background-image: url('${image}');`}
+            />
+          ))}
+        </div>
         <div class="relative z-10 w-full px-4 py-24 text-center text-white sm:px-6 lg:px-8">
           <div class="mx-auto max-w-4xl rounded-[2rem] border border-white/20 bg-white/10 p-8 backdrop-blur-sm sm:p-12">
             <p class="mb-4 text-sm uppercase tracking-[0.4em] text-white/80">Nos casamos</p>
@@ -70,7 +90,7 @@ import '../styles/global.css';
       <section id="story" class="section-shell py-24">
         <div class="soft-card overflow-hidden p-0">
           <div class="relative">
-            <img src="img/hero.jpg" alt="Sergio y Carolina" class="h-80 w-full object-cover" />
+            <img src={`${baseUrl}img/hero.jpg`} alt="Sergio y Carolina" class="h-80 w-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
             <div class="absolute bottom-4 left-4 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm uppercase tracking-[0.3em] text-white backdrop-blur-sm">Nuestra historia</div>
           </div>
