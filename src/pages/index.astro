@@ -1,7 +1,10 @@
 ---
 import '../styles/global.css';
 
-const baseUrl = import.meta.env.BASE_URL;
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const heroImage = `${baseUrl}img/hero.jpg`;
 const leafImages = [
   `${baseUrl}img/hoja1.jpeg`,
   `${baseUrl}img/hoja2.jpeg`,
@@ -34,7 +37,11 @@ const leafImages = [
   <body class="min-h-screen bg-ivory text-slate-700 antialiased leading-relaxed pt-20">
     <header class="fixed top-0 z-50 w-full border-b border-white/50 bg-ivory/95 backdrop-blur-md" x-data="{ open: false }">
       <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#home" class="font-serif text-3xl font-semibold tracking-[0.2em] text-slate-900">S & C</a>
+        <a href="#home" class="flex items-center gap-2 font-serif text-3xl font-semibold tracking-[0.2em] text-slate-900">
+          <span>S</span>
+          <img src={`${baseUrl}img/ring.png`} alt="Anillo" class="h-12 w-12 object-contain" />
+          <span>C</span>
+        </a>
         <button @click="open = !open" class="text-3xl text-slate-900 lg:hidden">☰</button>
         <nav class="hidden gap-8 lg:flex">
           <a href="#home" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Inicio</a>
@@ -61,7 +68,7 @@ const leafImages = [
 
     <main>
       <section id="home" tabindex="-1" class="relative flex min-h-screen items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 bg-cover bg-center" style={`background-image: url('${baseUrl}img/hero.jpg');`}></div>
+        <div class="absolute inset-0 bg-cover bg-center" style={`background-image: url('${heroImage}');`}></div>
         <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60"></div>
         <div class="leaves pointer-events-none" aria-hidden="true">
           {leafImages.map((image, index) => (
@@ -90,7 +97,7 @@ const leafImages = [
       <section id="story" class="section-shell py-24">
         <div class="soft-card overflow-hidden p-0">
           <div class="relative">
-            <img src={`${baseUrl}img/hero.jpg`} alt="Sergio y Carolina" class="h-80 w-full object-cover" />
+            <img src=} alt="Sergio y Carolina" class="h-80 w-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
             <div class="absolute bottom-4 left-4 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm uppercase tracking-[0.3em] text-white backdrop-blur-sm">Nuestra historia</div>
           </div>
@@ -178,7 +185,7 @@ const leafImages = [
       <section id="itinerary" class="section-shell pb-24">
         <div class="soft-card overflow-hidden">
           <div class="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
-            <div class="bg-cover bg-center p-10 sm:p-14 lg:min-h-[360px]" style="background-image: url('img/hero.jpg');"></div>
+            <div class="bg-cover bg-center p-10 sm:p-14 lg:min-h-[360px]" style={`background-image: url('${heroImage}');`}></div>
             <div class="p-8 sm:p-10">
               <p class="text-sm uppercase tracking-[0.3em] text-botanical">Cronograma</p>
               <h2 class="mt-3 font-serif text-4xl text-botanical">Un día para recordar</h2>
@@ -208,9 +215,9 @@ const leafImages = [
             <h2 class="mt-3 font-serif text-4xl text-botanical sm:text-5xl">Nuestros momentos favoritos</h2>
           </div>
           <div class="grid gap-4 md:grid-cols-3">
-            <div class="group h-72 overflow-hidden rounded-[1.5rem] bg-cover bg-center transition duration-300 hover:scale-[1.02]" style="background-image: url('img/hero.jpg');"></div>
-            <div class="group h-72 overflow-hidden rounded-[1.5rem] bg-cover bg-center transition duration-300 hover:scale-[1.02]" style="background-image: url('img/hero.jpg');"></div>
-            <div class="group h-72 overflow-hidden rounded-[1.5rem] bg-cover bg-center transition duration-300 hover:scale-[1.02]" style="background-image: url('img/hero.jpg');"></div>
+            <div class="group h-72 overflow-hidden rounded-[1.5rem] bg-cover bg-center transition duration-300 hover:scale-[1.02]" style={`background-image: url('${heroImage}');`}></div>
+            <div class="group h-72 overflow-hidden rounded-[1.5rem] bg-cover bg-center transition duration-300 hover:scale-[1.02]" style={`background-image: url('${heroImage}');`}></div>
+            <div class="group h-72 overflow-hidden rounded-[1.5rem] bg-cover bg-center transition duration-300 hover:scale-[1.02]" style={`background-image: url('${heroImage}');`}></div>
           </div>
         </div>
       </section>
@@ -305,7 +312,7 @@ const leafImages = [
           <div class="soft-card p-8 sm:p-10">
             <div class="flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
               <div class="h-32 w-32 overflow-hidden rounded-full border border-gray-200">
-                <img src="img/hero.jpg" alt="Tomas Aguilar" class="h-full w-full object-cover" />
+                <img src={heroImage} alt="Tomas Aguilar" class="h-full w-full object-cover" />
               </div>
               <div>
                 <p class="text-lg font-semibold text-botanical">Tomas Aguilar</p>
@@ -318,7 +325,7 @@ const leafImages = [
           <div class="soft-card p-8 sm:p-10">
             <div class="flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
               <div class="h-32 w-32 overflow-hidden rounded-full border border-gray-200">
-                <img src="img/hero.jpg" alt="Sergio y Carolina" class="h-full w-full object-cover" />
+                <img src={heroImage} alt="Sergio y Carolina" class="h-full w-full object-cover" />
               </div>
               <div>
                 <p class="text-lg font-semibold text-botanical">Sergio & Carolina</p>
