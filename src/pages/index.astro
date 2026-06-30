@@ -340,8 +340,8 @@ import '../styles/global.css';
       }, 1000);
     </script>
 
-    <div x-data="{ playing: false, audio: null }" class="fixed bottom-5 right-5 z-50">
-      <audio id="musica-boda" src="mus/ambiente.mp3" loop></audio>
+    <div x-data="{ playing: true, audio: null }" class="fixed bottom-5 right-5 z-50">
+      <audio id="musica-boda" src="mus/ambiente.mp3" loop autoplay></audio>
       <button
         @click="
           audio = document.getElementById('musica-boda');
@@ -349,10 +349,10 @@ import '../styles/global.css';
           playing = !playing;
         "
         class="flex h-11 w-11 items-center justify-center rounded-full bg-botanical text-ivory shadow-lg transition hover:bg-sage"
-        aria-label="Reproducir música"
+        aria-label="Pausar música"
       >
         <span class="sr-only" x-text="playing ? 'Pausar música' : 'Reproducir música'"></span>
-        <span class="text-xl">♪</span>
+        <span class="text-xl" x-text="playing ? '⏸' : '▶'" aria-hidden="true"></span>
       </button>
     </div>
   </body>
