@@ -98,7 +98,7 @@ const leafImages = [
       <section id="story" class="section-shell py-24">
         <div class="soft-card overflow-hidden p-0">
           <div class="relative">
-            <img src=} alt="Sergio y Carolina" class="h-80 w-full object-cover" />
+            <img src={heroImage} alt="Sergio y Carolina" class="h-80 w-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
             <div class="absolute bottom-4 left-4 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm uppercase tracking-[0.3em] text-white backdrop-blur-sm">Nuestra historia</div>
           </div>
@@ -368,16 +368,20 @@ const leafImages = [
       }, 1000);
     </script>
 
-    <div x-data="{ playing: false, audio: null }" class="fixed bottom-5 right-5 z-50">
-      <audio id="musica-boda" src="mus/ambiente.mp3" loop></audio>
+    <div x-data="{ playing: false, audio: null }" x-init="audio = document.getElementById('musica-boda'); audio.loop = true; audio.play().then(() => playing = true).catch(() => {});" class="fixed bottom-5 right-5 z-50">
+      <audio id="musica-boda" src="mus/ambiente.mp3"></audio>
       <button
         @click="
-          audio = document.getElementById('musica-boda');
-          if (playing) { audio.pause(); } else { audio.play(); }
+          if (!audio) audio = document.getElementById('musica-boda');
+          if (playing) {
+            audio.pause();
+          } else {
+            audio.play().catch(() => {});
+          }
           playing = !playing;
         "
         class="flex h-11 w-11 items-center justify-center rounded-full bg-botanical text-ivory shadow-lg transition hover:bg-sage"
-        aria-label="Reproducir música"
+        :aria-label="playing ? 'Pausar música' : 'Reproducir música'"
       >
         <span class="text-xl" x-text="playing ? '⏸' : '▶'" aria-hidden="true"></span>
       </button>
