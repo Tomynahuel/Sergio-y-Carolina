@@ -6,14 +6,16 @@ const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   : `${import.meta.env.BASE_URL}/`;
 const heroImage = `${baseUrl}img/hero.jpg`;
 const leafImages = [
-  `${baseUrl}img/hoja1.jpeg`,
-  `${baseUrl}img/hoja2.jpeg`,
-  `${baseUrl}img/hoja3.jpeg`,
-  `${baseUrl}img/hoja4.jpeg`,
-  `${baseUrl}img/hoja5.jpeg`,
-  `${baseUrl}img/hoja6.jpeg`,
-  `${baseUrl}img/hoja7.jpeg`,
-  `${baseUrl}img/hoja8.jpeg`,
+  `${baseUrl}img/hoja01.png`,
+  `${baseUrl}img/hoja2.png`,
+  `${baseUrl}img/hoja2.png`,
+  `${baseUrl}img/hoja01.png`,
+  `${baseUrl}img/hoja2.png`,
+  `${baseUrl}img/hoja01.png`,
+  `${baseUrl}img/hoja2.png`,
+  `${baseUrl}img/hoja01.png`,
+  `${baseUrl}img/pajaro1.png`,
+  `${baseUrl}img/pajaro2.png`,  
 ];
 ---
 
@@ -79,7 +81,7 @@ const leafImages = [
           ))}
         </div>
         <div class="relative z-10 w-full px-4 py-24 text-center text-white sm:px-6 lg:px-8">
-          <div class="mx-auto max-w-4xl rounded-[2rem] border border-white/20 bg-white/10 p-8 backdrop-blur-sm sm:p-12">
+          <div class="mx-auto max-w-4xl p-8 sm:p-12">
             <p class="mb-4 text-sm uppercase tracking-[0.4em] text-white/80">Nos casamos</p>
             <h1 class="font-serif text-5xl leading-tight sm:text-6xl lg:text-8xl">Sergio & Carolina</h1>
             <p class="mx-auto mt-6 max-w-2xl text-lg text-white/90 sm:text-xl">Una celebración llena de amor, recuerdos y el comienzo de una nueva historia juntos.</p>
@@ -89,7 +91,6 @@ const leafImages = [
               <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="minutes">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Min</div></div>
               <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="seconds">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Seg</div></div>
             </div>
-            
           </div>
         </div>
       </section>
@@ -378,23 +379,9 @@ const leafImages = [
         class="flex h-11 w-11 items-center justify-center rounded-full bg-botanical text-ivory shadow-lg transition hover:bg-sage"
         aria-label="Reproducir música"
       >
-        <span class="sr-only" x-text="playing ? 'Pausar música' : 'Reproducir música'"></span>
         <span class="text-xl" x-text="playing ? '⏸' : '▶'" aria-hidden="true"></span>
       </button>
     </div>
 
-    <script>
-      const audioEl = document.getElementById('musica-boda');
-      const toggleAudio = () => {
-        if (!audioEl) return;
-        audioEl.play().catch(() => {});
-      };
-      window.addEventListener('load', toggleAudio);
-      document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible' && audioEl && audioEl.paused) {
-          audioEl.play().catch(() => {});
-        }
-      });
-    </script>
   </body>
 </html>
