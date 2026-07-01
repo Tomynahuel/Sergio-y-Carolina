@@ -1,10 +1,13 @@
 ---
 import '../styles/global.css';
+import { backupToGoogleSheet, buildGuestCsv, buildMailtoLink } from '../lib/rsvp.mjs';
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const heroImage = `${baseUrl}img/hero.jpg`;
+const rsvpRecipient = 'tomynahuel23@gmail.com';
+const googleScriptUrl = import.meta.env.PUBLIC_RSVP_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbwwnE3knecEN0fJwlWXddEgkPjvDxAKZbSFgHkXlDMYvhRu_Pb1v_aKJNe3IlHkROKo/exec';
 const leafImages = [
   `${baseUrl}img/hoja01.png`,
   `${baseUrl}img/hoja2.png`,
@@ -271,35 +274,36 @@ const leafImages = [
             </div>
           </div>
           <div class="soft-card p-8 sm:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
-            <form class="space-y-4">
+            <form id="rsvp-form" class="space-y-4" novalidate>
               <div>
-                <label class="mb-2 block text-sm font-semibold text-gray-700">Nombre completo</label>
-                <input class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Nombre completo" />
+                <label for="rsvp-name" class="mb-2 block text-sm font-semibold text-gray-700">Nombre completo</label>
+                <input id="rsvp-name" name="name" autocomplete="name" required class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Nombre completo" />
               </div>
               <div>
-                <label class="mb-2 block text-sm font-semibold text-gray-700">Dirección de correo electrónico</label>
-                <input class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="email@ejemplo.com" type="email" />
+                <label for="rsvp-email" class="mb-2 block text-sm font-semibold text-gray-700">Dirección de correo electrónico</label>
+                <input id="rsvp-email" name="email" type="email" autocomplete="email" required class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="email@ejemplo.com" />
               </div>
               <div>
-                <label class="mb-2 block text-sm font-semibold text-gray-700">Número de invitados</label>
-                <input class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Cantidad de invitados" type="number" min="0" />
+                <label for="rsvp-guests" class="mb-2 block text-sm font-semibold text-gray-700">Número de invitados</label>
+                <input id="rsvp-guests" name="guests" type="number" min="1" required class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Cantidad de invitados" />
               </div>
               <div class="space-y-3 rounded-[1.5rem] border border-gray-200 bg-white/90 p-4">
                 <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">¿Asistirás?</p>
                 <label class="inline-flex items-center gap-3 text-gray-700">
-                  <input type="radio" name="asistire" value="acepta" class="h-4 w-4 text-botanical" />
+                  <input type="radio" name="attendance" value="acepta" class="h-4 w-4 text-botanical" />
                   Acepta
                 </label>
                 <label class="inline-flex items-center gap-3 text-gray-700">
-                  <input type="radio" name="asistire" value="declina" class="h-4 w-4 text-botanical" />
+                  <input type="radio" name="attendance" value="declina" class="h-4 w-4 text-botanical" />
                   Lamentablemente declina
                 </label>
               </div>
               <div>
-                <label class="mb-2 block text-sm font-semibold text-gray-700">Mensaje opcional</label>
-                <textarea class="min-h-[120px] w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Escribe un mensaje opcional"></textarea>
+                <label for="rsvp-message" class="mb-2 block text-sm font-semibold text-gray-700">Mensaje opcional</label>
+                <textarea id="rsvp-message" name="message" class="min-h-[120px] w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Escribe un mensaje opcional"></textarea>
               </div>
-              <button class="w-full rounded-full bg-botanical px-6 py-3 text-sm font-semibold text-white transition hover:bg-sage">Confirmar asistencia</button>
+              <button type="submit" class="w-full rounded-full bg-botanical px-6 py-3 text-sm font-semibold text-white transition hover:bg-sage">Confirmar asistencia</button>
+              <p id="rsvp-feedback" class="min-h-6 text-sm text-botanical" role="status" aria-live="polite"></p>
             </form>
           </div>
         </div>
@@ -351,21 +355,151 @@ const leafImages = [
       const targetTime = new Date('2026-10-03T15:00:00').getTime();
       const container = document.getElementById('countdown');
 
-      setInterval(() => {
-        const now = Date.now();
-        const d = targetTime - now;
-        if (d < 0) return;
+      if (container) {
+        setInterval(() => {
+          const now = Date.now();
+          const d = targetTime - now;
+          if (d < 0) return;
 
-        const days = Math.floor(d / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((d / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((d / (1000 * 60)) % 60);
-        const seconds = Math.floor((d / 1000) % 60);
+          const days = Math.floor(d / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((d / (1000 * 60 * 60)) % 24);
+          const minutes = Math.floor((d / (1000 * 60)) % 60);
+          const seconds = Math.floor((d / 1000) % 60);
 
-        container.querySelector('[data-unit="days"]').textContent = days.toString().padStart(2, '0');
-        container.querySelector('[data-unit="hours"]').textContent = hours.toString().padStart(2, '0');
-        container.querySelector('[data-unit="minutes"]').textContent = minutes.toString().padStart(2, '0');
-        container.querySelector('[data-unit="seconds"]').textContent = seconds.toString().padStart(2, '0');
-      }, 1000);
+          container.querySelector('[data-unit="days"]').textContent = days.toString().padStart(2, '0');
+          container.querySelector('[data-unit="hours"]').textContent = hours.toString().padStart(2, '0');
+          container.querySelector('[data-unit="minutes"]').textContent = minutes.toString().padStart(2, '0');
+          container.querySelector('[data-unit="seconds"]').textContent = seconds.toString().padStart(2, '0');
+        }, 1000);
+      }
+
+      const rsvpForm = document.getElementById('rsvp-form');
+      const feedback = document.getElementById('rsvp-feedback');
+      const storageKey = 'sergio-y-carolina-rsvp';
+
+      function readGuestList() {
+        try {
+          const saved = window.localStorage.getItem(storageKey);
+          return saved ? JSON.parse(saved) : [];
+        } catch (error) {
+          console.error(error);
+          return [];
+        }
+      }
+
+      function saveGuestList(entries) {
+        window.localStorage.setItem(storageKey, JSON.stringify(entries));
+      }
+
+      function downloadGuestCsv(entries) {
+        const csvContent = buildGuestCsv(entries);
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const link = document.createElement('a');
+        const href = URL.createObjectURL(blob);
+        link.href = href;
+        link.download = 'invitados.csv';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(href);
+      }
+
+      async function saveConfirmationToGoogleSheets(payload) {
+        if (!googleScriptUrl) return;
+
+        try {
+          await backupToGoogleSheet(payload, googleScriptUrl, { token: 'wedding-rsvp' });
+        } catch (error) {
+          console.error('No se pudo enviar la confirmación a Google Sheets.', error);
+        }
+      }
+
+      if (rsvpForm && feedback) {
+        rsvpForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+
+          const formData = new FormData(rsvpForm);
+          const name = String(formData.get('name') || '').trim();
+          const email = String(formData.get('email') || '').trim();
+          const guests = String(formData.get('guests') || '').trim();
+          const attendance = String(formData.get('attendance') || '').trim();
+          const message = String(formData.get('message') || '').trim();
+
+          if (!name || !email || !guests || !attendance) {
+            feedback.textContent = 'Completá los campos obligatorios para confirmar tu asistencia.';
+            feedback.className = 'min-h-6 text-sm text-rose-600';
+            return;
+          }
+
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            feedback.textContent = 'Ingresá un correo electrónico válido.';
+            feedback.className = 'min-h-6 text-sm text-rose-600';
+            return;
+          }
+
+          const guestsNumber = Number(guests);
+          if (!Number.isInteger(guestsNumber) || guestsNumber < 1) {
+            feedback.textContent = 'La cantidad de invitados debe ser al menos 1.';
+            feedback.className = 'min-h-6 text-sm text-rose-600';
+            return;
+          }
+
+          const attendanceLabel = attendance === 'acepta' ? 'Sí asistiré' : 'Lamentablemente declino';
+          const guestEntry = {
+            name,
+            email,
+            guests: guestsNumber,
+            attendance,
+            message,
+          };
+          const existingGuests = readGuestList();
+          const nextGuests = [...existingGuests, guestEntry];
+          saveGuestList(nextGuests);
+          downloadGuestCsv(nextGuests);
+          await saveConfirmationToGoogleSheets({
+            name,
+            email,
+            guests: guestsNumber,
+            attendance,
+            message,
+          });
+
+          const subject = encodeURIComponent('Confirmación de asistencia - Sergio y Carolina');
+          const body = encodeURIComponent([
+            'Hola Sergio y Carolina',
+            '',
+            `Nombre: ${name}`,
+            `Email: ${email}`,
+            `Invitados: ${guestsNumber}`,
+            `Respuesta: ${attendanceLabel}`,
+            message ? `Mensaje: ${message}` : '',
+            '',
+            'Gracias por confirmar.',
+          ].filter(Boolean).join('\n'));
+
+          window.location.href = buildMailtoLink({
+            to: rsvpRecipient,
+            subject: 'Confirmación de asistencia - Sergio y Carolina',
+            body: [
+              'Hola Sergio y Carolina',
+              '',
+              `Nombre: ${name}`,
+              `Email: ${email}`,
+              `Invitados: ${guestsNumber}`,
+              `Respuesta: ${attendanceLabel}`,
+              message ? `Mensaje: ${message}` : '',
+              '',
+              'Gracias por confirmar.',
+            ].filter(Boolean).join('\n'),
+          });
+
+          feedback.textContent = googleScriptUrl
+            ? 'Se abrió tu correo, se descargó la lista en CSV/Excel y se registró la confirmación en Google Sheets.'
+            : 'Se abrió tu correo y se descargó la lista de invitados en formato CSV/Excel.';
+          feedback.className = 'min-h-6 text-sm text-botanical';
+          rsvpForm.reset();
+        });
+      }
     </script>
 
     <div x-data="{ playing: false, audio: null }" x-init="audio = document.getElementById('musica-boda'); audio.loop = true; audio.play().then(() => playing = true).catch(() => {});" class="fixed bottom-5 right-5 z-50">
@@ -386,6 +520,5 @@ const leafImages = [
         <span class="text-xl" x-text="playing ? '⏸' : '▶'" aria-hidden="true"></span>
       </button>
     </div>
-
   </body>
 </html>
