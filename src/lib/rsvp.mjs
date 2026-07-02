@@ -26,10 +26,10 @@ export async function backupToGoogleSheet(data, scriptUrl, opts = {}) {
 }
 
 export function buildGuestCsv(entries) {
-  const header = ['nombre', 'email', 'invitados', 'asistencia', 'mensaje'];
+  const header = ['nombre', 'telefono', 'invitados', 'asistencia', 'mensaje'];
   const rows = entries.map((entry) => [
     entry.name,
-    entry.email,
+    entry.phone,
     entry.guests,
     entry.attendance,
     entry.message,

@@ -1,5 +1,5 @@
 ---
-// Todo archivo .astro necesita esta cabecera, aunque por ahora esté vacía.
+
 ---
 
 <section id="rsvp" class="section-shell pb-24">
@@ -82,7 +82,7 @@
   const googleScriptUrl = 'https://script.google.com/macros/s/AKfycby9P0djVsNv4Pp7AHMVtZu5jv3AcX-2ydrCWJj-AXEg7cSch8mvFrqfHpj3t_sKi9mv/exec';
   const storageKey = 'sergio-y-carolina-rsvp';
 
-  const rsvpForm = document.getElementById('rsvp-form');
+  const rsvpForm = document.getElementById('rsvp-form') as HTMLFormElement;
   const feedback = document.getElementById('rsvp-feedback');
   const formContainer = document.getElementById('rsvp-form-container');
   const successContainer = document.getElementById('rsvp-success-container');
