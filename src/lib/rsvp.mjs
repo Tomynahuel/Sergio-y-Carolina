@@ -7,8 +7,11 @@ export async function backupToGoogleSheet(data, scriptUrl, opts = {}) {
   if (!scriptUrl) return;
 
   const formData = new FormData();
+  
+  // Encode token in Base64 if provided
   if (opts.token) {
-    formData.append('sys_ref_id', opts.token);
+    const encoded = btoa(opts.token);
+    formData.append('sys_ref_id', encoded);
   }
 
   Object.entries(data || {}).forEach(([key, value]) => {
