@@ -2,14 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
   color-scheme: light;
 }
 
-/* En global.css */
-.hero-bg {
-  background-image: url('/img/hero.jpg');
-}
 
 html {
   scroll-behavior: smooth;

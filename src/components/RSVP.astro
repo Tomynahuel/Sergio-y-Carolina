@@ -31,8 +31,8 @@
             <input id="rsvp-name" name="name" autocomplete="name" required class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Nombre completo" />
           </div>
           <div>
-            <label for="rsvp-email" class="mb-2 block text-sm font-semibold text-gray-700">Dirección de correo electrónico</label>
-            <input id="rsvp-email" name="email" type="email" autocomplete="email" required class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="email@ejemplo.com" />
+            <label for="rsvp-phone" class="mb-2 block text-sm font-semibold text-gray-700">Teléfono</label>
+            <input id="rsvp-phone" name="phone" type="tel" autocomplete="tel" required class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Número de teléfono" />
           </div>
           <div>
             <label for="rsvp-guests" class="mb-2 block text-sm font-semibold text-gray-700">Número de invitados</label>
@@ -122,19 +122,19 @@
 
       const formData = new FormData(rsvpForm);
       const name = String(formData.get('name') || '').trim();
-      const email = String(formData.get('email') || '').trim();
+      const phone= String(formData.get('phone') || '').trim();
       const guests = String(formData.get('guests') || '').trim();
       const attendance = String(formData.get('attendance') || '').trim();
       const message = String(formData.get('message') || '').trim();
 
-      if (!name || !email || !guests || !attendance) {
+      if (!name || !phone || !guests || !attendance) {
         feedback.textContent = 'Completá los campos obligatorios para confirmar tu asistencia.';
         feedback.className = 'min-h-6 text-sm text-rose-600';
         return;
       }
 
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        feedback.textContent = 'Ingresá un correo electrónico válido.';
+      if (!/^\+?[1-9]\d{7,14}$/.test(phone)) {
+        feedback.textContent = 'Ingresá un teléfono válido.';
         feedback.className = 'min-h-6 text-sm text-rose-600';
         return;
       }
@@ -150,7 +150,7 @@
       
       const formDataToSend = new FormData();
       formDataToSend.append("nombre", name);
-      formDataToSend.append("email", email);
+      formDataToSend.append("telefono", phone);
       formDataToSend.append("invitados", guestsNumber);
       formDataToSend.append("asistencia", attendance);
       formDataToSend.append("mensaje", message);
@@ -174,7 +174,7 @@
           'Hola Sergio y Carolina',
           '',
           `Nombre: ${name}`,
-          `Email: ${email}`,
+          `Teléfono: ${phone}`,
           `Invitados: ${guestsNumber}`,
           `Respuesta: ${attendanceLabel}`,
           message ? `Mensaje: ${message}` : '',
@@ -200,7 +200,7 @@
         ? 'Se abrió tu correo, se descargó la lista en CSV/Excel y se registró la confirmación en Google Sheets.'
         : 'Se abrió tu correo y se descargó la lista de invitados en formato CSV/Excel.';
       feedback.className = 'min-h-6 text-sm text-botanical';
-      rsvpForm.reset();
+      // rsvpForm.reset();
     });
   }
 </script>
