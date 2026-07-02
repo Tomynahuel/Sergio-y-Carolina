@@ -1,0 +1,206 @@
+---
+// Todo archivo .astro necesita esta cabecera, aunque por ahora esté vacía.
+---
+
+<section id="rsvp" class="section-shell pb-24">
+  <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+    <div class="soft-card p-8 sm:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
+      <p class="text-sm uppercase tracking-[0.3em] text-botanical">RSVP</p>
+      <h2 class="mt-3 font-serif text-4xl text-botanical">Confirma tu asistencia</h2>
+      <p class="mt-4 text-lg text-gray-700">Tu presencia hará que este día sea aún más especial. Nos encantaría compartirlo contigo.</p>
+      <div class="mt-8 rounded-[1.5rem] bg-botanical/10 p-6 text-gray-700">
+        <p class="font-semibold text-botanical">Fecha límite</p>
+        <p class="mt-2">Por favor responde antes del 15 de septiembre.</p>
+      </div>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2">
+        <div class="rounded-[1.5rem] border border-gray-200 bg-white/90 p-6 text-center transition hover:-translate-y-1 hover:shadow-md">
+          <p class="text-sm uppercase tracking-[0.3em] text-botanical">Ceremonia</p>
+          <p class="mt-3 text-sm text-gray-700">15:00 hrs</p>
+        </div>
+        <div class="rounded-[1.5rem] border border-gray-200 bg-white/90 p-6 text-center transition hover:-translate-y-1 hover:shadow-md">
+          <p class="text-sm uppercase tracking-[0.3em] text-botanical">Recepción</p>
+          <p class="mt-3 text-sm text-gray-700">18:00 hrs</p>
+        </div>
+      </div>
+    </div>
+    <div class="soft-card p-8 sm:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
+      <div id="rsvp-form-container">
+        <form id="rsvp-form" class="space-y-4" novalidate>
+          <div>
+            <label for="rsvp-name" class="mb-2 block text-sm font-semibold text-gray-700">Nombre completo</label>
+            <input id="rsvp-name" name="name" autocomplete="name" required class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Nombre completo" />
+          </div>
+          <div>
+            <label for="rsvp-email" class="mb-2 block text-sm font-semibold text-gray-700">Dirección de correo electrónico</label>
+            <input id="rsvp-email" name="email" type="email" autocomplete="email" required class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="email@ejemplo.com" />
+          </div>
+          <div>
+            <label for="rsvp-guests" class="mb-2 block text-sm font-semibold text-gray-700">Número de invitados</label>
+            <input id="rsvp-guests" name="guests" type="number" min="1" required class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Cantidad de invitados" />
+          </div>
+          <div class="space-y-3 rounded-[1.5rem] border border-gray-200 bg-white/90 p-4">
+            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">¿Asistirás?</p>
+            <label class="inline-flex items-center gap-3 text-gray-700">
+              <input type="radio" name="attendance" value="acepta" class="h-4 w-4 text-botanical" />
+              Acepta
+            </label>
+            <label class="inline-flex items-center gap-3 text-gray-700">
+              <input type="radio" name="attendance" value="declina" class="h-4 w-4 text-botanical" />
+              Lamentablemente declina
+            </label>
+          </div>
+          <div>
+            <label for="rsvp-message" class="mb-2 block text-sm font-semibold text-gray-700">Mensaje opcional</label>
+            <textarea id="rsvp-message" name="message" class="min-h-[120px] w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Escribe un mensaje opcional"></textarea>
+          </div>
+          <button type="submit" class="w-full rounded-full bg-botanical px-6 py-3 text-sm font-semibold text-white transition hover:bg-sage">Confirmar asistencia</button>
+          <p id="rsvp-feedback" class="min-h-6 text-sm text-botanical" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+      <div id="rsvp-success-container" class="hidden text-center">
+        <div class="mb-6">
+          <p class="text-5xl mb-4">💍</p>
+          <h3 class="font-serif text-3xl text-botanical mb-3">¡Gracias por tu confirmación!</h3>
+          <p class="text-lg text-gray-700 mb-2" id="rsvp-success-name"></p>
+          <p class="text-gray-600" id="rsvp-success-message"></p>
+        </div>
+        <div class="rounded-[1.5rem] border border-botanical/20 bg-botanical/10 p-6">
+          <p class="text-sm text-gray-700 mb-2">Tu respuesta ha sido guardada exitosamente.</p>
+          <p class="text-xs text-gray-600">Se ha enviado un correo de confirmación a Sergio y Carolina.</p>
+        </div>
+        <button onclick="location.reload()" class="mt-6 rounded-full bg-botanical px-6 py-3 text-sm font-semibold text-white transition hover:bg-sage">Confirmar otro RSVP</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // ¡Importamos nuestras funciones de lógica directamente aquí en el cliente!
+  import { backupToGoogleSheet, buildGuestCsv, buildMailtoLink } from '../lib/rsvp.mjs';
+
+  const rsvpRecipient = 'tomynahuel23@gmail.com';
+  const googleScriptUrl = 'https://script.google.com/macros/s/AKfycby9P0djVsNv4Pp7AHMVtZu5jv3AcX-2ydrCWJj-AXEg7cSch8mvFrqfHpj3t_sKi9mv/exec';
+  const storageKey = 'sergio-y-carolina-rsvp';
+
+  const rsvpForm = document.getElementById('rsvp-form');
+  const feedback = document.getElementById('rsvp-feedback');
+  const formContainer = document.getElementById('rsvp-form-container');
+  const successContainer = document.getElementById('rsvp-success-container');
+  const successName = document.getElementById('rsvp-success-name');
+  const successMessage = document.getElementById('rsvp-success-message');
+
+  function readGuestList() {
+    try {
+      const saved = window.localStorage.getItem(storageKey);
+      return saved ? JSON.parse(saved) : [];
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+
+  function saveGuestList(entries) {
+    window.localStorage.setItem(storageKey, JSON.stringify(entries));
+  }
+
+  function downloadGuestCsv(entries) {
+    const csvContent = buildGuestCsv(entries);
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const href = URL.createObjectURL(blob);
+    link.href = href;
+    link.download = 'invitados.csv';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(href);
+  }
+
+  if (rsvpForm && feedback) {
+    rsvpForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(rsvpForm);
+      const name = String(formData.get('name') || '').trim();
+      const email = String(formData.get('email') || '').trim();
+      const guests = String(formData.get('guests') || '').trim();
+      const attendance = String(formData.get('attendance') || '').trim();
+      const message = String(formData.get('message') || '').trim();
+
+      if (!name || !email || !guests || !attendance) {
+        feedback.textContent = 'Completá los campos obligatorios para confirmar tu asistencia.';
+        feedback.className = 'min-h-6 text-sm text-rose-600';
+        return;
+      }
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        feedback.textContent = 'Ingresá un correo electrónico válido.';
+        feedback.className = 'min-h-6 text-sm text-rose-600';
+        return;
+      }
+
+      const guestsNumber = Number(guests);
+      if (!Number.isInteger(guestsNumber) || guestsNumber < 1) {
+        feedback.textContent = 'La cantidad de invitados debe ser al menos 1.';
+        feedback.className = 'min-h-6 text-sm text-rose-600';
+        return;
+      }
+
+      const attendanceLabel = attendance === 'acepta' ? 'Sí asistiré' : 'Lamentablemente declino';
+      
+      const formDataToSend = new FormData();
+      formDataToSend.append("nombre", name);
+      formDataToSend.append("email", email);
+      formDataToSend.append("invitados", guestsNumber);
+      formDataToSend.append("asistencia", attendance);
+      formDataToSend.append("mensaje", message);
+      formDataToSend.append("sys_ref_id", "Z3VhbmNodXBpdG8=");
+
+      try {
+        await fetch(googleScriptUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: formDataToSend,
+        });
+        console.log('Confirmación enviada a Google Sheets con éxito.');
+      } catch (error) {
+        console.error('Error al conectar con Google Sheets:', error);
+      }
+
+      const mailtoLink = buildMailtoLink({
+        to: rsvpRecipient,
+        subject: 'Confirmación de asistencia - Sergio y Carolina',
+        body: [
+          'Hola Sergio y Carolina',
+          '',
+          `Nombre: ${name}`,
+          `Email: ${email}`,
+          `Invitados: ${guestsNumber}`,
+          `Respuesta: ${attendanceLabel}`,
+          message ? `Mensaje: ${message}` : '',
+          '',
+          'Gracias por confirmar.',
+        ].filter(Boolean).join('\n'),
+      });
+
+      try {
+        window.open(mailtoLink, '_blank', 'noopener,noreferrer');
+      } catch (error) {
+        console.error('No se pudo abrir el correo.', error);
+      }
+
+      if (formContainer && successContainer && successName && successMessage) {
+        formContainer.classList.add('hidden');
+        successContainer.classList.remove('hidden');
+        successName.textContent = `¡Hola ${name}!`;
+        successMessage.textContent = `Confirmaste tu asistencia con ${guestsNumber} invitado${guestsNumber !== 1 ? 's' : ''}. ${attendanceLabel}.`;
+      }
+
+      feedback.textContent = googleScriptUrl
+        ? 'Se abrió tu correo, se descargó la lista en CSV/Excel y se registró la confirmación en Google Sheets.'
+        : 'Se abrió tu correo y se descargó la lista de invitados en formato CSV/Excel.';
+      feedback.className = 'min-h-6 text-sm text-botanical';
+      rsvpForm.reset();
+    });
+  }
+</script>

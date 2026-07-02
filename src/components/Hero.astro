@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const heroImage = `${baseUrl}img/hero.jpg`;
+const leafImages = [
+  `${baseUrl}img/hoja01.png`,
+  `${baseUrl}img/hoja2.png`,
+  `${baseUrl}img/hoja2.png`,
+  `${baseUrl}img/hoja01.png`,
+  `${baseUrl}img/hoja2.png`,
+  `${baseUrl}img/hoja01.png`,
+  `${baseUrl}img/hoja2.png`,
+  `${baseUrl}img/hoja01.png`,
+  `${baseUrl}img/pajaro1.png`,
+  `${baseUrl}img/pajaro2.png`,  
+];
+---
+
+<section id="home" tabindex="-1" class="relative flex min-h-screen items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 bg-cover bg-center" style={`background-image: url('${heroImage}');`}></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60"></div>
+  
+  <div class="leaves pointer-events-none" aria-hidden="true">
+    {leafImages.map((image, index) => (
+      <span
+        class={`leaf leaf-${index + 1}`}
+        style={`background-image: url('${image}');`}
+      />
+    ))}
+  </div>
+
+  <div class="relative z-10 w-full px-4 py-24 text-center text-white sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl p-8 sm:p-12">
+      <p class="mb-4 text-sm uppercase tracking-[0.4em] text-white/80">Nos casamos</p>
+      <h1 class="font-serif text-5xl leading-tight sm:text-6xl lg:text-8xl">Sergio & Carolina</h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-white/90 sm:text-xl">Una celebración llena de amor, recuerdos y el comienzo de una nueva historia juntos.</p>
+      
+      <div id="countdown" class="mt-10 grid grid-cols-2 gap-4 text-center sm:grid-cols-4">
+        <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="days">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Días</div></div>
+        <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="hours">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Horas</div></div>
+        <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="minutes">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Min</div></div>
+        <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="seconds">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Seg</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const targetTime = new Date('2026-10-03T15:00:00').getTime();
+  const container = document.getElementById('countdown');
+
+  if (container) {
+    setInterval(() => {
+      const now = Date.now();
+      const d = targetTime - now;
+      if (d < 0) return;
+
+      const days = Math.floor(d / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((d / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((d / (1000 * 60)) % 60);
+      const seconds = Math.floor((d / 1000) % 60);
+
+      container.querySelector('[data-unit="days"]').textContent = days.toString().padStart(2, '0');
+      container.querySelector('[data-unit="hours"]').textContent = hours.toString().padStart(2, '0');
+      container.querySelector('[data-unit="minutes"]').textContent = minutes.toString().padStart(2, '0');
+      container.querySelector('[data-unit="seconds"]').textContent = seconds.toString().padStart(2, '0');
+    }, 1000);
+  }
+</script>

@@ -1,0 +1,20 @@
+---
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const heroImage = `${baseUrl}img/hero.jpg`;
+---
+
+<section id="gallery" class="section-shell pb-24">
+  <div class="soft-card overflow-hidden p-8 sm:p-10">
+    <div class="mb-8 text-center">
+      <p class="text-sm uppercase tracking-[0.3em] text-botanical">Galería</p>
+      <h2 class="mt-3 font-serif text-4xl text-botanical sm:text-5xl">Nuestros momentos favoritos</h2>
+    </div>
+    <div class="grid gap-4 md:grid-cols-3">
+      <div class="group h-72 overflow-hidden rounded-[1.5rem] bg-cover bg-center transition duration-300 hover:scale-[1.02]" style={`background-image: url('${heroImage}');`}></div>
+      <div class="group h-72 overflow-hidden rounded-[1.5rem] bg-cover bg-center transition duration-300 hover:scale-[1.02]" style={`background-image: url('${heroImage}');`}></div>
+      <div class="group h-72 overflow-hidden rounded-[1.5rem] bg-cover bg-center transition duration-300 hover:scale-[1.02]" style={`background-image: url('${heroImage}');`}></div>
+    </div>
+  </div>
+</section>

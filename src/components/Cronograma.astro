@@ -1,0 +1,39 @@
+---
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const heroImage = `${baseUrl}img/hero.jpg`;
+---
+
+<section id="itinerary" class="section-shell pb-24">
+  <div class="soft-card overflow-hidden">
+    <div class="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
+      <div class="bg-cover bg-center p-10 sm:p-14 lg:min-h-[360px]" style={`background-image: url('${heroImage}');`}></div>
+      <div class="p-8 sm:p-10">
+...
+
+<section id="itinerary" class="section-shell pb-24">
+        <div class="soft-card overflow-hidden">
+          <div class="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
+            <div class="bg-cover bg-center p-10 sm:p-14 lg:min-h-[360px] hero-bg"></div>
+            <div class="p-8 sm:p-10">
+              <p class="text-sm uppercase tracking-[0.3em] text-botanical">Cronograma</p>
+              <h2 class="mt-3 font-serif text-4xl text-botanical">Un día para recordar</h2>
+              <div class="mt-8 space-y-6">
+                <div class="border-b border-gray-100 pb-4">
+                  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">15:00</p>
+                  <p class="mt-2 text-lg text-gray-700">Ceremonia</p>
+                </div>
+                <div class="border-b border-gray-100 pb-4">
+                  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">18:00</p>
+                  <p class="mt-2 text-lg text-gray-700">Recepción</p>
+                </div>
+                <div>
+                  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">21:00</p>
+                  <p class="mt-2 text-lg text-gray-700">Baile y celebración</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>

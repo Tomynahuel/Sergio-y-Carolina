@@ -1,0 +1,64 @@
+---
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const heroImage = `${baseUrl}img/hero.jpg`;
+---
+
+<section id="story" class="section-shell py-24">
+        <div class="soft-card overflow-hidden p-0">
+          <div class="relative">
+            <img src={heroImage} alt="Sergio y Carolina" class="h-80 w-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
+            <div class="absolute bottom-4 left-4 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm uppercase tracking-[0.3em] text-white backdrop-blur-sm">Nuestra historia</div>
+          </div>
+          <div class="p-8 sm:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
+            <p class="text-sm uppercase tracking-[0.3em] text-botanical">Nuestra historia</p>
+            <h2 class="mt-4 font-serif text-4xl text-botanical sm:text-5xl">Amor, tiempo y recuerdos</h2>
+            <p class="mt-6 text-lg text-gray-700">Lo que comenzó con una conversación sencilla se convirtió en una historia hermosa. Cada paso nos llevó a este día, cargado de emoción, familia y esperanza.</p>
+            <p class="mt-4 text-lg text-gray-700">Queremos compartirlo contigo con una ceremonia íntima, un ambiente acogedor y momentos que recordaremos por siempre.</p>
+            <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              <div class="rounded-[1.5rem] border border-gray-200 bg-white/90 p-5 text-center transition hover:-translate-y-1 hover:shadow-md">
+                <p class="text-sm uppercase tracking-[0.3em] text-botanical">Dress code</p>
+                <p class="mt-3 text-sm text-gray-700">Elegante y sofisticado</p>
+              </div>
+              <div class="rounded-[1.5rem] border border-gray-200 bg-white/90 p-5 text-center transition hover:-translate-y-1 hover:shadow-md">
+                <p class="text-sm uppercase tracking-[0.3em] text-botanical">Estacionamiento</p>
+                <p class="mt-3 text-sm text-gray-700">Disponible</p>
+              </div>
+              <div class="rounded-[1.5rem] border border-gray-200 bg-white/90 p-5 text-center transition hover:-translate-y-1 hover:shadow-md">
+                <p class="text-sm uppercase tracking-[0.3em] text-botanical">Co-Invitados</p>
+                <p class="mt-3 text-sm text-gray-700">Bienvenidos con invitación</p>
+              </div>
+              <div class="rounded-[1.5rem] border border-gray-200 bg-white/90 p-5 text-center transition hover:-translate-y-1 hover:shadow-md">
+                <p class="text-sm uppercase tracking-[0.3em] text-botanical">Fotografía</p>
+                <p class="mt-3 text-sm text-gray-700">Nombre del fotógrafo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-shell pb-24">
+        <div class="mb-10 text-center">
+          <p class="text-sm uppercase tracking-[0.3em] text-botanical">Información importante</p>
+          <h2 class="mt-3 font-serif text-4xl text-botanical sm:text-5xl">Todo lo que necesitas saber</h2>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="rounded-[1.5rem] border border-gray-200 bg-white/90 p-6 text-center transition hover:-translate-y-1 hover:shadow-md">
+            <p class="text-sm uppercase tracking-[0.3em] text-botanical">Clima</p>
+            <p class="mt-3 text-sm text-gray-700">Fresco, lleva abrigo ligero</p>
+          </div>
+          <div class="rounded-[1.5rem] border border-gray-200 bg-white/90 p-6 text-center transition hover:-translate-y-1 hover:shadow-md">
+            <p class="text-sm uppercase tracking-[0.3em] text-botanical">Regalos</p>
+            <p class="mt-3 text-sm text-gray-700">Tu presencia es el mejor regalo</p>
+          </div>
+          <div class="rounded-[1.5rem] border border-gray-200 bg-white/90 p-6 text-center transition hover:-translate-y-1 hover:shadow-md">
+            <p class="text-sm uppercase tracking-[0.3em] text-botanical">WiFi</p>
+            <p class="mt-3 text-sm text-gray-700">Red disponible en el lugar</p>
+          </div>
+          <div class="rounded-[1.5rem] border border-gray-200 bg-white/90 p-6 text-center transition hover:-translate-y-1 hover:shadow-md">
+            <p class="text-sm uppercase tracking-[0.3em] text-botanical">Niños</p>
+            <p class="mt-3 text-sm text-gray-700">Evento familiar y acogedor</p>
+          </div>
+        </div>
+      </section>

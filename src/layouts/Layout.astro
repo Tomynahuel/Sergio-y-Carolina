@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const { title } = Astro.props;
+---
+
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sergio y Carolina te invitan a celebrar su boda con una experiencia elegante y emotiva." />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"></script>
+  </head>
+  <body class="min-h-screen bg-ivory text-slate-700 antialiased leading-relaxed pt-20">
+    
+    <header class="fixed top-0 z-50 w-full border-b border-white/50 bg-ivory/95 backdrop-blur-md" x-data="{ open: false }">
+      <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <a href="#home" class="flex items-center gap-2 font-serif text-3xl font-semibold tracking-[0.2em] text-slate-900">
+          <span>S</span>
+          <img src={`${baseUrl}img/ring.png`} alt="Anillo" class="h-12 w-12 object-contain" />
+          <span>C</span>
+        </a>
+        <button @click="open = !open" class="text-3xl text-slate-900 lg:hidden">☰</button>
+        <nav class="hidden gap-8 lg:flex">
+          <a href="#home" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Inicio</a>
+          <a href="#story" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Nuestra historia</a>
+          <a href="#details" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Detalles</a>
+          <a href="#itinerary" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Cronograma</a>
+          <a href="#gallery" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Galería</a>
+          <a href="#rsvp" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Confirmar asistencia</a>
+        </nav>
+      </div>
+      <div x-show="open" x-transition class="lg:hidden">
+        <div class="border-t border-gray-200 bg-ivory/95 px-4 py-4 backdrop-blur-sm">
+          <div class="flex flex-col gap-2 text-sm uppercase tracking-[0.15em] text-slate-700">
+            <a href="#home" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Inicio</a>
+            <a href="#story" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Nuestra historia</a>
+            <a href="#details" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Detalles</a>
+            <a href="#itinerary" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Cronograma</a>
+            <a href="#gallery" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Galería</a>
+            <a href="#rsvp" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Confirmar asistencia</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="border-t border-gray-200 bg-white/70 py-10">
+      <div class="section-shell flex flex-col items-center justify-between gap-4 text-center text-sm text-gray-600 sm:flex-row">
+        <p>© 2026 Sergio y Carolina. Gracias por acompañarnos.</p>
+        <p>Con amor,v1 siempre.</p>
+      </div>
+    </footer>
+
+    <div x-data="{ playing: false, audio: null }" x-init="audio = document.getElementById('musica-boda'); audio.loop = true; audio.play().then(() => playing = true).catch(() => {});" class="fixed bottom-5 right-5 z-50">
+      <audio id="musica-boda" src="/mus/ambiente.mp3"></audio>
+      <button
+        @click="
+          if (!audio) audio = document.getElementById('musica-boda');
+          if (playing) {
+            audio.pause();
+          } else {
+            audio.play().catch(() => {});
+          }
+          playing = !playing;
+        "
+        class="flex h-11 w-11 items-center justify-center rounded-full bg-botanical text-ivory shadow-lg transition hover:bg-sage"
+        :aria-label="playing ? 'Pausar música' : 'Reproducir música'"
+      >
+        <span class="text-xl" x-text="playing ? '⏸' : '▶'" aria-hidden="true"></span>
+      </button>
+    </div>
+  </body>
+</html>
