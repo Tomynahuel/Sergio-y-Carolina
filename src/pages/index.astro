@@ -1,22 +1,46 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import Historia from '../components/Historia.astro';
-import Detalles from '../components/Detalles.astro';
-import Cronograma from '../components/Cronograma.astro';
-import Galeria from '../components/Galeria.astro';
-import Ubicacion from '../components/Ubicacion.astro';
-import RSVP from '../components/RSVP.astro';
-import Contacto from '../components/Contacto.astro';
+import '../styles/global.css';
+import FormularioLogin from '../components/FormularioLogin.astro';
+// Importa aquí los nuevos componentes que vayas creando
+// import MiNuevoComponente from '../components/MiNuevoComponente.astro';
+
+import Bienvenida from '../components/Bienvenida.astro';
+
+
+const baseUrl = import.meta.env.BASE_URL.endsWith('/') 
+  ? import.meta.env.BASE_URL 
+  : `${import.meta.env.BASE_URL}/`;
+const heroImage = `${baseUrl}img/hero.jpg`;
 ---
 
-<Layout title="Sergio y Carolina - Nuestro Casamiento">
-  <Hero />
-  <Historia />
-  <Detalles />
-  <Cronograma />
-  <Galeria />
-  <Ubicacion />
-  <RSVP />
-  <Contacto />
-</Layout>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingreso - Boda Sergio y Carolina</title>
+</head>
+<body class="bg-ivory font-serif text-botanical m-0 p-0">
+  
+  <div class="flex flex-col lg:flex-row min-h-screen w-full relative">
+    
+    <div class="w-full lg:w-1/2 h-[40vh] lg:h-screen lg:sticky lg:top-0 bg-cover bg-center" style={`background-image: url('${heroImage}');`}>
+    </div>
+
+    <div class="w-full lg:w-1/2 flex flex-col justify-start items-center p-6 py-12 gap-10 bg-ivory min-h-screen overflow-x-hidden">
+      
+
+        <Bienvenida />
+        <FormularioLogin />
+      
+
+      <div class="max-w-md w-full bg-white/50 p-8 rounded-3xl border border-mist/50 text-center">
+        <h3 class="text-2xl text-botanical mb-2">¿Tenés dudas?</h3>
+        <p class="font-sans text-sm text-botanical/80">Comunicate con nosotros por WhatsApp al +54 9 11 1234-5678</p>
+      </div>
+      
+      </div>
+    
+  </div>
+
+</body>
+</html>
