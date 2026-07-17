@@ -3,26 +3,7 @@
 ---
 
 <section id="rsvp" class="section-shell pb-24">
-  <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
-    <div class="soft-card p-8 sm:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
-      <p class="text-sm uppercase tracking-[0.3em] text-botanical">RSVP</p>
-      <h2 class="mt-3 font-serif text-4xl text-botanical">Confirma tu asistencia</h2>
-      <p class="mt-4 text-lg text-gray-700">Tu presencia hará que este día sea aún más especial. Nos encantaría compartirlo contigo.</p>
-      <div class="mt-8 rounded-[1.5rem] bg-botanical/10 p-6 text-gray-700">
-        <p class="font-semibold text-botanical">Fecha límite</p>
-        <p class="mt-2">Por favor responde antes del 15 de septiembre.</p>
-      </div>
-      <div class="mt-8 grid gap-4 sm:grid-cols-2">
-        <div class="rounded-[1.5rem] border border-gray-200 bg-white/90 p-6 text-center transition hover:-translate-y-1 hover:shadow-md">
-          <p class="text-sm uppercase tracking-[0.3em] text-botanical">Ceremonia</p>
-          <p class="mt-3 text-sm text-gray-700">15:00 hrs</p>
-        </div>
-        <div class="rounded-[1.5rem] border border-gray-200 bg-white/90 p-6 text-center transition hover:-translate-y-1 hover:shadow-md">
-          <p class="text-sm uppercase tracking-[0.3em] text-botanical">Recepción</p>
-          <p class="mt-3 text-sm text-gray-700">18:00 hrs</p>
-        </div>
-      </div>
-    </div>
+  
     <div class="soft-card p-8 sm:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
       <div id="rsvp-form-container">
         <form id="rsvp-form" class="space-y-4" novalidate>
@@ -79,7 +60,7 @@
   import { backupToGoogleSheet, buildGuestCsv, buildMailtoLink } from '../lib/rsvp.mjs';
 
   const rsvpRecipient = 'tomynahuel23@gmail.com';
-  const googleScriptUrl = 'https://script.google.com/macros/s/AKfycby9P0djVsNv4Pp7AHMVtZu5jv3AcX-2ydrCWJj-AXEg7cSch8mvFrqfHpj3t_sKi9mv/exec';
+  const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyIcf4F9OO7tfETNd4BeP6kxXMId9ODFAxHTabhViNWji3AjawKEiUDZabQxq-nKgkS/exec';
   const storageKey = 'sergio-y-carolina-rsvp';
 
   const rsvpForm = document.getElementById('rsvp-form') as HTMLFormElement;
@@ -165,28 +146,6 @@
         console.log('Confirmación enviada a Google Sheets con éxito.');
       } catch (error) {
         console.error('Error al conectar con Google Sheets:', error);
-      }
-
-      const mailtoLink = buildMailtoLink({
-        to: rsvpRecipient,
-        subject: 'Confirmación de asistencia - Sergio y Carolina',
-        body: [
-          'Hola Sergio y Carolina',
-          '',
-          `Nombre: ${name}`,
-          `Teléfono: ${phone}`,
-          `Invitados: ${guestsNumber}`,
-          `Respuesta: ${attendanceLabel}`,
-          message ? `Mensaje: ${message}` : '',
-          '',
-          'Gracias por confirmar.',
-        ].filter(Boolean).join('\n'),
-      });
-
-      try {
-        window.open(mailtoLink, '_blank', 'noopener,noreferrer');
-      } catch (error) {
-        console.error('No se pudo abrir el correo.', error);
       }
 
       if (formContainer && successContainer && successName && successMessage) {
