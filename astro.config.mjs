@@ -4,7 +4,7 @@ import alpinejs from '@astrojs/alpinejs';
 
 export default defineConfig({
   integrations: [tailwind(), alpinejs()],
-  //site: 'https://tomynahuel.github.io/Sergio-y-Carolina',
-  //base: '/Sergio-y-Carolina',
+  site: 'https://tomynahuel.github.io/Sergio-y-Carolina',
+  base: '/Sergio-y-Carolina',
 });
 
