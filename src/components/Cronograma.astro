@@ -1,33 +1,114 @@
 ---
-const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
-
-const heroImage = `${baseUrl}img/hero.jpg`;
+import { BODA_INFO } from '../data/InfoBoda.js';
 ---
 
-      <section id="itinerary" class="section-shell pb-24">
-        <div class="soft-card overflow-hidden">
-          <div class="grid gap-0 lg:grid-cols-[0.95fr_1.05fr]">
-            <div class="bg-cover bg-center p-10 sm:p-14 lg:min-h-[360px]" style={`background-image: url('${heroImage}');`}> </div>
-            <div class="p-8 sm:p-10">
-              <p class="text-sm uppercase tracking-[0.3em] text-botanical">Cronograma</p>
-              <h2 class="mt-3 font-serif text-4xl text-botanical">Un día para recordar</h2>
-              <div class="mt-8 space-y-6">
-                <div class="border-b border-gray-100 pb-4">
-                  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">15:00</p>
-                  <p class="mt-2 text-lg text-gray-700">Ceremonia</p>
-                </div>
-                <div class="border-b border-gray-100 pb-4">
-                  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">18:00</p>
-                  <p class="mt-2 text-lg text-gray-700">Recepción</p>
-                </div>
-                <div>
-                  <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">21:00</p>
-                  <p class="mt-2 text-lg text-gray-700">Baile y celebración</p>
-                </div>
-              </div>
+<section id="itinerary" class="py-10 bg-ivory">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <div class="max-w-10xl mx-auto bg-[#FFFFFF] rounded-[36px] border border-gray-200/80 p-8 sm:p-12 shadow-sm">
+      
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-4xl text-botanical sm:text-5xl">Cronograma</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-center items-stretch">
+
+        <div class="flex flex-col items-center h-full p-8 bg-white rounded-3xl shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl cursor-pointer">
+          <div class="mb-6 h-16 flex items-center justify-center text-[#d4af37]">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14a4 4 0 100-8 4 4 0 000 8z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8 18a4 4 0 100-8 4 4 0 000 8z" />
+            </svg>
+          </div>
+          
+          <h3 class="font-serif text-4xl text-botanical mb-6" style="font-family: 'Great Vibes', cursive, serif;">Civil</h3>
+          
+          <div class="flex items-center justify-center gap-6 w-full border-b border-gray-200 pb-4 mb-6">
+            <div class="text-center">
+              <p class="text-3xl text-gray-600 font-light">{BODA_INFO.fechaCivil}</p>
+              <p class="text-[9px] tracking-widest text-gray-400 uppercase mt-1">{BODA_INFO.mesCivil}</p>
+            </div>
+            <div class="w-px h-10 bg-gray-300"></div>
+            <div class="text-center">
+              <p class="text-3xl text-gray-600 font-light">{BODA_INFO.horaCivil}</p>
+              <p class="text-[9px] tracking-widest text-gray-400 uppercase mt-1">Horas</p>
             </div>
           </div>
+
+          <div class="flex-grow mb-8 w-full">
+            <p class="font-bold text-gray-600 mb-2">{BODA_INFO.lugarCivil}</p>
+            <p class="text-sm text-gray-500">{BODA_INFO.direccionCivil}</p>
+          </div>
+          
+          <a href="#" target="_blank" class="bg-[#EBEBEB] hover:bg-botanical hover:text-white transition-colors text-gray-600 text-xs font-bold tracking-widest uppercase py-3 px-8 rounded-full mt-auto w-full max-w-[180px]">
+            Cómo llegar
+          </a>
         </div>
-      </section>
+
+        <div class="flex flex-col items-center h-full p-8 bg-white rounded-3xl shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl cursor-pointer">
+          <div class="mb-6 h-16 flex items-center justify-center text-[#d4af37]">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0-18l-4 4m4-4l4 4M8 21h8M6 10h12" />
+            </svg>
+          </div>
+          
+          <h3 class="font-serif text-4xl text-botanical mb-6" style="font-family: 'Great Vibes', cursive, serif;">Ceremonia</h3>
+          
+          <div class="flex items-center justify-center gap-6 w-full border-b border-gray-200 pb-4 mb-6">
+            <div class="text-center">
+              <p class="text-3xl text-gray-600 font-light">{BODA_INFO.fechaCeremonia}</p>
+              <p class="text-[9px] tracking-widest text-gray-400 uppercase mt-1">{BODA_INFO.mesCeremonia}</p>
+            </div>
+            <div class="w-px h-10 bg-gray-300"></div>
+            <div class="text-center">
+              <p class="text-3xl text-gray-600 font-light">{BODA_INFO.horaCeremonia}</p>
+              <p class="text-[9px] tracking-widest text-gray-400 uppercase mt-1">Horas</p>
+            </div>
+          </div>
+
+          <div class="flex-grow mb-8 w-full">
+            <p class="font-bold text-gray-600 mb-2">{BODA_INFO.lugarCeremonia}</p>
+            <p class="text-sm text-gray-500">{BODA_INFO.direccionCeremonia}</p>
+          </div>
+          
+          <a href="#" target="_blank" class="bg-[#EBEBEB] hover:bg-botanical hover:text-white transition-colors text-gray-600 text-xs font-bold tracking-widest uppercase py-3 px-8 rounded-full mt-auto w-full max-w-[180px]">
+            Cómo llegar
+          </a>
+        </div>
+
+        <div class="flex flex-col items-center h-full p-8 bg-white rounded-3xl shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl cursor-pointer">
+          <div class="mb-6 h-16 flex items-center justify-center text-[#d4af37]">
+            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 4h4M12 4v16m-4-4h8M8 8h8" />
+            </svg>
+          </div>
+          
+          <h3 class="font-serif text-4xl text-botanical mb-6" style="font-family: 'Great Vibes', cursive, serif;">Festejo</h3>
+          
+          <div class="flex items-center justify-center gap-6 w-full border-b border-gray-200 pb-4 mb-6">
+            <div class="text-center">
+              <p class="text-3xl text-gray-600 font-light">{BODA_INFO.fechaFestejo}</p>
+              <p class="text-[9px] tracking-widest text-gray-400 uppercase mt-1">{BODA_INFO.mesFestejo}</p>
+            </div>
+            <div class="w-px h-10 bg-gray-300"></div>
+            <div class="text-center">
+              <p class="text-3xl text-gray-600 font-light">{BODA_INFO.horaFestejo}</p>
+              <p class="text-[9px] tracking-widest text-gray-400 uppercase mt-1">Horas</p>
+            </div>
+          </div>
+
+          <div class="flex-grow mb-8 w-full">
+            <p class="font-bold text-gray-600 mb-2">{BODA_INFO.lugarFestejo}</p>
+            <p class="text-sm text-gray-500">{BODA_INFO.direccionFestejo}</p>
+          </div>
+          
+          <a href="#" target="_blank" class="bg-[#EBEBEB] hover:bg-botanical hover:text-white transition-colors text-gray-600 text-xs font-bold tracking-widest uppercase py-3 px-8 rounded-full mt-auto w-full max-w-[180px]">
+            Cómo llegar
+          </a>
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+</section>

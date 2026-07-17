@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import { BODA_INFO } from '../data/InfoBoda.js';
+
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
@@ -15,7 +17,6 @@ const leafImages = [
   `${baseUrl}img/hoja2.png`,
   `${baseUrl}img/hoja01.png`,
   `${baseUrl}img/pajaro1.png`,
-  `${baseUrl}img/pajaro2.png`,  
 ];
 ---
 
@@ -37,7 +38,7 @@ const leafImages = [
   <div class="relative z-10 w-full px-4 py-24 text-center text-white sm:px-6 lg:px-8">
     <div class="mx-auto max-w-4xl p-8 sm:p-12">
       <p class="mb-4 text-sm uppercase tracking-[0.4em] text-white/80">Nos casamos</p>
-      <h1 class="font-serif text-5xl leading-tight sm:text-6xl lg:text-8xl">Sergio & Carolina</h1>
+      <h1 class="font-serif text-5xl leading-tight sm:text-6xl lg:text-8xl">{BODA_INFO.nombres}</h1>
       <p class="mx-auto mt-6 max-w-2xl text-lg text-white/90 sm:text-xl">Una celebración llena de amor, recuerdos y el comienzo de una nueva historia juntos.</p>
       
       <div id="countdown" class="mt-10 grid grid-cols-2 gap-4 text-center sm:grid-cols-4">
@@ -50,8 +51,11 @@ const leafImages = [
   </div>
 </section>
 
-<script>
-  const targetTime = new Date('2026-10-03T15:00:00').getTime();
+<script define:vars={{ fechaMagica: BODA_INFO.fechaCuentaRegresiva }}>
+  // 1. Usamos SOLO UNA vez targetTime. 
+  // 2. Usamos "fechaMagica" que es la variable que Astro nos pasa desde el servidor.
+  const targetTime = new Date(fechaMagica).getTime();
+  
   const container = document.getElementById('countdown');
 
   if (container) {
