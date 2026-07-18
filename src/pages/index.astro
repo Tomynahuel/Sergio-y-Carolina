@@ -6,6 +6,7 @@ import ConfirmaAsistencia from '../components/ConfirmaAsistencia.astro';
 import RSVP from '../components/RSVP.astro';
 import Contacto from '../components/Contacto.astro';
 import { BODA_INFO } from '../data/InfoBoda.js';
+import Sobre from '../components/Sobre.astro';
 // Calculamos la ruta base para que las imágenes funcionen siempre
 const baseUrl = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const heroImage = `${baseUrl}img/hero.jpg`;
@@ -18,7 +19,7 @@ const heroImage = `${baseUrl}img/hero.jpg`;
   <title>Boda {BODA_INFO.nombres}</title>
 </head>
 <body class="bg-ivory font-serif text-botanical m-0 p-0">
-  
+  <Sobre />
   <div class="flex flex-col lg:flex-row min-h-screen w-full relative">
     
     <div class="w-full lg:w-1/2 min-h-[100svh] lg:h-screen lg:sticky lg:top-0 bg-cover bg-center flex items-center justify-center relative" 
