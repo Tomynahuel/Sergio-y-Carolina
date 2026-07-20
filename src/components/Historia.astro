@@ -1,14 +1,13 @@
 ---
-const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
-const heroImage = `${baseUrl}img/hero.jpg`;
+import { Image } from 'astro:assets';
+import heroImage from '../img/hero.jpg'; // Asegúrate que esta ruta sea correcta
+
 ---
 
 <section id="story" class="section-shell py-10">
         <div class="soft-card overflow-hidden p-0">
           <div class="relative">
-            <img src={heroImage} alt="Sergio y Carolina" class="h-80 w-full object-cover" />
+            <Image src={heroImage} alt="Sergio y Carolina" class="h-80 w-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
             <div class="absolute bottom-4 left-4 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-sm uppercase tracking-[0.3em] text-white backdrop-blur-sm">Nuestra historia</div>
           </div>

@@ -1,23 +1,46 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+import heroImage from '../img/hero.jpg';
+
+
 import Presentacion from '../components/Presentacion.astro';
-import Historia from '../components/Historia.astro';
-import Cronograma from '../components/Cronograma.astro';
-import Galeria from '../components/Galeria.astro';
-import Ubicacion from '../components/Ubicacion.astro';
+import Bienvenida from '../components/Bienvenida.astro';
+import ConfirmaAsistencia from '../components/ConfirmaAsistencia.astro';
+import RSVP from '../components/RSVP.astro';
 import Contacto from '../components/Contacto.astro';
-import InfoImp from '../components/InfoImp.astro';
-import Regalos from '../components/Regalos.astro';
+import { BODA_INFO } from '../data/InfoBoda.js';
+
 ---
 
-<Layout title="Sergio y Carolina - Nuestro Casamiento">
-  <Presentacion />
-  <Historia />
-  <!-- <Detalles /> -->
-  <Cronograma />
-  <!-- <InfoImp /> -->
-  <Regalos />
-  <Galeria />
-  <Ubicacion />
-  <Contacto />
-</Layout>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boda {BODA_INFO.nombres}</title>
+</head>
+<body class="bg-ivory font-serif text-botanical m-0 p-0">
+  
+  <div class="flex flex-col lg:flex-row min-h-screen w-full relative">
+    
+    <div class="w-full lg:w-1/2 min-h-[100svh] lg:h-screen lg:sticky lg:top-0 bg-cover bg-center flex items-center justify-center relative" 
+         style={`background-image: url('${heroImage.src}');`}>
+        
+        <div class="absolute inset-0 bg-black/20 lg:hidden"></div>
+        
+        <div class="relative z-10 w-full flex flex-col items-center justify-center">
+            <Presentacion />
+        </div>
+    </div>
+
+    <div class="w-full lg:w-1/2 flex flex-col justify-start items-center p-6 py-12 lg:p-12 gap-10 bg-ivory min-h-screen">
+      
+        <Bienvenida />
+        <ConfirmaAsistencia />
+        <RSVP />
+        <Contacto />
+        
+    </div>
+
+  </div>
+</body>
+</html>

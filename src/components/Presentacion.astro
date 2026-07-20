@@ -1,32 +1,40 @@
 ---
-import '../styles/global.css';
+import { Image } from 'astro:assets';
+import heroImage from '../img/hero.jpg'; // Asegúrate que esta ruta sea correcta
+
+import hoja01 from '../img/hoja01.png';
+import hoja2 from '../img/hoja2.png';
+import pajaro1 from '../img/pajaro1.png';
+
 import { BODA_INFO } from '../data/InfoBoda.js';
 
+// Si usas hojas flotantes, mantenemos esa lógica
 
-const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
-const heroImage = `${baseUrl}img/hero.jpg`;
 const leafImages = [
-  `${baseUrl}img/hoja01.png`,
-  `${baseUrl}img/hoja2.png`,
-  `${baseUrl}img/hoja2.png`,
-  `${baseUrl}img/hoja01.png`,
-  `${baseUrl}img/hoja2.png`,
-  `${baseUrl}img/hoja01.png`,
-  `${baseUrl}img/hoja2.png`,
-  `${baseUrl}img/hoja01.png`,
-  `${baseUrl}img/pajaro1.png`,
+  hoja01,
+  hoja2,
+  hoja2,
+  hoja01,
+  hoja2,
+  hoja01,
+  hoja2,
+  hoja01,
+  pajaro1,
 ];
 ---
 
-
-
 <section id="home" tabindex="-1" class="relative flex min-h-screen items-center justify-center overflow-hidden">
-  <div class="absolute inset-0 bg-cover bg-center" style={`background-image: url('${heroImage}');`}></div>
-  <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60"></div>
   
-  <div class="leaves pointer-events-none" aria-hidden="true">
+  <Image 
+    src={heroImage} 
+    alt="Fondo casamiento" 
+    class="absolute inset-0 w-full h-full object-cover object-center z-0" 
+    loading="eager" 
+  />
+
+  <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60 z-[1]"></div>
+  
+  <div class="leaves pointer-events-none z-[2]" aria-hidden="true">
     {leafImages.map((image, index) => (
       <span
         class={`leaf leaf-${index + 1}`}
@@ -35,7 +43,7 @@ const leafImages = [
     ))}
   </div>
 
-  <div class="relative z-10 w-full px-4 py-24 text-center text-white sm:px-6 lg:px-8">
+  <div class="relative z-[3] w-full px-4 py-24 text-center text-white sm:px-6 lg:px-8">
     <div class="mx-auto max-w-4xl p-8 sm:p-12">
       <p class="mb-4 text-sm uppercase tracking-[0.4em] text-white/80">Nos casamos</p>
       <h1 class="font-serif text-5xl leading-tight sm:text-6xl lg:text-8xl">{BODA_INFO.nombres}</h1>
@@ -52,10 +60,7 @@ const leafImages = [
 </section>
 
 <script define:vars={{ fechaMagica: BODA_INFO.fechaCuentaRegresiva }}>
-  // 1. Usamos SOLO UNA vez targetTime. 
-  // 2. Usamos "fechaMagica" que es la variable que Astro nos pasa desde el servidor.
   const targetTime = new Date(fechaMagica).getTime();
-  
   const container = document.getElementById('countdown');
 
   if (container) {

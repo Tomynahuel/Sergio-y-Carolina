@@ -1,8 +1,7 @@
 ---
-const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
-const heroImage = `${baseUrl}img/hero.jpg`;
+import { Image } from 'astro:assets';
+import heroImage from '../img/hero.jpg'
+
 ---
 
 <section id="contact" class="section-shell pb-24">
@@ -14,7 +13,7 @@ const heroImage = `${baseUrl}img/hero.jpg`;
     <div class="soft-card p-8 sm:p-10">
       <div class="flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
         <div class="h-32 w-32 overflow-hidden rounded-full border border-gray-200">
-          <img src={heroImage} alt="Tomas Aguilar" class="h-full w-full object-cover" />
+          <Image src={heroImage} alt="Tomas Aguilar" class="h-full w-full object-cover" />
         </div>
         <div>
           <p class="text-lg font-semibold text-botanical">Tomas Aguilar</p>
@@ -27,7 +26,7 @@ const heroImage = `${baseUrl}img/hero.jpg`;
     <div class="soft-card p-8 sm:p-10">
       <div class="flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
         <div class="h-32 w-32 overflow-hidden rounded-full border border-gray-200">
-          <img src={heroImage} alt="Sergio y Carolina" class="h-full w-full object-cover" />
+          <Image src={heroImage} alt="Sergio y Carolina" class="h-full w-full object-cover" />
         </div>
         <div>
           <p class="text-lg font-semibold text-botanical">Sergio & Carolina</p>

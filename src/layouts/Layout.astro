@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import ringImage from '../img/ring.png';
+
 import '../styles/global.css';
 import Sobre from '../components/Sobre.astro';
 
@@ -25,19 +28,19 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"></script>
   </head>
   <body class="min-h-screen bg-ivory text-slate-700 antialiased leading-relaxed pt-20">
-    <Sobre />
+   <!--- <Sobre /> -->
     <header class="fixed top-0 z-50 w-full border-b border-white/50 bg-ivory/95 backdrop-blur-md" x-data="{ open: false }">
       <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a href="#home" class="flex items-center gap-2 font-serif text-3xl font-semibold tracking-[0.2em] text-slate-900">
           <span>S</span>
-          <img src={`${baseUrl}img/ring.png`} alt="Anillo" class="h-12 w-12 object-contain" />
+            <Image src={ringImage} alt="Anillo" class="h-12 w-12 object-contain" />
           <span>C</span>
         </a>
         <button @click="open = !open" class="text-3xl text-slate-900 lg:hidden">☰</button>
         <nav class="hidden gap-8 lg:flex">
           <a href="#home" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Inicio</a>
           <a href="#story" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Nuestra historia</a>
-          <a href="#details" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Detalles</a>
+          
           <a href="#itinerary" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Cronograma</a>
           <a href="#gallery" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Galería</a>
           <a href="#rsvp" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Confirmar asistencia</a>
@@ -48,7 +51,6 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
           <div class="flex flex-col gap-2 text-sm uppercase tracking-[0.15em] text-slate-700">
             <a href="#home" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Inicio</a>
             <a href="#story" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Nuestra historia</a>
-            <a href="#details" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Detalles</a>
             <a href="#itinerary" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Cronograma</a>
             <a href="#gallery" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Galería</a>
             <a href="#rsvp" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Confirmar asistencia</a>
