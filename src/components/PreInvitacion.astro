@@ -1,0 +1,30 @@
+---
+// src/components/PreInvitacion.astro
+import {Invitacion} from '/src/components/Invitacion.astro';
+---
+
+<section class="w-full max-w-xl mx-auto py-12 px-6">
+  <div class="bg-white rounded-[36px] shadow-xl p-10 text-center flex flex-col items-center justify-center transition-all duration-300 hover:shadow-2xl hover:scale-[1.02]">
+    
+    <div class="w-16 h-16 mb-6 text-[#d4af37]">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-full h-full">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+        </svg>
+    </div>
+
+    <h2 class="font-serif text-4xl text-botanical mb-4">
+      Confirma tu asistencia
+    </h2>
+    
+    <p class="text-gray-600 mb-8 max-w-sm">
+      Nos encantaría que seas parte de este momento tan especial. Por favor, haznos saber si podrás acompañarnos.
+    </p>
+
+    <a 
+      href= '/invitacion'
+      class="inline-block bg-botanical text-ivory font-semibold px-8 py-4 rounded-full shadow-md hover:bg-sage hover:shadow-lg transition-all duration-300 tracking-wider text-sm uppercase"
+    >
+      Ir a la Confirmación
+    </a>
+  </div>
+</section>
