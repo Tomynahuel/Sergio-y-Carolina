@@ -10,6 +10,10 @@ export const BODA_INFO = {
 
   // Fotos
   presentacion: heroImage,
+  organizador1: heroImage,
+  organizador2: heroImage,
+
+  nuestraHistoria: heroImage,
 
   //civil
   
