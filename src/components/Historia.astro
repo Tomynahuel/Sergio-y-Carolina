@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-
 import {BODA_INFO} from '../data/InfoBoda.js';
 ---
 
@@ -9,9 +8,9 @@ import {BODA_INFO} from '../data/InfoBoda.js';
           <div class="relative">
             <Image src={BODA_INFO.nuestraHistoria} alt="Sergio y Carolina" class="h-80 w-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/60"></div>
-            <div class="absolute bottom-4 left-4 rounded-full bg-white/10 px-4 py-2 text-sm uppercase tracking-[0.3em] text-white backdrop-blur-sm">Nuestra historia</div>
+            
           </div>
-          <div class="p-8 sm:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
+          <div class="p-8 sm:p-10 ">
             <p class="text-sm uppercase tracking-[0.3em] text-botanical">Nuestra historia</p>
             <h2 class="mt-4 font-serif text-4xl text-botanical sm:text-5xl">Amor, tiempo y recuerdos</h2>
             <p class="mt-6 text-lg text-gray-700">Lo que comenzó con una conversación sencilla se convirtió en una historia hermosa. Cada paso nos llevó a este día, cargado de emoción, familia y esperanza.</p>
