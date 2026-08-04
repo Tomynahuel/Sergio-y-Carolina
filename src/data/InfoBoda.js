@@ -1,15 +1,15 @@
-
+import heroImage from '../img/hero.jpg'; // Asegúrate que esta ruta sea correcta
 
 export const BODA_INFO = {
-  nombres: "Sergio & Carolina",
 
+  nombres: "Sergio & Carolina",
   novio: "Sergio", contactoNovio: "",
   novia: "Carolina", contactoNovia: "",
-
   fecha: "3 de Octubre de 2026",
   fechaCuentaRegresiva: "2026-10-03T15:00:00", // Para el contador
 
-
+  // Fotos
+  presentacion: heroImage,
 
   //civil
   

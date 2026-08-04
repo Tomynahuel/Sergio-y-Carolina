@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import heroImage from '../img/hero.jpg'; // Asegúrate que esta ruta sea correcta
+
 
 import hoja01 from '../img/hoja01.png';
 import hoja2 from '../img/hoja2.png';
@@ -26,7 +26,7 @@ const leafImages = [
 <section id="home" tabindex="-1" class="relative flex min-h-screen items-center justify-center overflow-hidden">
   
   <Image 
-    src={heroImage} 
+    src={BODA_INFO.presentacion} 
     alt="Fondo casamiento" 
     class="absolute inset-0 w-full h-full object-cover object-center z-0" 
     loading="eager" 
