@@ -1,4 +1,5 @@
 import heroImage from '../img/hero.jpg'; // Asegúrate que esta ruta sea correcta
+import ringImage from '../img/ring.png'; // Asegúrate que esta ruta sea correcta
 
 export const BODA_INFO = {
 
@@ -12,6 +13,7 @@ export const BODA_INFO = {
   presentacion: heroImage,
   organizador1: heroImage,
   organizador2: heroImage,
+  anillos: ringImage,
 
   nuestraHistoria: heroImage,
 

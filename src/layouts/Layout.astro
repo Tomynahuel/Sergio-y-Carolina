@@ -1,17 +1,19 @@
 ---
 import { Image } from 'astro:assets';
-import ringImage from '../img/ring.png';
+import { BODA_INFO } from '../data/InfoBoda.js';
+import { ClientRouter } from 'astro:transitions';
+
 
 import '../styles/global.css';
-// import Sobre from '../components/Sobre.astro';
+const { title } = Astro.props;
 
-import { ClientRouter } from 'astro:transitions';
+
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 
-const { title } = Astro.props;
+
 const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
 
 ---
@@ -34,7 +36,7 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
       <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <a href="#home" class="flex items-center gap-2 font-serif text-3xl font-semibold tracking-[0.2em] text-slate-900">
           <span>S</span>
-            <Image src={ringImage} alt="Anillo" class="h-12 w-12 object-contain" />
+            <Image src={BODA_INFO.anillos} alt="Anillo" class="h-12 w-12 object-contain" />
           <span>C</span>
         </a>
         <button @click="open = !open" class="text-3xl text-slate-900 lg:hidden">☰</button>
@@ -44,7 +46,7 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
           
           <a href="#itinerary" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Cronograma</a>
           <a href="#gallery" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Galería</a>
-          <a href="#rsvp" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Confirmar asistencia</a>
+          <a href="#pre-invitation" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Confirmar asistencia</a>
         </nav>
       </div>
       <div x-show="open" x-transition class="lg:hidden">
@@ -54,7 +56,7 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
             <a href="#story" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Nuestra historia</a>
             <a href="#itinerary" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Cronograma</a>
             <a href="#gallery" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Galería</a>
-            <a href="#rsvp" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Confirmar asistencia</a>
+            <a href="#pre-invitation" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Confirmar asistencia</a>
           </div>
         </div>
       </div>

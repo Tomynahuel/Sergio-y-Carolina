@@ -1,9 +1,8 @@
 ---
 import '../styles/global.css';
-import heroImage from '../img/hero.jpg';
-import { BODA_INFO } from '../data/InfoBoda.js';
-import { ClientRouter } from 'astro:transitions';
+import { Image } from 'astro:assets';
 
+import { BODA_INFO } from '../data/InfoBoda.js';
 
 import Presentacion from '../components/Presentacion.astro';
 import Bienvenida from '../components/Bienvenida.astro';
@@ -11,40 +10,63 @@ import ConfirmaAsistencia from '../components/ConfirmaAsistencia.astro';
 import RSVP from '../components/RSVP.astro';
 import Contacto from '../components/Contacto.astro';
 import ResuInfo from '../components/InfoResu.astro';
-
 ---
 
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boda {BODA_INFO.nombres}</title>
-  <ClientRouter />
 </head>
 <body class="bg-ivory font-serif text-botanical m-0 p-0">
-  
-  <div class="flex flex-col lg:flex-row min-h-screen w-full relative">
-    
-    <div class="w-full lg:w-1/2 min-h-[100svh] lg:h-screen lg:sticky lg:top-0 bg-cover bg-center flex items-center justify-center relative" 
-         style={`background-image: url('${heroImage.src}');`}>
-        
-        <div class="absolute inset-0 bg-black/20 lg:hidden"></div>
-        
-        <div class="relative z-10 w-full flex flex-col items-center justify-center">
-            <Presentacion />
-        </div>
+
+  <header class="fixed top-0 z-50 w-full border-b border-white/50 bg-ivory/95 backdrop-blur-md" x-data="{ open: false }">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <a href="#home" class="flex items-center gap-2 font-serif text-3xl font-semibold tracking-[0.2em] text-slate-900">
+        <span>S</span>
+        <Image src={BODA_INFO.anillos} alt="Anillo" class="h-12 w-12 object-contain" />
+        <span>C</span>
+      </a>
+      <button @click="open = !open" class="text-3xl text-slate-900 lg:hidden">☰</button>
+      <nav class="hidden gap-8 lg:flex">
+        <a href="#home" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Inicio</a>
+        <a href="#pre-invitation" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Confirmar asistencia</a>
+      </nav>
     </div>
 
-    <div class="w-full lg:w-1/2 flex flex-col justify-start items-center p-6 py-12 lg:p-12 gap-10 bg-ivory min-h-screen">
+    <div x-show="open" x-transition class="lg:hidden">
+      <div class="border-t border-gray-200 bg-ivory/95 px-4 py-4 backdrop-blur-sm">
+        <div class="flex flex-col gap-2 text-sm uppercase tracking-[0.15em] text-slate-700">
+          <a href="#home" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Inicio</a>
+          <a href="#pre-invitation" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Confirmar asistencia</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="flex flex-col lg:flex-row min-h-screen w-full relative">
+    
+    <div 
+      class="w-full lg:w-1/2 min-h-[100svh] lg:h-screen lg:sticky lg:top-0 bg-cover bg-center flex items-center justify-center relative pt-20" 
+      style={`background-image: url('${BODA_INFO.presentacion}');`}
+    >
+      <div class="absolute inset-0 bg-black/20 lg:hidden"></div>
       
-        <Bienvenida />
-        <ResuInfo/>
-        <ConfirmaAsistencia />
-        <RSVP />
-        <Contacto />
-        
+      <div class="relative z-10 w-full flex flex-col items-center justify-center">
+        <Presentacion />
+      </div>
+    </div>
+
+    <div class="w-full lg:w-1/2 flex flex-col justify-start items-center px-6 pb-12 pt-24 lg:px-12 lg:pb-12 lg:pt-28 gap-10 bg-ivory min-h-screen">
+      <Bienvenida />
+      <ResuInfo />
+      <ConfirmaAsistencia />
+      <RSVP />
+      <Contacto />
     </div>
 
   </div>
+
 </body>
 </html>
