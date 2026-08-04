@@ -1,3 +1,9 @@
+---
+import { BODA_INFO } from '../data/InfoBoda.js';
+---
+
+
+
 <section class="section-shell pb-24">
         <div class="soft-card overflow-hidden p-8 sm:p-10">
           <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
@@ -7,13 +13,13 @@
               <p class="mt-4 text-lg text-gray-700">El evento será en un lugar especial, con ambiente íntimo y hermoso para compartir este día tan importante.</p>
               <div class="mt-6 rounded-[1.5rem] bg-botanical/10 p-6 text-gray-700">
                 <p class="font-semibold text-botanical">Salón de eventos elegante</p>
-                <p class="mt-2">Parque de las naciones, Obera</p>
+                <p class="mt-2">{BODA_INFO.ubiEvento}</p>
                 <p class="mt-1">Estacionamiento gratuito y acceso sencillo</p>
               </div>
             </div>
             <div class="overflow-hidden rounded-[1.5rem] border border-gray-100">
               <iframe
-                src="https://www.google.com/maps?q=Parque+de+las+Naciones+Ober%C3%A1&output=embed"
+                src={BODA_INFO.linkMaps}
                 class="h-72 w-full"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"

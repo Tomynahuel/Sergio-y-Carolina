@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import heroImage from '../img/hero.jpg'
-
+import {BODA_INFO} from '../data/InfoBoda.js';
 ---
 
 <section id="contact" class="section-shell pb-24">
@@ -16,10 +16,10 @@ import heroImage from '../img/hero.jpg'
           <Image src={heroImage} alt="Tomas Aguilar" class="h-full w-full object-cover" />
         </div>
         <div>
-          <p class="text-lg font-semibold text-botanical">Tomas Aguilar</p>
+          <p class="text-lg font-semibold text-botanical">{BODA_INFO.contacto1}</p>
           <p class="text-sm text-gray-700">Organizador</p>
-          <p class="mt-4 text-sm text-gray-600">tomas@example.com</p>
-          <p class="text-sm text-gray-600">+54 9 11 0000 0000</p>
+          <p class="mt-4 text-sm text-gray-600">{BODA_INFO.emailContacto1}</p>
+          <p class="text-sm text-gray-600">{BODA_INFO.numeroTelefono1}</p>
         </div>
       </div>
     </div>
@@ -29,10 +29,10 @@ import heroImage from '../img/hero.jpg'
           <Image src={heroImage} alt="Sergio y Carolina" class="h-full w-full object-cover" />
         </div>
         <div>
-          <p class="text-lg font-semibold text-botanical">Sergio & Carolina</p>
-          <p class="text-sm text-gray-700">Los novios</p>
-          <p class="mt-4 text-sm text-gray-600">email@ejemplo.com</p>
-          <p class="text-sm text-gray-600">+54 9 11 0000 0000</p>
+          <p class="text-lg font-semibold text-botanical">{BODA_INFO.contacto2}</p>
+          <p class="text-sm text-gray-700">Organizadora</p>
+          <p class="mt-4 text-sm text-gray-600">{BODA_INFO.emailContacto2}</p>
+          <p class="text-sm text-gray-600">{BODA_INFO.numeroTelefono2}</p>
         </div>
       </div>
     </div>
