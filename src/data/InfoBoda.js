@@ -24,7 +24,7 @@ export const BODA_INFO = {
   direccionCeremonia: "lorem ipsum",
   fechaCivil: "3",
   mesCivil: "Octubre",
-  horaCivil: "15:00",
+  horaCivil: "11:00",
 
 
   //ceremonia
