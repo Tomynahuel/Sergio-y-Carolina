@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import heroImage from '../img/hero.jpg';
+import { BODA_INFO } from '../data/InfoBoda.js';
+import { ClientRouter } from 'astro:transitions';
 
 
 import Presentacion from '../components/Presentacion.astro';
@@ -8,7 +10,7 @@ import Bienvenida from '../components/Bienvenida.astro';
 import ConfirmaAsistencia from '../components/ConfirmaAsistencia.astro';
 import RSVP from '../components/RSVP.astro';
 import Contacto from '../components/Contacto.astro';
-import { BODA_INFO } from '../data/InfoBoda.js';
+import ResuInfo from '../components/InfoResu.astro';
 
 ---
 
@@ -17,6 +19,7 @@ import { BODA_INFO } from '../data/InfoBoda.js';
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boda {BODA_INFO.nombres}</title>
+  <ClientRouter />
 </head>
 <body class="bg-ivory font-serif text-botanical m-0 p-0">
   
@@ -35,6 +38,7 @@ import { BODA_INFO } from '../data/InfoBoda.js';
     <div class="w-full lg:w-1/2 flex flex-col justify-start items-center p-6 py-12 lg:p-12 gap-10 bg-ivory min-h-screen">
       
         <Bienvenida />
+        <ResuInfo/>
         <ConfirmaAsistencia />
         <RSVP />
         <Contacto />
