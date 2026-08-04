@@ -33,7 +33,6 @@ export const BODA_INFO = {
   horaCeremonia: "11:00",
   lugarCeremonia: "lorem ipsum",
   direccionCeremonia: "lorem ipsum",
-  horarioCeremonia: "20:00",
   lugarCeremonia: "lorem ipsum",
   salonCeremonia: "lorem ipsum",
 
