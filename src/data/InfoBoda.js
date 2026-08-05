@@ -14,34 +14,23 @@ export const BODA_INFO = {
   organizador1: heroImage,
   organizador2: heroImage,
   anillos: ringImage,
-
   nuestraHistoria: heroImage,
-
-  //civil
-  
-  lugarCivil: "lorem ipsum",
-  direccionCivil: "lorem ipsum",
-  direccionCeremonia: "lorem ipsum",
-  fechaCivil: "3",
-  mesCivil: "Octubre",
-  horaCivil: "11:00",
 
 
   //ceremonia
   fechaCeremonia: "3",
   mesCeremonia: "Octubre",
-  horaCeremonia: "11:00",
-  lugarCeremonia: "lorem ipsum",
-  direccionCeremonia: "lorem ipsum",
-  lugarCeremonia: "lorem ipsum",
-  salonCeremonia: "lorem ipsum",
+  horaCeremonia: "10:30",
+  lugarCeremonia: "Parque de las Naciones, Obera",
+  salonCeremonia: "Colectividad Paraguaya",
 
-  //recepción
-  fechaRecepcion: "3",
-  mesRecepcion: "Octubre",
-  horaRecepcion: "18:00",
-  lugarRecepcion: "lorem ipsum",
-  direccionRecepcion: "lorem ipsum",
+
+  //Almuerzo
+  fechaAlmuerzo: "3",
+  mesAlmuerzo: "Octubre",
+  horaAlmuerzo: "13:00",
+  lugarAlmuerzo: "Colectividad Paraguaya",
+  direccionAlmuerzo: "Parque de las Naciones, Obera",
   
   //fecha limites
   fechaLimite:"15",
@@ -57,8 +46,12 @@ export const BODA_INFO = {
   
 
   // Vestimenta
-  vestimenta: "lorem ipsum",
+  vestimentaEllos: "Elegante Sport", 
+  VestimentaEllass: "Divinas",
+  //fotoEllos:
+  // fotoEllas:
 
+  // 
 
   // Regalos
   infoCuenta: "Si querés colaborar con nuestro viaje de novios, podés hacerlo a través de la siguiente cuenta bancaria:",
@@ -71,4 +64,20 @@ export const BODA_INFO = {
   linkMaps: "https://www.google.com/maps?q=Parque+de+las+Naciones+Ober%C3%A1&output=embed",
 
   whatsappContacto: "+5491123456789"
+
+  // Menu
+  // entrada sopa paraguaya
+  // ensalada mandioca ensalada de papa lechuga tomate
+  // pan
+  // plato principal 
+  // vacio , costilla de cerdo, pata muslo, chorizo, 
+  // postre 
+  /// bombom helado 
+  // servicios de cantina con precios accesibles 
+  //  
+
+  // Horario, ceremonia ,festejo ,fecha casamiento , lugar , salon 
+// 10:30 am, 
+//  
+
 };
