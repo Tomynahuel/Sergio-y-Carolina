@@ -54,6 +54,29 @@ export const BODA_INFO = {
   // 
 
   // Regalos
+  // Regalos link para charlar por los regalos  
+  // sino alias para enviar dinero 
+
+  // maquina de hacer pastas marca pastalinda 
+  // licuadora jarra de vidrio smart life
+  // vatidora planetaria smartlife
+  // mix smartlife 
+  // horno electrico smartlife oster 70l 
+  // Juego de vasos vidrio labrado 
+  // jarra de vidrio labrado 
+  // juegos de cubiertos tramontina 
+  // Fuentes de vidrio Pirex
+  // Juegos sabanas cubre cama toallon 
+  // Bata de ba;o femenina masculina 
+  // acolchado 
+  // Juego de ollas acero inoxidable tramontina 
+  // Especieros 
+  // Tupper 
+  // conservadora 120l
+  // Juego de Platos 
+
+
+
   infoCuenta: "Si querés colaborar con nuestro viaje de novios, podés hacerlo a través de la siguiente cuenta bancaria:",
   dueñoCuenta: "Sergio Caro",
   aliasBoda: "boda.sergio.caro",
