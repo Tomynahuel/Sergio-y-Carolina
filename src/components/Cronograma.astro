@@ -10,47 +10,10 @@ import { BODA_INFO } from '../data/InfoBoda.js';
       <div class="text-center mb-12">
         <h2 class="font-serif text-4xl text-botanical sm:text-5xl">Cronograma</h2>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 text-center items-stretch">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-center items-stretch max-w-4xl mx-auto">
 
         <div class="flex flex-col items-center h-full p-8 bg-white rounded-3xl shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl cursor-pointer">
-          <div class="mb-6 h-16 flex items-center justify-center text-[#d4af37]">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 14a4 4 0 100-8 4 4 0 000 8z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M8 18a4 4 0 100-8 4 4 0 000 8z" />
-            </svg>
-          </div>
-          
-          <h3 class="font-serif text-5xl text-botanical mb-6" style="font-family: 'Great Vibes', serif;">Civil</h3>
-          
-          <div class="flex items-center justify-center gap-6 w-full border-b border-gray-200 pb-4 mb-6">
-            <div class="text-center">
-              <p class="text-3xl text-gray-600 font-light">{BODA_INFO.fechaCivil}</p>
-              <p class="text-[9px] tracking-widest text-gray-400 uppercase mt-1">{BODA_INFO.mesCivil}</p>
-            </div>
-            <div class="w-px h-10 bg-gray-300"></div>
-            <div class="text-center">
-              <p class="text-3xl text-gray-600 font-light">{BODA_INFO.horaCivil}</p>
-              <p class="text-[9px] tracking-widest text-gray-400 uppercase mt-1">Horas</p>
-            </div>
-          </div>
-
-          <div class="flex-grow mb-8 w-full">
-            <p class="font-bold text-gray-600 mb-2">{BODA_INFO.lugarCivil}</p>
-            <p class="text-sm text-gray-500">{BODA_INFO.direccionCivil}</p>
-          </div>
-          
-          <a href="#" target="_blank" class="bg-[#EBEBEB] hover:bg-botanical hover:text-white transition-colors text-gray-600 text-xs font-bold tracking-widest uppercase py-3 px-8 rounded-full mt-auto w-full max-w-[180px]">
-            Cómo llegar
-          </a>
-        </div>
-
-        <div class="flex flex-col items-center h-full p-8 bg-white rounded-3xl shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl cursor-pointer">
-          <div class="mb-6 h-16 flex items-center justify-center text-[#d4af37]">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0-18l-4 4m4-4l4 4M8 21h8M6 10h12" />
-            </svg>
-          </div>
           
           <h3 class="font-serif text-5xl text-botanical mb-6" style="font-family: 'Great Vibes', serif;">Ceremonia</h3>
           
@@ -67,8 +30,8 @@ import { BODA_INFO } from '../data/InfoBoda.js';
           </div>
 
           <div class="flex-grow mb-8 w-full">
-            <p class="font-bold text-gray-600 mb-2">{BODA_INFO.lugarCeremonia}</p>
-            <p class="text-sm text-gray-500">{BODA_INFO.direccionCeremonia}</p>
+            <p class="font-bold text-gray-600 mb-2">{BODA_INFO.salonCeremonia}</p>
+            <p class="text-sm text-gray-500">{BODA_INFO.lugarCeremonia}</p>
           </div>
           
           <a href="#" target="_blank" class="bg-[#EBEBEB] hover:bg-botanical hover:text-white transition-colors text-gray-600 text-xs font-bold tracking-widest uppercase py-3 px-8 rounded-full mt-auto w-full max-w-[180px]">
@@ -77,29 +40,24 @@ import { BODA_INFO } from '../data/InfoBoda.js';
         </div>
 
         <div class="flex flex-col items-center h-full p-8 bg-white rounded-3xl shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl cursor-pointer">
-          <div class="mb-6 h-16 flex items-center justify-center text-[#d4af37]">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M10 4h4M12 4v16m-4-4h8M8 8h8" />
-            </svg>
-          </div>
           
-          <h3 class="font-serif text-5xl text-botanical mb-6" style="font-family: 'Great Vibes', serif;">Festejo</h3>
+          <h3 class="font-serif text-5xl text-botanical mb-6" style="font-family: 'Great Vibes', serif;">Almuerzo</h3>
           
           <div class="flex items-center justify-center gap-6 w-full border-b border-gray-200 pb-4 mb-6">
             <div class="text-center">
-              <p class="text-3xl text-gray-600 font-light">{BODA_INFO.fechaRecepcion}</p>
-              <p class="text-[9px] tracking-widest text-gray-400 uppercase mt-1">{BODA_INFO.mesRecepcion}</p>
+              <p class="text-3xl text-gray-600 font-light">{BODA_INFO.fechaAlmuerzo}</p>
+              <p class="text-[9px] tracking-widest text-gray-400 uppercase mt-1">{BODA_INFO.mesAlmuerzo}</p>
             </div>
             <div class="w-px h-10 bg-gray-300"></div>
             <div class="text-center">
-              <p class="text-3xl text-gray-600 font-light">{BODA_INFO.horaRecepcion}</p>
+              <p class="text-3xl text-gray-600 font-light">{BODA_INFO.horaAlmuerzo}</p>
               <p class="text-[9px] tracking-widest text-gray-400 uppercase mt-1">Horas</p>
             </div>
           </div>
 
           <div class="flex-grow mb-8 w-full">
-            <p class="font-bold text-gray-600 mb-2">{BODA_INFO.lugarRecepcion}</p>
-            <p class="text-sm text-gray-500">{BODA_INFO.direccionRecepcion}</p>
+            <p class="font-bold text-gray-600 mb-2">{BODA_INFO.lugarAlmuerzo}</p>
+            <p class="text-sm text-gray-500">{BODA_INFO.direccionAlmuerzo}</p>
           </div>
           
           <a href="#" target="_blank" class="bg-[#EBEBEB] hover:bg-botanical hover:text-white transition-colors text-gray-600 text-xs font-bold tracking-widest uppercase py-3 px-8 rounded-full mt-auto w-full max-w-[180px]">

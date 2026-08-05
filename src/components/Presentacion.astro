@@ -4,7 +4,7 @@ import { Image } from 'astro:assets';
 
 import hoja01 from '../img/hoja01.png';
 import hoja2 from '../img/hoja2.png';
-import pajaro1 from '../img/pajaro1.png';
+
 
 import { BODA_INFO } from '../data/InfoBoda.js';
 
@@ -19,7 +19,6 @@ const leafImages = [
   hoja01,
   hoja2,
   hoja01,
-  pajaro1,
 ];
 ---
 
@@ -38,7 +37,7 @@ const leafImages = [
     {leafImages.map((image, index) => (
       <span
         class={`leaf leaf-${index + 1}`}
-        style={`background-image: url('${image}');`}
+        style={`background-image: url('${image.src}');`}
       />
     ))}
   </div>
