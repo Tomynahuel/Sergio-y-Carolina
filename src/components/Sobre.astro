@@ -11,7 +11,7 @@ const marcoSobre= "/img/flor3-recuadro.jpg";
   <Image src={BODA_INFO.sobre} alt="Parte superior del sobre" class="sobre-top" />
 
   <!-- Plantas superpuestas (Capa intermedia) -->
- <!--  <Image src={BODA_INFO.MarcoSobre} alt="Decoración de plantas" class="plantas-decoracion" /> -->
+  <Image src={BODA_INFO.MarcoSobre} alt="Decoración de plantas" class="plantas-decoracion" />
 
   <!-- Botón central redondo (Capa superior) -->
   <button id="btn-abrir" class="boton-abrir">
@@ -60,7 +60,7 @@ const marcoSobre= "/img/flor3-recuadro.jpg";
     height: 52vh; 
     transform-origin: top;
     z-index: 1;
-    filter: drop-shadow(0px 15px 25px rgba(0, 0, 0, 0.4));
+    filter: drop-shadow(0px 15px 25px rgba(17, 17, 17, 0.4));
   }
 
   /* --- ESTILOS DE LAS PLANTAS SUPERPUESTAS --- */
@@ -72,10 +72,10 @@ const marcoSobre= "/img/flor3-recuadro.jpg";
     width: 100vw;
     height: 100vh;
     /* Cambiamos 'cover' por 'contain' para mostrar la imagen completa sin recortes */
-    object-fit: fill; 
-    z-index: 2; 
+    /*object-fit: fill; */
+    /*z-index: 2; */
     pointer-events: none; 
-    mix-blend-mode: multiply; 
+    /*mix-blend-mode: multiply; */
     transition: opacity 1s ease;
   }
 
