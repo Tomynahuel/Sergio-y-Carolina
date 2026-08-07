@@ -2,20 +2,16 @@
 import { BODA_INFO } from '../data/InfoBoda.js';
 import { Image } from 'astro:assets';
 
-// Asegúrate de que BODA_INFO.sobre ahora apunte a tu archivo "sobre3.png"
+// Asegúrate de que BODA_INFO.BotonSobre ahora apunte a tu archivo "deco-boton.jpg"
 ---
 
 <div id="sobre-overlay" class="overlay">
   <!-- Fondo del sobre completo (sobre3.png) -->
   <Image src={BODA_INFO.sobre} alt="Sobre cerrado" class="sobre-bg" />
 
-  
-
-  <!-- Botón central redondo (Capa superior) -->
+  <!-- Botón central redondo con el sello de cera (Capa superior) -->
   <button id="btn-abrir" class="boton-abrir">
-    <div class="flex items-center justify-center gap-2 font-serif text-3xl font-semibold tracking-widest text-slate-900">
-      <Image src={BODA_INFO.BotonSobre} alt="Sello" class="h-20 w-20 object-contain" />
-    </div>
+    <Image src={BODA_INFO.BotonSobre} alt="Sello de cera" class="sello-imagen" />
   </button>
 </div>
 
@@ -45,14 +41,13 @@ import { Image } from 'astro:assets';
     transition: background-color 1.5s ease, visibility 1.5s ease;
   }
 
-  /* Estilos para la imagen del sobre completo (sobre3.jpg) */
+  /* Estilos para la imagen del sobre completo */
   .sobre-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* FILL: Obliga a la imagen a tocar los 4 bordes de la pantalla (arriba, abajo, izquierda y derecha) */
     object-fit: fill; 
     z-index: 1;
     transition: transform 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -63,40 +58,38 @@ import { Image } from 'astro:assets';
     will-change: transform; 
   }
 
-  /* --- ESTILOS DE LAS PLANTAS SUPERPUESTAS --- */
-  .plantas-decoracion {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover; 
-    z-index: 2; 
-    pointer-events: none; 
-    transition: opacity 1s ease;
-    opacity: 0.5; 
-  }
-
-  /* --- ESTILOS DEL BOTÓN REDONDO --- */
+  /* --- ESTILOS DEL BOTÓN REDONDO (EL SELLO) --- */
   .boton-abrir {
     position: relative;
     z-index: 100000;
-    width: 140px;
-    height: 140px;
+    width: 150px; 
+    height: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #c5a880; 
+    background-color: transparent; 
     border: none;
-    border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, opacity 0.5s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.5s ease;
+    /* Quitamos el overflow:hidden, box-shadow y border-radius porque la imagen manda */
   }
 
   .boton-abrir:hover {
     transform: scale(1.05);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Estilos para que la imagen ocupe todo el botón */
+  .sello-imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: multiply; /* ¡EL TRUCO MÁGICO QUE BORRA EL BLANCO! */
+    filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.4)); /* Sombra realista 3D que sigue las curvas de la cera */
+    transition: filter 0.3s ease;
+  }
+
+  .boton-abrir:hover .sello-imagen {
+    filter: drop-shadow(0px 12px 18px rgba(0, 0, 0, 0.5)); /* La sombra crece al pasar el cursor */
   }
 
   /* -------------------------------------
@@ -108,18 +101,12 @@ import { Image } from 'astro:assets';
     pointer-events: none; 
   }
 
-  /* Todo el sobre3.jpg se desliza hacia arriba fuera de la pantalla */
+  /* El sobre se desliza hacia arriba */
   .overlay.is-open .sobre-bg {
-    /* Mantenemos el translateZ para no perder el antialiasing durante la animación */
     transform: translateY(-100%) translateZ(0);
   }
 
-  /* Las plantas se desvanecen */
-  .overlay.is-open .plantas-decoracion {
-    opacity: 0;
-  }
-
-  /* El botón desaparece y se encoge */
+  /* El sello desaparece y se encoge */
   .overlay.is-open .boton-abrir {
     opacity: 0;
     transform: scale(0);
