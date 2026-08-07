@@ -2,7 +2,7 @@ import heroImage from '../img/hero.jpg'; // Asegúrate que esta ruta sea correct
 import ringImage from '../img/ring.png'; // Asegúrate que esta ruta sea correcta
 import sobre from '../img/sobre.png'; // Asegúrate que esta ruta sea correcta
 import sobre2 from '../img/sobre2.png'; // Asegúrate que esta ruta sea correcta
-import marcoSobre from '../img/decoSobre-total.png'; // Asegúrate que esta ruta sea correcta*/
+import marcoSobre from '../img/deco-sobre4-invertido.png'; // Asegúrate que esta ruta sea correcta*/
 
 export const BODA_INFO = {
 
