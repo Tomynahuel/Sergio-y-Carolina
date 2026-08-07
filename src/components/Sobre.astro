@@ -42,13 +42,17 @@ import { Image } from 'astro:assets';
   }
 
   /* Estilos para la imagen del sobre completo */
+  /* Estilos para la imagen del sobre completo */
   .sobre-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    object-fit: fill; 
+    /* COVER: Mantiene las proporciones reales intactas. Las líneas no se deforman. */
+    object-fit: cover; 
+    /* CENTER: Clava el centro de la imagen justo detrás del sello sin importar la pantalla */
+    object-position: center; 
     z-index: 1;
     transition: transform 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     
