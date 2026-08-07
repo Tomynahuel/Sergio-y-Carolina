@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import heroImage from '../img/hero.jpg';
 import { BODA_INFO } from '../data/InfoBoda.js';
 ---
 
@@ -15,9 +13,6 @@ import { BODA_INFO } from '../data/InfoBoda.js';
     <div class="flex flex-col gap-6 w-full">
       
       <div class="flex flex-col sm:flex-row items-center gap-5 sm:gap-6 p-5 sm:p-6 bg-[#FAFAFA] rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:bg-white hover:shadow-md text-center sm:text-left w-full">
-        <div class="h-24 w-24 sm:h-28 sm:w-28 shrink-0 overflow-hidden rounded-full border border-gray-200 shadow-sm">
-          <Image src={heroImage} alt={BODA_INFO.contacto1} class="h-full w-full object-cover" />
-        </div>
         
         <div class="flex-1 min-w-0 w-full">
           <h3 class="text-xl font-semibold text-botanical leading-snug">{BODA_INFO.contacto1}</h3>
@@ -28,10 +23,6 @@ import { BODA_INFO } from '../data/InfoBoda.js';
       </div>
 
       <div class="flex flex-col sm:flex-row items-center gap-5 sm:gap-6 p-5 sm:p-6 bg-[#FAFAFA] rounded-2xl border border-gray-100 shadow-sm transition-all duration-300 hover:bg-white hover:shadow-md text-center sm:text-left w-full">
-        <div class="h-24 w-24 sm:h-28 sm:w-28 shrink-0 overflow-hidden rounded-full border border-gray-200 shadow-sm">
-          <Image src={heroImage} alt={BODA_INFO.contacto2} class="h-full w-full object-cover" />
-        </div>
-        
         <div class="flex-1 min-w-0 w-full">
           <h3 class="text-xl font-semibold text-botanical leading-snug">{BODA_INFO.contacto2}</h3>
           <p class="text-xs font-bold uppercase tracking-wider text-gray-500 mt-1">Organizadora</p>

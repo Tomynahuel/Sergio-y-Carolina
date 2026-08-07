@@ -32,16 +32,16 @@ import ResuInfo from '../components/InfoResu.astro';
       <button @click="open = !open" class="text-3xl text-slate-900 lg:hidden">☰</button>
       
       <nav class="hidden gap-8 lg:flex">
-        <a href="https://tomynahuel.github.io/Sergio-y-Carolina/" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Inicio</a>
-        <a href="https://tomynahuel.github.io/Sergio-y-Carolina/invitacion/" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Invitación</a>
+        <a href="/Sergio-y-Carolina/" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Inicio</a>
+        <a href="/Sergio-y-Carolina/invitacion/" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Invitación</a>
       </nav>
     </div>
 
     <div x-show="open" x-transition class="lg:hidden">
       <div class="border-t border-gray-200 bg-ivory/95 px-4 py-4 backdrop-blur-sm">
         <div class="flex flex-col gap-2 text-sm uppercase tracking-[0.15em] text-slate-700">
-          <a href="https://tomynahuel.github.io/Sergio-y-Carolina/" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Inicio</a>
-          <a href="https://tomynahuel.github.io/Sergio-y-Carolina/invitacion/" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Invitación</a>
+          <a href="/Sergio-y-Carolina/" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Inicio</a>
+          <a href="/Sergio-y-Carolina/invitacion/" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Invitación</a>
         </div>
       </div>
     </div>
