@@ -3,7 +3,6 @@ import { BODA_INFO } from '../data/InfoBoda.js';
 import { Image } from 'astro:assets';
 
 // Asegúrate de que la ruta coincida con donde guardaste la imagen
-const marcoSobre= "/img/flor3-recuadro.jpg"; 
 ---
 
 <div id="sobre-overlay" class="overlay">
@@ -16,9 +15,7 @@ const marcoSobre= "/img/flor3-recuadro.jpg";
   <!-- Botón central redondo (Capa superior) -->
   <button id="btn-abrir" class="boton-abrir">
     <div class="flex items-center justify-center gap-2 font-serif text-3xl font-semibold tracking-widest text-slate-900">
-      <span>S</span>
-      <Image src={BODA_INFO.anillos} alt="Anillo" class="h-10 w-10 object-contain" />
-      <span>C</span>
+      <Image src={BODA_INFO.BotonSobre} alt="Anillo" class="h-70 w-70 object-contain" />
     </div>
   </button>
 </div>
@@ -77,6 +74,7 @@ const marcoSobre= "/img/flor3-recuadro.jpg";
     pointer-events: none; 
     /*mix-blend-mode: multiply; */
     transition: opacity 1s ease;
+    opacity: 0.50%;
   }
 
   /* --- ESTILOS DEL BOTÓN REDONDO --- */

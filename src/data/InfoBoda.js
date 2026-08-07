@@ -3,6 +3,7 @@ import ringImage from '../img/ring.png'; // Asegúrate que esta ruta sea correct
 import sobre from '../img/sobre.png'; // Asegúrate que esta ruta sea correcta
 import sobre2 from '../img/sobre2.png'; // Asegúrate que esta ruta sea correcta
 import marcoSobre from '../img/deco-sobre4-invertido.png'; // Asegúrate que esta ruta sea correcta*/
+import decoSobreBoton from '../img/deco-sobre-boton.png'; // Asegúrate que esta ruta sea correcta
 
 export const BODA_INFO = {
 
@@ -21,7 +22,7 @@ export const BODA_INFO = {
   sobre: sobre,
   sobre2: sobre2,
   MarcoSobre: marcoSobre,
-
+  BotonSobre: decoSobreBoton,
   //ceremonia
   fechaCeremonia: "3",
   mesCeremonia: "Octubre",
