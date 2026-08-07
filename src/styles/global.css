@@ -81,6 +81,14 @@ textarea {
   --leaf-drift: 0px;
 }
 
+.filtro-verde {
+
+
+   filter: sepia(40%) hue-rotate(70deg) saturate(50%);
+  transition: filter 0.3s ease;
+
+
+  }
 .leaf-1 { left: 8%; animation-duration: 13.2s; animation-delay: 0s; --leaf-start-rotate: 20deg; --leaf-mid-rotate: 115deg; --leaf-end-rotate: 360deg; --leaf-drift: -10px; }
 .leaf-2 { left: 22%; animation-duration: 15.4s; animation-delay: 0.8s; --leaf-start-rotate: -15deg; --leaf-mid-rotate: 95deg; --leaf-end-rotate: 320deg; --leaf-drift: 14px; }
 .leaf-3 { left: 36%; animation-duration: 14.1s; animation-delay: 0.3s; --leaf-start-rotate: 10deg; --leaf-mid-rotate: 140deg; --leaf-end-rotate: 340deg; --leaf-drift: -8px; }
@@ -109,4 +117,7 @@ textarea {
     transform: translate3d(calc(var(--leaf-drift) + 6px), 120vh, 0) scale(0.56) rotate(var(--leaf-end-rotate));
     opacity: 0;
   }
+
+
+
 }

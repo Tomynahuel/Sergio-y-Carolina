@@ -41,7 +41,7 @@ export const BODA_INFO = {
   mesLimite:"Septiembre",
 
   // Contacto
-  contacto1:"Tomas Aguilar",
+  contacto1:"Tomas Nahuel Aguilar",
   emailContacto1:"tomynahuel23@gmail.com",
   numeroTelefono1:"+5491123456789",
   contacto2: "Ana Belen Baez Barroso",

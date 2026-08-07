@@ -29,14 +29,16 @@ const leafImages = [
     alt="Fondo casamiento" 
     class="absolute inset-0 w-full h-full object-cover object-center z-0" 
     loading="eager" 
+    
+    
   />
 
   <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60 z-[1]"></div>
   
-  <div class="leaves pointer-events-none z-[2]" aria-hidden="true">
+  <div class="leaves pointer-events-none z-[2]" aria-hidden="true .filtro-verde"> 
     {leafImages.map((image, index) => (
       <span
-        class={`leaf leaf-${index + 1}`}
+        class={`leaf leaf-${index + 1} filtro-verde`}
         style={`background-image: url('${image.src}');`}
       />
     ))}
