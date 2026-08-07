@@ -1,13 +1,19 @@
 ---
 import { BODA_INFO } from '../data/InfoBoda.js';
 import { Image } from 'astro:assets';
+
+// Asegúrate de que la ruta coincida con donde guardaste la imagen
+const marcoSobre= "/img/flor3-recuadro.jpg"; 
 ---
 
 <div id="sobre-overlay" class="overlay">
-  <!-- Mitad superior del sobre -->
+  <!-- Mitad superior del sobre (Capa de fondo) -->
   <Image src={BODA_INFO.sobre} alt="Parte superior del sobre" class="sobre-top" />
 
-  <!-- Botón central redondo -->
+  <!-- Plantas superpuestas (Capa intermedia) -->
+ <!--  <Image src={BODA_INFO.MarcoSobre} alt="Decoración de plantas" class="plantas-decoracion" /> -->
+
+  <!-- Botón central redondo (Capa superior) -->
   <button id="btn-abrir" class="boton-abrir">
     <div class="flex items-center justify-center gap-2 font-serif text-3xl font-semibold tracking-widest text-slate-900">
       <span>S</span>
@@ -54,36 +60,45 @@ import { Image } from 'astro:assets';
     height: 52vh; 
     transform-origin: top;
     z-index: 1;
-    /* Sombra apuntando hacia abajo (15px positivo) para que proyecte sobre el fondo */
     filter: drop-shadow(0px 15px 25px rgba(0, 0, 0, 0.4));
+  }
+
+  /* --- ESTILOS DE LAS PLANTAS SUPERPUESTAS --- */
+ /* --- ESTILOS DE LAS PLANTAS SUPERPUESTAS --- */
+  .plantas-decoracion {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    /* Cambiamos 'cover' por 'contain' para mostrar la imagen completa sin recortes */
+    object-fit: fill; 
+    z-index: 2; 
+    pointer-events: none; 
+    mix-blend-mode: multiply; 
+    transition: opacity 1s ease;
   }
 
   /* --- ESTILOS DEL BOTÓN REDONDO --- */
   .boton-abrir {
     position: relative;
     z-index: 100000;
-    
-    /* Dimensiones fijas para que sea un círculo perfecto */
     width: 140px;
     height: 140px;
-    
-    /* Centrar el contenido interno */
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    /* Diseño del sello/botón */
-    background-color: #c5a880; /* El color de tu temática */
+    background-color: #c5a880;
     border: none;
-    border-radius: 50%; /* Esto lo hace completamente redondo */
+    border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Sombra más suave y difuminada */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, opacity 0.5s ease, box-shadow 0.3s ease;
   }
 
   .boton-abrir:hover {
     transform: scale(1.05);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4); /* La sombra crece un poco al pasar el mouse */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
   }
 
   /* -------------------------------------
@@ -98,6 +113,11 @@ import { Image } from 'astro:assets';
   /* sobre.png va hacia arriba fuera de la pantalla */
   .overlay.is-open .sobre-top {
     transform: translateY(-100%);
+  }
+
+  /* Las plantas simplemente se desvanecen en su lugar sin moverse */
+  .overlay.is-open .plantas-decoracion {
+    opacity: 0;
   }
 
   /* El botón desaparece y se encoge */
