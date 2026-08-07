@@ -2,20 +2,19 @@
 import { BODA_INFO } from '../data/InfoBoda.js';
 import { Image } from 'astro:assets';
 
-// Asegúrate de que la ruta coincida con donde guardaste la imagen
+// Asegúrate de que BODA_INFO.sobre ahora apunte a tu archivo "sobre3.png"
 ---
 
 <div id="sobre-overlay" class="overlay">
-  <!-- Mitad superior del sobre (Capa de fondo) -->
-  <Image src={BODA_INFO.sobre} alt="Parte superior del sobre" class="sobre-top" />
+  <!-- Fondo del sobre completo (sobre3.png) -->
+  <Image src={BODA_INFO.sobre} alt="Sobre cerrado" class="sobre-bg" />
 
-  <!-- Plantas superpuestas (Capa intermedia) -->
-  <Image src={BODA_INFO.MarcoSobre} alt="Decoración de plantas" class="plantas-decoracion" />
+  
 
   <!-- Botón central redondo (Capa superior) -->
   <button id="btn-abrir" class="boton-abrir">
     <div class="flex items-center justify-center gap-2 font-serif text-3xl font-semibold tracking-widest text-slate-900">
-      <Image src={BODA_INFO.BotonSobre} alt="Anillo" class="h-70 w-70 object-contain" />
+      <Image src={BODA_INFO.BotonSobre} alt="Sello" class="h-20 w-20 object-contain" />
     </div>
   </button>
 </div>
@@ -42,39 +41,40 @@ import { Image } from 'astro:assets';
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(226, 224, 224);
+    background-color: #f2f2f2; 
     transition: background-color 1.5s ease, visibility 1.5s ease;
   }
 
-  /* Estilos para la imagen del sobre */
-  .sobre-top {
+  /* Estilos para la imagen del sobre completo (sobre3.jpg) */
+  .sobre-bg {
     position: absolute;
+    top: 0;
     left: 0;
     width: 100vw;
-    object-fit: cover; 
-    transition: transform 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-    top: 0;
-    height: 52vh; 
-    transform-origin: top;
+    height: 100vh;
+    /* FILL: Obliga a la imagen a tocar los 4 bordes de la pantalla (arriba, abajo, izquierda y derecha) */
+    object-fit: fill; 
     z-index: 1;
-    filter: drop-shadow(0px 15px 25px rgba(17, 17, 17, 0.4));
+    transition: transform 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    /* TRUCOS ANTI-DIENTES DE SIERRA */
+    image-rendering: high-quality; 
+    transform: translateZ(0); 
+    will-change: transform; 
   }
 
   /* --- ESTILOS DE LAS PLANTAS SUPERPUESTAS --- */
- /* --- ESTILOS DE LAS PLANTAS SUPERPUESTAS --- */
   .plantas-decoracion {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* Cambiamos 'cover' por 'contain' para mostrar la imagen completa sin recortes */
-    /*object-fit: fill; */
-    /*z-index: 2; */
+    object-fit: cover; 
+    z-index: 2; 
     pointer-events: none; 
-    /*mix-blend-mode: multiply; */
     transition: opacity 1s ease;
-    opacity:0.50%;
+    opacity: 0.5; 
   }
 
   /* --- ESTILOS DEL BOTÓN REDONDO --- */
@@ -86,7 +86,7 @@ import { Image } from 'astro:assets';
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #c5a880;
+    background-color: #c5a880; 
     border: none;
     border-radius: 50%;
     cursor: pointer;
@@ -108,12 +108,13 @@ import { Image } from 'astro:assets';
     pointer-events: none; 
   }
 
-  /* sobre.png va hacia arriba fuera de la pantalla */
-  .overlay.is-open .sobre-top {
-    transform: translateY(-100%);
+  /* Todo el sobre3.jpg se desliza hacia arriba fuera de la pantalla */
+  .overlay.is-open .sobre-bg {
+    /* Mantenemos el translateZ para no perder el antialiasing durante la animación */
+    transform: translateY(-100%) translateZ(0);
   }
 
-  /* Las plantas simplemente se desvanecen en su lugar sin moverse */
+  /* Las plantas se desvanecen */
   .overlay.is-open .plantas-decoracion {
     opacity: 0;
   }
