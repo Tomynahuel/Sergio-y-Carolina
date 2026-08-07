@@ -1,0 +1,22 @@
+---
+import '../styles/global.css';
+import { BODA_INFO } from '../data/InfoBoda.js';
+import Sobre from '../components/Sobre.astro';
+
+import { Image } from 'astro:assets';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boda {BODA_INFO.nombres}</title>
+</head>
+<body class="bg-ivory font-serif text-botanical m-0 p-0 bg-black;">
+
+  <Sobre />
+  
+
+</body>
+</html>
