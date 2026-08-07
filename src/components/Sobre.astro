@@ -38,10 +38,11 @@ import { Image } from 'astro:assets';
     justify-content: center;
     align-items: center;
     background-color: #f2f2f2; 
-    transition: background-color 1.5s ease, visibility 1.5s ease;
+    opacity: 1; /* Agregamos la opacidad base */
+    /* Cambiamos la transición para que maneje la opacidad de TODO el conjunto */
+    transition: opacity 1.5s ease; 
   }
 
-  /* Estilos para la imagen del sobre completo */
   /* Estilos para la imagen del sobre completo */
   .sobre-bg {
     position: absolute;
@@ -49,12 +50,9 @@ import { Image } from 'astro:assets';
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* COVER: Mantiene las proporciones reales intactas. Las líneas no se deforman. */
     object-fit: cover; 
-    /* CENTER: Clava el centro de la imagen justo detrás del sello sin importar la pantalla */
     object-position: center; 
     z-index: 1;
-    transition: transform 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     
     /* TRUCOS ANTI-DIENTES DE SIERRA */
     image-rendering: high-quality; 
@@ -74,8 +72,7 @@ import { Image } from 'astro:assets';
     background-color: transparent; 
     border: none;
     cursor: pointer;
-    transition: transform 0.3s ease, opacity 0.5s ease;
-    /* Quitamos el overflow:hidden, box-shadow y border-radius porque la imagen manda */
+    transition: transform 0.3s ease;
   }
 
   .boton-abrir:hover {
@@ -87,13 +84,13 @@ import { Image } from 'astro:assets';
     width: 100%;
     height: 100%;
     object-fit: cover;
-    mix-blend-mode: multiply; /* ¡EL TRUCO MÁGICO QUE BORRA EL BLANCO! */
-    filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.4)); /* Sombra realista 3D que sigue las curvas de la cera */
+    mix-blend-mode: multiply; 
+    filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.4)); 
     transition: filter 0.3s ease;
   }
 
   .boton-abrir:hover .sello-imagen {
-    filter: drop-shadow(0px 12px 18px rgba(0, 0, 0, 0.5)); /* La sombra crece al pasar el cursor */
+    filter: drop-shadow(0px 12px 18px rgba(0, 0, 0, 0.5)); 
   }
 
   /* -------------------------------------
@@ -101,19 +98,8 @@ import { Image } from 'astro:assets';
      ------------------------------------- */
      
   .overlay.is-open {
-    background-color: transparent; 
+    opacity: 0; /* Simplemente desvanecemos todo el contenedor en su sitio */
     pointer-events: none; 
-  }
-
-  /* El sobre se desliza hacia arriba */
-  .overlay.is-open .sobre-bg {
-    transform: translateY(-100%) translateZ(0);
-  }
-
-  /* El sello desaparece y se encoge */
-  .overlay.is-open .boton-abrir {
-    opacity: 0;
-    transform: scale(0);
   }
 </style>
 
