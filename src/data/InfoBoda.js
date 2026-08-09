@@ -43,6 +43,7 @@ export const BODA_INFO = {
   mesLimite:"Septiembre",
 
   // Contacto
+  whatsappContacto: "+5491123456789",
   contacto1:"Tomas Nahuel Aguilar",
   emailContacto1:"tomynahuel23@gmail.com",
   numeroTelefono1:"+5491123456789",
@@ -92,7 +93,7 @@ export const BODA_INFO = {
   ubiEvento: "Parque de las naciones, Obera", // Link de Google Maps
   linkMaps: "https://www.google.com/maps?q=Parque+de+las+Naciones+Ober%C3%A1&output=embed",
 
-  whatsappContacto: "+5491123456789"
+  
 
   // Menu
   // entrada sopa paraguaya

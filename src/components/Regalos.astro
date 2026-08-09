@@ -2,71 +2,123 @@
 import '../styles/global.css';
 import { BODA_INFO } from '../data/InfoBoda.js';
 
-const baseUrl = import.meta.env.BASE_URL.endsWith('/')
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
-const heroImage = `${baseUrl}img/hero2.webp`;
+
+
+// Preparamos el link de WhatsApp (Cambia el número de teléfono por el tuyo)
+const numeroWhatsApp = BODA_INFO.whatsappContacto.replace('+', ''); // Agrega el código de país sin el '+'
+const mensajeWhatsApp = encodeURIComponent("¡Hola! Me encantaría ver la lista de regalos para la boda. 🎁");
+const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
 ---
 
-<section id="regalos" class="flex py-10 bg-cover bg-center" style={`background-image: url('${heroImage}');`}>
+<section id="regalos" class="flex py-10 bg-cover bg-center" >
   <div class="max-w-7xl mx-auto px-4 w-full sm:px-6 lg:px-8">
     
-    <div class="w-full mx-auto soft-card p-8 sm:p-12">
+    <!-- Contenedor Maestro Blanco -->
+    <div class="w-full mx-auto bg-white rounded-[36px] shadow-sm p-8 sm:p-12">
         
         <div class="text-center mb-12">
             <h2 class="font-serif text-4xl text-botanical sm:text-5xl">Regalos</h2>
         </div>
       
-      <div class="grid grid-cols-1 md:grid-cols-[1.1fr_minmax(340px,_0.9fr)] gap-10 sm:gap-14 text-center md:text-left items-center">
+      <!-- Grilla de 2 Columnas Centrada -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-14 text-center items-stretch max-w-5xl mx-auto">
 
-        <div class="flex flex-col h-full justify-center md:items-start p-8 bg-[#FAFAFA] rounded-3xl border border-gray-100 shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:bg-white cursor-pointer relative">
+        <!-- TARJETA 1: Mesa de regalos / WhatsApp -->
+        <div class="flex flex-col h-full justify-between items-center p-8 bg-[#FAFAFA] rounded-3xl border border-gray-100 shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:bg-white">
           
-          <div class="mb-6">
-            <h2 class="font-serif text-4xl text-botanical sm:text-5xl">Mesa de regalos</h2>
+          <div class="w-full flex flex-col items-center">
+            <div class="mb-6">
+              <h2 class="font-serif text-3xl text-botanical sm:text-4xl">Mesa de regalos</h2>
+            </div>
+
+            <div class="mb-6 h-16 flex items-center justify-center text-[#d4af37]">
+              <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+              </svg>
+            </div>
+
+            <p class="text-gray-600 mb-8 max-w-sm leading-relaxed text-lg">
+              Si prefieres hacernos un presente físico, presiona el botón para conocer nuestra lista de regalos. ¡O también podés hacer un regalo económico a través de nuestro alias!
+            </p>
           </div>
 
-          <div class="mb-6 h-16 flex items-center justify-center md:justify-start text-[#d4af37]">
-            <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-            </svg>
-          </div>
-
-          <p class="text-gray-600 mb-8 max-w-lg leading-relaxed text-lg">
-            Puedes ayudarnos con nuestra luna de miel en la siguiente cuenta. ¡Gracias!
-          </p>
+          <!-- Botón de WhatsApp -->
+          <a href={linkWhatsApp} target="_blank" rel="noopener noreferrer" class="bg-[#EBEBEB] hover:bg-botanical hover:text-white transition-colors text-gray-600 text-xs font-bold tracking-widest uppercase py-3 px-8 rounded-full mt-auto w-full max-w-[220px]">
+            Ver lista de regalos
+          </a>
           
         </div>
 
-        <div class="flex flex-col items-center justify-center p-8 sm:p-10 bg-[#FAFAFA] rounded-3xl border border-gray-100 shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:bg-white cursor-pointer h-full">
+        <!-- TARJETA 2: Datos Bancarios / Copiar Alias -->
+        <div class="flex flex-col h-full justify-between items-center p-8 sm:p-10 bg-[#FAFAFA] rounded-3xl border border-gray-100 shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:bg-white">
           
-          <div class="mb-8 h-16 flex items-center justify-center text-[#d4af37]">
-            <svg class="w-14 h-14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
-            </svg>
-          </div>
-
-          <p class="text-2xl text-gray-800 font-serif mb-8 text-center" style="font-family: 'Great Vibes', cursive, serif;">
-            {BODA_INFO.dueñoCuenta} 
-          </p>
-
-          <div class="w-full max-w-sm space-y-4 text-center">
-            
-            <div class="flex flex-col bg-white border border-gray-200 rounded-xl p-4">
-              <p class="text-[10px] tracking-widest text-botanical uppercase font-bold">CBU / CVU</p>
-              <p class="text-gray-700 mt-1 font-semibold text-sm sm:text-base break-words px-2">{BODA_INFO.cbu}</p>
-            </div>
-            
-            <div class="flex flex-col bg-white border border-gray-200 rounded-xl p-4">
-              <p class="text-[10px] tracking-widest text-botanical uppercase font-bold">Alias</p>
-              <p class="text-gray-700 mt-1 font-semibold text-sm sm:text-base">{BODA_INFO.aliasBoda}</p>
+          <div class="w-full flex flex-col items-center">
+            <div class="mb-6 h-16 flex items-center justify-center text-[#d4af37]">
+              <svg class="w-14 h-14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+              </svg>
             </div>
 
+            <!-- Contenedor estilo billete/recibo (Inspirado en tu imagen) -->
+            <div class="w-full max-w-sm text-center mb-8">
+              <p class="text-[11px] tracking-[0.3em] text-[#d4af37] uppercase font-bold mb-3">Alias</p>
+              
+              <p id="alias-boda" class="text-botanical text-xl md:text-2xl uppercase tracking-wider font-semibold mb-4">
+                {BODA_INFO.aliasBoda}
+              </p>
+              
+              <!-- Línea punteada divisoria -->
+              <div class="border-t border-dashed border-[#d4af37]/40 w-3/4 mx-auto my-4"></div>
+              
+              <p class="text-2xl text-gray-600 font-serif mt-4" style="font-family: 'Great Vibes', cursive, serif;">
+                {BODA_INFO.dueñoCuenta}
+              </p>
+            </div>
           </div>
+
+          <!-- Botón de Copiar -->
+          <button id="btn-copiar" class="bg-[#9A8FB3] hover:bg-botanical transition-colors text-white text-xs font-bold tracking-widest uppercase py-3 px-8 rounded mt-auto w-full max-w-[240px] shadow-sm flex items-center justify-center gap-2">
+            <span id="texto-btn-copiar">Copiar Datos</span>
+          </button>
 
         </div>
 
       </div>
     </div>
-    
   </div>
 </section>
+
+<!-- Script para la función de copiar al portapapeles -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnCopiar = document.getElementById('btn-copiar');
+    const textoBtn = document.getElementById('texto-btn-copiar');
+    const aliasBoda = document.getElementById('alias-boda');
+
+    if (btnCopiar && aliasBoda) {
+      btnCopiar.addEventListener('click', async () => {
+        try {
+          // Extrae y copia el texto del Alias
+          const textoACopiar = aliasBoda.innerText.trim();
+          await navigator.clipboard.writeText(textoACopiar);
+          
+          // Feedback visual de éxito
+          const textoOriginal = textoBtn.innerText;
+          textoBtn.innerText = '¡Alias Copiado!';
+          btnCopiar.classList.remove('bg-[#9A8FB3]', 'hover:bg-botanical');
+          btnCopiar.classList.add('bg-green-600', 'hover:bg-green-700');
+          
+          // Vuelve al estado original después de 2.5 segundos
+          setTimeout(() => {
+            textoBtn.innerText = textoOriginal;
+            btnCopiar.classList.remove('bg-green-600', 'hover:bg-green-700');
+            btnCopiar.classList.add('bg-[#9A8FB3]', 'hover:bg-botanical');
+          }, 2500);
+        } catch (err) {
+          console.error('No se pudo copiar el texto: ', err);
+          textoBtn.innerText = 'Error al copiar';
+        }
+      });
+    }
+  });
+</script>
