@@ -11,6 +11,7 @@ import RSVP from '../components/RSVP.astro';
 import Contacto from '../components/Contacto.astro';
 import ResuInfo from '../components/InfoResu.astro';
 import Sobre from '../components/Sobre.astro';
+import Decoraciones from '../components/decoraciones.astro';
 ---
 
 <!DOCTYPE html>
@@ -20,8 +21,8 @@ import Sobre from '../components/Sobre.astro';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boda {BODA_INFO.nombres}</title>
 </head>
-<body class="bg-ivory font-serif text-botanical m-0 p-0">
-  <Sobre />
+<body class="bg-ivory font-serif text-botanical m-0 p-0 ">
+  <!---   <Sobre /> -->
   <header class="fixed top-0 z-50 w-full border-b border-white/50 bg-ivory/95 backdrop-blur-md" x-data="{ open: false }">
     <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
       <a href="/Sergio-y-Carolina/invitacion" class="flex items-center gap-2 font-serif text-3xl font-semibold tracking-[0.2em] text-slate-900">
@@ -48,10 +49,9 @@ import Sobre from '../components/Sobre.astro';
     </div>
   </header>
 
-  <div class="flex flex-col lg:flex-row min-h-screen w-full relative">
-    
+  <div class="flex flex-col lg:flex-row min-h-screen w-full">
     <div 
-      class="w-full lg:w-1/2 min-h-[100svh] lg:h-screen lg:sticky lg:top-0 bg-cover bg-center flex items-center justify-center relative pt-20" 
+      class="w-full lg:w-1/2 min-h-[100svh] lg:h-screen lg:sticky lg:top-0 bg-cover bg-center flex items-center justify-center  pt-20" 
       style={`background-image: url('${BODA_INFO.presentacion}');`}
     >
       <div class="absolute inset-0 bg-black/20 lg:hidden"></div>
@@ -61,7 +61,8 @@ import Sobre from '../components/Sobre.astro';
       </div>
     </div>
 
-    <div class="w-full lg:w-1/2 flex flex-col justify-start items-center px-6 pb-12 pt-24 lg:px-12 lg:pb-12 lg:pt-28 gap-10 bg-ivory min-h-screen">
+    <div class="w-full lg:w-1/2 flex flex-col justify-start items-center px-6 pb-12 pt-24 lg:px-12 lg:pb-12 lg:pt-28 gap-10 bg-ivory min-h-screen relative">
+      <Decoraciones />
       <Bienvenida />
       <ResuInfo />
       <ConfirmaAsistencia />

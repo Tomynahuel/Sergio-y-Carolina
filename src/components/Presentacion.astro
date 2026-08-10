@@ -2,8 +2,8 @@
 import { Image } from 'astro:assets';
 
 
-import hoja01 from '../img/hoja01.png';
-import hoja2 from '../img/hoja2.png';
+import hoja01 from '../img/petalo.png';
+import hoja2 from '../img/petalo.png';
 
 
 import { BODA_INFO } from '../data/InfoBoda.js';
@@ -35,10 +35,10 @@ const leafImages = [
 
   <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60 z-[1]"></div>
   
-  <div class="leaves pointer-events-none z-[2]" aria-hidden="true .filtro-verde"> 
+  <div class="leaves pointer-events-none z-[1]" aria-hidden="true "> 
     {leafImages.map((image, index) => (
       <span
-        class={`leaf leaf-${index + 1} filtro-verde`}
+        class={`leaf leaf-${index + 1}`}
         style={`background-image: url('${image.src}');`}
       />
     ))}

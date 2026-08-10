@@ -3,6 +3,9 @@ import '../styles/global.css';
 import { BODA_INFO } from '../data/InfoBoda.js';
 import Sobre from '../components/Sobre.astro';
 
+// 1. ¡EL SECRETO ESTÁ EN LA MAYÚSCULA! (Decoraciones)
+import Decoraciones from '../components/decoraciones.astro';
+
 import { Image } from 'astro:assets';
 ---
 
@@ -13,10 +16,19 @@ import { Image } from 'astro:assets';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boda {BODA_INFO.nombres}</title>
 </head>
-<body class="bg-ivory font-serif text-botanical m-0 p-0 bg-black;">
 
-  <Sobre />
+<!-- 2. Limpiamos los fondos duplicados y agregamos min-h-screen y overflow-hidden -->
+<body class="bg-ivory font-serif text-botanical m-0 p-0 relative min-h-screen overflow-hidden flex items-center justify-center">
+
+  <!-- 3. LLAMAMOS AL COMPONENTE CON LA "D" MAYÚSCULA -->
+  <Decoraciones />
   
+  <!-- 4. CONTENIDO PRINCIPAL: Debe tener relative y z-10 para quedar por encima de las decoraciones -->
+  <div class="relative z-10 w-full flex justify-center">
+      <!-- Aquí puedes descomentar y probar tu componente Sobre -->
+      <!-- <Sobre /> -->
+      <h1 class="text-4xl">Probando si se ven las hojas 🍃</h1>
+  </div>
 
 </body>
 </html>

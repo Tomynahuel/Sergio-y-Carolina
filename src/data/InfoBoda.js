@@ -3,6 +3,9 @@ import ringImage from '../img/ring.png'; // Asegúrate que esta ruta sea correct
 import sobre from '../img/sobre.png'; // Asegúrate que esta ruta sea correcta
 import decoSobreBoton from '../img/deco-boton.png'; // Asegúrate que esta ruta sea correcta
 
+
+
+
 export const BODA_INFO = {
 
   nombres: "Sergio & Carolina",

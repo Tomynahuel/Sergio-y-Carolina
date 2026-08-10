@@ -1,0 +1,108 @@
+---
+// src/components/Decoraciones.astro
+import { Image } from 'astro:assets';
+
+// 1. IMPORTA AQUÍ TUS NUEVAS IMÁGENES (Asegúrate de que estén en src/img/)
+import esquinaSupDerecha from '../img/esquina-superior-derecha.png'; 
+import esquinaSupIzquierda from '../img/esquina-superior-izquierda.png';
+import esquinaInfIzquierda from '../img/esquina-inferior-izquierda.png';
+import esquinaInfDerecha from '../img/esquina-inferior-derecha.png';
+
+//import arribaMedio from '../img/deco-arriba-medio.png';
+import abajoMedio from '../img/deco-abajo-medio.png';
+
+import bordeDerecho from '../img/deco-borde-derecha.png';
+import bordeIzquierdo from '../img/deco-borde-izquierda.png';
+// =====================================================================
+// ⚙️ PANEL DE CONTROL DE DECORACIONES
+// Ajusta aquí las posiciones exactas de cada elemento sin tocar el HTML.
+// =====================================================================
+
+const DECORACIONES = {
+ 
+
+  /* ESQUINAS */ 
+  esquinaSuperiorDerecha: {
+    imagen: esquinaSupDerecha,
+    // AJUSTE FINO (Arriba, Abajo, Izquierda, Derecha):
+    // Para ajuste milimétrico usa corchetes: top-[15px], -right-[5%]
+    // Nota: Corregí "-top+1" a "top-[1px]" para que Tailwind lo entienda bien.
+    posicion: "absolute top-[45px] -right-4",
+    // Tamaño en celular (w-40) y en computadora (md:w-56)
+    tamano: "w-40 md:w-56",
+    opacidad: "opacity-40",
+    extra: "mix-blend-multiply" // Borra fondos blancos
+  },
+
+  esquinaSuperiorIzquierda: {
+    imagen: esquinaSupIzquierda,
+    posicion: "absolute top-[45px] left-0",
+    tamano: "w-48 md:w-64",
+    opacidad: "opacity-50",
+    extra: "mix-blend-multiply"
+  },
+
+  /* CENTROS MEDIOS*/  
+
+
+
+  /*ARRIBA ABAJO */
+
+
+  AbajoMedio: {
+    imagen: abajoMedio,
+    posicion: "absolute bottom-0 left-1/2 -translate-x-1/2",
+    tamano: "w-32 md:w-48",
+    opacidad: "opacity-40",
+    extra: "mix-blend-multiply"
+  },
+
+
+  bordeDerecho: {
+    imagen: bordeDerecho,
+    posicion: "absolute top-0 right-0",
+    tamano: "w-24 md:w-32",
+    opacidad: "opacity-50",
+    extra: "mix-blend-multiply"
+  },
+
+  bordeIzquierdo: {
+    imagen: bordeIzquierdo,
+    posicion: "absolute top-0 left-0",
+    tamano: "w-24 md:w-32",
+    opacidad: "opacity-50",
+    extra: "mix-blend-multiply"
+  },
+
+  // =====================================================================
+  // ➕ ¿QUIERES AGREGAR OTRA FOTO? Sigue estos 2 pasos:
+  // 1. Importa la imagen en la parte superior (línea 8).
+  // 2. Descomenta el bloque de abajo y ajusta los valores:
+  // =====================================================================
+  /*
+  nuevaDecoracion: {
+    imagen: tuNuevaImagenImportada,
+    posicion: "absolute top-[50px] left-[20px]",
+    tamano: "w-32 md:w-48",
+    opacidad: "opacity-60",
+    extra: "mix-blend-multiply"
+  }
+  */
+
+
+};
+---
+
+<!-- CONTENEDOR FANTASMA: Cubre toda la sección pero no bloquea clics -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+  
+  <!-- El código "lee" tu panel de control de arriba y dibuja las fotos automáticamente -->
+  {Object.entries(DECORACIONES).map(([nombre, deco]) => (
+    <Image 
+      src={deco.imagen} 
+      alt={`Decoración ${nombre}`} 
+      class={`${deco.posicion} ${deco.tamano} ${deco.opacidad} ${deco.extra}`} 
+    />
+  ))}
+
+</div>
