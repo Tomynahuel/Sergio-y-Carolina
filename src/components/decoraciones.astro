@@ -23,13 +23,14 @@ import bordeIzquierdo from '../img/deco-borde-izquierda.png';
 // =====================================================================
 
 const DECORACIONES = {
-  
   fondo: {
-    imagen: fondoDecoraciones, 
-    posicion: "absolute inset-0",
-    tamano: "w-full h-full object-cover",
+    imagen: fondoDecoraciones,
+    // Lo anclamos a la derecha en lugar de la izquierda
+    posicion: "fixed top-0 right-0",
+    // En celular ocupa todo el ancho (w-full), en PC solo la mitad derecha (lg:w-1/2)
+    tamano: "w-full lg:w-1/2 h-screen object-cover",
     opacidad: "opacity-30",
-    extra: "mix-blend-multiply rotate-90 scale-[2] md:rotate-0 md:scale-100"
+    extra: "mix-blend-multiply" 
   },
 
   /* ================= ESQUINAS ================= */ 
