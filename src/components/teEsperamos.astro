@@ -6,8 +6,17 @@ import { BODA_INFO } from '../data/InfoBoda.js';
 import teEsperamos from '../img/deco-teEsperamos.png'; 
 --- 
 
-<section class="relative w-full py-8 md:py-12 flex justify-center items-center overflow-hidden">
+<!-- Agregamos flex-col y un pequeño gap para separar el texto de la imagen -->
+<section class="relative w-full py-12 md:py-16 flex flex-col justify-center items-center overflow-hidden gap-6">
     
+    <!-- Texto en cursiva y grande -->
+    <h2 
+      class="text-6xl md:text-8xl text-botanical font-serif z-10" 
+      
+    >
+      Te esperamos
+    </h2>
+
     <!-- 
       mix-blend-multiply: Elimina el fondo blanco de la imagen fusionándolo con el color de tu página.
       object-contain y h-auto: Evita que la imagen se mutile o recorte en celulares.
@@ -15,9 +24,7 @@ import teEsperamos from '../img/deco-teEsperamos.png';
     <Image 
       src={teEsperamos} 
       alt="¡Te esperamos!" 
-      class="w-full max-w-5xl h-auto object-contain mix-blend-multiply opacity-95" 
+      class="w-full max-w-5xl h-auto object-contain mix-blend-multiply opacity-95 z-10 relative" 
     />
-
-    
 
 </section>
