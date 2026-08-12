@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import { BODA_INFO } from '../data/InfoBoda.js';
+
+// Asegúrate de usar la extensión correcta (.png o .jpg) según tu archivo real
+import teEsperamos from '../img/deco-teEsperamos.png'; 
+--- 
+
+<section class="relative w-full py-8 md:py-12 flex justify-center items-center overflow-hidden">
+    
+    <!-- 
+      mix-blend-multiply: Elimina el fondo blanco de la imagen fusionándolo con el color de tu página.
+      object-contain y h-auto: Evita que la imagen se mutile o recorte en celulares.
+    -->
+    <Image 
+      src={teEsperamos} 
+      alt="¡Te esperamos!" 
+      class="w-full max-w-5xl h-auto object-contain mix-blend-multiply opacity-95" 
+    />
+
+    
+
+</section>

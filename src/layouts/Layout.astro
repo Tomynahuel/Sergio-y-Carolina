@@ -31,34 +31,45 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
   </head>
   <body class="min-h-screen bg-ivory text-slate-700 antialiased leading-relaxed pt-20">
    <!--- <Sobre /> -->
-    <header class="fixed top-0 z-50 w-full border-b border-white/50 bg-ivory/95 backdrop-blur-md" x-data="{ open: false }">
-      <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#home" class="flex items-center gap-2 font-serif text-3xl font-semibold tracking-[0.2em] text-slate-900">
-          <span>S</span>
+  <header 
+        class="fixed top-0 z-50 w-full border-b border-white/50 bg-ivory/95 backdrop-blur-md transition-transform duration-300 ease-in-out" 
+        x-data="{ open: false, showBar: true, lastScrollY: 0 }"
+        @scroll.window="
+          const currentScrollY = window.scrollY; 
+          showBar = currentScrollY < lastScrollY || currentScrollY < 50; 
+          lastScrollY = currentScrollY;
+        "
+        :class="showBar ? 'translate-y-0' : '-translate-y-full'"
+      >
+        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <a href="#home" class="flex items-center gap-2 font-serif text-3xl font-semibold tracking-[0.2em] text-slate-900">
+            <span>S</span>
             <Image src={BODA_INFO.anillos} alt="Anillo" class="h-12 w-12 object-contain" />
-          <span>C</span>
-        </a>
-        <button @click="open = !open" class="text-3xl text-slate-900 lg:hidden">☰</button>
-        <nav class="hidden gap-8 lg:flex">
-          <a href="#home" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Inicio</a>
-          <a href="#story" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Nuestra historia</a>
+            <span>C</span>
+          </a>
           
-          <a href="#itinerary" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Cronograma</a>
-          <a href="#gallery" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Galería</a>
-          <a href="/Sergio-y-Carolina/invitacion/"  class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Confirmar asistencia</a>
-        </nav>
-      </div>
-      <div x-show="open" x-transition class="lg:hidden">
-        <div class="border-t border-gray-200 bg-ivory/95 px-4 py-4 backdrop-blur-sm">
-          <div class="flex flex-col gap-2 text-sm uppercase tracking-[0.15em] text-slate-700">
-            <a href="#home" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Inicio</a>
-            <a href="#story" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Nuestra historia</a>
-            <a href="#itinerary" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Cronograma</a>
-            <a href="#gallery" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Galería</a>
-            <a href="https://tomynahuel.github.io/Sergio-y-Carolina/invitacion/" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Confirmar asistencia</a>
+          <button @click="open = !open" class="text-3xl text-slate-900 lg:hidden">☰</button>
+          
+          <nav class="hidden gap-8 lg:flex">
+            <a href="#home" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Inicio</a>
+            <a href="#story" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Nuestra historia</a>
+            <a href="#itinerary" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Cronograma</a>
+            <a href="#gallery" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Galería</a>
+            <a href="/Sergio-y-Carolina/invitacion/" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Confirmar asistencia</a>
+          </nav>
+        </div>
+
+        <div x-show="open" x-transition class="lg:hidden">
+          <div class="border-t border-gray-200 bg-ivory/95 px-4 py-4 backdrop-blur-sm">
+            <div class="flex flex-col gap-2 text-sm uppercase tracking-[0.15em] text-slate-700">
+              <a href="#home" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Inicio</a>
+              <a href="#story" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Nuestra historia</a>
+              <a href="#itinerary" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Cronograma</a>
+              <a href="#gallery" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Galería</a>
+              <a href="https://tomynahuel.github.io/Sergio-y-Carolina/invitacion/" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Confirmar asistencia</a>
+            </div>
           </div>
         </div>
-      </div>
     </header>
 
     <main>
