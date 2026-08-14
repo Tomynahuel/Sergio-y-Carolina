@@ -1,13 +1,40 @@
 ---
+import { Image } from 'astro:assets';
+
+// Importamos la imagen de mármol de forma nativa para que Astro la procese sin errores
+import marmolBg from '../img/marmol.png';
 
 ---
 
-<section id="bienvenida" class="section-shell pb-4">
-        <div class="text-center">
-          <h2 class="mt-3 font-serif text-4xl text-botanical sm:text-5xl">Confirmar la Asistencia</h2>
-          <div class="soft-card p-8 mt-6 px-10"> 
-            <p class="text-lg text-gray-700">Qué alegría inmensa compartir este momento tan especial con vos. Estamos preparando una noche inolvidable.</p>
-          </div>
-        </div>
-
+<section id="bienvenida" class="w-full max-w-4xl mx-auto px-4 py-10">
+  
+  <!-- Encabezado con Iniciales y Título -->
+  <div class="text-center mb-8">
+    <p class="font-serif text-3xl text-[#c5a880]">S & C</p>
+    <h2 class="mt-2 font-serif text-4xl sm:text-5xl text-[#c5a880]">Confirmar la Asistencia</h2>
+  </div>
+  
+  <!-- Tarjeta Ancha CON Mármol y Borde Dorado Fino -->
+  <div class="relative overflow-hidden rounded-[2rem] p-8 sm:p-12 shadow-sm border border-[#c5a880] bg-white transition-all duration-300 hover:shadow-md">
+    
+    <!-- 1. Fondo Mármol con el componente nativo <Image> de Astro (Garantiza que la foto cargue sí o sí) -->
+    <div class="absolute inset-0 z-0 opacity-100 overflow-hidden">
+      <Image 
+        src={marmolBg} 
+        alt="Fondo Mármol" 
+        class="w-full h-full object-cover object-center" 
+      />
+    </div>
+    
+    <!-- 2. Capa aclaradora para que el texto resalte sobre el mármol -->
+    <div class="absolute inset-0 bg-white/40 z-0"></div>
+    
+    <!-- 3. Contenido -->
+    <div class="relative z-10 text-center">
+      <p class="text-lg md:text-xl text-gray-800 font-serif leading-relaxed">
+        Qué alegría inmensa compartir este momento tan especial con vos. Estamos preparando una noche inolvidable.
+      </p>
+    </div>
+  </div>
+  
 </section>

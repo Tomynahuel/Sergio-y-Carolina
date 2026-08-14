@@ -1,63 +1,93 @@
 ---
-
+import { backupToGoogleSheet, buildGuestCsv, buildMailtoLink } from '../lib/rsvp.mjs';
+import { Image } from 'astro:assets';
+import marmolBg from '../img/marmol.png';
 ---
 
-<section id="rsvp" class="section-shell pb-4">
+<section id="rsvp" class="w-full max-w-3xl mx-auto px-4 py-12">
   
-    <div class="soft-card p-8 sm:p-10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
-      <div id="rsvp-form-container">
-        <h2 class="mt-3 mb-8 font-serif text-4xl text-botanical">Completar el formulario</h2>
-        <form id="rsvp-form" class="space-y-4" novalidate>
+    <!-- Contenedor Principal (Soft-card con Mármol) -->
+    <div class="relative overflow-hidden p-8 sm:p-12 rounded-[2rem] border border-[#c5a880] shadow-sm transition-all duration-300 hover:shadow-md bg-white">
+      
+      <!-- Fondo Mármol Nativo y Capa Protectora -->
+      <div class="absolute inset-0 z-0 opacity-100 overflow-hidden">
+        <Image 
+          src={marmolBg} 
+          alt="Fondo Mármol" 
+          class="w-full h-full object-cover object-center" 
+        />
+      </div>
+      <div class="absolute inset-0 bg-white/60 z-0 backdrop-blur-[2px]"></div>
+
+      <!-- Contenido del Formulario -->
+      <div class="relative z-10" id="rsvp-form-container">
+        <h2 class="mt-2 mb-8 font-serif text-4xl sm:text-5xl text-[#c5a880] text-center">Completar el formulario</h2>
+        
+        <form id="rsvp-form" class="space-y-5" novalidate>
           <div>
-            <label for="rsvp-name" class="mb-2 block text-sm font-semibold text-gray-700">Nombre completo</label>
-            <input id="rsvp-name" name="name" autocomplete="name" required class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Nombre completo" />
+            <label for="rsvp-name" class="mb-2 block text-xs font-bold tracking-widest text-[#5c101d] uppercase">Nombre completo</label>
+            <input id="rsvp-name" name="name" autocomplete="name" required class="w-full rounded-2xl border border-[#c5a880]/40 bg-white/70 backdrop-blur-sm px-5 py-3.5 outline-none transition focus:border-[#c5a880] focus:ring-1 focus:ring-[#c5a880] text-gray-800 placeholder-gray-400 shadow-sm" placeholder="Ej: Juan Pérez" />
           </div>
+          
           <div>
-            <label for="rsvp-phone" class="mb-2 block text-sm font-semibold text-gray-700">Teléfono</label>
-            <input id="rsvp-phone" name="phone" type="tel" autocomplete="tel" required class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Número de teléfono" />
+            <label for="rsvp-phone" class="mb-2 block text-xs font-bold tracking-widest text-[#5c101d] uppercase">Teléfono</label>
+            <input id="rsvp-phone" name="phone" type="tel" autocomplete="tel" required class="w-full rounded-2xl border border-[#c5a880]/40 bg-white/70 backdrop-blur-sm px-5 py-3.5 outline-none transition focus:border-[#c5a880] focus:ring-1 focus:ring-[#c5a880] text-gray-800 placeholder-gray-400 shadow-sm" placeholder="Ej: +54 9 11 1234 5678" />
           </div>
+          
           <div>
-            <label for="rsvp-guests" class="mb-2 block text-sm font-semibold text-gray-700">Número de invitados (incluyendo a usted)</label>
-            <input id="rsvp-guests" name="guests" type="number" min="1" required class="w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Cantidad de invitados" />
+            <label for="rsvp-guests" class="mb-2 block text-xs font-bold tracking-widest text-[#5c101d] uppercase">Número de invitados <span class="normal-case font-medium text-gray-500 tracking-normal">(incluyéndote)</span></label>
+            <input id="rsvp-guests" name="guests" type="number" min="1" required class="w-full rounded-2xl border border-[#c5a880]/40 bg-white/70 backdrop-blur-sm px-5 py-3.5 outline-none transition focus:border-[#c5a880] focus:ring-1 focus:ring-[#c5a880] text-gray-800 placeholder-gray-400 shadow-sm" placeholder="Ej: 2" />
           </div>
-          <div class="space-y-3 rounded-[1.5rem] border border-gray-200 bg-white/90 p-4">
-            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-botanical">¿Asistirás?</p>
-            <label class="inline-flex items-center gap-3 text-gray-700">
-              <input type="radio" name="attendance" value="acepta" class="h-4 w-4 text-botanical" />
-              Acepta
-            </label>
-            <label class="inline-flex items-center gap-3 text-gray-700">
-              <input type="radio" name="attendance" value="declina" class="h-4 w-4 text-botanical" />
-              Lamentablemente declina
-            </label>
+          
+          <!-- Selector de Asistencia -->
+          <div class="space-y-4 rounded-[1.5rem] border border-[#c5a880]/30 bg-white/60 backdrop-blur-md p-6 shadow-sm">
+            <p class="text-sm font-bold uppercase tracking-[0.25em] text-[#c5a880] text-center">¿Asistirás?</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-2">
+              <label class="inline-flex items-center gap-3 text-gray-800 font-medium cursor-pointer">
+                <input type="radio" name="attendance" value="acepta" class="h-5 w-5 text-[#c5a880] border-gray-300 focus:ring-[#c5a880]" />
+                Sí, asistiré
+              </label>
+              <label class="inline-flex items-center gap-3 text-gray-800 font-medium cursor-pointer">
+                <input type="radio" name="attendance" value="declina" class="h-5 w-5 text-[#5c101d] border-gray-300 focus:ring-[#5c101d]" />
+                Lamentablemente declino
+              </label>
+            </div>
           </div>
+          
           <div>
-            <label for="rsvp-message" class="mb-2 block text-sm font-semibold text-gray-700">Mensaje opcional</label>
-            <textarea id="rsvp-message" name="message" class="min-h-[120px] w-full rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none transition focus:border-botanical" placeholder="Escribe un mensaje opcional"></textarea>
+            <label for="rsvp-message" class="mb-2 block text-xs font-bold tracking-widest text-[#5c101d] uppercase">Mensaje opcional</label>
+            <textarea id="rsvp-message" name="message" class="min-h-[120px] w-full rounded-2xl border border-[#c5a880]/40 bg-white/70 backdrop-blur-sm px-5 py-3.5 outline-none transition focus:border-[#c5a880] focus:ring-1 focus:ring-[#c5a880] text-gray-800 placeholder-gray-400 shadow-sm" placeholder="Escribe aquí si tienes restricciones alimenticias o un lindo mensaje para los novios..."></textarea>
           </div>
-          <button type="submit" class="w-full rounded-full bg-botanical px-6 py-3 text-sm font-semibold text-white transition hover:bg-sage">Confirmar asistencia</button>
-          <p id="rsvp-feedback" class="min-h-6 text-sm text-botanical" role="status" aria-live="polite"></p>
+          
+          <button type="submit" class="w-full rounded-full bg-[#5c101d] px-6 py-4 text-sm font-bold uppercase tracking-widest text-white shadow-md transition-all hover:bg-[#7a1526] hover:shadow-lg hover:-translate-y-0.5">Confirmar asistencia</button>
+          
+          <p id="rsvp-feedback" class="min-h-6 text-sm text-center font-medium mt-2" role="status" aria-live="polite"></p>
         </form>
       </div>
-      <div id="rsvp-success-container" class="hidden text-center">
-        <div class="mb-6">
-          <p class="text-5xl mb-4">💍</p>
-          <h3 class="font-serif text-3xl text-botanical mb-3">¡Gracias por tu confirmación!</h3>
-          <p class="text-lg text-gray-700 mb-2" id="rsvp-success-name"></p>
-          <p class="text-gray-600" id="rsvp-success-message"></p>
+
+      <!-- Contenedor de Éxito (Oculto inicialmente) -->
+      <div id="rsvp-success-container" class="relative z-10 hidden text-center py-6">
+        <div class="mb-8">
+          <p class="text-6xl mb-4">🥂</p>
+          <h3 class="font-serif text-4xl text-[#c5a880] mb-3">¡Gracias por tu respuesta!</h3>
+          <p class="text-xl text-gray-800 font-medium mb-2" id="rsvp-success-name"></p>
+          <p class="text-gray-700" id="rsvp-success-message"></p>
         </div>
-        <div class="rounded-[1.5rem] border border-botanical/20 bg-botanical/10 p-6">
-          <p class="text-sm text-gray-700 mb-2">Tu respuesta ha sido guardada exitosamente.</p>
-          <p class="text-xs text-gray-600">Se ha enviado un correo de confirmación a Sergio y Carolina.</p>
+        
+        <div class="rounded-[1.5rem] border border-[#c5a880]/30 bg-white/60 backdrop-blur-sm p-6 shadow-sm max-w-sm mx-auto">
+          <p class="text-sm text-gray-800 font-semibold mb-2">Tu respuesta ha sido guardada exitosamente.</p>
+          <p class="text-xs text-gray-600">Se ha enviado un registro a Sergio y Carolina.</p>
         </div>
-          <button onclick="window.location.href = '/Sergio-y-Carolina/'" class="mt-6 rounded-full bg-botanical px-6 py-3 text-sm font-semibold text-white transition hover:bg-sage">Ir a la invitación</button>      
-        </div>
+        
+        <button onclick="window.location.href = '/Sergio-y-Carolina/'" class="mt-8 rounded-full bg-[#c5a880] px-8 py-3.5 text-sm font-bold uppercase tracking-widest text-white shadow-md transition-all hover:bg-[#b0956b] hover:shadow-lg hover:-translate-y-0.5">
+          Volver al inicio
+        </button>      
+      </div>
+
     </div>
-  </div>
 </section>
 
 <script>
-  
   import { backupToGoogleSheet, buildGuestCsv, buildMailtoLink } from '../lib/rsvp.mjs';
 
   const rsvpRecipient = 'tomynahuel23@gmail.com';
@@ -111,20 +141,20 @@
 
       if (!name || !phone || !guests || !attendance) {
         feedback.textContent = 'Completá los campos obligatorios para confirmar tu asistencia.';
-        feedback.className = 'min-h-6 text-sm text-rose-600';
+        feedback.className = 'min-h-6 text-sm text-[#5c101d]';
         return;
       }
 
       if (!/^\+?[1-9]\d{7,14}$/.test(phone)) {
         feedback.textContent = 'Ingresá un teléfono válido.';
-        feedback.className = 'min-h-6 text-sm text-rose-600';
+        feedback.className = 'min-h-6 text-sm text-[#5c101d]';
         return;
       }
 
       const guestsNumber = Number(guests);
       if (!Number.isInteger(guestsNumber) || guestsNumber < 1) {
         feedback.textContent = 'La cantidad de invitados debe ser al menos 1.';
-        feedback.className = 'min-h-6 text-sm text-rose-600';
+        feedback.className = 'min-h-6 text-sm text-[#5c101d]';
         return;
       }
 
@@ -159,8 +189,7 @@
       feedback.textContent = googleScriptUrl
         ? 'Se abrió tu correo, se descargó la lista en CSV/Excel y se registró la confirmación en Google Sheets.'
         : 'Se abrió tu correo y se descargó la lista de invitados en formato CSV/Excel.';
-      feedback.className = 'min-h-6 text-sm text-botanical';
-      // rsvpForm.reset();
+      feedback.className = 'min-h-6 text-sm text-[#c5a880]';
     });
   }
 </script>

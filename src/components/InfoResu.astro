@@ -1,29 +1,71 @@
 ---
 import { BODA_INFO } from '../data/InfoBoda.js';
---- 
+import { Image } from 'astro:assets';
+import marmolBg from '../img/marmol.png';
+---
 
-    <section>  
-        <div class="grid gap-6 md:grid-cols-2">
-          <div class="soft-card p-8">
-            <div class="mb-4 inline-flex rounded-full bg-botanical/10 px-3 py-1 text-sm font-semibold text-botanical">{BODA_INFO.horaCeremonia}</div>
-            <h3 class="font-serif text-3xl text-botanical">Ceremonia</h3>
-            <p class="mt-4 text-lg text-gray-700">Nos reuniremos a las {BODA_INFO.horaCeremonia} horas para compartir el momento más importante de nuestro camino.</p>
-            <ul class="mt-6 space-y-3 text-gray-700">
-              <li>• Comenzamos a las {BODA_INFO.horaCeremonia} h</li>
-              <li>• Lugar: {BODA_INFO.lugarCeremonia}</li>
-              <li>• Salón: {BODA_INFO.salonCeremonia}</li>
-        
-            </ul>
-          </div>
-          <div class="soft-card p-8">
-            <div class="mb-4 inline-flex rounded-full bg-botanical/10 px-3 py-1 text-sm font-semibold text-botanical">{BODA_INFO.horaAlmuerzo}</div>
-            <h3 class="font-serif text-3xl text-botanical">Almuerzo</h3>
-            <p class="mt-4 text-lg text-gray-700">Después de la ceremonia, habrá música, buena comida y un ambiente para disfrutar en familia.</p>
-            <ul class="mt-6 space-y-3 text-gray-700">
-              <li>• Comenzamos a las {BODA_INFO.horaAlmuerzo} h</li>
-              <li>• Lugar: {BODA_INFO.lugarAlmuerzo}</li>
-              <li>• Ambiente íntimo y acogedor</li>
-            </ul>
-          </div>
+<section class="w-full max-w-5xl mx-auto px-4 py-8">  
+  <div class="grid gap-6 md:grid-cols-2">
+    
+    <!-- Tarjeta Ceremonia -->
+    <div class="relative overflow-hidden p-8 sm:p-10 rounded-[2rem] border border-[#c5a880] shadow-sm transition-all duration-300 hover:shadow-md bg-white">
+      
+      <!-- Fondo Mármol Nativo -->
+      <div class="absolute inset-0 z-0 opacity-90 overflow-hidden">
+        <Image 
+          src={marmolBg} 
+          alt="Fondo Mármol" 
+          class="w-full h-full object-cover object-center" 
+        />
+      </div>
+      <div class="absolute inset-0 bg-white/50 z-0"></div>
+      
+      <div class="relative z-10">
+        <!-- Píldora de la Hora en Bordó -->
+        <div class="mb-5 inline-block rounded-full bg-[#5c101d] px-4 py-1.5 text-sm font-bold tracking-widest text-white shadow-sm">
+          {BODA_INFO.horaCeremonia}
         </div>
-      </section>
+        
+        <h3 class="font-serif text-3xl text-[#c5a880] mb-4">Ceremonia</h3>
+        <p class="text-gray-800 leading-relaxed font-medium mb-6">Nos reuniremos a las {BODA_INFO.horaCeremonia} horas para compartir el momento más importante de nuestro camino.</p>
+        
+        <ul class="space-y-3 text-gray-800 font-medium">
+          <li>• Comenzamos a las {BODA_INFO.horaCeremonia} h</li>
+          <li>• Lugar: {BODA_INFO.lugarCeremonia}</li>
+          <li>• Salón: {BODA_INFO.salonCeremonia}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tarjeta Almuerzo -->
+    <div class="relative overflow-hidden p-8 sm:p-10 rounded-[2rem] border border-[#c5a880] shadow-sm transition-all duration-300 hover:shadow-md bg-white">
+      
+      <!-- Fondo Mármol Nativo -->
+      <div class="absolute inset-0 z-0 opacity-100 overflow-hidden">
+        <Image 
+          src={marmolBg} 
+          alt="Fondo Mármol" 
+          class="w-full h-full object-cover object-center" 
+        />
+      </div>
+      <div class="absolute inset-0 bg-white/50 z-0"></div>
+      
+      <div class="relative z-10">
+        <!-- Píldora de la Hora en Bordó -->
+        <div class="mb-5 inline-block rounded-full bg-[#5c101d] px-4 py-1.5 text-sm font-bold tracking-widest text-white shadow-sm">
+          {BODA_INFO.horaAlmuerzo}
+        </div>
+        
+        <h3 class="font-serif text-3xl text-[#c5a880] mb-4">Almuerzo</h3>
+        <p class="text-gray-800 leading-relaxed font-medium mb-6">Después de la ceremonia, habrá música, buena comida y un ambiente para disfrutar en familia.</p>
+        
+        <ul class="space-y-3 text-gray-800 font-medium">
+          <li>• Comenzamos a las {BODA_INFO.horaAlmuerzo} h</li>
+          <li>• Lugar: {BODA_INFO.lugarAlmuerzo}</li>
+          <li>• Ambiente íntimo y acogedor</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
