@@ -7,9 +7,9 @@
   --color-verde: #829586;
   --color-verde-claro: #A6B3A9;
   --color-rosa: #E5C8C2;
-  --color-blanco: #ece5e5;
+  --color-blanco: #fcfcfc;
   --color-negro: #070706 ;
-   --color-fondo-blanco: #ECE3DE;
+   --color-fondo-blanco: #f1f1f1;
 
 
   /* =====================================================
@@ -19,9 +19,9 @@
   --color-principal: var(--color-bordo);
   --color-principal-hover: var(--color-bordo);
 
-  --color-acento: var(--color-verde);
+  --color-acento: var(--color-negro);
   --color-acento-fuerte: var(--color-verde);
-  --color-acento-suave: color-mix(in srgb, var(--color-verde) 30%, transparent);
+  --color-acento-suave: color-mix(in srgb, var(--color-negro) 30%, transparent);
 
 
   /* =====================================================
@@ -94,7 +94,7 @@
 
   --color-texto: var(--color-bordo);
   --color-texto-fuerte: var(--color-bordo);
-  --color-texto-suave: var(--color-bordo);
+  --color-texto-suave: var(--color-negro);
 
   --color-text-primary: var(--color-texto);
   --color-text-secondary: var(--color-texto-suave);
@@ -131,7 +131,7 @@
 
   --color-overlay-suave: color-mix(
     in srgb,
-    var(--color-blanco) 50%,
+    var(--color-blanco) 1%,
     transparent
   );
 

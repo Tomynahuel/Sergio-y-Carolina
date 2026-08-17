@@ -1,5 +1,5 @@
 import heroImage from '../img/hero.jpg'; // Asegúrate que esta ruta sea correcta
-import ringImage from '../img/ring.png'; // Asegúrate que esta ruta sea correcta
+import ringImage from '../img/anillos.png'; // Asegúrate que esta ruta sea correcta
 import sobre from '../img/sobre.png'; // Asegúrate que esta ruta sea correcta
 import decoSobreBoton from '../img/deco-boton.png'; // Asegúrate que esta ruta sea correcta
 

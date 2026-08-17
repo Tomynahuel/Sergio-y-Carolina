@@ -10,21 +10,23 @@ import marmolBg from '../img/marmol.png';
   <div class="relative overflow-hidden p-8 sm:p-12 rounded-[2rem] border border-[var(--color-acento)] shadow-sm transition-all duration-300 hover:shadow-md bg-[var(--color-blanco)]">
     
     <!-- Fondo Mármol -->
-    <div class="absolute inset-0 z-0 opacity-100 overflow-hidden">
-      <Image 
-        src={marmolBg} 
-        alt="Fondo Mármol" 
-        class="w-full h-full object-cover object-center" 
-      />
-    </div>
+    <!-- Fondo Mármol -->
+<div class="absolute inset-0 z-0 overflow-hidden">
+  <Image
+    src={marmolBg}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover object-center"
+    quality={100}
+  />
+</div>
 
     <!-- Capa protectora -->
-    <div class="absolute inset-0 bg-[var(--color-overlay-media)] z-0 backdrop-blur-[2px]"></div>
+    <div class="absolute inset-0 bg-[var(--color-overlay-media)] z-0"></div>
 
     <!-- Contenido del Formulario -->
     <div class="relative z-10" id="rsvp-form-container">
 
-      <h2 class="mt-2 mb-8 font-serif text-4xl sm:text-5xl text-[var(--color-acento)] text-center">
+      <h2 class="mt-2 mb-8 font-serif text-4xl sm:text-5xl text-[var(--color-texto-fuerte)] text-center">
         Completar el formulario
       </h2>
       
@@ -95,7 +97,7 @@ import marmolBg from '../img/marmol.png';
         <!-- Selector de Asistencia -->
         <div class="space-y-4 rounded-[1.5rem] border border-[var(--color-acento-suave)] bg-[var(--color-superficie-media)] backdrop-blur-md p-6 shadow-sm">
 
-          <p class="text-sm font-bold uppercase tracking-[0.25em] text-[var(--color-acento)] text-center">
+          <p class="text-sm font-bold uppercase tracking-[0.25em] text-[var(--color-texto-fuerte)] text-center">
             ¿Asistirás?
           </p>
 
