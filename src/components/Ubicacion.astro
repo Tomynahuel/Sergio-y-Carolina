@@ -1,55 +1,88 @@
 ---
 import { BODA_INFO } from '../data/InfoBoda.js';
+import marmolB from '../img/marmol.png';
 ---
 
 <section class="section-shell pb-24">
   <div class="soft-card overflow-hidden p-8 sm:p-10">
-    
+
     <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
-      
+
       <!-- Información -->
-      <div>
-        
-        <p class="text-sm uppercase tracking-[0.3em] text-[var(--color-verde)]">
-          Ubicación
-        </p>
+      <div
+        class="relative overflow-hidden rounded-[1.5rem] p-6 sm:p-8"
+      >
 
-        <h2 class="mt-3 font-serif text-4xl text-[var(--color-titulos)]">
-          Estamos esperándote
-        </h2>
+        <!-- Fondo mármol -->
+        <div
+          class="absolute inset-0 bg-cover bg-center opacity-20"
+          style={`
+            background-image: url(${marmolB.src});
+            filter: brightness(var(--brillo-marmol));
+          `}
+        ></div>
 
-        <p class="mt-4 text-lg text-[var(--color-bordo)]">
-          El evento será en un lugar especial, con ambiente íntimo y hermoso
-          para compartir este día tan importante.
-        </p>
+        <!-- Contenido -->
+        <div class="relative z-10">
 
-        <div class="mt-6 rounded-[1.5rem] bg-[var(--color-verde-claro)]/10 p-6 text-[var(--color-texto-fuerte)]">
-          
-          <p class="font-semibold text-[var(--color-verde)]">
-            Salón de eventos
+          <p class="text-sm uppercase tracking-[0.3em] text-[var(--color-verde)]">
+            Ubicación
           </p>
 
-          <p class="mt-2">
-            {BODA_INFO.ubiEvento}
+          <h2 class="mt-3 font-serif text-4xl text-[var(--color-titulos)]">
+            Estamos esperándote
+          </h2>
+
+          <p class="mt-4 text-lg text-[var(--color-bordo)]">
+            El evento será en un lugar especial, con ambiente íntimo y hermoso
+            para compartir este día tan importante.
           </p>
 
-          <p class="mt-1">
-            Estacionamiento gratuito y acceso sencillo
-          </p>
+          <div class="mt-6 rounded-[1.5rem] bg-[var(--color-verde-claro)]/10 p-6 text-[var(--color-texto-fuerte)]">
+
+            <p class="font-semibold text-[var(--color-verde)]">
+              Salón de eventos
+            </p>
+
+            <p class="mt-2">
+              {BODA_INFO.ubiEvento}
+            </p>
+
+            <p class="mt-1">
+              Estacionamiento gratuito y acceso sencillo
+            </p>
+
+          </div>
 
         </div>
-
       </div>
 
+
       <!-- Mapa -->
-      <div class="overflow-hidden rounded-[1.5rem] border border-[var(--color-borde-suave)]">
-        <iframe
-          src={BODA_INFO.linkMaps}
-          class="h-72 w-full"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Mapa del lugar"
-        ></iframe>
+      <div
+        class="relative overflow-hidden rounded-[1.5rem] border border-[var(--color-borde-suave)] p-2"
+      >
+
+        <!-- Fondo mármol -->
+        <div
+          class="absolute inset-0 bg-cover bg-center opacity-40"
+          style={`
+            background-image: url(${marmolB.src});
+            filter: brightness(var(--brillo-marmol));
+          `}
+        ></div>
+
+        <!-- Mapa -->
+        <div class="relative z-10 overflow-hidden rounded-[1.2rem]">
+          <iframe
+            src={BODA_INFO.linkMaps}
+            class="h-72 w-full"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Mapa del lugar"
+          ></iframe>
+        </div>
+
       </div>
 
     </div>
