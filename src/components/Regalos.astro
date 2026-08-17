@@ -1,39 +1,50 @@
 ---
 import '../styles/global.css';
 import { BODA_INFO } from '../data/InfoBoda.js';
-import { Image } from 'astro:assets';
 import marmolB from '../img/marmol.png';
 
+// WhatsApp
+const numeroWhatsApp = BODA_INFO.whatsappContacto.replace(/\D/g, '');
 
-// Preparamos el link de WhatsApp
-const numeroWhatsApp = BODA_INFO.whatsappContacto.replace('+', '');
 const mensajeWhatsApp = encodeURIComponent(
-  "¡Hola! Me encantaría ver la lista de regalos para la boda. 🎁"
+  '¡Hola! Me encantaría ver la lista de regalos para la boda. 🎁'
 );
+
 const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
 ---
 
 <section id="regalos" class="flex py-10">
   <div class="max-w-7xl mx-auto px-4 w-full sm:px-6 lg:px-8">
-    
+
     <!-- Contenedor Maestro -->
     <div class="soft-card w-full mx-auto rounded-[36px] shadow-sm p-8 sm:p-12">
-        
+
+      <!-- Título -->
       <div class="text-center mb-12">
         <h2 class="font-serif text-4xl text-[var(--color-verde)] sm:text-5xl">
           Regalos
         </h2>
       </div>
-      
-      <!-- Grilla de 2 Columnas -->
+
+      <!-- Grilla -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-14 text-center items-stretch max-w-5xl mx-auto">
 
-        <!-- TARJETA 1: Mesa de regalos / WhatsApp -->
-        <div class="flex flex-col h-full justify-between items-center p-8  rounded-3xl border border-[var(--color-borde-suave)] shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:bg-[var(--color-blanco)]">
-          <div class="absolute inset-0 z-0 opacity-100 overflow-hidden">
-      
-    </div>
-          <div class="w-full flex flex-col items-center">
+        <!-- ================================================= -->
+        <!-- TARJETA 1: MESA DE REGALOS -->
+        <!-- ================================================= -->
+
+        <div
+          class="relative overflow-hidden flex flex-col h-full justify-between items-center p-8 rounded-3xl border border-[var(--color-borde-suave)] shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl"
+        >
+
+          <!-- Fondo de mármol -->
+          <div
+            class="absolute inset-0 bg-cover bg-center opacity-40"
+            style={`background-image: url(${marmolB.src});`}
+          ></div>
+
+          <!-- Contenido -->
+          <div class="relative z-10 w-full flex flex-col items-center">
 
             <div class="mb-6">
               <h2 class="font-serif text-3xl text-[var(--color-texto)] sm:text-4xl">
@@ -41,7 +52,8 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
               </h2>
             </div>
 
-            <div class="mb-6 h-16 flex items-center justify-center text-[var(--color-rosa)]">
+            <!-- Icono -->
+            <div class="mb-6 h-16 flex items-center justify-center text-[var(--color-bordo-rosa)]">
               <svg
                 class="w-12 h-12"
                 fill="none"
@@ -58,29 +70,45 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
             </div>
 
             <p class="text-[var(--color-texto-suave)] mb-8 max-w-sm leading-relaxed text-lg">
-              Si prefieres hacernos un presente físico, presiona el botón para conocer nuestra lista de regalos. ¡O también podés hacer un regalo económico a través de nuestro alias!
+              Si preferís hacernos un presente físico, presioná el botón para
+              conocer nuestra lista de regalos. ¡O también podés hacer un
+              regalo económico a través de nuestro alias!
             </p>
 
           </div>
 
-          <!-- Botón de WhatsApp -->
+          <!-- Botón WhatsApp -->
           <a
             href={linkWhatsApp}
             target="_blank"
             rel="noopener noreferrer"
-            class="bg-[var(--color-verde)] hover:bg-[var(--color-bordo)] hover:text-[var(--color-blanco)] transition-colors text-[var(--color-blanco)] text-xs font-bold tracking-widest uppercase py-3 px-8 rounded-full mt-auto w-full max-w-[220px]"
+            class="relative z-10 bg-[var(--color-verde)] hover:bg-[var(--color-bordo)] hover:text-[var(--color-blanco)] transition-colors text-[var(--color-blanco)] text-xs font-bold tracking-widest uppercase py-3 px-8 rounded-full mt-auto w-full max-w-[220px]"
           >
             Ver lista de regalos
           </a>
-          
+
         </div>
 
-        <!-- TARJETA 2: Datos Bancarios -->
-        <div class="flex flex-col h-full justify-between items-center p-8 sm:p-10  rounded-3xl border border-[var(--color-borde-suave)] shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:bg-[var(--color-blanco)]">
-          
-          <div class="w-full flex flex-col items-center">
 
-            <div class="mb-6 h-16 flex items-center justify-center text-[var(--color-rosa)]">
+        <!-- ================================================= -->
+        <!-- TARJETA 2: DATOS BANCARIOS -->
+        <!-- ================================================= -->
+
+        <div
+          class="relative overflow-hidden flex flex-col h-full justify-between items-center p-8 sm:p-10 rounded-3xl border border-[var(--color-borde-suave)] shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl"
+        >
+
+          <!-- Fondo de mármol -->
+          <div
+            class="absolute inset-0 bg-cover bg-center opacity-40"
+            style={`background-image: url(${marmolB.src});`}
+          ></div>
+
+          <!-- Contenido -->
+          <div class="relative z-10 w-full flex flex-col items-center">
+
+            <!-- Icono -->
+            <div class="mb-6 h-16 flex items-center justify-center text-[var(--color-bordo-rosa)]">
               <svg
                 class="w-14 h-14"
                 fill="none"
@@ -96,37 +124,34 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
               </svg>
             </div>
 
-            <!-- Contenedor estilo billete/recibo -->
+            <!-- Datos -->
             <div class="w-full max-w-sm text-center mb-8">
 
               <p class="text-[11px] tracking-[0.3em] text-[var(--color-rosa)] uppercase font-bold mb-3">
                 Alias
               </p>
-              
+
               <p
                 id="alias-boda"
                 class="text-[var(--color-texto-fuerte)] text-xl md:text-2xl uppercase tracking-wider font-semibold mb-4"
               >
                 {BODA_INFO.aliasBoda}
               </p>
-              
-              <!-- Línea punteada divisoria -->
+
               <div class="border-t border-dashed border-[var(--color-borde-suave)] w-3/4 mx-auto my-4"></div>
-              
-              <p
-                class="text-4xl text-[var(--color-texto)] font-serif mt-4"
-                
-              >
+
+              <p class="text-4xl text-[var(--color-texto)] font-serif mt-4">
                 {BODA_INFO.dueñoCuenta}
               </p>
 
             </div>
+
           </div>
 
-          <!-- Botón de Copiar -->
+          <!-- Botón copiar -->
           <button
             id="btn-copiar"
-            class="bg-[var(--color-verde)] hover:bg-[var(--color-bordo)] transition-colors text-[var(--color-blanco)] text-xs font-bold tracking-widest uppercase py-3 px-8 rounded mt-auto w-full max-w-[240px] shadow-sm flex items-center justify-center gap-2"
+            class="relative z-10 bg-[var(--color-verde)] hover:bg-[var(--color-bordo)] transition-colors text-[var(--color-blanco)] text-xs font-bold tracking-widest uppercase py-3 px-8 rounded mt-auto w-full max-w-[240px] shadow-sm flex items-center justify-center gap-2"
           >
             <span id="texto-btn-copiar">Copiar Datos</span>
           </button>
@@ -138,7 +163,8 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
   </div>
 </section>
 
-<!-- Script para la función de copiar al portapapeles -->
+
+<!-- Script para copiar alias -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const btnCopiar = document.getElementById('btn-copiar');
@@ -149,9 +175,11 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
       btnCopiar.addEventListener('click', async () => {
         try {
           const textoACopiar = aliasBoda.innerText.trim();
+
           await navigator.clipboard.writeText(textoACopiar);
 
           const textoOriginal = textoBtn.innerText;
+
           textoBtn.innerText = '¡Alias Copiado!';
 
           btnCopiar.classList.remove(
@@ -175,7 +203,7 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
           }, 2500);
 
         } catch (err) {
-          console.error('No se pudo copiar el texto: ', err);
+          console.error('No se pudo copiar el texto:', err);
           textoBtn.innerText = 'Error al copiar';
         }
       });

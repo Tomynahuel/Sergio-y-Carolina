@@ -46,7 +46,7 @@ export const BODA_INFO = {
   mesLimite:"Septiembre",
 
   // Contacto
-  whatsappContacto: "+5491123456789",
+  whatsappContacto: "5491123456789",
   contacto1:"Tomas Nahuel Aguilar",
   emailContacto1:"tomynahuel23@gmail.com",
   numeroTelefono1:"+5491123456789",
@@ -90,6 +90,7 @@ export const BODA_INFO = {
   infoCuenta: "Si querés colaborar con nuestro viaje de novios, podés hacerlo a través de la siguiente cuenta bancaria:",
   dueñoCuenta: "Sergio Caro",
   aliasBoda: "boda.sergio.caro",
+  tarjeta: "",
   cbu: "lorem ipsum",
 
   // Ubicacion 

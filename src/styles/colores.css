@@ -4,13 +4,21 @@
      ===================================================== */
 
   --color-bordo: #52131A;
+  --color-bordo-rosa:#9B6B67;
   --color-verde: #829586;
   --color-verde-claro: #A6B3A9;
   --color-rosa: #E5C8C2;
   --color-blanco: #fcfcfc;
-  --color-negro: #070706 ;
-   --color-fondo-blanco: #f1f1f1;
+  --color-negro: #2D3122;
+   --color-fondo-blanco: #ECE3DE;
+   --color-fondo: #ffffff;
 
+ /* =====================================================
+     PRUEBAS DE COLORES
+     ===================================================== */
+
+   --color-texto-fuerte: var(--color-bordo);
+   --brillo-marmol:100%;
 
   /* =====================================================
      COLORES PRINCIPALES
@@ -36,7 +44,7 @@
 
   --color-superficie-blanda: color-mix(
     in srgb,
-    var(--color-blanco) 20%,
+    var(--color-blanco) 30%,
     transparent
   );
 
@@ -92,20 +100,21 @@
      TEXTOS
      ===================================================== */
 
-  --color-texto: var(--color-bordo);
-  --color-texto-fuerte: var(--color-bordo);
+  --color-texto: var(--color-bordo-rosa);
+   
+   --color-texto-fuerte: var(--color-bordo);
   --color-texto-suave: var(--color-negro);
 
   --color-text-primary: var(--color-texto);
   --color-text-secondary: var(--color-texto-suave);
   --color-text-strong: var(--color-texto-fuerte);
-
+   --color-titulos:var(--color-bordo-rosa);
 
   /* =====================================================
      BORDES
      ===================================================== */
 
-  --color-borde: var(--color-verde);
+  --color-borde: var(--color-rosa);
   --color-borde-suave: color-mix(
     in srgb,
     var(--color-verde) 30%,
@@ -162,7 +171,7 @@
   --color-sombra-fuerte: rgba(0, 0, 0, 0.18);
   --color-sombra-oscura: rgba(0, 0, 0, 0.6);
 
-  --color-sombra-fondo-suave: rgba(0, 0, 0, 0.4);
+  --color-sombra-fondo-suave: rgba(0, 0, 0, 0.007);
   --color-sombra-fondo-fuerte: rgba(0, 0, 0, 0.5);
 
 
