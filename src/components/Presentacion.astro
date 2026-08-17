@@ -6,7 +6,7 @@ import hoja2 from '../img/petalo.png';
 
 import { BODA_INFO } from '../data/InfoBoda.js';
 
-// Si usas hojas flotantes, mantenemos esa lógica
+// Hojas flotantes
 const leafImages = [
   hoja01,
   hoja2,
@@ -32,22 +32,46 @@ const leafImages = [
   tabindex="-1"
   class="relative flex min-h-screen items-center justify-center overflow-hidden"
 >
-  
-  <!-- Fondo -->
-  <Image 
-    src={BODA_INFO.presentacion} 
-    alt="Fondo casamiento" 
-    class="absolute inset-0 z-0 h-full w-full object-cover object-[center_35%] sm:object-center" 
+
+  <!-- ========================================
+       FONDO
+       ======================================== -->
+  <Image
+    src={BODA_INFO.presentacion}
+    alt="Fondo casamiento"
+    class="
+      absolute
+      inset-0
+      z-0
+      h-full
+      w-full
+      object-cover
+      object-[center_40%]
+      sm:object-center
+    "
     loading="eager"
   />
 
   <!-- Overlay -->
   <div
-    class="absolute inset-0 z-[1] bg-gradient-to-b from-[var(--color-sombra-fondo-suave)] via-[var(--color-sombra-suave)] to-[var(--color-sombra-fondo-fuerte)]"
+    class="
+      absolute
+      inset-0
+      z-[1]
+      bg-gradient-to-b
+      from-[var(--color-sombra-fondo-suave)]
+      via-[var(--color-sombra-suave)]
+      to-[var(--color-sombra-fondo-fuerte)]
+    "
   ></div>
-  
-  <!-- Hojas -->
-  <div class="leaves pointer-events-none z-[1]" aria-hidden="true">
+
+  <!-- ========================================
+       HOJAS
+       ======================================== -->
+  <div
+    class="leaves pointer-events-none z-[1]"
+    aria-hidden="true"
+  >
     {leafImages.map((image, index) => (
       <span
         class={`leaf leaf-${index + 1}`}
@@ -56,61 +80,195 @@ const leafImages = [
     ))}
   </div>
 
-  <!-- Contenido -->
+  <!-- ========================================
+       CONTENIDO
+       ======================================== -->
   <div
-    class="relative z-[3] w-full px-4 py-24 text-center text-[var(--color-blanco)] sm:px-6 lg:px-8"
+    class="
+      relative
+      z-[3]
+      w-full
+      px-4
+      py-24
+      text-center
+      text-[var(--color-blanco)]
+      sm:px-6
+      lg:px-8
+    "
   >
     <div class="mx-auto max-w-4xl p-8 sm:p-12">
 
+      <!-- Título pequeño -->
       <p
-        class="mb-4 font-serif text-2xl uppercase tracking-[0.4em] text-[var(--color-blanco)]"
+        class="
+          mb-4
+          font-serif
+          text-2xl
+          uppercase
+          tracking-[0.4em]
+          text-[var(--color-blanco)]
+        "
       >
         Nos casamos
       </p>
 
-      <h1 class="font-serif text-6xl leading-tight sm:text-6xl lg:text-8xl">
+      <!-- Nombres -->
+      <h1
+        class="
+          font-serif
+          text-6xl
+          leading-tight
+          sm:text-6xl
+          lg:text-8xl
+        "
+      >
         {BODA_INFO.nombres}
       </h1>
 
+      <!-- Descripción -->
       <p
-        class="mx-auto mt-6 max-w-4xl font-serif text-[var(--color-blanco)] sm:text-xl"
+        class="
+          mx-auto
+          mt-6
+          max-w-4xl
+          font-serif
+          text-[var(--color-blanco)]
+          sm:text-xl
+        "
       >
         Una celebración llena de amor, recuerdos y el comienzo de una nueva
         historia juntos.
       </p>
-      
-      <!-- Cuenta regresiva -->
+
+      <!-- ========================================
+           CUENTA REGRESIVA
+           ======================================== -->
       <div
         id="countdown"
-        class="mt-10 grid grid-cols-2 gap-4 text-center sm:grid-cols-4"
+        class="
+          mt-10
+          grid
+          grid-cols-2
+          gap-4
+          text-center
+          sm:grid-cols-4
+        "
       >
 
+        <!-- Días -->
         <div
-          class="rounded-2xl border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] p-4"
+          class="
+            rounded-2xl
+            border
+            border-[var(--color-borde-suave)]
+            bg-[var(--color-superficie-blanda)]
+            p-4
+          "
         >
-          <div class="text-3xl font-semibold" data-unit="days">00</div>
-          <div class="mt-1 text-sm uppercase tracking-[0.2em]">Días</div>
+          <div
+            class="text-3xl font-semibold"
+            data-unit="days"
+          >
+            00
+          </div>
+
+          <div
+            class="
+              mt-1
+              text-sm
+              uppercase
+              tracking-[0.2em]
+            "
+          >
+            Días
+          </div>
         </div>
 
+        <!-- Horas -->
         <div
-          class="rounded-2xl border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] p-4"
+          class="
+            rounded-2xl
+            border
+            border-[var(--color-borde-suave)]
+            bg-[var(--color-superficie-blanda)]
+            p-4
+          "
         >
-          <div class="text-3xl font-semibold" data-unit="hours">00</div>
-          <div class="mt-1 text-sm uppercase tracking-[0.2em]">Horas</div>
+          <div
+            class="text-3xl font-semibold"
+            data-unit="hours"
+          >
+            00
+          </div>
+
+          <div
+            class="
+              mt-1
+              text-sm
+              uppercase
+              tracking-[0.2em]
+            "
+          >
+            Horas
+          </div>
         </div>
 
+        <!-- Minutos -->
         <div
-          class="rounded-2xl border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] p-4"
+          class="
+            rounded-2xl
+            border
+            border-[var(--color-borde-suave)]
+            bg-[var(--color-superficie-blanda)]
+            p-4
+          "
         >
-          <div class="text-3xl font-semibold" data-unit="minutes">00</div>
-          <div class="mt-1 text-sm uppercase tracking-[0.2em]">Min</div>
+          <div
+            class="text-3xl font-semibold"
+            data-unit="minutes"
+          >
+            00
+          </div>
+
+          <div
+            class="
+              mt-1
+              text-sm
+              uppercase
+              tracking-[0.2em]
+            "
+          >
+            Min
+          </div>
         </div>
 
+        <!-- Segundos -->
         <div
-          class="rounded-2xl border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] p-4"
+          class="
+            rounded-2xl
+            border
+            border-[var(--color-borde-suave)]
+            bg-[var(--color-superficie-blanda)]
+            p-4
+          "
         >
-          <div class="text-3xl font-semibold" data-unit="seconds">00</div>
-          <div class="mt-1 text-sm uppercase tracking-[0.2em]">Seg</div>
+          <div
+            class="text-3xl font-semibold"
+            data-unit="seconds"
+          >
+            00
+          </div>
+
+          <div
+            class="
+              mt-1
+              text-sm
+              uppercase
+              tracking-[0.2em]
+            "
+          >
+            Seg
+          </div>
         </div>
 
       </div>
@@ -129,10 +287,21 @@ const leafImages = [
 
       if (d < 0) return;
 
-      const days = Math.floor(d / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((d / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((d / (1000 * 60)) % 60);
-      const seconds = Math.floor((d / 1000) % 60);
+      const days = Math.floor(
+        d / (1000 * 60 * 60 * 24)
+      );
+
+      const hours = Math.floor(
+        (d / (1000 * 60 * 60)) % 24
+      );
+
+      const minutes = Math.floor(
+        (d / (1000 * 60)) % 60
+      );
+
+      const seconds = Math.floor(
+        (d / 1000) % 60
+      );
 
       container.querySelector('[data-unit="days"]').textContent =
         days.toString().padStart(2, '0');
@@ -145,6 +314,7 @@ const leafImages = [
 
       container.querySelector('[data-unit="seconds"]').textContent =
         seconds.toString().padStart(2, '0');
+
     }, 1000);
   }
 </script>
