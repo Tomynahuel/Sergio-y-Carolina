@@ -33,18 +33,20 @@ const leafImages = [
   class="relative flex min-h-screen items-center justify-center overflow-hidden"
 >
   
+  <!-- Fondo -->
   <Image 
     src={BODA_INFO.presentacion} 
     alt="Fondo casamiento" 
-    class="absolute inset-0 w-full h-full object-cover object-center z-0" 
+    class="absolute inset-0 z-0 h-full w-full object-cover object-[center_35%] sm:object-center" 
     loading="eager"
   />
 
   <!-- Overlay -->
   <div
-    class="absolute inset-0 bg-gradient-to-b from-[var(--color-sombra-fondo-suave)] via-[var(--color-sombra-suave)] to-[var(--color-sombra-fondo-fuerte)] z-[1]"
+    class="absolute inset-0 z-[1] bg-gradient-to-b from-[var(--color-sombra-fondo-suave)] via-[var(--color-sombra-suave)] to-[var(--color-sombra-fondo-fuerte)]"
   ></div>
   
+  <!-- Hojas -->
   <div class="leaves pointer-events-none z-[1]" aria-hidden="true">
     {leafImages.map((image, index) => (
       <span
@@ -54,13 +56,14 @@ const leafImages = [
     ))}
   </div>
 
+  <!-- Contenido -->
   <div
     class="relative z-[3] w-full px-4 py-24 text-center text-[var(--color-blanco)] sm:px-6 lg:px-8"
   >
     <div class="mx-auto max-w-4xl p-8 sm:p-12">
 
       <p
-        class="font-serif mb-4 text-sm uppercase tracking-[0.4em] text-[var(--color-blanco)]"
+        class="mb-4 font-serif text-2xl uppercase tracking-[0.4em] text-[var(--color-blanco)]"
       >
         Nos casamos
       </p>
@@ -70,12 +73,13 @@ const leafImages = [
       </h1>
 
       <p
-        class="font-serif mx-auto mt-6 max-w-2xl text-lg text-[var(--color-blanco)] sm:text-xl"
+        class="mx-auto mt-6 max-w-4xl font-serif text-[var(--color-blanco)] sm:text-xl"
       >
         Una celebración llena de amor, recuerdos y el comienzo de una nueva
         historia juntos.
       </p>
       
+      <!-- Cuenta regresiva -->
       <div
         id="countdown"
         class="mt-10 grid grid-cols-2 gap-4 text-center sm:grid-cols-4"
@@ -122,6 +126,7 @@ const leafImages = [
     setInterval(() => {
       const now = Date.now();
       const d = targetTime - now;
+
       if (d < 0) return;
 
       const days = Math.floor(d / (1000 * 60 * 60 * 24));
