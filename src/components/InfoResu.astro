@@ -4,131 +4,80 @@ import { Image } from 'astro:assets';
 import marmolBg from '../img/marmol.png';
 ---
 
-<section class="w-full max-w-5xl mx-auto px-4">
+<section class="w-full max-w-5xl mx-auto px-4 py-8">  
   <div class="grid gap-6 md:grid-cols-2">
-
-    <!-- ========================= -->
-    <!-- TARJETA CEREMONIA -->
-    <!-- ========================= -->
-
-    <div
-      class="relative overflow-hidden p-8 sm:p-10 rounded-[2rem] border border-[var(--color-verde)] shadow-sm transition-all duration-300 hover:shadow-md"
-    >
-
-      <!-- Fondo Mármol -->
-      <div class="absolute inset-0 z-0 overflow-hidden">
-        <Image
-          src={marmolBg}
-          alt=""
-          class="w-full h-full object-cover object-center"
-          style="filter: brightness(var(--brillo-marmol));"
+    
+    <!-- Tarjeta Ceremonia -->
+    <div class="relative overflow-hidden p-8 sm:p-10 rounded-[2rem] border border-[var(--color-borde)] shadow-sm transition-all duration-300 hover:shadow-md bg-[var(--color-blanco)]">
+      
+      <!-- Fondo Mármol Nativo -->
+      <div class="absolute inset-0 z-0 opacity-1 overflow-hidden">
+        <Image 
+          src={marmolBg} 
+          alt="Fondo Mármol" 
+          class="w-full h-full object-cover object-center" 
         />
       </div>
 
-      <!-- Overlay -->
-      <div
-        class="absolute inset-0 bg-[var(--color-overlay-suave)] z-0"
-      ></div>
-
-      <!-- Contenido -->
+      <div class="absolute inset-0 bg-[var(--color-overlay-suave)] z-0"></div>
+      
       <div class="relative z-10">
 
-        <!-- Píldora de la Hora -->
-        <div
-          class="mb-5 inline-block rounded-full bg-[var(--color-bordo)] px-4 py-1.5 text-sm font-bold tracking-widest text-[var(--color-blanco)] shadow-sm"
-        >
+        <!-- Píldora de la Hora en Bordó -->
+        <div class="mb-5 inline-block rounded-full bg-[var(--color-bordo)] px-4 py-1.5 text-sm font-bold tracking-widest text-[var(--color-blanco)] shadow-sm">
           {BODA_INFO.horaCeremonia}
         </div>
-
+        
         <h3 class="font-serif text-3xl text-[var(--color-texto)] mb-4">
           Ceremonia
         </h3>
 
-        <p
-          class="text-[var(--color-texto-suave)] leading-relaxed font-medium mb-6"
-        >
-          Nos reuniremos a las {BODA_INFO.horaCeremonia} horas para compartir
-          el momento más importante de nuestro camino.
+        <p class="text-[var(--color-texto-suave)] leading-relaxed font-medium mb-6">
+          Nos reuniremos a las {BODA_INFO.horaCeremonia} horas para compartir el momento más importante de nuestro camino.
         </p>
-
-        <ul
-          class="space-y-3 text-[var(--color-texto-fuerte)] font-medium"
-        >
-          <li>
-            • Comenzamos a las {BODA_INFO.horaCeremonia} h
-          </li>
-
-          <li>
-            • Lugar: {BODA_INFO.lugarCeremonia}
-          </li>
-
-          <li>
-            • Salón: {BODA_INFO.salonCeremonia}
-          </li>
+        
+        <ul class="space-y-3 text-[var(--color-texto-fuerte)] font-medium">
+          <li>• Comenzamos a las {BODA_INFO.horaCeremonia} h</li>
+          <li>• Lugar: {BODA_INFO.lugarCeremonia}</li>
+          <li>• Salón: {BODA_INFO.salonCeremonia}</li>
         </ul>
 
       </div>
     </div>
 
-
-    <!-- ========================= -->
-    <!-- TARJETA ALMUERZO -->
-    <!-- ========================= -->
-
-    <div
-      class="relative overflow-hidden p-8 sm:p-10 rounded-[2rem] border border-[var(--color-verde)] shadow-sm transition-all duration-300 hover:shadow-md"
-    >
-
-      <!-- Fondo Mármol -->
-      <div class="absolute inset-0 z-0 overflow-hidden">
-        <Image
-          src={marmolBg}
-          alt=""
-          class="w-full h-full object-cover object-center"
-          style="filter: brightness(var(--brillo-marmol));"
+    <!-- Tarjeta Almuerzo -->
+    <div class="relative overflow-hidden p-8 sm:p-10 rounded-[2rem] border border-[var(--color-borde)] shadow-sm transition-all duration-300 hover:shadow-md bg-[var(--color-blanco)]">
+      
+      <!-- Fondo Mármol Nativo -->
+      <div class="absolute inset-0 z-0 opacity-100 overflow-hidden">
+        <Image 
+          src={marmolBg} 
+          alt="Fondo Mármol" 
+          class="w-full h-full object-cover object-center" 
         />
       </div>
 
-      <!-- Overlay -->
-      <div
-        class="absolute inset-0 bg-[var(--color-overlay-suave)] z-0"
-      ></div>
-
-      <!-- Contenido -->
+      <div class="absolute inset-0 bg-[var(--color-overlay-suave)] z-0"></div>
+      
       <div class="relative z-10">
 
-        <!-- Píldora de la Hora -->
-        <div
-          class="mb-5 inline-block rounded-full bg-[var(--color-bordo)] px-4 py-1.5 text-sm font-bold tracking-widest text-[var(--color-blanco)] shadow-sm"
-        >
+        <!-- Píldora de la Hora en Bordó -->
+        <div class="mb-5 inline-block rounded-full bg-[var(--color-bordo)] px-4 py-1.5 text-sm font-bold tracking-widest text-[var(--color-blanco)] shadow-sm">
           {BODA_INFO.horaAlmuerzo}
         </div>
-
+        
         <h3 class="font-serif text-3xl text-[var(--color-texto)] mb-4">
           Almuerzo
         </h3>
 
-        <p
-          class="text-[var(--color-texto-suave)] leading-relaxed font-medium mb-6"
-        >
-          Después de la ceremonia, habrá música, buena comida y un ambiente
-          para disfrutar en familia.
+        <p class="text-[var(--color-texto-suave)]  leading-relaxed font-medium mb-6">
+          Después de la ceremonia, habrá música, buena comida y un ambiente para disfrutar en familia.
         </p>
-
-        <ul
-          class="space-y-3 text-[var(--color-texto-fuerte)] font-medium"
-        >
-          <li>
-            • Comenzamos a las {BODA_INFO.horaAlmuerzo} h
-          </li>
-
-          <li>
-            • Lugar: {BODA_INFO.lugarAlmuerzo}
-          </li>
-
-          <li>
-            • Ambiente íntimo y acogedor
-          </li>
+        
+        <ul class="space-y-3 text-[var(--color-texto-fuerte)] font-medium">
+          <li>• Comenzamos a las {BODA_INFO.horaAlmuerzo} h</li>
+          <li>• Lugar: {BODA_INFO.lugarAlmuerzo}</li>
+          <li>• Ambiente íntimo y acogedor</li>
         </ul>
 
       </div>

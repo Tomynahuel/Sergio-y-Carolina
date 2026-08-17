@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 import marmolBg from '../img/marmol.png';
 ---
 
-<section id="bienvenida" class="w-full max-w-4xl mx-auto px-4 py-10">
+<section id="bienvenida" class="w-full max-w-4xl mx-auto px-4">
   
   <!-- Encabezado con Iniciales y Título -->
   <div class="text-center mb-8">
@@ -17,7 +17,7 @@ import marmolBg from '../img/marmol.png';
   </div>
   
   <!-- Tarjeta Ancha CON Mármol y Borde -->
-  <div class="relative overflow-hidden rounded-[2rem] p-8 sm:p-12 shadow-sm border border-[var(--color-verde)] bg-[var(--color-blanco)] transition-all duration-300 hover:shadow-md">
+  <div class="relative overflow-hidden rounded-[2rem] p-8 sm:p-12 shadow-sm border border-[var(--color-borde)] bg-[var(--color-blanco)] transition-all duration-300 hover:shadow-md">
     
     <!-- 1. Fondo Mármol -->
     <div class="absolute inset-0 z-0 opacity-100 overflow-hidden">
@@ -33,7 +33,7 @@ import marmolBg from '../img/marmol.png';
     
     <!-- 3. Contenido -->
     <div class="relative z-10 text-center">
-      <p class="text-lg md:text-xl text-[var(--color-texto)] font-serif leading-relaxed">
+      <p class="text-2xl md:text-xl text-[var(--color-texto)] font-serif leading-relaxed">
         Qué alegría inmensa compartir este momento tan especial con vos. Estamos preparando una noche inolvidable.
       </p>
     </div>

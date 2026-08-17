@@ -7,7 +7,7 @@ import marmolBg from '../img/marmol.png';
 <section id="rsvp" class="w-full max-w-3xl mx-auto px-4">
   
   <!-- Contenedor Principal -->
-  <div class="relative overflow-hidden p-8 sm:p-12 rounded-[2rem] border border-[var(--color-acento)] shadow-sm transition-all duration-300 hover:shadow-md bg-[var(--color-blanco)]">
+  <div class="relative overflow-hidden p-8 sm:p-12 rounded-[2rem] border border-[var(--color-borde)] shadow-sm transition-all duration-300 hover:shadow-md bg-[var(--color-blanco)]">
     
     <!-- Fondo Mármol -->
     <!-- Fondo Mármol -->
@@ -26,7 +26,7 @@ import marmolBg from '../img/marmol.png';
     <!-- Contenido del Formulario -->
     <div class="relative z-10" id="rsvp-form-container">
 
-      <h2 class="mt-2 mb-8 font-serif text-4xl sm:text-5xl text-[var(--color-texto-fuerte)] text-center">
+      <h2 class="mt-2 mb-8 font-serif text-4xl sm:text-5xl text-[var(--color-texto)] text-center">
         Completar el formulario
       </h2>
       
@@ -46,7 +46,7 @@ import marmolBg from '../img/marmol.png';
             name="name"
             autocomplete="name"
             required
-            class="w-full rounded-2xl border border-[var(--color-acento-suave)] bg-[var(--color-superficie-blanda)] backdrop-blur-sm px-5 py-3.5 outline-none transition focus:border-[var(--color-acento)] focus:ring-1 focus:ring-[var(--color-acento)] text-[var(--color-texto)] placeholder-[var(--color-texto-suave)] shadow-sm"
+            class="w-full rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie-blanda)] backdrop-blur-sm px-5 py-3.5 outline-none transition focus:border-[var(--color-acento)] focus:ring-1 focus:ring-[var(--color-acento)] text-[var(--color-texto)] placeholder-[var(--color-texto-suave)] shadow-sm"
             placeholder="Ej: Juan Pérez"
           />
         </div>
@@ -66,7 +66,7 @@ import marmolBg from '../img/marmol.png';
             type="tel"
             autocomplete="tel"
             required
-            class="w-full rounded-2xl border border-[var(--color-acento-suave)] bg-[var(--color-superficie-blanda)] backdrop-blur-sm px-5 py-3.5 outline-none transition focus:border-[var(--color-acento)] focus:ring-1 focus:ring-[var(--color-acento)] text-[var(--color-texto)] placeholder-[var(--color-texto-suave)] shadow-sm"
+            class="w-full rounded-2xl border border-[var(---color-borde)] bg-[var(--color-superficie-blanda)] backdrop-blur-sm px-5 py-3.5 outline-none transition focus:border-[var(--color-acento)] focus:ring-1 focus:ring-[var(--color-acento)] text-[var(--color-texto)] placeholder-[var(--color-texto-suave)] shadow-sm"
             placeholder="Ej: +54 9 11 1234 5678"
           />
         </div>
@@ -89,13 +89,13 @@ import marmolBg from '../img/marmol.png';
             type="number"
             min="1"
             required
-            class="w-full rounded-2xl border border-[var(--color-acento-suave)] bg-[var(--color-superficie-blanda)] backdrop-blur-sm px-5 py-3.5 outline-none transition focus:border-[var(--color-acento)] focus:ring-1 focus:ring-[var(--color-acento)] text-[var(--color-texto)] placeholder-[var(--color-texto-suave)] shadow-sm"
+            class="w-full rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie-blanda)] backdrop-blur-sm px-5 py-3.5 outline-none transition focus:border-[var(--color-acento)] focus:ring-1 focus:ring-[var(--color-acento)] text-[var(--color-texto)] placeholder-[var(--color-texto-suave)] shadow-sm"
             placeholder="Ej: 2"
           />
         </div>
         
         <!-- Selector de Asistencia -->
-        <div class="space-y-4 rounded-[1.5rem] border border-[var(--color-acento-suave)] bg-[var(--color-superficie-media)] backdrop-blur-md p-6 shadow-sm">
+        <div class="space-y-4 rounded-[1.5rem] border border-[var(--color-borde)] bg-[var(--color-superficie-media)] backdrop-blur-md p-6 shadow-sm">
 
           <p class="text-sm font-bold uppercase tracking-[0.25em] text-[var(--color-texto-fuerte)] text-center">
             ¿Asistirás?
@@ -108,7 +108,7 @@ import marmolBg from '../img/marmol.png';
                 type="radio"
                 name="attendance"
                 value="acepta"
-                class="h-5 w-5 text-[var(--color-acento)] border-[var(--color-gray-300)] focus:ring-[var(--color-acento)]"
+                class="h-5 w-5 text-[var(--color-acento)] border-[var(--color-borde)] focus:ring-[var(--color-acento)]"
               />
               Sí, asistiré
             </label>
@@ -118,7 +118,7 @@ import marmolBg from '../img/marmol.png';
                 type="radio"
                 name="attendance"
                 value="declina"
-                class="h-5 w-5 text-[var(--color-bordo)] border-[var(--color-gray-300)] focus:ring-[var(--color-bordo)]"
+                class="h-5 w-5 text-[var(--color-bordo)] border-[var(--color-borde)] focus:ring-[var(--color-bordo)]"
               />
               Lamentablemente declino
             </label>
@@ -138,7 +138,7 @@ import marmolBg from '../img/marmol.png';
           <textarea
             id="rsvp-message"
             name="message"
-            class="min-h-[120px] w-full rounded-2xl border border-[var(--color-acento-suave)] bg-[var(--color-superficie-blanda)] backdrop-blur-sm px-5 py-3.5 outline-none transition focus:border-[var(--color-acento)] focus:ring-1 focus:ring-[var(--color-acento)] text-[var(--color-texto)] placeholder-[var(--color-texto-suave)] shadow-sm"
+            class="min-h-[120px] w-full rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie-blanda)] backdrop-blur-sm px-5 py-3.5 outline-none transition focus:border-[var(--color-acento)] focus:ring-1 focus:ring-[var(--color-acento)] text-[var(--color-texto)] placeholder-[var(--color-texto-suave)] shadow-sm"
             placeholder="Escribe aquí si tienes restricciones alimenticias o un lindo mensaje para los novios..."
           ></textarea>
         </div>
