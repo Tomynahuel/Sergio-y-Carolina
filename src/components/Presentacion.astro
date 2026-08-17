@@ -1,15 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 
-
 import hoja01 from '../img/petalo.png';
 import hoja2 from '../img/petalo.png';
-
 
 import { BODA_INFO } from '../data/InfoBoda.js';
 
 // Si usas hojas flotantes, mantenemos esa lógica
-
 const leafImages = [
   hoja01,
   hoja2,
@@ -30,20 +27,25 @@ const leafImages = [
 ];
 ---
 
-<section id="home" tabindex="-1" class="relative flex min-h-screen items-center justify-center overflow-hidden">
+<section
+  id="home"
+  tabindex="-1"
+  class="relative flex min-h-screen items-center justify-center overflow-hidden"
+>
   
   <Image 
     src={BODA_INFO.presentacion} 
     alt="Fondo casamiento" 
     class="absolute inset-0 w-full h-full object-cover object-center z-0" 
-    loading="eager" 
-    
-    
+    loading="eager"
   />
 
-  <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/35 to-black/60 z-[1]"></div>
+  <!-- Overlay -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-[var(--color-sombra-fondo-suave)] via-[var(--color-sombra-suave)] to-[var(--color-sombra-fondo-fuerte)] z-[1]"
+  ></div>
   
-  <div class="leaves pointer-events-none z-[1]" aria-hidden="true "> 
+  <div class="leaves pointer-events-none z-[1]" aria-hidden="true">
     {leafImages.map((image, index) => (
       <span
         class={`leaf leaf-${index + 1}`}
@@ -52,17 +54,61 @@ const leafImages = [
     ))}
   </div>
 
-  <div class="relative z-[3] w-full px-4 py-24 text-center text-white sm:px-6 lg:px-8">
+  <div
+    class="relative z-[3] w-full px-4 py-24 text-center text-[var(--color-blanco)] sm:px-6 lg:px-8"
+  >
     <div class="mx-auto max-w-4xl p-8 sm:p-12">
-      <p class="mb-4 text-sm uppercase tracking-[0.4em] text-white/80">Nos casamos</p>
-      <h1 class="font-serif text-5xl leading-tight sm:text-6xl lg:text-8xl">{BODA_INFO.nombres}</h1>
-      <p class="mx-auto mt-6 max-w-2xl text-lg text-white/90 sm:text-xl">Una celebración llena de amor, recuerdos y el comienzo de una nueva historia juntos.</p>
+
+      <p
+        class="mb-4 text-sm uppercase tracking-[0.4em] text-[var(--color-superficie-media)]"
+      >
+        Nos casamos
+      </p>
+
+      <h1 class="font-serif text-5xl leading-tight sm:text-6xl lg:text-8xl">
+        {BODA_INFO.nombres}
+      </h1>
+
+      <p
+        class="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-superficie-oscura)] sm:text-xl"
+      >
+        Una celebración llena de amor, recuerdos y el comienzo de una nueva
+        historia juntos.
+      </p>
       
-      <div id="countdown" class="mt-10 grid grid-cols-2 gap-4 text-center sm:grid-cols-4">
-        <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="days">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Días</div></div>
-        <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="hours">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Horas</div></div>
-        <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="minutes">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Min</div></div>
-        <div class="rounded-2xl border border-white/30 bg-white/15 p-4"><div class="text-3xl font-semibold" data-unit="seconds">00</div><div class="mt-1 text-sm uppercase tracking-[0.2em]">Seg</div></div>
+      <div
+        id="countdown"
+        class="mt-10 grid grid-cols-2 gap-4 text-center sm:grid-cols-4"
+      >
+
+        <div
+          class="rounded-2xl border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] p-4"
+        >
+          <div class="text-3xl font-semibold" data-unit="days">00</div>
+          <div class="mt-1 text-sm uppercase tracking-[0.2em]">Días</div>
+        </div>
+
+        <div
+          class="rounded-2xl border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] p-4"
+        >
+          <div class="text-3xl font-semibold" data-unit="hours">00</div>
+          <div class="mt-1 text-sm uppercase tracking-[0.2em]">Horas</div>
+        </div>
+
+        <div
+          class="rounded-2xl border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] p-4"
+        >
+          <div class="text-3xl font-semibold" data-unit="minutes">00</div>
+          <div class="mt-1 text-sm uppercase tracking-[0.2em]">Min</div>
+        </div>
+
+        <div
+          class="rounded-2xl border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] p-4"
+        >
+          <div class="text-3xl font-semibold" data-unit="seconds">00</div>
+          <div class="mt-1 text-sm uppercase tracking-[0.2em]">Seg</div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -83,10 +129,17 @@ const leafImages = [
       const minutes = Math.floor((d / (1000 * 60)) % 60);
       const seconds = Math.floor((d / 1000) % 60);
 
-      container.querySelector('[data-unit="days"]').textContent = days.toString().padStart(2, '0');
-      container.querySelector('[data-unit="hours"]').textContent = hours.toString().padStart(2, '0');
-      container.querySelector('[data-unit="minutes"]').textContent = minutes.toString().padStart(2, '0');
-      container.querySelector('[data-unit="seconds"]').textContent = seconds.toString().padStart(2, '0');
+      container.querySelector('[data-unit="days"]').textContent =
+        days.toString().padStart(2, '0');
+
+      container.querySelector('[data-unit="hours"]').textContent =
+        hours.toString().padStart(2, '0');
+
+      container.querySelector('[data-unit="minutes"]').textContent =
+        minutes.toString().padStart(2, '0');
+
+      container.querySelector('[data-unit="seconds"]').textContent =
+        seconds.toString().padStart(2, '0');
     }, 1000);
   }
 </script>

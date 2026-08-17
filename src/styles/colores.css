@@ -1,0 +1,182 @@
+:root {
+  /* =====================================================
+     PALETA MAESTRA
+     ===================================================== */
+
+  --color-bordo: #52131A;
+  --color-verde: #829586;
+  --color-verde-claro: #A6B3A9;
+  --color-rosa: #E5C8C2;
+  --color-blanco: #ece5e5;
+  --color-negro: #070706 ;
+   --color-fondo-blanco: #ECE3DE;
+
+
+  /* =====================================================
+     COLORES PRINCIPALES
+     ===================================================== */
+
+  --color-principal: var(--color-bordo);
+  --color-principal-hover: var(--color-bordo);
+
+  --color-acento: var(--color-verde);
+  --color-acento-fuerte: var(--color-verde);
+  --color-acento-suave: color-mix(in srgb, var(--color-verde) 30%, transparent);
+
+
+  /* =====================================================
+     FONDOS
+     ===================================================== */
+
+  --color-fondo: var(--color-fondo-blanco);
+  --color-fondo-claro: var(--color-blanco);
+
+  --color-superficie: var(--color-blanco);
+  --color-superficie-suave: var(--color-rosa);
+
+  --color-superficie-blanda: color-mix(
+    in srgb,
+    var(--color-blanco) 20%,
+    transparent
+  );
+
+  --color-superficie-media: color-mix(
+    in srgb,
+    var(--color-blanco) 60%,
+    transparent
+  );
+
+  --color-superficie-oscura: color-mix(
+    in srgb,
+    var(--color-blanco) 50%,
+    transparent
+  );
+
+
+  /* =====================================================
+     ORO / ACENTOS
+     ===================================================== */
+
+  --color-oro: var(--color-verde);
+  --color-oro-suave: color-mix(
+    in srgb,
+    var(--color-verde) 40%,
+    transparent
+  );
+
+
+  /* =====================================================
+     VERDES
+     ===================================================== */
+
+  --color-verde-suave: var(--color-verde-claro);
+
+  --color-verde-suave-fondo: color-mix(
+    in srgb,
+    var(--color-verde-claro) 10%,
+    transparent
+  );
+
+  --color-sage: var(--color-verde);
+  --color-sage-soft: var(--color-verde-suave-fondo);
+
+
+  /* =====================================================
+     ROSADOS
+     ===================================================== */
+
+  --color-rosa-suave: var(--color-rosa);
+
+
+  /* =====================================================
+     TEXTOS
+     ===================================================== */
+
+  --color-texto: var(--color-bordo);
+  --color-texto-fuerte: var(--color-bordo);
+  --color-texto-suave: var(--color-bordo);
+
+  --color-text-primary: var(--color-texto);
+  --color-text-secondary: var(--color-texto-suave);
+  --color-text-strong: var(--color-texto-fuerte);
+
+
+  /* =====================================================
+     BORDES
+     ===================================================== */
+
+  --color-borde: var(--color-verde);
+  --color-borde-suave: color-mix(
+    in srgb,
+    var(--color-verde) 30%,
+    transparent
+  );
+
+
+  /* =====================================================
+     OVERLAYS
+     ===================================================== */
+
+  --color-overlay-blanca: color-mix(
+    in srgb,
+    var(--color-blanco) 70%,
+    transparent
+  );
+
+  --color-overlay-media: color-mix(
+    in srgb,
+    var(--color-blanco) 60%,
+    transparent
+  );
+
+  --color-overlay-suave: color-mix(
+    in srgb,
+    var(--color-blanco) 50%,
+    transparent
+  );
+
+
+  /* =====================================================
+     OTROS
+     ===================================================== */
+
+  --color-selection: var(--color-verde);
+
+  --color-sobre-fondo: var(--color-rosa);
+
+  --color-ivory: var(--color-blanco);
+  --color-ivory-soft: var(--color-blanco);
+
+  --color-white: var(--color-blanco);
+  --color-white-soft: var(--color-blanco);
+  --color-white-70: var(--color-superficie-blanda);
+  --color-white-60: var(--color-superficie-media);
+  --color-white-50: var(--color-superficie-oscura);
+
+
+  /* =====================================================
+     SOMBRAS
+     ===================================================== */
+
+  --color-sombra-suave: rgba(0, 0, 0, 0.08);
+  --color-sombra-fuerte: rgba(0, 0, 0, 0.18);
+  --color-sombra-oscura: rgba(0, 0, 0, 0.6);
+
+  --color-sombra-fondo-suave: rgba(0, 0, 0, 0.4);
+  --color-sombra-fondo-fuerte: rgba(0, 0, 0, 0.5);
+
+
+  /* =====================================================
+     ESTADOS
+     ===================================================== */
+
+  --color-exito: var(--color-verde);
+  --color-exito-hover: var(--color-verde);
+
+  /* =====================================================
+     LINEAS
+     ===================================================== */
+
+   --color-lineas: var(--color-verde)
+
+}

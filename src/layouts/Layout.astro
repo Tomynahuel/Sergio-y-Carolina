@@ -3,94 +3,222 @@ import { Image } from 'astro:assets';
 import { BODA_INFO } from '../data/InfoBoda.js';
 import { ClientRouter } from 'astro:transitions';
 
-
 import '../styles/global.css';
+
 const { title } = Astro.props;
-
-
 
 const baseUrl = import.meta.env.BASE_URL.endsWith('/')
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 
 const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
-
 ---
 
 <html lang="es" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Sergio y Carolina te invitan a celebrar su boda con una experiencia elegante y emotiva." />
+
+    <meta
+      name="description"
+      content="Sergio y Carolina te invitan a celebrar su boda con una experiencia elegante y emotiva."
+    />
+
     <title>{title}</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"
+    ></script>
+
     <ClientRouter />
   </head>
-  <body class="min-h-screen bg-ivory text-slate-700 antialiased leading-relaxed pt-20">
-   <!--- <Sobre /> -->
-  <header 
-        class="fixed top-0 z-50 w-full border-b border-white/50 bg-ivory/95 backdrop-blur-md transition-transform duration-300 ease-in-out" 
-        x-data="{ open: false, showBar: true, lastScrollY: 0 }"
-        @scroll.window="
-          const currentScrollY = window.scrollY; 
-          showBar = currentScrollY < lastScrollY || currentScrollY < 50; 
-          lastScrollY = currentScrollY;
-        "
-        :class="showBar ? 'translate-y-0' : '-translate-y-full'"
+
+  <body
+    class="min-h-screen bg-[var(--color-fondo)] text-[var(--color-texto)] antialiased leading-relaxed pt-20"
+  >
+
+    <header
+      class="fixed top-0 z-50 w-full border-b border-[var(--color-borde-suave)] bg-[var(--color-superficie)] backdrop-blur-md transition-transform duration-300 ease-in-out"
+      x-data="{ open: false, showBar: true, lastScrollY: 0 }"
+      @scroll.window="
+        const currentScrollY = window.scrollY;
+        showBar = currentScrollY < lastScrollY || currentScrollY < 50;
+        lastScrollY = currentScrollY;
+      "
+      :class="showBar ? 'translate-y-0' : '-translate-y-full'"
+    >
+
+      <div
+        class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
       >
-        <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <a href="#home" class="flex items-center gap-2 font-serif text-3xl font-semibold tracking-[0.2em] text-slate-900">
-            <span>S</span>
-            <Image src={BODA_INFO.anillos} alt="Anillo" class="h-12 w-12 object-contain" />
-            <span>C</span>
+
+        <!-- LOGO -->
+        <a
+          href="#home"
+          class="flex items-center gap-2 font-serif text-3xl font-semibold tracking-[0.2em] text-[var(--color-principal)]"
+        >
+          <span>S</span>
+
+          <Image
+            src={BODA_INFO.anillos}
+            alt="Anillo"
+            class="h-12 w-12 object-contain"
+          />
+
+          <span>C</span>
+        </a>
+
+        <!-- BOTÓN MOBILE -->
+        <button
+          @click="open = !open"
+          class="text-3xl text-[var(--color-principal)] lg:hidden"
+          aria-label="Abrir menú"
+        >
+          ☰
+        </button>
+
+        <!-- MENÚ DESKTOP -->
+        <nav class="hidden gap-8 lg:flex">
+
+          <a
+            href="#home"
+            class="text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
+          >
+            Inicio
           </a>
-          
-          <button @click="open = !open" class="text-3xl text-slate-900 lg:hidden">☰</button>
-          
-          <nav class="hidden gap-8 lg:flex">
-            <a href="#home" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Inicio</a>
-            <a href="#story" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Nuestra historia</a>
-            <a href="#itinerary" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Cronograma</a>
-            <a href="#gallery" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Galería</a>
-            <a href="/Sergio-y-Carolina/invitacion/" class="text-sm uppercase tracking-[0.15em] text-slate-700 transition hover:text-sage">Confirmar asistencia</a>
-          </nav>
+
+          <a
+            href="#story"
+            class="text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
+          >
+            Nuestra historia
+          </a>
+
+          <a
+            href="#itinerary"
+            class="text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
+          >
+            Cronograma
+          </a>
+
+          <a
+            href="#gallery"
+            class="text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
+          >
+            Galería
+          </a>
+
+          <a
+            href="/Sergio-y-Carolina/invitacion/"
+            class="text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
+          >
+            Confirmar asistencia
+          </a>
+
+        </nav>
+      </div>
+
+      <!-- MENÚ MOBILE -->
+      <div x-show="open" x-transition class="lg:hidden">
+
+        <div
+          class="border-t border-[var(--color-borde-suave)] bg-[var(--color-superficie)] px-4 py-4 backdrop-blur-sm"
+        >
+
+          <div
+            class="flex flex-col gap-2 text-sm uppercase tracking-[0.15em] text-[var(--color-texto)]"
+          >
+
+            <a
+              href="#home"
+              class="block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
+            >
+              Inicio
+            </a>
+
+            <a
+              href="#story"
+              class="block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
+            >
+              Nuestra historia
+            </a>
+
+            <a
+              href="#itinerary"
+              class="block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
+            >
+              Cronograma
+            </a>
+
+            <a
+              href="#gallery"
+              class="block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
+            >
+              Galería
+            </a>
+
+            <a
+              href="https://tomynahuel.github.io/Sergio-y-Carolina/invitacion/"
+              class="block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
+            >
+              Confirmar asistencia
+            </a>
+
+          </div>
+
         </div>
 
-        <div x-show="open" x-transition class="lg:hidden">
-          <div class="border-t border-gray-200 bg-ivory/95 px-4 py-4 backdrop-blur-sm">
-            <div class="flex flex-col gap-2 text-sm uppercase tracking-[0.15em] text-slate-700">
-              <a href="#home" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Inicio</a>
-              <a href="#story" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Nuestra historia</a>
-              <a href="#itinerary" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Cronograma</a>
-              <a href="#gallery" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Galería</a>
-              <a href="https://tomynahuel.github.io/Sergio-y-Carolina/invitacion/" class="block rounded-full px-4 py-3 transition hover:bg-sage/10">Confirmar asistencia</a>
-            </div>
-          </div>
-        </div>
+      </div>
     </header>
 
+
+    <!-- CONTENIDO -->
     <main>
       <slot />
     </main>
 
-    <footer class="border-t border-gray-200 bg-white/70 py-10">
-      <div class="section-shell flex flex-col items-center justify-between gap-4 text-center text-sm text-gray-600 sm:flex-row">
-        <p>© 2026 Sergio y Carolina. Gracias por acompañarnos.</p>
-        <p>Con amor, siempre.</p>
+
+    <!-- FOOTER -->
+    <footer
+      class="border-t border-[var(--color-borde-suave)] bg-[var(--color-superficie-media)] py-10"
+    >
+
+      <div
+        class="section-shell flex flex-col items-center justify-between gap-4 text-center text-sm text-[var(--color-texto-suave)] sm:flex-row"
+      >
+
+        <p>
+          © 2026 Sergio y Carolina. Gracias por acompañarnos.
+        </p>
+
+        <p>
+          Con amor, siempre.
+        </p>
+
       </div>
+
     </footer>
 
-    <div 
-      x-data="{ playing: false }" 
-      x-init="$refs.audioEl.play().catch(() => {})" 
+
+    <!-- MÚSICA -->
+    <div
+      x-data="{ playing: false }"
+      x-init="$refs.audioEl.play().catch(() => {})"
       class="fixed bottom-5 right-5 z-50"
     >
-      <audio 
-        x-ref="audioEl" 
-        src={musicaAmbiente} 
+
+      <audio
+        x-ref="audioEl"
+        src={musicaAmbiente}
         loop
         @play="playing = true"
         @pause="playing = false"
@@ -98,11 +226,17 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
 
       <button
         @click="playing ? $refs.audioEl.pause() : $refs.audioEl.play().catch(() => {})"
-        class="flex h-11 w-11 items-center justify-center rounded-full bg-botanical text-ivory shadow-lg transition hover:bg-sage"
+        class="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--color-principal)] text-[var(--color-blanco)] shadow-lg transition hover:bg-[var(--color-principal-hover)]"
         :aria-label="playing ? 'Pausar música' : 'Reproducir música'"
       >
-        <span class="text-xl" x-text="playing ? '⏸' : '▶'" aria-hidden="true"></span>
+        <span
+          class="text-xl"
+          x-text="playing ? '⏸' : '▶'"
+          aria-hidden="true"
+        ></span>
       </button>
+
     </div>
+
   </body>
 </html>
