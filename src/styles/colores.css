@@ -193,21 +193,31 @@
      TIPOGRAFÍAS
      ========================================================= */
 
+  /* Nombres de los novios */
+  --font-nombres: 'Ephesis', cursive;
+  --peso-nombres: 400;
+
+  /* Títulos principales */
   --font-titulo: 'Cormorant Garamond', serif;
-  --font-subtitulo: 'Cormorant Garamond', serif;
-  --font-parrafo: 'Inter', sans-serif;
-  --font-palabra: 'Inter', sans-serif;
-  --font-destacado: 'Inter', sans-serif;
-
-
-  /* =========================================================
-     PESOS TIPOGRÁFICOS
-     ========================================================= */
-
   --peso-titulo: 600;
-  --peso-subtitulo: 500;
-  --peso-parrafo: 400;
-  --peso-palabra: 500;
-  --peso-destacado: 700;
 
+  /* Subtítulos */
+  --font-subtitulo: 'Cormorant Garamond', serif;
+  --peso-subtitulo: 500;
+
+  /* Párrafos */
+  --font-parrafo: "Lora", serif;
+  --peso-parrafo: 400;
+
+  /* Fechas y horarios */
+  --font-fecha: 'Cormorant Garamond', serif;
+  --peso-fecha: 500;
+
+  /* Palabras pequeñas / etiquetas */
+  --font-palabra: 'Inter', sans-serif;
+  --peso-palabra: 600;
+
+  /* Texto destacado */
+  --font-destacado: 'Cormorant Garamond', cursive;
+  --peso-destacado: 600;
 }
