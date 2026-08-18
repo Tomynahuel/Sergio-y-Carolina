@@ -1,30 +1,21 @@
 ---
-import { Image } from 'astro:assets';
-import { BODA_INFO } from '../data/InfoBoda.js';
-import { ClientRouter } from 'astro:transitions';
+import { Image } from "astro:assets";
+import { BODA_INFO } from "../data/InfoBoda.js";
+import { ClientRouter } from "astro:transitions";
 
-import '../styles/global.css';
-
-import letraS from '../img/s.png'; // Imagen de la letra S
-import letraC from '../img/c.png'; // Imagen de la letra C
-
+import "../styles/global.css";
 
 const { title } = Astro.props;
 
-const baseUrl = import.meta.env.BASE_URL.endsWith('/')
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 
 const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
-
-
-
 ---
 
 <html lang="es" class="scroll-smooth">
-
   <head>
-
     <meta charset="UTF-8" />
 
     <meta
@@ -52,80 +43,37 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
     ></script>
 
     <ClientRouter />
-
   </head>
 
-
   <body
-    class="min-h-screen bg-[var(--color-fondo)] text-[var(--color-texto)] antialiased leading-relaxed"
+    class="min-h-screen bg-[var(--color-fondo)] text-[var(--color-texto)] leading-relaxed antialiased"
   >
-
     <!-- =====================================================
          HEADER
          ===================================================== -->
 
     <header
       id="main-header"
-      class="
-        fixed
-        top-0
-        z-50
-        w-full
-
-        border-b
-        border-[var(--color-borde-suave)]
-
-        bg-[var(--color-superficie)]
-
-        backdrop-blur-md
-
-        transition-transform
-        duration-300
-        ease-in-out
-      "
+      class="fixed top-0 z-50 w-full border-b border-[var(--color-borde-suave)] bg-[var(--color-superficie)] backdrop-blur-md transition-transform duration-300 ease-in-out"
     >
-
       <div
-        class="
-          mx-auto
-          flex
-          h-20
-          max-w-7xl
-          items-center
-          justify-between
-          px-4
-          sm:px-6
-          lg:px-8
-        "
+        class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
       >
-
         <!-- =================================================
              LOGO
              ================================================= -->
 
         <a
           href="#home"
-          class="
-            flex
-            items-center
-            gap-2
-            text-[var(--color-principal)]
-          "
+          class="flex items-center gap-2 text-[var(--color-principal)]"
           aria-label="Inicio"
         >
-
           <Image
             src={BODA_INFO.anillos}
             alt="Anillo"
-            class="
-              h-12
-              w-12
-              object-contain
-              sm:h-14
-              sm:w-14
-            "
+            class="h-12 w-12 object-contain sm:h-14 sm:w-14"
           />
-
+        </a>
 
         <!-- =================================================
              BOTÓN MOBILE
@@ -133,103 +81,58 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
 
         <button
           id="mobile-menu-button"
-          class="
-            text-3xl
-            text-[var(--color-principal)]
-            lg:hidden
-          "
+          type="button"
+          class="text-3xl text-[var(--color-principal)] lg:hidden"
           aria-label="Abrir menú"
           aria-expanded="false"
         >
           ☰
         </button>
 
-
         <!-- =================================================
              MENÚ DESKTOP
              ================================================= -->
 
-        <nav class="hidden gap-8 lg:flex">
-
+        <nav
+          class="hidden gap-8 lg:flex"
+          aria-label="Navegación principal"
+        >
           <a
             href="#home"
-            class="
-              font-parrafo
-              text-sm
-              uppercase
-              tracking-[0.15em]
-              text-[var(--color-texto)]
-              transition
-              hover:text-[var(--color-acento)]
-            "
+            class="font-parrafo text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
           >
             Inicio
           </a>
 
           <a
             href="#story"
-            class="
-              font-parrafo
-              text-sm
-              uppercase
-              tracking-[0.15em]
-              text-[var(--color-texto)]
-              transition
-              hover:text-[var(--color-acento)]
-            "
+            class="font-parrafo text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
           >
             Nuestra historia
           </a>
 
           <a
             href="#itinerary"
-            class="
-              font-parrafo
-              text-sm
-              uppercase
-              tracking-[0.15em]
-              text-[var(--color-texto)]
-              transition
-              hover:text-[var(--color-acento)]
-            "
+            class="font-parrafo text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
           >
             Cronograma
           </a>
 
           <a
             href="#gallery"
-            class="
-              font-parrafo
-              text-sm
-              uppercase
-              tracking-[0.15em]
-              text-[var(--color-texto)]
-              transition
-              hover:text-[var(--color-acento)]
-            "
+            class="font-parrafo text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
           >
             Galería
           </a>
 
           <a
             href="/Sergio-y-Carolina/invitacion/"
-            class="
-              font-parrafo
-              text-sm
-              uppercase
-              tracking-[0.15em]
-              text-[var(--color-texto)]
-              transition
-              hover:text-[var(--color-acento)]
-            "
+            class="font-parrafo text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
           >
             Confirmar asistencia
           </a>
-
         </nav>
-
       </div>
-
 
       <!-- ===================================================
            MENÚ MOBILE
@@ -239,113 +142,50 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
         id="mobile-menu"
         class="hidden lg:hidden"
       >
-
         <div
-          class="
-            border-t
-            border-[var(--color-borde-suave)]
-            bg-[var(--color-superficie)]
-            px-4
-            py-4
-            backdrop-blur-sm
-          "
+          class="border-t border-[var(--color-borde-suave)] bg-[var(--color-superficie)] px-4 py-4 backdrop-blur-sm"
         >
-
           <div
-            class="
-              flex
-              flex-col
-              gap-2
-              text-sm
-              uppercase
-              tracking-[0.15em]
-              text-[var(--color-texto)]
-            "
+            class="flex flex-col gap-2 text-sm uppercase tracking-[0.15em] text-[var(--color-texto)]"
           >
-
             <a
               href="#home"
-              class="
-                font-parrafo
-                block
-                rounded-full
-                px-4
-                py-3
-                transition
-                hover:bg-[var(--color-acento-suave)]
-              "
+              class="font-parrafo block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
             >
               Inicio
             </a>
 
             <a
               href="#story"
-              class="
-                font-parrafo
-                block
-                rounded-full
-                px-4
-                py-3
-                transition
-                hover:bg-[var(--color-acento-suave)]
-              "
+              class="font-parrafo block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
             >
               Nuestra historia
             </a>
 
             <a
               href="#itinerary"
-              class="
-                font-parrafo
-                block
-                rounded-full
-                px-4
-                py-3
-                transition
-                hover:bg-[var(--color-acento-suave)]
-              "
+              class="font-parrafo block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
             >
               Cronograma
             </a>
 
             <a
               href="#gallery"
-              class="
-                font-parrafo
-                block
-                rounded-full
-                px-4
-                py-3
-                transition
-                hover:bg-[var(--color-acento-suave)]
-              "
+              class="font-parrafo block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
             >
               Galería
             </a>
 
             <a
               href="/Sergio-y-Carolina/invitacion/"
-              class="
-                font-parrafo
-                block
-                rounded-full
-                px-4
-                py-3
-                transition
-                hover:bg-[var(--color-acento-suave)]
-              "
+              class="font-parrafo block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
             >
               Confirmar asistencia
             </a>
-
           </div>
-
         </div>
-
       </div>
-
     </header>
-
 
     <!-- =====================================================
          CONTENIDO
@@ -355,35 +195,16 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
       <slot />
     </main>
 
-
     <!-- =====================================================
          FOOTER
          ===================================================== -->
 
     <footer
-      class="
-        border-t
-        border-[var(--color-borde-suave)]
-        bg-[var(--color-superficie-media)]
-        py-10
-      "
+      class="border-t border-[var(--color-borde-suave)] bg-[var(--color-superficie-media)] py-10"
     >
-
       <div
-        class="
-          section-shell
-          flex
-          flex-col
-          items-center
-          justify-between
-          gap-4
-          text-center
-          text-sm
-          text-[var(--color-texto-suave)]
-          sm:flex-row
-        "
+        class="section-shell flex flex-col items-center justify-between gap-4 text-center text-sm text-[var(--color-texto-suave)] sm:flex-row"
       >
-
         <p>
           © 2026 Sergio y Carolina. Gracias por acompañarnos.
         </p>
@@ -391,11 +212,8 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
         <p>
           Con amor, siempre.
         </p>
-
       </div>
-
     </footer>
-
 
     <!-- =====================================================
          MÚSICA
@@ -406,7 +224,6 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
       x-init="$refs.audioEl.play().catch(() => {})"
       class="fixed bottom-5 right-5 z-50"
     >
-
       <audio
         x-ref="audioEl"
         src={musicaAmbiente}
@@ -415,39 +232,23 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
         @pause="playing = false"
       ></audio>
 
-
       <button
+        type="button"
         @click="
           playing
             ? $refs.audioEl.pause()
             : $refs.audioEl.play().catch(() => {})
         "
-        class="
-          flex
-          h-11
-          w-11
-          items-center
-          justify-center
-          rounded-full
-          bg-[var(--color-principal)]
-          text-[var(--color-blanco)]
-          shadow-lg
-          transition
-          hover:bg-[var(--color-principal-hover)]
-        "
+        class="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--color-principal)] text-[var(--color-blanco)] shadow-lg transition hover:bg-[var(--color-principal-hover)]"
         :aria-label="playing ? 'Pausar música' : 'Reproducir música'"
       >
-
         <span
           class="text-xl"
           x-text="playing ? '⏸' : '▶'"
           aria-hidden="true"
         ></span>
-
       </button>
-
     </div>
-
 
     <!-- =====================================================
          CONTROL DEL HEADER
@@ -456,136 +257,126 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
     <script>
       let lastScrollY = window.scrollY;
 
-      const header =
-        document.getElementById('main-header');
+      const header = document.getElementById("main-header");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileButton = document.getElementById("mobile-menu-button");
 
-      const mobileMenu =
-        document.getElementById('mobile-menu');
-
-      const mobileButton =
-        document.getElementById('mobile-menu-button');
-
-
-      /* =====================================================
-         OCULTAR HEADER AL BAJAR
-         MOSTRAR HEADER AL SUBIR
-         ===================================================== */
+      /*
+       * =====================================================
+       * OCULTAR HEADER AL BAJAR
+       * MOSTRAR HEADER AL SUBIR
+       * =====================================================
+       */
 
       function handleHeaderScroll() {
-
         if (!header) return;
 
         const currentScrollY = window.scrollY;
 
-
-        /* Siempre visible arriba */
+        /*
+         * Siempre visible al comienzo de la página.
+         */
 
         if (currentScrollY <= 50) {
-
-          header.classList.remove('-translate-y-full');
-
+          header.classList.remove("-translate-y-full");
           lastScrollY = currentScrollY;
-
           return;
         }
 
-
-        /* Bajando */
+        /*
+         * Bajando.
+         */
 
         if (currentScrollY > lastScrollY) {
+          header.classList.add("-translate-y-full");
 
-          header.classList.add('-translate-y-full');
-
-          /* Cerramos menú mobile si estaba abierto */
+          /*
+           * Cerramos el menú mobile si estaba abierto.
+           */
 
           if (mobileMenu) {
-            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.add("hidden");
           }
 
+          if (mobileButton) {
+            mobileButton.setAttribute("aria-expanded", "false");
+          }
         }
 
-        /* Subiendo */
+        /*
+         * Subiendo.
+         */
 
         else if (currentScrollY < lastScrollY) {
-
-          header.classList.remove('-translate-y-full');
-
+          header.classList.remove("-translate-y-full");
         }
-
 
         lastScrollY = currentScrollY;
       }
 
+      window.addEventListener("scroll", handleHeaderScroll, {
+        passive: true,
+      });
 
-      window.addEventListener(
-        'scroll',
-        handleHeaderScroll,
-        { passive: true }
-      );
-
-
-      /* =====================================================
-         MENÚ MOBILE
-         ===================================================== */
+      /*
+       * =====================================================
+       * MENÚ MOBILE
+       * =====================================================
+       */
 
       if (mobileButton && mobileMenu) {
+        mobileButton.addEventListener("click", () => {
+          const abierto = !mobileMenu.classList.contains("hidden");
 
-        mobileButton.addEventListener(
-          'click',
-          () => {
+          if (abierto) {
+            mobileMenu.classList.add("hidden");
 
-            const abierto =
-              !mobileMenu.classList.contains('hidden');
-
-            if (abierto) {
-
-              mobileMenu.classList.add('hidden');
-
-              mobileButton.setAttribute(
-                'aria-expanded',
-                'false'
-              );
-
-            } else {
-
-              mobileMenu.classList.remove('hidden');
-
-              mobileButton.setAttribute(
-                'aria-expanded',
-                'true'
-              );
-
-            }
-
-          }
-        );
-
-
-        /* Cerrar menú al tocar un enlace */
-
-        mobileMenu
-          .querySelectorAll('a')
-          .forEach((link) => {
-
-            link.addEventListener(
-              'click',
-              () => {
-
-                mobileMenu.classList.add('hidden');
-
-                mobileButton.setAttribute(
-                  'aria-expanded',
-                  'false'
-                );
-
-              }
+            mobileButton.setAttribute(
+              "aria-expanded",
+              "false",
             );
 
-          });
+            mobileButton.setAttribute(
+              "aria-label",
+              "Abrir menú",
+            );
+          } else {
+            mobileMenu.classList.remove("hidden");
 
+            mobileButton.setAttribute(
+              "aria-expanded",
+              "true",
+            );
+
+            mobileButton.setAttribute(
+              "aria-label",
+              "Cerrar menú",
+            );
+          }
+        });
+
+        /*
+         * Cerrar menú al tocar un enlace.
+         */
+
+        mobileMenu
+          .querySelectorAll("a")
+          .forEach((link) => {
+            link.addEventListener("click", () => {
+              mobileMenu.classList.add("hidden");
+
+              mobileButton.setAttribute(
+                "aria-expanded",
+                "false",
+              );
+
+              mobileButton.setAttribute(
+                "aria-label",
+                "Abrir menú",
+              );
+            });
+          });
       }
     </script>
-
   </body>
-
 </html>
