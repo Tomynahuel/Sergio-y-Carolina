@@ -1,491 +1,280 @@
 ---
-import '../styles/global.css';
-import { Image } from 'astro:assets';
+import "../styles/global.css";
+import { Image } from "astro:assets";
 
-import { BODA_INFO } from '../data/InfoBoda.js';
+import { BODA_INFO } from "../data/InfoBoda.js";
 
-import Presentacion from '../components/Presentacion.astro';
-import Bienvenida from '../components/Bienvenida.astro';
-import ConfirmaAsistencia from '../components/ConfirmaAsistencia.astro';
-import RSVP from '../components/RSVP.astro';
-import Contacto from '../components/Contacto.astro';
-import ResuInfo from '../components/InfoResu.astro';
-import Sobre from '../components/Sobre.astro';
+import Presentacion from "../components/Presentacion.astro";
+import Bienvenida from "../components/Bienvenida.astro";
+import ConfirmaAsistencia from "../components/ConfirmaAsistencia.astro";
+import RSVP from "../components/RSVP.astro";
+import Contacto from "../components/Contacto.astro";
+import ResuInfo from "../components/InfoResu.astro";
+import Sobre from "../components/Sobre.astro";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8" />
+    <title>Boda {BODA_INFO.nombres}</title>
+  </head>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-
-  <title>Boda {BODA_INFO.nombres}</title>
-</head>
-
-
-<body
-
-  
-
-  class="
-    m-0
-    min-h-screen
-    bg-[var(--color-fondo)]
-    p-0
-    font-parrafo
-    text-[var(--color-texto)]
-  "
->
-<Sobre/>
-
-  <!-- =====================================================
-       HEADER
-       ===================================================== -->
-
-  <header
-    id="site-header"
-    class="
-      fixed
-      top-0
-      z-50
-      w-full
-      border-b
-      border-[var(--color-borde-suave)]
-      bg-[var(--color-superficie)]
-      backdrop-blur-md
-      transition-transform
-      duration-300
-      ease-in-out
-    "
+  <body
+    class="m-0 min-h-screen bg-[var(--color-fondo)] p-0 font-parrafo text-[var(--color-texto)]"
   >
-
-    <div
-      class="
-        mx-auto
-        flex
-        h-20
-        max-w-7xl
-        items-center
-        justify-between
-        px-4
-        sm:px-6
-        lg:px-8
-      "
-    >
-
-
-      <!-- =================================================
-           LOGO
-           ================================================= -->
-
-      <a
-        href="/Sergio-y-Carolina/invitacion/"
-        class="
-          flex
-          items-center
-          gap-2
-          text-[var(--color-principal)]
-          transition-opacity
-          duration-200
-          hover:opacity-80
-        "
-        aria-label="Volver al inicio"
-      >
-        <!-- ANILLOS -->
-        <Image
-          src={BODA_INFO.anillos}
-          alt="Anillos"
-          class="
-            h-12
-            w-12
-            object-contain
-            sm:h-14
-            sm:w-14
-          "
-        />
-      <!-- =================================================
-           BOTÓN MOBILE
-           ================================================= -->
-
-      <button
-        id="mobile-menu-button"
-        type="button"
-        class="
-          flex
-          h-11
-          w-11
-          items-center
-          justify-center
-          rounded-full
-          text-3xl
-          text-[var(--color-principal)]
-          transition
-          hover:bg-[var(--color-acento-suave)]
-          lg:hidden
-        "
-        aria-label="Abrir menú"
-        aria-expanded="false"
-      >
-        ☰
-      </button>
-
-
-      <!-- =================================================
-           MENÚ DESKTOP
-           ================================================= -->
-
-      <nav
-        class="
-          hidden
-          items-center
-          gap-8
-          lg:flex
-        "
-        aria-label="Navegación principal"
-      >
-
-        <a
-          href="/Sergio-y-Carolina/"
-          class="
-            font-parrafo
-            text-sm
-            uppercase
-            tracking-[0.15em]
-            text-[var(--color-texto)]
-            transition
-            hover:text-[var(--color-acento)]
-          "
-        >
-          Inicio
-        </a>
-
-
-        <a
-          href="/Sergio-y-Carolina/invitacion/"
-          class="
-            font-parrafo
-            text-sm
-            uppercase
-            tracking-[0.15em]
-            text-[var(--color-texto)]
-            transition
-            hover:text-[var(--color-acento)]
-          "
-        >
-          Invitación
-        </a>
-
-      </nav>
-
-    </div>
-
-
     <!-- =====================================================
-         MENÚ MOBILE
+         SOBRE
          ===================================================== -->
 
-    <div
-      id="mobile-menu"
-      class="
-        hidden
-        border-t
-        border-[var(--color-borde-suave)]
-        bg-[var(--color-superficie)]
-        px-4
-        py-4
-        backdrop-blur-sm
-        lg:hidden
-      "
+    <Sobre />
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <header
+      id="site-header"
+      class="fixed top-0 z-50 w-full border-b border-[var(--color-borde-suave)] bg-[var(--color-superficie)] backdrop-blur-md transition-transform duration-300 ease-in-out"
     >
-
-      <nav
-        class="
-          flex
-          flex-col
-          gap-2
-          text-sm
-          uppercase
-          tracking-[0.15em]
-          text-[var(--color-texto)]
-        "
-        aria-label="Navegación móvil"
+      <div
+        class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
       >
-
-        <a
-          href="/Sergio-y-Carolina/"
-          class="
-            font-parrafo
-            block
-            rounded-full
-            px-4
-            py-3
-            transition
-            hover:bg-[var(--color-acento-suave)]
-          "
-        >
-          Inicio
-        </a>
-
+        <!-- =================================================
+             LOGO
+             ================================================= -->
 
         <a
           href="/Sergio-y-Carolina/invitacion/"
-          class="
-            font-parrafo
-            block
-            rounded-full
-            px-4
-            py-3
-            transition
-            hover:bg-[var(--color-acento-suave)]
-          "
+          class="flex items-center gap-2 text-[var(--color-principal)] transition-opacity duration-200 hover:opacity-80"
+          aria-label="Volver al inicio"
         >
-          Invitación
+          <Image
+            src={BODA_INFO.anillos}
+            alt="Anillos"
+            class="h-12 w-12 object-contain sm:h-14 sm:w-14"
+          />
         </a>
 
-      </nav>
+        <!-- =================================================
+             MENÚ DESKTOP
+             ================================================= -->
 
-    </div>
+        <nav
+          class="hidden items-center gap-8 lg:flex"
+          aria-label="Navegación principal"
+        >
+          <a
+            href="/Sergio-y-Carolina/"
+            class="font-parrafo text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
+          >
+            Inicio
+          </a>
 
-  </header>
+          <a
+            href="/Sergio-y-Carolina/invitacion/"
+            class="font-parrafo text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
+          >
+            Invitación
+          </a>
+        </nav>
 
+        <!-- =================================================
+             BOTÓN MOBILE
+             ================================================= -->
 
-  <!-- =====================================================
-       CONTENIDO PRINCIPAL
-       ===================================================== -->
+        <button
+          id="mobile-menu-button"
+          type="button"
+          class="flex h-11 w-11 items-center justify-center rounded-full text-3xl text-[var(--color-principal)] transition hover:bg-[var(--color-acento-suave)] lg:hidden"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+      </div>
 
-  <main class="w-full">
+      <!-- =====================================================
+           MENÚ MOBILE
+           ===================================================== -->
 
+      <div
+        id="mobile-menu"
+        class="hidden border-t border-[var(--color-borde-suave)] bg-[var(--color-superficie)] px-4 py-4 backdrop-blur-sm lg:hidden"
+      >
+        <nav
+          class="flex flex-col gap-2 text-sm uppercase tracking-[0.15em] text-[var(--color-texto)]"
+          aria-label="Navegación móvil"
+        >
+          <a
+            href="/Sergio-y-Carolina/"
+            class="font-parrafo block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
+          >
+            Inicio
+          </a>
 
-    <!-- ===================================================
-         PRESENTACIÓN
-         =================================================== -->
+          <a
+            href="/Sergio-y-Carolina/invitacion/"
+            class="font-parrafo block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
+          >
+            Invitación
+          </a>
+        </nav>
+      </div>
+    </header>
 
-    <section class="w-full">
+    <!-- =====================================================
+         CONTENIDO PRINCIPAL
+         ===================================================== -->
 
-      <Presentacion />
+    <main class="w-full">
+      <!-- ===================================================
+           PRESENTACIÓN
+           =================================================== -->
 
-    </section>
+      <section class="w-full">
+        <Presentacion />
+      </section>
 
+      <!-- ===================================================
+           INFORMACIÓN DE LA BODA
+           =================================================== -->
 
-    <!-- ===================================================
-         INFORMACIÓN DE LA BODA
-         =================================================== -->
+      <section
+        class="flex w-full flex-col items-center gap-10 bg-[var(--color-fondo)] px-4 py-12 sm:px-6 lg:px-8"
+      >
+        <!-- Bienvenida -->
 
-    <section
-      class="
-        flex
-        w-full
-        flex-col
-        items-center
-        gap-10
-        bg-[var(--color-fondo)]
-        px-4
-        py-12
-        sm:px-6
-        lg:px-8
-      "
-    >
+        <Bienvenida />
 
-      <!-- Bienvenida -->
+        <!-- Información resumida -->
 
-      <Bienvenida />
+        <ResuInfo />
 
+        <!-- Confirmación de asistencia -->
 
-      <!-- Información resumida -->
+        <ConfirmaAsistencia />
 
-      <ResuInfo />
-      <!-- RSVP -->
+        <!-- RSVP -->
 
-      <RSVP />
+        <RSVP />
 
+        <!-- Contacto -->
 
-      <!-- Contacto -->
+        <Contacto />
+      </section>
+    </main>
 
-      <Contacto />
+    <!-- =====================================================
+         NAVEGACIÓN Y SCROLL DEL HEADER
+         ===================================================== -->
 
-    </section>
+    <script>
+      const header = document.getElementById("site-header");
 
-  </main>
+      let lastScrollY = window.scrollY;
+      let ticking = false;
 
+      function actualizarHeader() {
+        if (!header) return;
 
-  <!-- =====================================================
-       NAVEGACIÓN Y SCROLL
-       ===================================================== -->
+        const currentScrollY = window.scrollY;
 
-  <script>
-    const header = document.getElementById('site-header');
+        /*
+         * Siempre mostrar el header cuando estamos
+         * cerca del comienzo de la página.
+         */
 
-    let lastScrollY = window.scrollY;
-    let ticking = false;
+        if (currentScrollY <= 50) {
+          header.classList.remove("-translate-y-full");
 
-    function actualizarHeader() {
-      if (!header) return;
+          lastScrollY = currentScrollY;
+          ticking = false;
 
-      const currentScrollY = window.scrollY;
+          return;
+        }
 
-      /*
-       * Siempre mostrar el header cuando estamos
-       * cerca del comienzo de la página.
-       */
-      if (currentScrollY <= 50) {
-        header.classList.remove('-translate-y-full');
+        /*
+         * Bajando:
+         * ocultamos el navegador.
+         */
+
+        if (currentScrollY > lastScrollY) {
+          header.classList.add("-translate-y-full");
+        }
+
+        /*
+         * Subiendo:
+         * mostramos nuevamente el navegador.
+         */
+
+        else if (currentScrollY < lastScrollY) {
+          header.classList.remove("-translate-y-full");
+        }
+
         lastScrollY = currentScrollY;
         ticking = false;
-        return;
       }
 
-      /*
-       * Bajando:
-       * ocultamos el navegador.
-       */
-      if (currentScrollY > lastScrollY) {
-        header.classList.add('-translate-y-full');
-      }
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            window.requestAnimationFrame(actualizarHeader);
+            ticking = true;
+          }
+        },
+        { passive: true },
+      );
 
-      /*
-       * Subiendo:
-       * mostramos nuevamente el navegador.
-       */
-      else if (currentScrollY < lastScrollY) {
-        header.classList.remove('-translate-y-full');
-      }
+      /* =====================================================
+         MENÚ MOBILE
+         ===================================================== */
 
-      lastScrollY = currentScrollY;
-      ticking = false;
-    }
+      const mobileButton = document.getElementById("mobile-menu-button");
+      const mobileMenu = document.getElementById("mobile-menu");
 
+      if (mobileButton && mobileMenu) {
+        mobileButton.addEventListener("click", () => {
+          const isOpen = !mobileMenu.classList.contains("hidden");
 
-    window.addEventListener(
-      'scroll',
-      () => {
-        if (!ticking) {
-          window.requestAnimationFrame(actualizarHeader);
-          ticking = true;
-        }
-      },
-      { passive: true }
-    );
+          if (isOpen) {
+            mobileMenu.classList.add("hidden");
 
+            mobileButton.setAttribute("aria-expanded", "false");
+            mobileButton.setAttribute("aria-label", "Abrir menú");
 
-    /* =====================================================
-       MENÚ MOBILE
-       ===================================================== */
+            mobileButton.textContent = "☰";
+          } else {
+            mobileMenu.classList.remove("hidden");
 
-    const mobileButton =
-      document.getElementById('mobile-menu-button');
+            mobileButton.setAttribute("aria-expanded", "true");
+            mobileButton.setAttribute("aria-label", "Cerrar menú");
 
-    const mobileMenu =
-      document.getElementById('mobile-menu');
-
-
-    if (mobileButton && mobileMenu) {
-
-      mobileButton.addEventListener('click', () => {
-
-        const isOpen =
-          !mobileMenu.classList.contains('hidden');
-
-        if (isOpen) {
-
-          mobileMenu.classList.add('hidden');
-
-          mobileButton.setAttribute(
-            'aria-expanded',
-            'false'
-          );
-
-          mobileButton.setAttribute(
-            'aria-label',
-            'Abrir menú'
-          );
-
-          mobileButton.textContent = '☰';
-
-        } else {
-
-          mobileMenu.classList.remove('hidden');
-
-          mobileButton.setAttribute(
-            'aria-expanded',
-            'true'
-          );
-
-          mobileButton.setAttribute(
-            'aria-label',
-            'Cerrar menú'
-          );
-
-          mobileButton.textContent = '✕';
-        }
-
-      });
-
-
-      /*
-       * Cuando el usuario toca un enlace,
-       * cerramos el menú mobile.
-       */
-
-      const mobileLinks =
-        mobileMenu.querySelectorAll('a');
-
-      mobileLinks.forEach((link) => {
-
-        link.addEventListener('click', () => {
-
-          mobileMenu.classList.add('hidden');
-
-          mobileButton.setAttribute(
-            'aria-expanded',
-            'false'
-          );
-
-          mobileButton.setAttribute(
-            'aria-label',
-            'Abrir menú'
-          );
-
-          mobileButton.textContent = '☰';
-
+            mobileButton.textContent = "✕";
+          }
         });
 
-      });
+        /*
+         * Cuando el usuario toca un enlace,
+         * cerramos el menú mobile.
+         */
 
-    }
-  </script>
+        const mobileLinks = mobileMenu.querySelectorAll("a");
 
-</body>
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            mobileMenu.classList.add("hidden");
 
-</html>    mobileLinks.forEach((link) => {
+            mobileButton.setAttribute("aria-expanded", "false");
+            mobileButton.setAttribute("aria-label", "Abrir menú");
 
-        link.addEventListener('click', () => {
-
-          mobileMenu.classList.add('hidden');
-
-          mobileButton.setAttribute(
-            'aria-expanded',
-            'false'
-          );
-
-          mobileButton.setAttribute(
-            'aria-label',
-            'Abrir menú'
-          );
-
-          mobileButton.textContent = '☰';
-
+            mobileButton.textContent = "☰";
+          });
         });
-
-      });
-
-    }
-  </script>
-
-</body>
-
+      }
+    </script>
+  </body>
 </html>
