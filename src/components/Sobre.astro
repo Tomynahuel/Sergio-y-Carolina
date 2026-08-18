@@ -144,78 +144,98 @@ import { Image } from 'astro:assets';
 </style>
 
 <script>
+  /*
+   * ==========================================
+   * CONFIGURACIÓN DEL SOBRE
+   * ==========================================
+   *
+   * true  → mostrar el sobre SIEMPRE
+   * false → mostrarlo solo la primera vez
+   */
+  const MOSTRAR_SOBRE_SIEMPRE = true;
+  const SOBRE_ABIERTO_KEY = 'invitacion-sobre-abierto';
   const btn = document.getElementById('btn-abrir');
   const overlay = document.getElementById('sobre-overlay');
 
-  const SOBRE_ABIERTO_KEY = 'invitacion-sobre-abierto';
-
-
-  /* =================================
-     COMPROBAR SI YA FUE ABIERTO
-  ================================= */
-
   if (overlay) {
-
+    /*
+     * ==========================================
+     * DECIDIR SI MOSTRAR EL SOBRE
+     * ==========================================
+     */
     const sobreYaFueAbierto =
-      !import.meta.env.DEV &&
       localStorage.getItem(SOBRE_ABIERTO_KEY) === 'true';
-
-
-    if (sobreYaFueAbierto) {
-
-      overlay.remove();
-
-      document.body.classList.add(
-        'scroll-permitido'
-      );
-
-    } else {
-
+    /*
+     * MOSTRAR SIEMPRE
+     */
+    if (MOSTRAR_SOBRE_SIEMPRE) {
       document.body.classList.remove(
         'scroll-permitido'
       );
-
+    }
+    /*
+     * MOSTRAR SOLO LA PRIMERA VEZ
+     */
+    else if (!sobreYaFueAbierto) {
+      document.body.classList.remove(
+        'scroll-permitido'
+      );
+    }
+    /*
+     * YA FUE ABIERTO
+     */
+    else {
+      overlay.remove();
+      document.body.classList.add(
+        'scroll-permitido'
+      );
     }
   }
-
-
-  /* =================================
-     ABRIR INVITACIÓN
-  ================================= */
+  /*
+   * ==========================================
+   * ABRIR SOBRE
+   * ==========================================
+   */
 
   if (btn && overlay) {
 
     btn.addEventListener('click', () => {
 
-      /* Evitar doble click */
       btn.disabled = true;
 
 
-      /* Guardar estado */
+      /*
+       * Guardamos que el invitado
+       * ya abrió el sobre.
+       *
+       * Esto solo tendrá efecto cuando
+       * MOSTRAR_SOBRE_SIEMPRE = false.
+       */
+
       localStorage.setItem(
         SOBRE_ABIERTO_KEY,
         'true'
       );
 
 
-      /* ==========================
-         1. SOBRE → NEGRO
-      ========================== */
+      /*
+       * OSCURECER
+       */
 
       overlay.classList.add(
         'oscureciendo'
       );
 
 
-      /* ==========================
-         2. ESPERAR NEGRO TOTAL
-      ========================== */
+      /*
+       * ESPERAR A QUE ESTÉ COMPLETAMENTE NEGRO
+       */
 
       setTimeout(() => {
 
         /*
-         * Ahora estamos completamente
-         * en negro.
+         * Ocultamos el sobre mientras
+         * todavía estamos en negro.
          */
 
         overlay.classList.add(
@@ -224,22 +244,16 @@ import { Image } from 'astro:assets';
 
 
         /*
-         * Habilitamos la invitación.
+         * Permitimos el scroll
          */
+
         document.body.classList.add(
           'scroll-permitido'
         );
 
 
-        /* ==========================
-           3. NEGRO → INVITACIÓN
-        ========================== */
-
         /*
-         * Pequeña pausa para garantizar
-         * que el navegador registre que
-         * el sobre desapareció antes
-         * de comenzar el fade.
+         * REVELAR INVITACIÓN
          */
 
         requestAnimationFrame(() => {
@@ -251,9 +265,9 @@ import { Image } from 'astro:assets';
         });
 
 
-        /* ==========================
-           4. ELIMINAR OVERLAY
-        ========================== */
+        /*
+         * ELIMINAR TRANSICIÓN
+         */
 
         setTimeout(() => {
 
