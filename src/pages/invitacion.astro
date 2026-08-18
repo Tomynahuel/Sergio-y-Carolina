@@ -18,6 +18,7 @@ import ResuInfo from '../components/InfoResu.astro';
 
 <head>
   <meta charset="UTF-8" />
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
@@ -26,22 +27,25 @@ import ResuInfo from '../components/InfoResu.astro';
   <title>Boda {BODA_INFO.nombres}</title>
 </head>
 
+
 <body
   class="
     m-0
     min-h-screen
     bg-[var(--color-fondo)]
     p-0
-    font-serif
+    font-parrafo
     text-[var(--color-texto)]
   "
 >
+
 
   <!-- =====================================================
        HEADER
        ===================================================== -->
 
   <header
+    id="site-header"
     class="
       fixed
       top-0
@@ -51,8 +55,10 @@ import ResuInfo from '../components/InfoResu.astro';
       border-[var(--color-borde-suave)]
       bg-[var(--color-superficie)]
       backdrop-blur-md
+      transition-transform
+      duration-300
+      ease-in-out
     "
-    x-data="{ open: false }"
   >
 
     <div
@@ -69,30 +75,66 @@ import ResuInfo from '../components/InfoResu.astro';
       "
     >
 
-      <!-- LOGO -->
+
+      <!-- =================================================
+           LOGO
+           ================================================= -->
 
       <a
-        href="/Sergio-y-Carolina/invitacion"
+        href="/Sergio-y-Carolina/invitacion/"
         class="
           flex
           items-center
           gap-2
-          font-serif
-          text-3xl
-          font-semibold
-          tracking-[0.2em]
           text-[var(--color-principal)]
+          transition-opacity
+          duration-200
+          hover:opacity-80
         "
+        aria-label="Volver al inicio"
       >
-        <span>S</span>
 
+        <!-- S -->
+        <span
+          class="
+            font-nombres
+            text-5xl
+            leading-none
+            font-semibold
+            tracking-normal
+          "
+        >
+          S
+        </span>
+
+
+        <!-- ANILLOS -->
         <Image
           src={BODA_INFO.anillos}
-          alt="Anillo"
-          class="h-12 w-12 object-contain"
+          alt="Anillos"
+          class="
+            h-12
+            w-12
+            object-contain
+            sm:h-14
+            sm:w-14
+          "
         />
 
-        <span>C</span>
+
+        <!-- C -->
+        <span
+          class="
+            font-nombres
+            text-5xl
+            leading-none
+            font-semibold
+            tracking-normal
+          "
+        >
+          C
+        </span>
+
       </a>
 
 
@@ -101,13 +143,23 @@ import ResuInfo from '../components/InfoResu.astro';
            ================================================= -->
 
       <button
-        @click="open = !open"
+        id="mobile-menu-button"
+        type="button"
         class="
+          flex
+          h-11
+          w-11
+          items-center
+          justify-center
+          rounded-full
           text-3xl
           text-[var(--color-principal)]
+          transition
+          hover:bg-[var(--color-acento-suave)]
           lg:hidden
         "
         aria-label="Abrir menú"
+        aria-expanded="false"
       >
         ☰
       </button>
@@ -117,11 +169,20 @@ import ResuInfo from '../components/InfoResu.astro';
            MENÚ DESKTOP
            ================================================= -->
 
-      <nav class="hidden gap-8 lg:flex">
+      <nav
+        class="
+          hidden
+          items-center
+          gap-8
+          lg:flex
+        "
+        aria-label="Navegación principal"
+      >
 
         <a
           href="/Sergio-y-Carolina/"
           class="
+            font-parrafo
             text-sm
             uppercase
             tracking-[0.15em]
@@ -133,9 +194,11 @@ import ResuInfo from '../components/InfoResu.astro';
           Inicio
         </a>
 
+
         <a
           href="/Sergio-y-Carolina/invitacion/"
           class="
+            font-parrafo
             text-sm
             uppercase
             tracking-[0.15em]
@@ -157,65 +220,64 @@ import ResuInfo from '../components/InfoResu.astro';
          ===================================================== -->
 
     <div
-      x-show="open"
-      x-transition
-      class="lg:hidden"
+      id="mobile-menu"
+      class="
+        hidden
+        border-t
+        border-[var(--color-borde-suave)]
+        bg-[var(--color-superficie)]
+        px-4
+        py-4
+        backdrop-blur-sm
+        lg:hidden
+      "
     >
 
-      <div
+      <nav
         class="
-          border-t
-          border-[var(--color-borde-suave)]
-          bg-[var(--color-superficie)]
-          px-4
-          py-4
-          backdrop-blur-sm
+          flex
+          flex-col
+          gap-2
+          text-sm
+          uppercase
+          tracking-[0.15em]
+          text-[var(--color-texto)]
         "
+        aria-label="Navegación móvil"
       >
 
-        <div
+        <a
+          href="/Sergio-y-Carolina/"
           class="
-            flex
-            flex-col
-            gap-2
-            text-sm
-            uppercase
-            tracking-[0.15em]
-            text-[var(--color-texto)]
+            font-parrafo
+            block
+            rounded-full
+            px-4
+            py-3
+            transition
+            hover:bg-[var(--color-acento-suave)]
           "
         >
+          Inicio
+        </a>
 
-          <a
-            href="/Sergio-y-Carolina/"
-            class="
-              block
-              rounded-full
-              px-4
-              py-3
-              transition
-              hover:bg-[var(--color-acento-suave)]
-            "
-          >
-            Inicio
-          </a>
 
-          <a
-            href="/Sergio-y-Carolina/invitacion/"
-            class="
-              block
-              rounded-full
-              px-4
-              py-3
-              transition
-              hover:bg-[var(--color-acento-suave)]
-            "
-          >
-            Invitación
-          </a>
+        <a
+          href="/Sergio-y-Carolina/invitacion/"
+          class="
+            font-parrafo
+            block
+            rounded-full
+            px-4
+            py-3
+            transition
+            hover:bg-[var(--color-acento-suave)]
+          "
+        >
+          Invitación
+        </a>
 
-        </div>
-
-      </div>
+      </nav>
 
     </div>
 
@@ -286,6 +348,153 @@ import ResuInfo from '../components/InfoResu.astro';
     </section>
 
   </main>
+
+
+  <!-- =====================================================
+       NAVEGACIÓN Y SCROLL
+       ===================================================== -->
+
+  <script>
+    const header = document.getElementById('site-header');
+
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function actualizarHeader() {
+      if (!header) return;
+
+      const currentScrollY = window.scrollY;
+
+      /*
+       * Siempre mostrar el header cuando estamos
+       * cerca del comienzo de la página.
+       */
+      if (currentScrollY <= 50) {
+        header.classList.remove('-translate-y-full');
+        lastScrollY = currentScrollY;
+        ticking = false;
+        return;
+      }
+
+      /*
+       * Bajando:
+       * ocultamos el navegador.
+       */
+      if (currentScrollY > lastScrollY) {
+        header.classList.add('-translate-y-full');
+      }
+
+      /*
+       * Subiendo:
+       * mostramos nuevamente el navegador.
+       */
+      else if (currentScrollY < lastScrollY) {
+        header.classList.remove('-translate-y-full');
+      }
+
+      lastScrollY = currentScrollY;
+      ticking = false;
+    }
+
+
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(actualizarHeader);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+
+
+    /* =====================================================
+       MENÚ MOBILE
+       ===================================================== */
+
+    const mobileButton =
+      document.getElementById('mobile-menu-button');
+
+    const mobileMenu =
+      document.getElementById('mobile-menu');
+
+
+    if (mobileButton && mobileMenu) {
+
+      mobileButton.addEventListener('click', () => {
+
+        const isOpen =
+          !mobileMenu.classList.contains('hidden');
+
+        if (isOpen) {
+
+          mobileMenu.classList.add('hidden');
+
+          mobileButton.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+
+          mobileButton.setAttribute(
+            'aria-label',
+            'Abrir menú'
+          );
+
+          mobileButton.textContent = '☰';
+
+        } else {
+
+          mobileMenu.classList.remove('hidden');
+
+          mobileButton.setAttribute(
+            'aria-expanded',
+            'true'
+          );
+
+          mobileButton.setAttribute(
+            'aria-label',
+            'Cerrar menú'
+          );
+
+          mobileButton.textContent = '✕';
+        }
+
+      });
+
+
+      /*
+       * Cuando el usuario toca un enlace,
+       * cerramos el menú mobile.
+       */
+
+      const mobileLinks =
+        mobileMenu.querySelectorAll('a');
+
+      mobileLinks.forEach((link) => {
+
+        link.addEventListener('click', () => {
+
+          mobileMenu.classList.add('hidden');
+
+          mobileButton.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+
+          mobileButton.setAttribute(
+            'aria-label',
+            'Abrir menú'
+          );
+
+          mobileButton.textContent = '☰';
+
+        });
+
+      });
+
+    }
+  </script>
 
 </body>
 

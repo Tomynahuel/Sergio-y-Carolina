@@ -15,9 +15,15 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
 ---
 
 <html lang="es" class="scroll-smooth">
+
   <head>
+
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
 
     <meta
       name="description"
@@ -27,11 +33,10 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
     <title>{title}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
     />
 
     <script
@@ -40,136 +45,321 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
     ></script>
 
     <ClientRouter />
+
   </head>
 
+
   <body
-    class="min-h-screen bg-[var(--color-fondo)] text-[var(--color-texto)] antialiased leading-relaxed pt-20"
-    
+    class="min-h-screen bg-[var(--color-fondo)] text-[var(--color-texto)] antialiased leading-relaxed"
   >
 
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
     <header
-      class="fixed top-0 z-50 w-full border-b border-[var(--color-borde-suave)] bg-[var(--color-superficie)] backdrop-blur-md transition-transform duration-300 ease-in-out"
-      x-data="{ open: false, showBar: true, lastScrollY: 0 }"
-      @scroll.window="
-        const currentScrollY = window.scrollY;
-        showBar = currentScrollY < lastScrollY || currentScrollY < 50;
-        lastScrollY = currentScrollY;
+      id="main-header"
+      class="
+        fixed
+        top-0
+        z-50
+        w-full
+
+        border-b
+        border-[var(--color-borde-suave)]
+
+        bg-[var(--color-superficie)]
+
+        backdrop-blur-md
+
+        transition-transform
+        duration-300
+        ease-in-out
       "
-      :class="showBar ? 'translate-y-0' : '-translate-y-full'"
     >
 
       <div
-        class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+        class="
+          mx-auto
+          flex
+          h-20
+          max-w-7xl
+          items-center
+          justify-between
+          px-4
+          sm:px-6
+          lg:px-8
+        "
       >
 
-        <!-- LOGO -->
+        <!-- =================================================
+             LOGO
+             ================================================= -->
+
         <a
           href="#home"
-          class="flex items-center gap-2 font-serif text-3xl font-semibold tracking-[0.2em] text-[var(--color-principal)]"
+          class="
+            flex
+            items-center
+            gap-2
+            text-[var(--color-principal)]
+          "
+          aria-label="Inicio"
         >
-          <span>S</span>
+
+          <!-- S -->
+          <span
+            class="
+              font-nombres
+              text-5xl
+              leading-none
+              font-normal
+              tracking-normal
+            "
+          >
+            S
+          </span>
+
+
+          <!-- ANILLO -->
 
           <Image
             src={BODA_INFO.anillos}
             alt="Anillo"
-            class="h-12 w-12 object-contain"
+            class="
+              h-12
+              w-12
+              object-contain
+              sm:h-14
+              sm:w-14
+            "
           />
 
-          <span>C</span>
+
+          <!-- C -->
+
+          <span
+            class="
+              font-nombres
+              text-5xl
+              leading-none
+              font-normal
+              tracking-normal
+            "
+          >
+            C
+          </span>
+
         </a>
 
-        <!-- BOTÓN MOBILE -->
+
+        <!-- =================================================
+             BOTÓN MOBILE
+             ================================================= -->
+
         <button
-          @click="open = !open"
-          class="text-3xl text-[var(--color-principal)] lg:hidden"
+          id="mobile-menu-button"
+          class="
+            text-3xl
+            text-[var(--color-principal)]
+            lg:hidden
+          "
           aria-label="Abrir menú"
+          aria-expanded="false"
         >
           ☰
         </button>
 
-        <!-- MENÚ DESKTOP -->
-        <nav class="hidden font-serif gap-8 lg:flex">
+
+        <!-- =================================================
+             MENÚ DESKTOP
+             ================================================= -->
+
+        <nav class="hidden gap-8 lg:flex">
 
           <a
             href="#home"
-            class="text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
+            class="
+              font-parrafo
+              text-sm
+              uppercase
+              tracking-[0.15em]
+              text-[var(--color-texto)]
+              transition
+              hover:text-[var(--color-acento)]
+            "
           >
             Inicio
           </a>
 
           <a
             href="#story"
-            class="text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
+            class="
+              font-parrafo
+              text-sm
+              uppercase
+              tracking-[0.15em]
+              text-[var(--color-texto)]
+              transition
+              hover:text-[var(--color-acento)]
+            "
           >
             Nuestra historia
           </a>
 
           <a
             href="#itinerary"
-            class="text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
+            class="
+              font-parrafo
+              text-sm
+              uppercase
+              tracking-[0.15em]
+              text-[var(--color-texto)]
+              transition
+              hover:text-[var(--color-acento)]
+            "
           >
             Cronograma
           </a>
 
           <a
             href="#gallery"
-            class="text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
+            class="
+              font-parrafo
+              text-sm
+              uppercase
+              tracking-[0.15em]
+              text-[var(--color-texto)]
+              transition
+              hover:text-[var(--color-acento)]
+            "
           >
             Galería
           </a>
 
           <a
             href="/Sergio-y-Carolina/invitacion/"
-            class="text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
+            class="
+              font-parrafo
+              text-sm
+              uppercase
+              tracking-[0.15em]
+              text-[var(--color-texto)]
+              transition
+              hover:text-[var(--color-acento)]
+            "
           >
             Confirmar asistencia
           </a>
 
         </nav>
+
       </div>
 
-      <!-- MENÚ MOBILE -->
-      <div x-show="open" x-transition class="lg:hidden">
+
+      <!-- ===================================================
+           MENÚ MOBILE
+           =================================================== -->
+
+      <div
+        id="mobile-menu"
+        class="hidden lg:hidden"
+      >
 
         <div
-          class="border-t border-[var(--color-borde-suave)] bg-[var(--color-superficie)] px-4 py-4 backdrop-blur-sm"
+          class="
+            border-t
+            border-[var(--color-borde-suave)]
+            bg-[var(--color-superficie)]
+            px-4
+            py-4
+            backdrop-blur-sm
+          "
         >
 
           <div
-            class="flex flex-col font-serif gap-2 text-sm uppercase tracking-[0.15em] text-[var(--color-texto)]"
+            class="
+              flex
+              flex-col
+              gap-2
+              text-sm
+              uppercase
+              tracking-[0.15em]
+              text-[var(--color-texto)]
+            "
           >
 
             <a
               href="#home"
-              class="block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
+              class="
+                font-parrafo
+                block
+                rounded-full
+                px-4
+                py-3
+                transition
+                hover:bg-[var(--color-acento-suave)]
+              "
             >
               Inicio
             </a>
 
             <a
               href="#story"
-              class="block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
+              class="
+                font-parrafo
+                block
+                rounded-full
+                px-4
+                py-3
+                transition
+                hover:bg-[var(--color-acento-suave)]
+              "
             >
               Nuestra historia
             </a>
 
             <a
               href="#itinerary"
-              class="block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
+              class="
+                font-parrafo
+                block
+                rounded-full
+                px-4
+                py-3
+                transition
+                hover:bg-[var(--color-acento-suave)]
+              "
             >
               Cronograma
             </a>
 
             <a
               href="#gallery"
-              class="block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
+              class="
+                font-parrafo
+                block
+                rounded-full
+                px-4
+                py-3
+                transition
+                hover:bg-[var(--color-acento-suave)]
+              "
             >
               Galería
             </a>
 
             <a
               href="/Sergio-y-Carolina/invitacion/"
-              class="block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
+              class="
+                font-parrafo
+                block
+                rounded-full
+                px-4
+                py-3
+                transition
+                hover:bg-[var(--color-acento-suave)]
+              "
             >
               Confirmar asistencia
             </a>
@@ -179,22 +369,45 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
         </div>
 
       </div>
+
     </header>
 
 
-    <!-- CONTENIDO -->
+    <!-- =====================================================
+         CONTENIDO
+         ===================================================== -->
+
     <main>
       <slot />
     </main>
 
 
-    <!-- FOOTER -->
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
     <footer
-      class="border-t border-[var(--color-borde-suave)] bg-[var(--color-superficie-media)] py-10"
+      class="
+        border-t
+        border-[var(--color-borde-suave)]
+        bg-[var(--color-superficie-media)]
+        py-10
+      "
     >
 
       <div
-        class="section-shell flex flex-col items-center justify-between gap-4 text-center text-sm text-[var(--color-texto-suave)] sm:flex-row"
+        class="
+          section-shell
+          flex
+          flex-col
+          items-center
+          justify-between
+          gap-4
+          text-center
+          text-sm
+          text-[var(--color-texto-suave)]
+          sm:flex-row
+        "
       >
 
         <p>
@@ -210,7 +423,10 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
     </footer>
 
 
-    <!-- MÚSICA -->
+    <!-- =====================================================
+         MÚSICA
+         ===================================================== -->
+
     <div
       x-data="{ playing: false }"
       x-init="$refs.audioEl.play().catch(() => {})"
@@ -225,19 +441,177 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
         @pause="playing = false"
       ></audio>
 
+
       <button
-        @click="playing ? $refs.audioEl.pause() : $refs.audioEl.play().catch(() => {})"
-        class="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--color-principal)] text-[var(--color-blanco)] shadow-lg transition hover:bg-[var(--color-principal-hover)]"
+        @click="
+          playing
+            ? $refs.audioEl.pause()
+            : $refs.audioEl.play().catch(() => {})
+        "
+        class="
+          flex
+          h-11
+          w-11
+          items-center
+          justify-center
+          rounded-full
+          bg-[var(--color-principal)]
+          text-[var(--color-blanco)]
+          shadow-lg
+          transition
+          hover:bg-[var(--color-principal-hover)]
+        "
         :aria-label="playing ? 'Pausar música' : 'Reproducir música'"
       >
+
         <span
           class="text-xl"
           x-text="playing ? '⏸' : '▶'"
           aria-hidden="true"
         ></span>
+
       </button>
 
     </div>
 
+
+    <!-- =====================================================
+         CONTROL DEL HEADER
+         ===================================================== -->
+
+    <script>
+      let lastScrollY = window.scrollY;
+
+      const header =
+        document.getElementById('main-header');
+
+      const mobileMenu =
+        document.getElementById('mobile-menu');
+
+      const mobileButton =
+        document.getElementById('mobile-menu-button');
+
+
+      /* =====================================================
+         OCULTAR HEADER AL BAJAR
+         MOSTRAR HEADER AL SUBIR
+         ===================================================== */
+
+      function handleHeaderScroll() {
+
+        if (!header) return;
+
+        const currentScrollY = window.scrollY;
+
+
+        /* Siempre visible arriba */
+
+        if (currentScrollY <= 50) {
+
+          header.classList.remove('-translate-y-full');
+
+          lastScrollY = currentScrollY;
+
+          return;
+        }
+
+
+        /* Bajando */
+
+        if (currentScrollY > lastScrollY) {
+
+          header.classList.add('-translate-y-full');
+
+          /* Cerramos menú mobile si estaba abierto */
+
+          if (mobileMenu) {
+            mobileMenu.classList.add('hidden');
+          }
+
+        }
+
+        /* Subiendo */
+
+        else if (currentScrollY < lastScrollY) {
+
+          header.classList.remove('-translate-y-full');
+
+        }
+
+
+        lastScrollY = currentScrollY;
+      }
+
+
+      window.addEventListener(
+        'scroll',
+        handleHeaderScroll,
+        { passive: true }
+      );
+
+
+      /* =====================================================
+         MENÚ MOBILE
+         ===================================================== */
+
+      if (mobileButton && mobileMenu) {
+
+        mobileButton.addEventListener(
+          'click',
+          () => {
+
+            const abierto =
+              !mobileMenu.classList.contains('hidden');
+
+            if (abierto) {
+
+              mobileMenu.classList.add('hidden');
+
+              mobileButton.setAttribute(
+                'aria-expanded',
+                'false'
+              );
+
+            } else {
+
+              mobileMenu.classList.remove('hidden');
+
+              mobileButton.setAttribute(
+                'aria-expanded',
+                'true'
+              );
+
+            }
+
+          }
+        );
+
+
+        /* Cerrar menú al tocar un enlace */
+
+        mobileMenu
+          .querySelectorAll('a')
+          .forEach((link) => {
+
+            link.addEventListener(
+              'click',
+              () => {
+
+                mobileMenu.classList.add('hidden');
+
+                mobileButton.setAttribute(
+                  'aria-expanded',
+                  'false'
+                );
+
+              }
+            );
+
+          });
+
+      }
+    </script>
+
   </body>
+
 </html>

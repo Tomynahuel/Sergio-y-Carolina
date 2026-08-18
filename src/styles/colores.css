@@ -42,6 +42,8 @@
   --color-superficie: var(--color-blanco);
   --color-superficie-suave: var(--color-rosa);
 
+   --color-superfice-interna : var(--color-negro);
+
   --color-superficie-blanda: color-mix(
     in srgb,
     var(--color-blanco) 50%,
@@ -117,7 +119,7 @@
   --color-borde: var(--color-rosa);
   --color-borde-suave: color-mix(
     in srgb,
-    var(--color-verde) 30%,
+    var(--color-rosa) 50%,
     transparent
   );
 
@@ -216,6 +218,9 @@
   /* Palabras pequeñas / etiquetas */
   --font-palabra: 'Inter', sans-serif;
   --peso-palabra: 600;
+
+   --font-letras:"Mea culpa", cursive;
+   --peso-letras:400;
 
   /* Texto destacado */
   --font-destacado: 'Cormorant Garamond', cursive;
