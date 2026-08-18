@@ -195,34 +195,31 @@
      TIPOGRAFÍAS
      ========================================================= */
 
-  /* Nombres de los novios */
-  --font-nombres: 'Ephesis', cursive;
-  --peso-nombres: 400;
+  /* =========================================================
+   TIPOGRAFÍAS
+   ========================================================= */
 
-  /* Títulos principales */
-  --font-titulo: 'Cormorant Garamond', serif;
-  --peso-titulo: 600;
+--font-nombres: 'Edwardian Script ITC', cursive;
+--peso-nombres: 400;
 
-  /* Subtítulos */
-  --font-subtitulo: 'Cormorant Garamond', serif;
-  --peso-subtitulo: 500;
+--font-titulo: 'Cormorant Garamond', serif;
+--peso-titulo: 600;
 
-  /* Párrafos */
-  --font-parrafo: "Lora", serif;
-  --peso-parrafo: 400;
+--font-subtitulo: 'Cormorant Garamond', serif;
+--peso-subtitulo: 500;
 
-  /* Fechas y horarios */
-  --font-fecha: 'Cormorant Garamond', serif;
-  --peso-fecha: 500;
+--font-parrafo: 'Cormorant Garamond', serif;
+--peso-parrafo: 400;
 
-  /* Palabras pequeñas / etiquetas */
-  --font-palabra: 'Inter', sans-serif;
-  --peso-palabra: 600;
+--font-fecha: 'Cormorant Garamond', serif;
+--peso-fecha: 500;
 
-   --font-letras:"Mea culpa", cursive;
-   --peso-letras:400;
+--font-palabra: 'Inter', sans-serif;
+--peso-palabra: 600;
 
-  /* Texto destacado */
-  --font-destacado: 'Cormorant Garamond', cursive;
-  --peso-destacado: 600;
+--font-letras: 'Edwardian Script ITC', cursive;
+--peso-letras: 400;
+
+--font-destacado: 'Cormorant Garamond', cursive;
+--peso-destacado: 600;
 }

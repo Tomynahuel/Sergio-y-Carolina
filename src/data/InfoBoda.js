@@ -3,12 +3,19 @@ import ringImage from '../img/anillos.png'; // Asegúrate que esta ruta sea corr
 import sobre from '../img/sobre.png'; // Asegúrate que esta ruta sea correcta
 import decoSobreBoton from '../img/deco-boton.png'; // Asegúrate que esta ruta sea correcta
 import EllosBailan from '../img/bailan.png'
+import nombresImagen from '../img/Nombres.png'; // Imagen de los nombres
+import letraS from '../img/s.png'; // Imagen de la letra S
+import letraC from '../img/c.png'; // Imagen de la letra C
+
 
 
 
 export const BODA_INFO = {
 
   nombres: "Sergio & Carolina",
+  nombresImagen: nombresImagen, // Imagen para reemplazar el texto de nombres
+  letraS: letraS, // Imagen de la letra S para el logo
+  letraC: letraC, // Imagen de la letra C para el logo
   novio: "Sergio", contactoNovio: "",
   novia: "Carolina", contactoNovia: "",
   fecha: "3 de Octubre de 2026",
@@ -23,7 +30,6 @@ export const BODA_INFO = {
   sobre: sobre,
   //MarcoSobre: marcoSobre,
   BotonSobre: decoSobreBoton,
-
 
 
   //ceremonia

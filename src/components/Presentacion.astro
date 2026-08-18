@@ -50,7 +50,7 @@ const leafImages = [
     src={BODA_INFO.presentacion}
     alt="Fondo casamiento"
     width={492}
-    height={602}
+    height={620}
     quality={95}
     class="
       absolute
@@ -180,18 +180,22 @@ const leafImages = [
            NOMBRES
            ================================================= -->
 
-      <h1
+      <Image
+        src={BODA_INFO.nombresImagen}
+        alt="Sergio & Carolina"
+        width={800}
+        height={50}
+        quality={100}
         class="
-          max-w-full
-          font-nombres
-          text-5xl
-          leading-[1.05]
-          sm:text-7xl
-          lg:text-8xl
+
+          h-auto
+          w-full
+          max-w-1xl
+          mx-auto
+          object-contain
+          
         "
-      >
-        {BODA_INFO.nombres}
-      </h1>
+      />
 
 
       <!-- =================================================
@@ -208,9 +212,7 @@ const leafImages = [
           text-sm
           leading-relaxed
           text-[var(--color-blanco)]
-
           min-[380px]:text-base
-
           sm:mt-6
           sm:text-xl
         "
@@ -218,7 +220,6 @@ const leafImages = [
         Una celebración llena de amor, recuerdos y el comienzo de una nueva
         historia juntos.
       </p>
-
 
       <!-- =================================================
            CUENTA REGRESIVA

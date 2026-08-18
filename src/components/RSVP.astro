@@ -1,13 +1,15 @@
 ---
 import { backupToGoogleSheet, buildGuestCsv, buildMailtoLink } from '../lib/rsvp.mjs';
 import { Image } from 'astro:assets';
+import { BODA_INFO } from '../data/InfoBoda';
 ---
 
-<section id="rsvp" class="w-full max-w-3xl mx-auto px-4">
+<section id="rsvp" class="section-shell py-10">
 
   <!-- Contenedor Principal -->
   <div
     class="
+      w-full
       relative
       overflow-hidden
       p-8
@@ -390,7 +392,16 @@ import { Image } from 'astro:assets';
         >
           Confirmar asistencia
         </button>
-
+         <!-- DESTACADO -->
+    
+        <!-- PÁRRAFO INTERNO -->
+        <p
+          class="font-parrafo
+          text-center
+                mt-2"
+        >
+          Por favor responde antes del 15 de Septiembre.
+        </p>
 
         <!-- FEEDBACK -->
 
@@ -536,6 +547,35 @@ import { Image } from 'astro:assets';
     </div>
 
   </div>
+
+  <!-- DETALLE FECHA LÍMITE -->
+  <div
+    class="mt-8
+           rounded-2xl
+           bg-[var(--color-blanco)]
+           backdrop-blur-sm
+           p-6
+           text-[var(--color-texto)]
+           border border-[var(--color-borde)]
+           shadow-sm
+           text-center"
+  >
+
+    <!-- DESTACADO -->
+    <p
+      class="font-Parrafo
+             text-[var(--color-bordo)]
+             text-2xl
+             
+             tracking-widest"
+    >
+      ¡Te esperamos!
+    </p>
+    <!-- PÁRRAFO INTERNO -->
+  
+
+  </div>
+
 </section>
 
 

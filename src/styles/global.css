@@ -1,15 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fleur+De+Leah&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Ephesis&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mea+Culpa&display=swap');
+
 @import './colores.css';
+
+@font-face {
+  font-family: 'Edwardian Script ITC';
+  src: url('../assets/fonts/edwardianscriptitc.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
 
 /* =========================================================
    VARIABLES GLOBALES
@@ -30,12 +33,12 @@ html {
 }
 
 body {
-  font-family: var(--font-parrafo);
-  font-weight: var(--peso-parrafo);
+ 
   background-color: var(--color-fondo);
   color: var(--color-texto);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+
 }
 
 
@@ -72,6 +75,11 @@ h6 {
 .font-nombres {
   font-family: var(--font-nombres);
   font-weight: var(--peso-nombres);
+}
+
+.font-letras {
+  font-family: var(--font-letras);
+  font-weight: var(--peso-letras);
 }
 
 
@@ -115,6 +123,7 @@ h6 {
   font-family: var(--font-destacado);
   font-weight: var(--peso-destacado);
 }
+
 
 
 /* Compatibilidad con componentes anteriores */
@@ -399,5 +408,8 @@ textarea {
 
     opacity: 0;
   }
+
+
+
 
 }
