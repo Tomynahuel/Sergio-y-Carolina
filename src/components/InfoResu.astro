@@ -1,100 +1,56 @@
 ---
-import { BODA_INFO } from '../data/InfoBoda.js';
-import { Image } from 'astro:assets';
+import { BODA_INFO } from "../data/InfoBoda.js";
+import { Image } from "astro:assets";
 ---
 
 <section class="section-shell py-8">
-
   <div class="grid gap-6 md:grid-cols-2">
-
-
     <!-- =====================================================
          TARJETA CEREMONIA
          ===================================================== -->
 
     <div
-      class="relative overflow-hidden
-             p-8 sm:p-10
-             rounded-[2rem]
-             border border-[var(--color-borde)]
-             shadow-sm
-             transition-all duration-300
-             hover:shadow-md
-             bg-[var(--color-blanco)]"
+      class="relative overflow-hidden rounded-[2rem] border border-[var(--color-borde)] bg-[var(--color-blanco)] p-8 shadow-sm transition-all duration-300 hover:shadow-md sm:p-10"
     >
-
       <!-- Overlay -->
-      <div
-        class="absolute inset-0
-               bg-[var(--color-overlay-suave)]
-               z-0"
-      ></div>
-
+      <div class="absolute inset-0 z-0 bg-[var(--color-overlay-suave)]"></div>
 
       <div class="relative z-10">
-
-
         <!-- =================================================
              HORA
              ================================================= -->
 
         <div
-          class="font-parrafo
-                 mb-5
-                 inline-block
-                 rounded-full
-                 bg-[var(--color-bordo)]
-                 px-4 py-1.5
-                 text-sm
-                 tracking-widest
-                 text-[var(--color-blanco)]
-                 shadow-sm"
+          class="font-parrafo mb-5 inline-block rounded-full bg-[var(--color-bordo)] px-4 py-1.5 text-sm tracking-widest text-[var(--color-blanco)] shadow-sm"
         >
           {BODA_INFO.horaCeremonia}
         </div>
-
 
         <!-- =================================================
              TÍTULO
              ================================================= -->
 
-        <h3
-          class="font-subtitulo
-                 text-3xl
-                 text-[var(--color-texto)]
-                 mb-4"
-        >
+        <h3 class="font-subtitulo mb-4 text-3xl text-[var(--color-texto)]">
           Ceremonia
         </h3>
-
 
         <!-- =================================================
              DESCRIPCIÓN
              ================================================= -->
 
         <p
-          class="font-parrafo
-                 text-[var(--color-texto-suave)]
-                 leading-relaxed
-                 mb-6"
+          class="font-parrafo mb-6 leading-relaxed text-[var(--color-texto-suave)]"
         >
           Nos reuniremos a las
           {BODA_INFO.horaCeremonia}
-          horas para compartir el momento más importante
-          de nuestro camino.
+          horas para compartir el momento más importante de nuestro camino.
         </p>
-
 
         <!-- =================================================
              INFORMACIÓN
              ================================================= -->
 
-        <ul
-          class="font-parrafo
-                 space-y-3
-                 text-[var(--color-texto-fuerte)]"
-        >
-
+        <ul class="font-parrafo space-y-3 text-[var(--color-texto-fuerte)]">
           <li>
             • Comenzamos a las {BODA_INFO.horaCeremonia} h
           </li>
@@ -106,100 +62,55 @@ import { Image } from 'astro:assets';
           <li>
             • Salón: {BODA_INFO.salonCeremonia}
           </li>
-
         </ul>
-
       </div>
-
     </div>
-
-
 
     <!-- =====================================================
          TARJETA ALMUERZO
          ===================================================== -->
 
     <div
-      class="relative overflow-hidden
-             p-8 sm:p-10
-             rounded-[2rem]
-             border border-[var(--color-borde)]
-             shadow-sm
-             transition-all duration-300
-             hover:shadow-md
-             bg-[var(--color-blanco)]"
+      class="relative overflow-hidden rounded-[2rem] border border-[var(--color-borde)] bg-[var(--color-blanco)] p-8 shadow-sm transition-all duration-300 hover:shadow-md sm:p-10"
     >
-
       <!-- Overlay -->
-      <div
-        class="absolute inset-0
-               bg-[var(--color-overlay-suave)]
-               z-0"
-      ></div>
-
+      <div class="absolute inset-0 z-0 bg-[var(--color-overlay-suave)]"></div>
 
       <div class="relative z-10">
-
-
         <!-- =================================================
              HORA
              ================================================= -->
 
         <div
-          class="font-parrafo
-                 mb-5
-                 inline-block
-                 rounded-full
-                 bg-[var(--color-bordo)]
-                 px-4 py-1.5
-                 text-sm
-                 tracking-widest
-                 text-[var(--color-blanco)]
-                 shadow-sm"
+          class="font-parrafo mb-5 inline-block rounded-full bg-[var(--color-bordo)] px-4 py-1.5 text-sm tracking-widest text-[var(--color-blanco)] shadow-sm"
         >
           {BODA_INFO.horaAlmuerzo}
         </div>
-
 
         <!-- =================================================
              TÍTULO
              ================================================= -->
 
-        <h3
-          class="font-subtitulo
-                 text-3xl
-                 text-[var(--color-texto)]
-                 mb-4"
-        >
+        <h3 class="font-subtitulo mb-4 text-3xl text-[var(--color-texto)]">
           Almuerzo
         </h3>
-
 
         <!-- =================================================
              DESCRIPCIÓN
              ================================================= -->
 
         <p
-          class="font-parrafo
-                 text-[var(--color-texto-suave)]
-                 leading-relaxed
-                 mb-6"
+          class="font-parrafo mb-6 leading-relaxed text-[var(--color-texto-suave)]"
         >
-          Después de la ceremonia, habrá música, buena comida
-          y un ambiente para disfrutar en familia.
+          Después de la ceremonia, habrá música, buena comida y un ambiente para
+          disfrutar en familia.
         </p>
-
 
         <!-- =================================================
              INFORMACIÓN
              ================================================= -->
 
-        <ul
-          class="font-parrafo
-                 space-y-3
-                 text-[var(--color-texto-fuerte)]"
-        >
-
+        <ul class="font-parrafo space-y-3 text-[var(--color-texto-fuerte)]">
           <li>
             • Comenzamos a las {BODA_INFO.horaAlmuerzo} h
           </li>
@@ -208,17 +119,9 @@ import { Image } from 'astro:assets';
             • Lugar: {BODA_INFO.lugarAlmuerzo}
           </li>
 
-          <li>
-            • Ambiente íntimo y acogedor
-          </li>
-
+          <li>• Ambiente íntimo y acogedor</li>
         </ul>
-
       </div>
-
     </div>
-
-
   </div>
-
 </section>

@@ -1,10 +1,10 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-import hoja01 from '../img/petalo.png';
-import hoja2 from '../img/petalo.png';
+import hoja01 from "../img/petalo.png";
+import hoja2 from "../img/petalo.png";
 
-import { BODA_INFO } from '../data/InfoBoda.js';
+import { BODA_INFO } from "../data/InfoBoda.js";
 
 // Hojas flotantes
 const leafImages = [
@@ -30,18 +30,8 @@ const leafImages = [
 <section
   id="home"
   tabindex="-1"
-  class="
-    relative
-    flex
-    min-h-[100svh]
-    w-full
-    items-center
-    justify-center
-    overflow-hidden
-    bg-black
-  "
+  class="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden bg-black"
 >
-
   <!-- =====================================================
        FONDO
        ===================================================== -->
@@ -52,129 +42,56 @@ const leafImages = [
     width={492}
     height={620}
     quality={95}
-    class="
-      absolute
-      inset-0
-      z-0
-      h-full
-      w-full
-      object-cover
-      object-center
-      sm:object-center
-      lg:object-center
-    "
+    class="absolute inset-0 z-0 h-full w-full object-cover object-center sm:object-center lg:object-center"
     loading="eager"
   />
-
 
   <!-- =====================================================
        OVERLAY
        ===================================================== -->
 
   <div
-    class="
-      absolute
-      inset-0
-      z-[1]
-      bg-gradient-to-b
-      from-[var(--color-sombra-fondo-suave)]
-      via-[var(--color-sombra-suave)]
-      to-[var(--color-sombra-fondo-fuerte)]
-    "
-  ></div>
-
+    class="absolute inset-0 z-[1] bg-gradient-to-b from-[var(--color-sombra-fondo-suave)] via-[var(--color-sombra-suave)] to-[var(--color-sombra-fondo-fuerte)]"
+  >
+  </div>
 
   <!-- =====================================================
        HOJAS
        ===================================================== -->
 
   <div
-    class="
-      leaves
-      pointer-events-none
-      absolute
-      inset-0
-      z-[2]
-    "
+    class="leaves pointer-events-none absolute inset-0 z-[2]"
     aria-hidden="true"
   >
-
-    {leafImages.map((image, index) => (
-      <span
-        class={`leaf leaf-${index + 1}`}
-        style={`background-image: url('${image.src}');`}
-      />
-    ))}
-
+    {
+      leafImages.map((image, index) => (
+        <span
+          class={`leaf leaf-${index + 1}`}
+          style={`background-image: url('${image.src}');`}
+        />
+      ))
+    }
   </div>
-
 
   <!-- =====================================================
        CONTENIDO
        ===================================================== -->
 
   <div
-    class="
-      relative
-      z-[3]
-      flex
-      min-h-[100svh]
-      w-full
-      items-center
-      justify-center
-
-      translate-y-12
-      px-3
-      py-24
-
-      text-center
-      text-[var(--color-blanco)]
-
-      sm:translate-y-16
-      sm:px-6
-      sm:py-28
-
-      lg:translate-y-20
-      lg:px-8
-      lg:py-32
-    "
+    class="relative z-[3] flex min-h-[100svh] w-full translate-y-12 items-center justify-center px-3 py-24 text-center text-[var(--color-blanco)] sm:translate-y-16 sm:px-6 sm:py-28 lg:translate-y-20 lg:px-8 lg:py-32"
   >
-
     <div
-      class="
-        mx-auto
-        flex
-        w-full
-        max-w-4xl
-        flex-col
-        items-center
-        justify-center
-      "
+      class="mx-auto flex w-full max-w-4xl flex-col items-center justify-center"
     >
-
       <!-- =================================================
            NOS CASAMOS
            ================================================= -->
 
       <h4
-        class="
-          font-titulo
-          mb-3
-          text-base
-          uppercase
-          tracking-[0.22em]
-          text-[var(--color-blanco)]
-
-          min-[380px]:text-lg
-
-          sm:mb-4
-          sm:text-2xl
-          sm:tracking-[0.4em]
-        "
+        class="font-titulo mb-3 text-base uppercase tracking-[0.22em] text-[var(--color-blanco)] min-[380px]:text-lg sm:mb-4 sm:text-2xl sm:tracking-[0.4em]"
       >
         Nos casamos
       </h4>
-
 
       <!-- =================================================
            NOMBRES
@@ -186,36 +103,15 @@ const leafImages = [
         width={800}
         height={50}
         quality={100}
-        class="
-
-          h-auto
-          w-full
-          max-w-1xl
-          mx-auto
-          object-contain
-          
-        "
+        class="max-w-1xl mx-auto h-auto w-full object-contain"
       />
-
 
       <!-- =================================================
            DESCRIPCIÓN
            ================================================= -->
 
       <p
-        class="
-          font-parrafo
-          mx-auto
-          mt-4
-          max-w-lg
-          px-4
-          text-sm
-          leading-relaxed
-          text-[var(--color-blanco)]
-          min-[380px]:text-base
-          sm:mt-6
-          sm:text-xl
-        "
+        class="font-parrafo mx-auto mt-4 max-w-lg px-4 text-sm leading-relaxed text-[var(--color-blanco)] min-[380px]:text-base sm:mt-6 sm:text-xl"
       >
         Una celebración llena de amor, recuerdos y el comienzo de una nueva
         historia juntos.
@@ -227,56 +123,18 @@ const leafImages = [
 
       <div
         id="countdown"
-        class="
-          mx-auto
-          mt-7
-          flex
-          w-full
-          max-w-xl
-          flex-nowrap
-          items-stretch
-          justify-center
-          gap-1.5
-          px-1
-          text-center
-
-          min-[380px]:gap-2
-
-          sm:mt-10
-          sm:gap-3
-        "
+        class="mx-auto mt-7 flex w-full max-w-xl flex-nowrap items-stretch justify-center gap-1.5 px-1 text-center min-[380px]:gap-2 sm:mt-10 sm:gap-3"
       >
-
         <!-- =================================================
              DÍAS
              ================================================= -->
 
         <div
-          class="
-            min-w-0
-            flex-1
-            rounded-lg
-            border
-            border-[var(--color-borde-suave)]
-            bg-[var(--color-superficie-blanda)]
-            px-1
-            py-2
-
-            sm:rounded-2xl
-            sm:p-4
-          "
+          class="min-w-0 flex-1 rounded-lg border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] px-1 py-2 sm:rounded-2xl sm:p-4"
         >
-
           <!-- Número -->
           <div
-            class="
-              font-palabra
-              text-xl
-
-              min-[380px]:text-2xl
-
-              sm:text-3xl
-            "
+            class="font-palabra text-xl min-[380px]:text-2xl sm:text-3xl"
             data-unit="days"
           >
             00
@@ -284,56 +142,22 @@ const leafImages = [
 
           <!-- Etiqueta -->
           <div
-            class="
-              font-destacado
-              mt-1
-              truncate
-              text-[8px]
-              uppercase
-              tracking-[0.08em]
-
-              min-[380px]:text-[10px]
-
-              sm:text-sm
-              sm:tracking-[0.2em]
-            "
+            class="font-destacado mt-1 truncate text-[8px] uppercase tracking-[0.08em] min-[380px]:text-[10px] sm:text-sm sm:tracking-[0.2em]"
           >
             Días
           </div>
-
         </div>
-
 
         <!-- =================================================
              HORAS
              ================================================= -->
 
         <div
-          class="
-            min-w-0
-            flex-1
-            rounded-lg
-            border
-            border-[var(--color-borde-suave)]
-            bg-[var(--color-superficie-blanda)]
-            px-1
-            py-2
-
-            sm:rounded-2xl
-            sm:p-4
-          "
+          class="min-w-0 flex-1 rounded-lg border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] px-1 py-2 sm:rounded-2xl sm:p-4"
         >
-
           <!-- Número -->
           <div
-            class="
-              font-palabra
-              text-xl
-
-              min-[380px]:text-2xl
-
-              sm:text-3xl
-            "
+            class="font-palabra text-xl min-[380px]:text-2xl sm:text-3xl"
             data-unit="hours"
           >
             00
@@ -341,56 +165,22 @@ const leafImages = [
 
           <!-- Etiqueta -->
           <div
-            class="
-              font-destacado
-              mt-1
-              truncate
-              text-[8px]
-              uppercase
-              tracking-[0.08em]
-
-              min-[380px]:text-[10px]
-
-              sm:text-sm
-              sm:tracking-[0.2em]
-            "
+            class="font-destacado mt-1 truncate text-[8px] uppercase tracking-[0.08em] min-[380px]:text-[10px] sm:text-sm sm:tracking-[0.2em]"
           >
             Horas
           </div>
-
         </div>
-
 
         <!-- =================================================
              MINUTOS
              ================================================= -->
 
         <div
-          class="
-            min-w-0
-            flex-1
-            rounded-lg
-            border
-            border-[var(--color-borde-suave)]
-            bg-[var(--color-superficie-blanda)]
-            px-1
-            py-2
-
-            sm:rounded-2xl
-            sm:p-4
-          "
+          class="min-w-0 flex-1 rounded-lg border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] px-1 py-2 sm:rounded-2xl sm:p-4"
         >
-
           <!-- Número -->
           <div
-            class="
-              font-palabra
-              text-xl
-
-              min-[380px]:text-2xl
-
-              sm:text-3xl
-            "
+            class="font-palabra text-xl min-[380px]:text-2xl sm:text-3xl"
             data-unit="minutes"
           >
             00
@@ -398,56 +188,22 @@ const leafImages = [
 
           <!-- Etiqueta -->
           <div
-            class="
-              font-destacado
-              mt-1
-              truncate
-              text-[8px]
-              uppercase
-              tracking-[0.08em]
-
-              min-[380px]:text-[10px]
-
-              sm:text-sm
-              sm:tracking-[0.2em]
-            "
+            class="font-destacado mt-1 truncate text-[8px] uppercase tracking-[0.08em] min-[380px]:text-[10px] sm:text-sm sm:tracking-[0.2em]"
           >
             Min
           </div>
-
         </div>
-
 
         <!-- =================================================
              SEGUNDOS
              ================================================= -->
 
         <div
-          class="
-            min-w-0
-            flex-1
-            rounded-lg
-            border
-            border-[var(--color-borde-suave)]
-            bg-[var(--color-superficie-blanda)]
-            px-1
-            py-2
-
-            sm:rounded-2xl
-            sm:p-4
-          "
+          class="min-w-0 flex-1 rounded-lg border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] px-1 py-2 sm:rounded-2xl sm:p-4"
         >
-
           <!-- Número -->
           <div
-            class="
-              font-palabra
-              text-xl
-
-              min-[380px]:text-2xl
-
-              sm:text-3xl
-            "
+            class="font-palabra text-xl min-[380px]:text-2xl sm:text-3xl"
             data-unit="seconds"
           >
             00
@@ -455,33 +211,15 @@ const leafImages = [
 
           <!-- Etiqueta -->
           <div
-            class="
-              font-destacado
-              mt-1
-              truncate
-              text-[8px]
-              uppercase
-              tracking-[0.08em]
-
-              min-[380px]:text-[10px]
-
-              sm:text-sm
-              sm:tracking-[0.2em]
-            "
+            class="font-destacado mt-1 truncate text-[8px] uppercase tracking-[0.08em] min-[380px]:text-[10px] sm:text-sm sm:tracking-[0.2em]"
           >
             Seg
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   </div>
-
 </section>
-
 
 <!-- =======================================================
      CUENTA REGRESIVA
@@ -489,7 +227,7 @@ const leafImages = [
 
 <script define:vars={{ fechaMagica: BODA_INFO.fechaCuentaRegresiva }}>
   const targetTime = new Date(fechaMagica).getTime();
-  const container = document.getElementById('countdown');
+  const container = document.getElementById("countdown");
 
   if (container) {
     setInterval(() => {
@@ -498,54 +236,37 @@ const leafImages = [
 
       if (d < 0) return;
 
-      const days = Math.floor(
-        d / (1000 * 60 * 60 * 24)
-      );
+      const days = Math.floor(d / (1000 * 60 * 60 * 24));
 
-      const hours = Math.floor(
-        (d / (1000 * 60 * 60)) % 24
-      );
+      const hours = Math.floor((d / (1000 * 60 * 60)) % 24);
 
-      const minutes = Math.floor(
-        (d / (1000 * 60)) % 60
-      );
+      const minutes = Math.floor((d / (1000 * 60)) % 60);
 
-      const seconds = Math.floor(
-        (d / 1000) % 60
-      );
+      const seconds = Math.floor((d / 1000) % 60);
 
-      const daysElement =
-        container.querySelector('[data-unit="days"]');
+      const daysElement = container.querySelector('[data-unit="days"]');
 
-      const hoursElement =
-        container.querySelector('[data-unit="hours"]');
+      const hoursElement = container.querySelector('[data-unit="hours"]');
 
-      const minutesElement =
-        container.querySelector('[data-unit="minutes"]');
+      const minutesElement = container.querySelector('[data-unit="minutes"]');
 
-      const secondsElement =
-        container.querySelector('[data-unit="seconds"]');
+      const secondsElement = container.querySelector('[data-unit="seconds"]');
 
       if (daysElement) {
-        daysElement.textContent =
-          days.toString().padStart(2, '0');
+        daysElement.textContent = days.toString().padStart(2, "0");
       }
 
       if (hoursElement) {
-        hoursElement.textContent =
-          hours.toString().padStart(2, '0');
+        hoursElement.textContent = hours.toString().padStart(2, "0");
       }
 
       if (minutesElement) {
-        minutesElement.textContent =
-          minutes.toString().padStart(2, '0');
+        minutesElement.textContent = minutes.toString().padStart(2, "0");
       }
 
       if (secondsElement) {
-        secondsElement.textContent =
-          seconds.toString().padStart(2, '0');
+        secondsElement.textContent = seconds.toString().padStart(2, "0");
       }
-
     }, 1000);
   }
 </script>

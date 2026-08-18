@@ -1,181 +1,95 @@
 ---
-import { BODA_INFO } from '../data/InfoBoda.js';
-import { Image } from 'astro:assets';
+import { BODA_INFO } from "../data/InfoBoda.js";
+import { Image } from "astro:assets";
 ---
 
 <section id="contact" class="section-shell py-10">
-
   <div class="w-full">
-
     <!-- Capa protectora -->
     <div class="relative z-10">
-
       <!-- =================================================
            ENCABEZADO
            ================================================= -->
 
       <div class="mb-8 text-center">
-
         <!-- Etiqueta -->
         <p
-          class="font-destacado
-                 text-xs
-                 uppercase
-                 tracking-[0.3em]
-                 text-[var(--color-verde)]"
+          class="font-destacado text-xs uppercase tracking-[0.3em] text-[var(--color-verde)]"
         >
           Contacto
         </p>
 
-
         <!-- Título -->
         <h2
-          class="font-titulo
-                 mt-2
-                 text-3xl sm:text-4xl
-                 text-[var(--color-titulos)]"
+          class="font-titulo mt-2 text-3xl text-[var(--color-titulos)] sm:text-4xl"
         >
           ¿Necesitas ayuda?
         </h2>
-
       </div>
-
 
       <!-- =================================================
            CONTACTOS
            ================================================= -->
 
-      <div class="flex flex-col gap-6 w-full">
-
-
+      <div class="flex w-full flex-col gap-6">
         <!-- =================================================
              CONTACTO 1
              ================================================= -->
 
         <div
-          class="flex flex-col sm:flex-row
-                 items-center
-                 gap-5 sm:gap-6
-                 p-5 sm:p-6
-                 bg-[var(--color-superficie-blanda)]
-                 backdrop-blur-sm
-                 rounded-2xl
-                 border border-[var(--color-borde-suave)]
-                 shadow-sm
-                 transition-all duration-300
-                 hover:bg-[var(--color-superficie)]
-                 hover:shadow-md
-                 text-center sm:text-left
-                 w-full"
+          class="flex w-full flex-col items-center gap-5 rounded-2xl border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] p-5 text-center shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-[var(--color-superficie)] hover:shadow-md sm:flex-row sm:gap-6 sm:p-6 sm:text-left"
         >
-
-          <div class="flex-1 min-w-0 w-full">
-
+          <div class="w-full min-w-0 flex-1">
             <!-- Nombre -->
             <h3
-              class="font-subtitulo
-                     text-xl
-                     text-[var(--color-negro)]
-                     leading-snug"
+              class="font-subtitulo text-xl leading-snug text-[var(--color-negro)]"
             >
               {BODA_INFO.contacto1}
             </h3>
 
-
             <!-- Rol -->
             <p
-              class="font-palabra
-                     text-xs
-                     uppercase
-                     tracking-wider
-                     text-[var(--color-verde)]
-                     mt-1"
+              class="font-palabra mt-1 text-xs uppercase tracking-wider text-[var(--color-verde)]"
             >
               Organizador
             </p>
 
-
             <!-- Teléfono -->
-            <p
-              class="font-parrafo
-                     text-sm
-                     text-[var(--color-texto)]
-                     mt-0.5"
-            >
+            <p class="font-parrafo mt-0.5 text-sm text-[var(--color-texto)]">
               {BODA_INFO.numeroTelefono1}
             </p>
-
           </div>
-
         </div>
-
 
         <!-- =================================================
              CONTACTO 2
              ================================================= -->
 
         <div
-          class="flex flex-col sm:flex-row
-                 items-center
-                 gap-5 sm:gap-6
-                 p-5 sm:p-6
-                 bg-[var(--color-superficie-blanda)]
-                 backdrop-blur-sm
-                 rounded-2xl
-                 border border-[var(--color-borde-suave)]
-                 shadow-sm
-                 transition-all duration-300
-                 hover:bg-[var(--color-superficie)]
-                 hover:shadow-md
-                 text-center sm:text-left
-                 w-full"
+          class="flex w-full flex-col items-center gap-5 rounded-2xl border border-[var(--color-borde-suave)] bg-[var(--color-superficie-blanda)] p-5 text-center shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-[var(--color-superficie)] hover:shadow-md sm:flex-row sm:gap-6 sm:p-6 sm:text-left"
         >
-
-          <div class="flex-1 min-w-0 w-full">
-
+          <div class="w-full min-w-0 flex-1">
             <!-- Nombre -->
             <h3
-              class="font-subtitulo
-                     text-xl
-                     text-[var(--color-negro)]
-                     leading-snug"
+              class="font-subtitulo text-xl leading-snug text-[var(--color-negro)]"
             >
               {BODA_INFO.contacto2}
             </h3>
 
-
             <!-- Rol -->
             <p
-              class="font-palabra
-                     text-xs
-                     uppercase
-                     tracking-wider
-                     text-[var(--color-verde)]
-                     mt-1"
+              class="font-palabra mt-1 text-xs uppercase tracking-wider text-[var(--color-verde)]"
             >
               Organizadora
             </p>
 
-
             <!-- Teléfono -->
-            <p
-              class="font-parrafo
-                     text-sm
-                     text-[var(--color-texto)]
-                     mt-0.5"
-            >
+            <p class="font-parrafo mt-0.5 text-sm text-[var(--color-texto)]">
               {BODA_INFO.numeroTelefono2}
             </p>
-
           </div>
-
         </div>
-
-
       </div>
-
     </div>
-
   </div>
-
 </section>

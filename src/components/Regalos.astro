@@ -1,124 +1,61 @@
 ---
-import '../styles/global.css';
-import { BODA_INFO } from '../data/InfoBoda.js';
+import "../styles/global.css";
+import { BODA_INFO } from "../data/InfoBoda.js";
 
 // WhatsApp
-const numeroWhatsApp = BODA_INFO.whatsappContacto.replace(/\D/g, '');
+const numeroWhatsApp = BODA_INFO.whatsappContacto.replace(/\D/g, "");
 
 const mensajeWhatsApp = encodeURIComponent(
-  '¡Hola! Me encantaría ver la lista de regalos para la boda. 🎁'
+  "¡Hola! Me encantaría ver la lista de regalos para la boda. 🎁",
 );
 
 const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
 ---
 
 <section id="regalos" class="flex py-10">
-  <div class="max-w-7xl mx-auto px-4 w-full sm:px-6 lg:px-8">
-
+  <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
     <!-- Contenedor Maestro -->
-    <div class="soft-card w-full mx-auto rounded-[36px] shadow-sm p-8 sm:p-12">
-
+    <div class="soft-card mx-auto w-full rounded-[36px] p-8 shadow-sm sm:p-12">
       <!-- ================================================= -->
       <!-- TÍTULO -->
       <!-- ================================================= -->
 
-      <div class="text-center mb-12">
-        <h2
-          class="
-            font-titulo
-            text-4xl
-            text-[var(--color-verde)]
-            sm:text-5xl
-          "
-        >
+      <div class="mb-12 text-center">
+        <h2 class="font-titulo text-4xl text-[var(--color-verde)] sm:text-5xl">
           Regalos
         </h2>
       </div>
-
 
       <!-- ================================================= -->
       <!-- GRILLA -->
       <!-- ================================================= -->
 
       <div
-        class="
-          grid
-          grid-cols-1
-          md:grid-cols-2
-          gap-10
-          sm:gap-14
-          text-center
-          items-stretch
-          max-w-5xl
-          mx-auto
-        "
+        class="mx-auto grid max-w-5xl grid-cols-1 items-stretch gap-10 text-center sm:gap-14 md:grid-cols-2"
       >
-
         <!-- ================================================= -->
         <!-- TARJETA 1: MESA DE REGALOS -->
         <!-- ================================================= -->
 
         <div
-          class="
-          soft-card
-            relative
-            overflow-hidden
-            flex
-            flex-col
-            h-full
-            justify-between
-            items-center
-            p-8
-            rounded-3xl
-            border
-            border-[var(--color-borde-suave)]
-            shadow-sm
-            transition-all
-            duration-300
-            hover:scale-[1.03]
-            hover:shadow-xl
-          "
+          class="soft-card relative flex h-full flex-col items-center justify-between overflow-hidden rounded-3xl border border-[var(--color-borde-suave)] p-8 shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl"
         >
-
-          <div
-            class="
-              relative
-              z-10
-              w-full
-              flex
-              flex-col
-              items-center
-            "
-          >
-
+          <div class="relative z-10 flex w-full flex-col items-center">
             <!-- Título -->
             <div class="mb-6">
               <h2
-                class="
-                  font-titulo
-                  text-3xl
-                  text-[var(--color-texto)]
-                  sm:text-4xl
-                "
+                class="font-titulo text-3xl text-[var(--color-texto)] sm:text-4xl"
               >
                 Mesa de regalos
               </h2>
             </div>
 
-
             <!-- Icono -->
             <div
-              class="
-                mb-6
-                h-16
-                flex
-                items-center
-                justify-center
-                text-[var(--color-bordo-rosa)]
-              "
+              class="mb-6 flex h-16 items-center justify-center text-[var(--color-bordo-rosa)]"
             >
               <svg
-                class="w-12 h-12"
+                class="h-12 w-12"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="0.85"
@@ -128,29 +65,19 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"
-                />
+                ></path>
               </svg>
             </div>
 
-
             <!-- Descripción -->
             <p
-              class="
-                font-parrafo
-                text-[var(--color-texto-suave)]
-                mb-8
-                max-w-sm
-                leading-relaxed
-                text-lg
-              "
+              class="font-parrafo mb-8 max-w-sm text-lg leading-relaxed text-[var(--color-texto-suave)]"
             >
               Si preferís hacernos un presente físico, presioná el botón para
-              conocer nuestra lista de regalos. ¡O también podés hacer un
-              regalo económico a través de nuestro alias!
+              conocer nuestra lista de regalos. ¡O también podés hacer un regalo
+              económico a través de nuestro alias!
             </p>
-
           </div>
-
 
           <!-- ================================================= -->
           <!-- BOTÓN WHATSAPP -->
@@ -160,86 +87,30 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
             href={linkWhatsApp}
             target="_blank"
             rel="noopener noreferrer"
-            class="
-              relative
-              z-10
-              bg-[var(--color-verde)]
-              hover:bg-[var(--color-bordo)]
-              hover:text-[var(--color-blanco)]
-              transition-colors
-              text-[var(--color-blanco)]
-              text-xs
-              font-destacado
-              tracking-widest
-              uppercase
-              py-3
-              px-8
-              rounded-full
-              mt-auto
-              w-full
-              max-w-[220px]
-            "
+            class="font-destacado relative z-10 mt-auto w-full max-w-[220px] rounded-full bg-[var(--color-verde)] px-8 py-3 text-xs uppercase tracking-widest text-[var(--color-blanco)] transition-colors hover:bg-[var(--color-bordo)] hover:text-[var(--color-blanco)]"
           >
             Ver lista de regalos
           </a>
-
         </div>
-
 
         <!-- ================================================= -->
         <!-- TARJETA 2: DATOS BANCARIOS -->
         <!-- ================================================= -->
 
         <div
-          class="
-            relative
-            overflow-hidden
-            flex
-            flex-col
-            h-full
-            justify-between
-            items-center
-            p-8
-            sm:p-10
-            rounded-3xl
-            border
-            border-[var(--color-borde-suave)]
-            shadow-sm
-            transition-all
-            duration-300
-            hover:scale-[1.03]
-            hover:shadow-xl
-          "
+          class="relative flex h-full flex-col items-center justify-between overflow-hidden rounded-3xl border border-[var(--color-borde-suave)] p-8 shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl sm:p-10"
         >
-
           <!-- Contenido -->
-          <div
-            class="
-              relative
-              z-10
-              w-full
-              flex
-              flex-col
-              items-center
-            "
-          >
-
+          <div class="relative z-10 flex w-full flex-col items-center">
             <!-- ================================================= -->
             <!-- ICONO -->
             <!-- ================================================= -->
 
             <div
-              class="
-                mb-6
-                h-16
-                flex
-                items-center
-                justify-center
-                text-[var(--color-bordo-rosa)]
-              "
+              class="mb-6 flex h-16 items-center justify-center text-[var(--color-bordo-rosa)]"
             >
               <svg
-                class="w-14 h-14"
+                class="h-14 w-14"
                 fill="none"
                 stroke="currentColor"
                 stroke-width="0.85"
@@ -249,78 +120,42 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
                   stroke-linecap="round"
                   stroke-linejoin="round"
                   d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"
-                />
+                ></path>
               </svg>
             </div>
-
 
             <!-- ================================================= -->
             <!-- DATOS -->
             <!-- ================================================= -->
 
-            <div class="w-full max-w-sm text-center mb-8">
-
+            <div class="mb-8 w-full max-w-sm text-center">
               <!-- Etiqueta -->
               <p
-                class="
-                  font-destacado
-                  text-[11px]
-                  tracking-[0.3em]
-                  text-[var(--color-rosa)]
-                  uppercase
-                  mb-3
-                "
+                class="font-destacado mb-3 text-[11px] uppercase tracking-[0.3em] text-[var(--color-rosa)]"
               >
                 Alias
               </p>
 
-
               <!-- Alias -->
               <p
                 id="alias-boda"
-                class="
-                  font-palabra
-                  text-[var(--color-texto-fuerte)]
-                  text-xl
-                  md:text-2xl
-                  uppercase
-                  tracking-wider
-                  mb-4
-                "
+                class="font-palabra mb-4 text-xl uppercase tracking-wider text-[var(--color-texto-fuerte)] md:text-2xl"
               >
                 {BODA_INFO.aliasBoda}
               </p>
 
-
               <!-- Separador -->
               <div
-                class="
-                  border-t
-                  border-dashed
-                  border-[var(--color-borde-suave)]
-                  w-3/4
-                  mx-auto
-                  my-4
-                "
-              ></div>
-
+                class="mx-auto my-4 w-3/4 border-t border-dashed border-[var(--color-borde-suave)]"
+              >
+              </div>
 
               <!-- Dueño de la cuenta -->
-              <p
-                class="
-                  font-titulo
-                  text-4xl
-                  text-[var(--color-texto)]
-                  mt-4
-                "
-              >
+              <p class="font-titulo mt-4 text-4xl text-[var(--color-texto)]">
                 {BODA_INFO.dueñoCuenta}
               </p>
-
             </div>
-
           </div>
-
 
           <!-- ================================================= -->
           <!-- BOTÓN COPIAR -->
@@ -328,55 +163,28 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
 
           <button
             id="btn-copiar"
-            class="
-              relative
-              z-10
-              bg-[var(--color-verde)]
-              hover:bg-[var(--color-bordo)]
-              transition-colors
-              text-[var(--color-blanco)]
-              text-xs
-              font-destacado
-              tracking-widest
-              uppercase
-              py-3
-              px-8
-              rounded
-              mt-auto
-              w-full
-              max-w-[240px]
-              shadow-sm
-              flex
-              items-center
-              justify-center
-              gap-2
-            "
+            class="font-destacado relative z-10 mt-auto flex w-full max-w-[240px] items-center justify-center gap-2 rounded bg-[var(--color-verde)] px-8 py-3 text-xs uppercase tracking-widest text-[var(--color-blanco)] shadow-sm transition-colors hover:bg-[var(--color-bordo)]"
           >
-            <span id="texto-btn-copiar">
-              Copiar Datos
-            </span>
+            <span id="texto-btn-copiar"> Copiar Datos </span>
           </button>
-
         </div>
-
       </div>
     </div>
   </div>
 </section>
-
 
 <!-- =======================================================
      SCRIPT PARA COPIAR ALIAS
      ======================================================= -->
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const btnCopiar = document.getElementById('btn-copiar');
-    const textoBtn = document.getElementById('texto-btn-copiar');
-    const aliasBoda = document.getElementById('alias-boda');
+  document.addEventListener("DOMContentLoaded", () => {
+    const btnCopiar = document.getElementById("btn-copiar");
+    const textoBtn = document.getElementById("texto-btn-copiar");
+    const aliasBoda = document.getElementById("alias-boda");
 
     if (btnCopiar && aliasBoda && textoBtn) {
-      btnCopiar.addEventListener('click', async () => {
+      btnCopiar.addEventListener("click", async () => {
         try {
           const textoACopiar = aliasBoda.innerText.trim();
 
@@ -384,37 +192,29 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
 
           const textoOriginal = textoBtn.innerText;
 
-          textoBtn.innerText = '¡Alias Copiado!';
+          textoBtn.innerText = "¡Alias Copiado!";
 
           btnCopiar.classList.remove(
-            'bg-[var(--color-verde)]',
-            'hover:bg-[var(--color-bordo)]'
+            "bg-[var(--color-verde)]",
+            "hover:bg-[var(--color-bordo)]",
           );
 
-          btnCopiar.classList.add(
-            'bg-[var(--color-exito)]'
-          );
+          btnCopiar.classList.add("bg-[var(--color-exito)]");
 
           setTimeout(() => {
             textoBtn.innerText = textoOriginal;
 
-            btnCopiar.classList.remove(
-              'bg-[var(--color-exito)]'
-            );
+            btnCopiar.classList.remove("bg-[var(--color-exito)]");
 
             btnCopiar.classList.add(
-              'bg-[var(--color-verde)]',
-              'hover:bg-[var(--color-bordo)]'
+              "bg-[var(--color-verde)]",
+              "hover:bg-[var(--color-bordo)]",
             );
           }, 2500);
-
         } catch (err) {
-          console.error(
-            'No se pudo copiar el texto:',
-            err
-          );
+          console.error("No se pudo copiar el texto:", err);
 
-          textoBtn.innerText = 'Error al copiar';
+          textoBtn.innerText = "Error al copiar";
         }
       });
     }

@@ -1,21 +1,21 @@
 ---
 // src/components/Decoraciones.astro
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 // 1. IMPORTA AQUÍ TUS NUEVAS IMÁGENES (Asegúrate de que estén en src/img/)
 
-import fondoDecoraciones from '../img/hero2.webp'; // Fondo de la sección
+import fondoDecoraciones from "../img/hero2.webp"; // Fondo de la sección
 
-import esquinaSupDerecha from '../img/esquina-superior-derecha.png'; 
-import esquinaSupIzquierda from '../img/esquina-superior-izquierda.png';
-import esquinaInfIzquierda from '../img/esquina-inferior-izquierda.png';
-import esquinaInfDerecha from '../img/esquina-inferior-derecha.png';
+import esquinaSupDerecha from "../img/esquina-superior-derecha.png";
+import esquinaSupIzquierda from "../img/esquina-superior-izquierda.png";
+import esquinaInfIzquierda from "../img/esquina-inferior-izquierda.png";
+import esquinaInfDerecha from "../img/esquina-inferior-derecha.png";
 
 //import arribaMedio from '../img/deco-arriba-medio.png';
-import abajoMedio from '../img/deco-abajo-medio.png';
+import abajoMedio from "../img/deco-abajo-medio.png";
 
-import bordeDerecho from '../img/deco-borde-derecha.png';
-import bordeIzquierdo from '../img/deco-borde-izquierda.png';
+import bordeDerecho from "../img/deco-borde-derecha.png";
+import bordeIzquierdo from "../img/deco-borde-izquierda.png";
 
 // =====================================================================
 // ⚙️ PANEL DE CONTROL DE DECORACIONES
@@ -23,13 +23,12 @@ import bordeIzquierdo from '../img/deco-borde-izquierda.png';
 // =====================================================================
 
 const DECORACIONES = {
- 
   esquinaSuperiorDerecha: {
     imagen: esquinaSupDerecha,
     posicion: "absolute top-[45px] right-0",
     tamano: "w-40 md:w-56",
     opacidad: "opacity-40",
-    extra: "mix-blend-multiply" // Borra fondos blancos
+    extra: "mix-blend-multiply", // Borra fondos blancos
   },
 
   esquinaSuperiorIzquierda: {
@@ -37,17 +36,15 @@ const DECORACIONES = {
     posicion: "absolute top-[45px] left-0",
     tamano: "w-48 md:w-64",
     opacidad: "opacity-50",
-    extra: "mix-blend-multiply"
+    extra: "mix-blend-multiply",
   },
 
-
-  
   bordeDerecho1: {
     imagen: bordeDerecho,
     posicion: "absolute top-[15%] right-0 -translate-y-1/2",
     tamano: "w-24 md:w-32",
     opacidad: "opacity-50",
-    extra: "mix-blend-multiply"
+    extra: "mix-blend-multiply",
   },
 
   bordeDerecho2: {
@@ -55,43 +52,39 @@ const DECORACIONES = {
     posicion: "absolute top-[35%] right-0 -translate-y-1/2",
     tamano: "w-24 md:w-32",
     opacidad: "opacity-50",
-    extra: "mix-blend-multiply"
+    extra: "mix-blend-multiply",
   },
-  
+
   bordeDerecho3: {
     imagen: bordeDerecho,
     posicion: "absolute top-[55%] right-0 -translate-y-1/2",
     tamano: "w-24 md:w-32",
     opacidad: "opacity-50",
-    extra: "mix-blend-multiply"
+    extra: "mix-blend-multiply",
   },
-
- 
 
   bordeDerecho5: {
     imagen: bordeDerecho,
     posicion: "absolute top-[85%] right-0 -translate-y-1/2",
     tamano: "w-24 md:w-32",
     opacidad: "opacity-50",
-    extra: "mix-blend-multiply"
+    extra: "mix-blend-multiply",
   },
 
-
-  
   bordeIzquierdo1: {
     imagen: bordeIzquierdo, // Asegúrate de que apunte a tu nueva foto izquierda
     posicion: "absolute top-[20%] left-0 -translate-y-1/2",
     tamano: "w-24 md:w-32",
     opacidad: "opacity-50",
-    extra: "mix-blend-multiply" 
+    extra: "mix-blend-multiply",
   },
-  
+
   bordeIzquierdo2: {
     imagen: bordeIzquierdo,
     posicion: "absolute top-[45%] left-0 -translate-y-1/2",
     tamano: "w-24 md:w-32",
     opacidad: "opacity-50",
-    extra: "mix-blend-multiply"
+    extra: "mix-blend-multiply",
   },
 
   bordeIzquierdo3: {
@@ -99,7 +92,7 @@ const DECORACIONES = {
     posicion: "absolute top-[70%] left-0 -translate-y-1/2",
     tamano: "w-24 md:w-32",
     opacidad: "opacity-50",
-    extra: "mix-blend-multiply"
+    extra: "mix-blend-multiply",
   },
 
   bordeIzquierdo4: {
@@ -107,25 +100,21 @@ const DECORACIONES = {
     posicion: "absolute top-[90%] left-0 -translate-y-1/2",
     tamano: "w-24 md:w-32",
     opacidad: "opacity-50",
-    extra: "mix-blend-multiply"
-  }
-  
-
-
-
+    extra: "mix-blend-multiply",
+  },
 };
 ---
 
 <!-- CONTENEDOR FANTASMA: Cubre toda la sección pero no bloquea clics -->
-<div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
-  
+<div class="pointer-events-none absolute inset-0 z-0 overflow-hidden">
   <!-- El código "lee" tu panel de control de arriba y dibuja las fotos automáticamente -->
-  {Object.entries(DECORACIONES).map(([nombre, deco]) => (
-    <Image 
-      src={deco.imagen} 
-      alt={`Decoración ${nombre}`} 
-      class={`${deco.posicion} ${deco.tamano} ${deco.opacidad} ${deco.extra}`} 
-    />
-  ))}
-
+  {
+    Object.entries(DECORACIONES).map(([nombre, deco]) => (
+      <Image
+        src={deco.imagen}
+        alt={`Decoración ${nombre}`}
+        class={`${deco.posicion} ${deco.tamano} ${deco.opacidad} ${deco.extra}`}
+      />
+    ))
+  }
 </div>

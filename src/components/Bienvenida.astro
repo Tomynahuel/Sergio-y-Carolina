@@ -1,60 +1,37 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 // Importamos la imagen de mármol de forma nativa para que Astro la procese sin errores
 ---
 
 <section id="bienvenida" class="section-shell py-10">
-
   <!-- =====================================================
        ENCABEZADO
        ===================================================== -->
 
-  <div class="text-center mb-8">
-
-  </div>
-
+  <div class="mb-8 text-center"></div>
 
   <!-- =====================================================
        TARJETA
        ===================================================== -->
 
   <div
-    class="relative overflow-hidden rounded-[2rem]
-           p-8 sm:p-12
-           shadow-sm
-           border border-[var(--color-borde)]
-           bg-[var(--color-blanco)]
-           transition-all duration-300
-           hover:shadow-md"
+    class="relative overflow-hidden rounded-[2rem] border border-[var(--color-borde)] bg-[var(--color-blanco)] p-8 shadow-sm transition-all duration-300 hover:shadow-md sm:p-12"
   >
-
     <!-- Capa aclaradora -->
-    <div
-      class="absolute inset-0
-             bg-[var(--color-overlay-suave)]
-             z-0"
-    ></div>
-
+    <div class="absolute inset-0 z-0 bg-[var(--color-overlay-suave)]"></div>
 
     <!-- ===================================================
          CONTENIDO
          =================================================== -->
 
     <div class="relative z-10 text-center">
-
       <p
-        class="font-parrafo
-               text-2xl md:text-xl
-               text-[var(--color-texto)]
-               leading-relaxed"
+        class="font-parrafo text-2xl leading-relaxed text-[var(--color-texto)] md:text-xl"
       >
-        Qué alegría inmensa compartir este momento tan especial
-        con vos. Estamos preparando una noche inolvidable.
+        Qué alegría inmensa compartir este momento tan especial con vos. Estamos
+        preparando una noche inolvidable.
       </p>
-
     </div>
-
   </div>
-
 </section>

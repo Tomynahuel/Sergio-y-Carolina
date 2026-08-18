@@ -461,4 +461,31 @@ import Sobre from '../components/Sobre.astro';
 
 </body>
 
+</html>    mobileLinks.forEach((link) => {
+
+        link.addEventListener('click', () => {
+
+          mobileMenu.classList.add('hidden');
+
+          mobileButton.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+
+          mobileButton.setAttribute(
+            'aria-label',
+            'Abrir menú'
+          );
+
+          mobileButton.textContent = '☰';
+
+        });
+
+      });
+
+    }
+  </script>
+
+</body>
+
 </html>

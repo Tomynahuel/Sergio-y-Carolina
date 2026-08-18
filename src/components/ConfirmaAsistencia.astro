@@ -1,103 +1,51 @@
 ---
-import { BODA_INFO } from '../data/InfoBoda.js';
-import { Image } from 'astro:assets';
+import { BODA_INFO } from "../data/InfoBoda.js";
+import { Image } from "astro:assets";
 ---
 
-<div
-  id="confirma-asistencia"
-  class="section-shell py-10"
->
-
+<div id="confirma-asistencia" class="section-shell py-10">
   <div
-    class="relative overflow-hidden
-           p-6 sm:p-10
-           rounded-[2rem]
-           border border-[var(--color-borde)]
-           shadow-sm
-           transition duration-300
-           hover:-translate-y-1
-           hover:shadow-md
-           bg-[var(--color-blanco)]
-           text-center"
+    class="relative overflow-hidden rounded-[2rem] border border-[var(--color-borde)] bg-[var(--color-blanco)] p-6 text-center shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md sm:p-10"
   >
-
     <!-- Capa de overlay -->
-    <div
-      class="absolute inset-0
-             bg-[var(--color-overlay-suave)]
-             z-0"
-    ></div>
-
+    <div class="absolute inset-0 z-0 bg-[var(--color-overlay-suave)]"></div>
 
     <!-- Contenido -->
     <div class="relative z-10">
-
       <!-- TÍTULO -->
       <h2
-        class="font-titulo
-               mt-3
-               text-4xl sm:text-5xl
-               text-[var(--color-bordo-rosa)]"
+        class="font-titulo mt-3 text-4xl text-[var(--color-bordo-rosa)] sm:text-5xl"
       >
         Confirma tu asistencia
       </h2>
 
-
       <!-- PÁRRAFO PRINCIPAL -->
       <p
-        class="font-parrafo
-               mt-4
-               text-lg
-               text-[var(--color-texto-suave)]
-               max-w-2xl
-               mx-auto"
+        class="font-parrafo mx-auto mt-4 max-w-2xl text-lg text-[var(--color-texto-suave)]"
       >
-        Tu presencia hará que este día sea aún más especial.
-        Nos encantaría compartirlo contigo.
+        Tu presencia hará que este día sea aún más especial. Nos encantaría
+        compartirlo contigo.
       </p>
-
 
       <!-- DETALLE FECHA LÍMITE -->
       <div
-        class="mt-8
-               mx-auto
-               max-w-md
-               rounded-2xl
-               bg-[var(--color-superficie-blanda)]
-               backdrop-blur-sm
-               p-6
-               text-[var(--color-texto)]
-               border border-[var(--color-borde)]
-               shadow-sm"
+        class="mx-auto mt-8 max-w-md rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie-blanda)] p-6 text-[var(--color-texto)] shadow-sm backdrop-blur-sm"
       >
-
         <!-- DESTACADO -->
         <p
-          class="font-destacado
-                 text-[var(--color-bordo)]
-                 text-lg
-                 uppercase
-                 tracking-widest"
+          class="font-destacado text-lg uppercase tracking-widest text-[var(--color-bordo)]"
         >
           Fecha límite
         </p>
 
-
         <!-- PÁRRAFO INTERNO -->
-        <p
-          class="font-parrafo
-                 mt-2"
-        >
+        <p class="font-parrafo mt-2">
           Por favor responde antes del
           {BODA_INFO.fechaLimite}
           de
           {BODA_INFO.mesLimite}.
         </p>
-
       </div>
-
     </div>
-
   </div>
-
 </div>

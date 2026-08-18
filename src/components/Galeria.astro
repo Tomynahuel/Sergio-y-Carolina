@@ -1,84 +1,53 @@
 ---
-import foto1 from '../img/ells1.png';
-import foto2 from '../img/ellos8.png';
-import foto3 from '../img/ellos7.png';
-import foto4 from '../img/ells4.png';
-import foto5 from '../img/ellos5.jpg';
-import foto6 from '../img/ellos8.png';
+import foto1 from "../img/ells1.png";
+import foto2 from "../img/ellos8.png";
+import foto3 from "../img/ellos7.png";
+import foto4 from "../img/ells4.png";
+import foto5 from "../img/ellos5.jpg";
+import foto6 from "../img/ellos8.png";
 
-const imagenes = [
-  foto1,
-  foto2,
-  foto3,
-  foto4,
-  foto5,
-  foto6,
-];
+const imagenes = [foto1, foto2, foto3, foto4, foto5, foto6];
 ---
 
 <section id="gallery" class="section-shell pb-24">
-
   <div class="soft-card overflow-hidden p-8 sm:p-10">
-
     <!-- =====================================================
          ENCABEZADO
          ===================================================== -->
 
     <div class="mb-8 text-center">
-
       <!-- Etiqueta -->
       <p
-        class="font-destacado
-               text-sm
-               uppercase
-               tracking-[0.3em]
-               text-[var(--color-verde)]"
+        class="font-destacado text-sm uppercase tracking-[0.3em] text-[var(--color-verde)]"
       >
         Galería
       </p>
 
-
       <!-- Título -->
       <h2
-        class="font-titulo
-               mt-3
-               text-4xl sm:text-5xl
-               text-[var(--color-bordo-rosa)]"
+        class="font-titulo mt-3 text-4xl text-[var(--color-bordo-rosa)] sm:text-5xl"
       >
         Nuestros momentos favoritos
       </h2>
-
     </div>
-
 
     <!-- =====================================================
          GALERÍA
          ===================================================== -->
 
     <div class="grid gap-4 md:grid-cols-3">
-
       {
         [0, 1, 2].map((indice) => (
           <div
-            class="gallery-image group
-                   h-72
-                   overflow-hidden
-                   rounded-[1.5rem]
-                   bg-[var(--color-blanco)]
-                   bg-cover
-                   bg-center"
+            class="gallery-image group h-72 overflow-hidden rounded-[1.5rem] bg-[var(--color-blanco)] bg-cover bg-center"
             style={`background-image: url('${imagenes[indice % imagenes.length].src}');`}
             data-indice={indice}
-          ></div>
+          />
         ))
       }
-
     </div>
-
   </div>
-
 </section>
-
 
 <script>
   const imagenes = [
@@ -90,25 +59,17 @@ const imagenes = [
     foto6.src,
   ];
 
-  const galerias =
-    document.querySelectorAll<HTMLElement>('.gallery-image');
+  const galerias = document.querySelectorAll<HTMLElement>(".gallery-image");
 
   let posicion = 0;
 
   setInterval(() => {
-
     galerias.forEach((galeria, indice) => {
+      const imagenIndex = (posicion + indice) % imagenes.length;
 
-      const imagenIndex =
-        (posicion + indice) % imagenes.length;
-
-      galeria.style.backgroundImage =
-        `url('${imagenes[imagenIndex]}')`;
-
+      galeria.style.backgroundImage = `url('${imagenes[imagenIndex]}')`;
     });
 
-    posicion =
-      (posicion + 1) % imagenes.length;
-
+    posicion = (posicion + 1) % imagenes.length;
   }, 3000);
 </script>

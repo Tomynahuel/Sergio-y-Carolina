@@ -1,22 +1,16 @@
 ---
-import { BODA_INFO } from '../data/InfoBoda.js';
-import { Image } from 'astro:assets';
+import { BODA_INFO } from "../data/InfoBoda.js";
+import { Image } from "astro:assets";
 ---
 
 <div id="sobre-overlay" class="overlay">
-
   <!-- SOBRE -->
   <button id="btn-abrir" class="sobre-boton">
-    <Image
-      src={BODA_INFO.sobre}
-      alt="Abrir invitación"
-      class="sobre-bg"
-    />
+    <Image src={BODA_INFO.sobre} alt="Abrir invitación" class="sobre-bg" />
   </button>
 
   <!-- CAPA NEGRA -->
   <div class="pantalla-negra"></div>
-
 </div>
 
 <style>
@@ -32,7 +26,6 @@ import { Image } from 'astro:assets';
     overflow: auto;
     overflow-x: hidden;
   }
-
 
   /* ==============================
      OVERLAY
@@ -51,7 +44,6 @@ import { Image } from 'astro:assets';
 
     overflow: hidden;
   }
-
 
   /* ==============================
      SOBRE
@@ -75,7 +67,6 @@ import { Image } from 'astro:assets';
     z-index: 1;
   }
 
-
   .sobre-bg {
     position: absolute;
     inset: 0;
@@ -88,7 +79,6 @@ import { Image } from 'astro:assets';
 
     pointer-events: none;
   }
-
 
   /* ==============================
      PANTALLA NEGRA
@@ -107,7 +97,6 @@ import { Image } from 'astro:assets';
     pointer-events: none;
   }
 
-
   /* ==============================
      OSCURECER
   ============================== */
@@ -115,10 +104,8 @@ import { Image } from 'astro:assets';
   .overlay.oscureciendo .pantalla-negra {
     opacity: 1;
 
-    transition:
-      opacity 1.2s ease-in;
+    transition: opacity 1.2s ease-in;
   }
-
 
   /* ==============================
      OCULTAR SOBRE
@@ -129,7 +116,6 @@ import { Image } from 'astro:assets';
     visibility: hidden;
   }
 
-
   /* ==============================
      REVELAR INVITACIÓN
   ============================== */
@@ -137,10 +123,8 @@ import { Image } from 'astro:assets';
   .overlay.revelando .pantalla-negra {
     opacity: 0;
 
-    transition:
-      opacity 2.5s ease-out;
+    transition: opacity 2.5s ease-out;
   }
-
 </style>
 
 <script>
@@ -153,9 +137,9 @@ import { Image } from 'astro:assets';
    * false → mostrarlo solo la primera vez
    */
   const MOSTRAR_SOBRE_SIEMPRE = false;
-  const SOBRE_ABIERTO_KEY = 'invitacion-sobre-abierto';
-  const btn = document.getElementById('btn-abrir');
-  const overlay = document.getElementById('sobre-overlay');
+  const SOBRE_ABIERTO_KEY = "invitacion-sobre-abierto";
+  const btn = document.getElementById("btn-abrir");
+  const overlay = document.getElementById("sobre-overlay");
 
   if (overlay) {
     /*
@@ -164,31 +148,25 @@ import { Image } from 'astro:assets';
      * ==========================================
      */
     const sobreYaFueAbierto =
-      localStorage.getItem(SOBRE_ABIERTO_KEY) === 'true';
+      localStorage.getItem(SOBRE_ABIERTO_KEY) === "true";
     /*
      * MOSTRAR SIEMPRE
      */
     if (MOSTRAR_SOBRE_SIEMPRE) {
-      document.body.classList.remove(
-        'scroll-permitido'
-      );
+      document.body.classList.remove("scroll-permitido");
     }
     /*
      * MOSTRAR SOLO LA PRIMERA VEZ
      */
     else if (!sobreYaFueAbierto) {
-      document.body.classList.remove(
-        'scroll-permitido'
-      );
+      document.body.classList.remove("scroll-permitido");
     }
     /*
      * YA FUE ABIERTO
      */
     else {
       overlay.remove();
-      document.body.classList.add(
-        'scroll-permitido'
-      );
+      document.body.classList.add("scroll-permitido");
     }
   }
   /*
@@ -198,11 +176,8 @@ import { Image } from 'astro:assets';
    */
 
   if (btn && overlay) {
-
-    btn.addEventListener('click', () => {
-
+    btn.addEventListener("click", () => {
       btn.disabled = true;
-
 
       /*
        * Guardamos que el invitado
@@ -212,72 +187,48 @@ import { Image } from 'astro:assets';
        * MOSTRAR_SOBRE_SIEMPRE = false.
        */
 
-      localStorage.setItem(
-        SOBRE_ABIERTO_KEY,
-        'true'
-      );
-
+      localStorage.setItem(SOBRE_ABIERTO_KEY, "true");
 
       /*
        * OSCURECER
        */
 
-      overlay.classList.add(
-        'oscureciendo'
-      );
-
+      overlay.classList.add("oscureciendo");
 
       /*
        * ESPERAR A QUE ESTÉ COMPLETAMENTE NEGRO
        */
 
       setTimeout(() => {
-
         /*
          * Ocultamos el sobre mientras
          * todavía estamos en negro.
          */
 
-        overlay.classList.add(
-          'sobre-oculto'
-        );
-
+        overlay.classList.add("sobre-oculto");
 
         /*
          * Permitimos el scroll
          */
 
-        document.body.classList.add(
-          'scroll-permitido'
-        );
-
+        document.body.classList.add("scroll-permitido");
 
         /*
          * REVELAR INVITACIÓN
          */
 
         requestAnimationFrame(() => {
-
-          overlay.classList.add(
-            'revelando'
-          );
-
+          overlay.classList.add("revelando");
         });
-
 
         /*
          * ELIMINAR TRANSICIÓN
          */
 
         setTimeout(() => {
-
           overlay.remove();
-
         }, 2500);
-
       }, 1200);
-
     });
-
   }
 </script>

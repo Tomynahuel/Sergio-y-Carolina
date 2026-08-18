@@ -1,71 +1,39 @@
 ---
-import { backupToGoogleSheet, buildGuestCsv, buildMailtoLink } from '../lib/rsvp.mjs';
-import { Image } from 'astro:assets';
-import { BODA_INFO } from '../data/InfoBoda';
+import {
+  backupToGoogleSheet,
+  buildGuestCsv,
+  buildMailtoLink,
+} from "../lib/rsvp.mjs";
+import { Image } from "astro:assets";
+import { BODA_INFO } from "../data/InfoBoda";
 ---
 
 <section id="rsvp" class="section-shell py-10">
-
   <!-- Contenedor Principal -->
   <div
-    class="
-      w-full
-      relative
-      overflow-hidden
-      p-8
-      sm:p-12
-      rounded-[2rem]
-      border
-      border-[var(--color-borde)]
-      shadow-sm
-      transition-all
-      duration-300
-      hover:shadow-md
-      bg-[var(--color-blanco)]
-    "
+    class="relative w-full overflow-hidden rounded-[2rem] border border-[var(--color-borde)] bg-[var(--color-blanco)] p-8 shadow-sm transition-all duration-300 hover:shadow-md sm:p-12"
   >
-
     <!-- Capa protectora -->
-    <div class="absolute inset-0 bg-[var(--color-overlay-media)] z-0"></div>
+    <div class="absolute inset-0 z-0 bg-[var(--color-overlay-media)]"></div>
 
     <!-- Contenido del Formulario -->
     <div class="relative z-10" id="rsvp-form-container">
-
       <!-- TÍTULO -->
       <h2
-        class="
-          font-titulo
-          mt-2
-          mb-8
-          text-4xl
-          sm:text-5xl
-          text-[var(--color-texto)]
-          text-center
-        "
+        class="font-titulo mb-8 mt-2 text-center text-4xl text-[var(--color-texto)] sm:text-5xl"
       >
         Completar el formulario
       </h2>
 
-
       <form id="rsvp-form" class="space-y-5" novalidate>
-
         <!-- ================================================= -->
         <!-- NOMBRE -->
         <!-- ================================================= -->
 
         <div>
-
           <label
             for="rsvp-name"
-            class="
-              font-destacado
-              mb-2
-              block
-              text-xs
-              tracking-widest
-              text-[var(--color-bordo)]
-              uppercase
-            "
+            class="font-destacado mb-2 block text-xs uppercase tracking-widest text-[var(--color-bordo)]"
           >
             Nombre completo
           </label>
@@ -75,48 +43,19 @@ import { BODA_INFO } from '../data/InfoBoda';
             name="name"
             autocomplete="name"
             required
-            class="
-              font-parrafo
-              w-full
-              rounded-2xl
-              border
-              border-[var(--color-borde)]
-              bg-[var(--color-superficie-blanda)]
-              backdrop-blur-sm
-              px-5
-              py-3.5
-              outline-none
-              transition
-              focus:border-[var(--color-acento)]
-              focus:ring-1
-              focus:ring-[var(--color-acento)]
-              text-[var(--color-texto)]
-              placeholder-[var(--color-texto-suave)]
-              shadow-sm
-            "
+            class="font-parrafo w-full rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie-blanda)] px-5 py-3.5 text-[var(--color-texto)] placeholder-[var(--color-texto-suave)] shadow-sm outline-none backdrop-blur-sm transition focus:border-[var(--color-acento)] focus:ring-1 focus:ring-[var(--color-acento)]"
             placeholder="Ej: Juan Pérez"
           />
-
         </div>
-
 
         <!-- ================================================= -->
         <!-- TELÉFONO -->
         <!-- ================================================= -->
 
         <div>
-
           <label
             for="rsvp-phone"
-            class="
-              font-destacado
-              mb-2
-              block
-              text-xs
-              tracking-widest
-              text-[var(--color-bordo)]
-              uppercase
-            "
+            class="font-destacado mb-2 block text-xs uppercase tracking-widest text-[var(--color-bordo)]"
           >
             Teléfono
           </label>
@@ -127,59 +66,24 @@ import { BODA_INFO } from '../data/InfoBoda';
             type="tel"
             autocomplete="tel"
             required
-            class="
-              font-parrafo
-              w-full
-              rounded-2xl
-              border
-              border-[var(--color-borde)]
-              bg-[var(--color-superficie-blanda)]
-              backdrop-blur-sm
-              px-5
-              py-3.5
-              outline-none
-              transition
-              focus:border-[var(--color-acento)]
-              focus:ring-1
-              focus:ring-[var(--color-acento)]
-              text-[var(--color-texto)]
-              placeholder-[var(--color-texto-suave)]
-              shadow-sm
-            "
+            class="font-parrafo w-full rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie-blanda)] px-5 py-3.5 text-[var(--color-texto)] placeholder-[var(--color-texto-suave)] shadow-sm outline-none backdrop-blur-sm transition focus:border-[var(--color-acento)] focus:ring-1 focus:ring-[var(--color-acento)]"
             placeholder="Ej: +54 9 11 1234 5678"
           />
-
         </div>
-
 
         <!-- ================================================= -->
         <!-- INVITADOS -->
         <!-- ================================================= -->
 
         <div>
-
           <label
             for="rsvp-guests"
-            class="
-              font-destacado
-              mb-2
-              block
-              text-xs
-              tracking-widest
-              text-[var(--color-bordo)]
-              uppercase
-            "
+            class="font-destacado mb-2 block text-xs uppercase tracking-widest text-[var(--color-bordo)]"
           >
             Número de invitados
 
             <span
-              class="
-                font-parrafo
-                normal-case
-                font-medium
-                text-[var(--color-texto-suave)]
-                tracking-normal
-              "
+              class="font-parrafo font-medium normal-case tracking-normal text-[var(--color-texto-suave)]"
             >
               (incluyéndote)
             </span>
@@ -191,148 +95,61 @@ import { BODA_INFO } from '../data/InfoBoda';
             type="number"
             min="1"
             required
-            class="
-              font-parrafo
-              w-full
-              rounded-2xl
-              border
-              border-[var(--color-borde)]
-              bg-[var(--color-superficie-blanda)]
-              backdrop-blur-sm
-              px-5
-              py-3.5
-              outline-none
-              transition
-              focus:border-[var(--color-acento)]
-              focus:ring-1
-              focus:ring-[var(--color-acento)]
-              text-[var(--color-texto)]
-              placeholder-[var(--color-texto-suave)]
-              shadow-sm
-            "
+            class="font-parrafo w-full rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie-blanda)] px-5 py-3.5 text-[var(--color-texto)] placeholder-[var(--color-texto-suave)] shadow-sm outline-none backdrop-blur-sm transition focus:border-[var(--color-acento)] focus:ring-1 focus:ring-[var(--color-acento)]"
             placeholder="Ej: 2"
           />
-
         </div>
-
 
         <!-- ================================================= -->
         <!-- SELECTOR DE ASISTENCIA -->
         <!-- ================================================= -->
 
         <div
-          class="
-            space-y-4
-            rounded-[1.5rem]
-            border
-            border-[var(--color-borde)]
-            bg-[var(--color-superficie-media)]
-            backdrop-blur-md
-            p-6
-            shadow-sm
-          "
+          class="space-y-4 rounded-[1.5rem] border border-[var(--color-borde)] bg-[var(--color-superficie-media)] p-6 shadow-sm backdrop-blur-md"
         >
-
           <p
-            class="
-              font-destacado
-              text-sm
-              uppercase
-              tracking-[0.25em]
-              text-[var(--color-texto-fuerte)]
-              text-center
-            "
+            class="font-destacado text-center text-sm uppercase tracking-[0.25em] text-[var(--color-texto-fuerte)]"
           >
             ¿Asistirás?
           </p>
 
-
-          <div
-            class="
-              flex
-              flex-col
-              sm:flex-row
-              gap-4
-              justify-center
-              mt-2
-            "
-          >
-
+          <div class="mt-2 flex flex-col justify-center gap-4 sm:flex-row">
             <label
-              class="
-                font-parrafo
-                inline-flex
-                items-center
-                gap-3
-                text-[var(--color-texto)]
-                cursor-pointer
-              "
+              class="font-parrafo inline-flex cursor-pointer items-center gap-3 text-[var(--color-texto)]"
             >
               <input
                 type="radio"
                 name="attendance"
                 value="acepta"
-                class="
-                  h-5
-                  w-5
-                  text-[var(--color-acento)]
-                  border-[var(--color-borde)]
-                  focus:ring-[var(--color-acento)]
-                "
+                class="h-5 w-5 border-[var(--color-borde)] text-[var(--color-acento)] focus:ring-[var(--color-acento)]"
               />
 
               Sí, asistiré
             </label>
 
-
             <label
-              class="
-                font-parrafo
-                inline-flex
-                items-center
-                gap-3
-                text-[var(--color-texto)]
-                cursor-pointer
-              "
+              class="font-parrafo inline-flex cursor-pointer items-center gap-3 text-[var(--color-texto)]"
             >
               <input
                 type="radio"
                 name="attendance"
                 value="declina"
-                class="
-                  h-5
-                  w-5
-                  text-[var(--color-bordo)]
-                  border-[var(--color-borde)]
-                  focus:ring-[var(--color-bordo)]
-                "
+                class="h-5 w-5 border-[var(--color-borde)] text-[var(--color-bordo)] focus:ring-[var(--color-bordo)]"
               />
 
               Lamentablemente declino
             </label>
-
           </div>
-
         </div>
-
 
         <!-- ================================================= -->
         <!-- MENSAJE -->
         <!-- ================================================= -->
 
         <div>
-
           <label
             for="rsvp-message"
-            class="
-              font-destacado
-              mb-2
-              block
-              text-xs
-              tracking-widest
-              text-[var(--color-bordo)]
-              uppercase
-            "
+            class="font-destacado mb-2 block text-xs uppercase tracking-widest text-[var(--color-bordo)]"
           >
             Mensaje opcional
           </label>
@@ -340,31 +157,10 @@ import { BODA_INFO } from '../data/InfoBoda';
           <textarea
             id="rsvp-message"
             name="message"
-            class="
-              font-parrafo
-              min-h-[120px]
-              w-full
-              rounded-2xl
-              border
-              border-[var(--color-borde)]
-              bg-[var(--color-superficie-blanda)]
-              backdrop-blur-sm
-              px-5
-              py-3.5
-              outline-none
-              transition
-              focus:border-[var(--color-acento)]
-              focus:ring-1
-              focus:ring-[var(--color-acento)]
-              text-[var(--color-texto)]
-              placeholder-[var(--color-texto-suave)]
-              shadow-sm
-            "
+            class="font-parrafo min-h-[120px] w-full rounded-2xl border border-[var(--color-borde)] bg-[var(--color-superficie-blanda)] px-5 py-3.5 text-[var(--color-texto)] placeholder-[var(--color-texto-suave)] shadow-sm outline-none backdrop-blur-sm transition focus:border-[var(--color-acento)] focus:ring-1 focus:ring-[var(--color-acento)]"
             placeholder="Escribe aquí si tienes restricciones alimenticias o un lindo mensaje para los novios..."
           ></textarea>
-
         </div>
-
 
         <!-- ================================================= -->
         <!-- BOTÓN -->
@@ -372,34 +168,14 @@ import { BODA_INFO } from '../data/InfoBoda';
 
         <button
           type="submit"
-          class="
-            font-destacado
-            w-full
-            rounded-full
-            bg-[var(--color-bordo)]
-            px-6
-            py-4
-            text-sm
-            uppercase
-            tracking-widest
-            text-[var(--color-blanco)]
-            shadow-md
-            transition-all
-            hover:bg-[var(--color-principal-hover)]
-            hover:shadow-lg
-            hover:-translate-y-0.5
-          "
+          class="font-destacado w-full rounded-full bg-[var(--color-bordo)] px-6 py-4 text-sm uppercase tracking-widest text-[var(--color-blanco)] shadow-md transition-all hover:-translate-y-0.5 hover:bg-[var(--color-principal-hover)] hover:shadow-lg"
         >
           Confirmar asistencia
         </button>
-         <!-- DESTACADO -->
-    
+        <!-- DESTACADO -->
+
         <!-- PÁRRAFO INTERNO -->
-        <p
-          class="font-parrafo
-          text-center
-                mt-2"
-        >
+        <p class="font-parrafo mt-2 text-center">
           Por favor responde antes del 15 de Septiembre.
         </p>
 
@@ -407,20 +183,13 @@ import { BODA_INFO } from '../data/InfoBoda';
 
         <p
           id="rsvp-feedback"
-          class="
-            font-parrafo
-            min-h-6
-            text-sm
-            text-center
-            mt-2
-          "
+          class="font-parrafo mt-2 min-h-6 text-center text-sm"
           role="status"
           aria-live="polite"
-        ></p>
-
+        >
+        </p>
       </form>
     </div>
-
 
     <!-- ===================================================== -->
     <!-- CONTENEDOR DE ÉXITO -->
@@ -428,174 +197,78 @@ import { BODA_INFO } from '../data/InfoBoda';
 
     <div
       id="rsvp-success-container"
-      class="
-        relative
-        z-10
-        hidden
-        text-center
-        py-6
-      "
+      class="relative z-10 hidden py-6 text-center"
     >
-
       <div class="mb-8">
+        <p class="font-palabra mb-4 text-6xl">🥂</p>
 
-        <p class="font-palabra text-6xl mb-4">
-          🥂
-        </p>
-
-
-        <h3
-          class="
-            font-titulo
-            text-4xl
-            text-[var(--color-acento)]
-            mb-3
-          "
-        >
+        <h3 class="font-titulo mb-3 text-4xl text-[var(--color-acento)]">
           ¡Gracias por tu respuesta!
         </h3>
 
-
         <p
-          class="
-            font-palabra
-            text-xl
-            text-[var(--color-texto)]
-            mb-2
-          "
+          class="font-palabra mb-2 text-xl text-[var(--color-texto)]"
           id="rsvp-success-name"
-        ></p>
-
+        >
+        </p>
 
         <p
-          class="
-            font-parrafo
-            text-[var(--color-texto)]
-          "
+          class="font-parrafo text-[var(--color-texto)]"
           id="rsvp-success-message"
-        ></p>
-
+        >
+        </p>
       </div>
-
 
       <!-- MENSAJE DE CONFIRMACIÓN -->
 
       <div
-        class="
-          rounded-[1.5rem]
-          border
-          border-[var(--color-acento-suave)]
-          bg-[var(--color-superficie-media)]
-          backdrop-blur-sm
-          p-6
-          shadow-sm
-          max-w-sm
-          mx-auto
-        "
+        class="mx-auto max-w-sm rounded-[1.5rem] border border-[var(--color-acento-suave)] bg-[var(--color-superficie-media)] p-6 shadow-sm backdrop-blur-sm"
       >
-
-        <p
-          class="
-            font-destacado
-            text-sm
-            text-[var(--color-texto)]
-            mb-2
-          "
-        >
+        <p class="font-destacado mb-2 text-sm text-[var(--color-texto)]">
           Tu respuesta ha sido guardada exitosamente.
         </p>
 
-
-        <p
-          class="
-            font-parrafo
-            text-xs
-            text-[var(--color-texto-suave)]
-          "
-        >
+        <p class="font-parrafo text-xs text-[var(--color-texto-suave)]">
           Se ha enviado un registro a Sergio y Carolina.
         </p>
-
       </div>
-
 
       <!-- VOLVER -->
 
       <button
         onclick="window.location.href = '/Sergio-y-Carolina/'"
-        class="
-          font-destacado
-          mt-8
-          rounded-full
-          bg-[var(--color-acento)]
-          px-8
-          py-3.5
-          text-sm
-          uppercase
-          tracking-widest
-          text-[var(--color-blanco)]
-          shadow-md
-          transition-all
-          hover:bg-[var(--color-acento-fuerte)]
-          hover:shadow-lg
-          hover:-translate-y-0.5
-        "
+        class="font-destacado mt-8 rounded-full bg-[var(--color-acento)] px-8 py-3.5 text-sm uppercase tracking-widest text-[var(--color-blanco)] shadow-md transition-all hover:-translate-y-0.5 hover:bg-[var(--color-acento-fuerte)] hover:shadow-lg"
       >
         Volver al inicio
       </button>
-
     </div>
 
-  </div>
 
-  <!-- DETALLE FECHA LÍMITE -->
-  <div
-    class="mt-8
-           rounded-2xl
-           bg-[var(--color-blanco)]
-           backdrop-blur-sm
-           p-6
-           text-[var(--color-texto)]
-           border border-[var(--color-borde)]
-           shadow-sm
-           text-center"
-  >
-
-    <!-- DESTACADO -->
-    <p
-      class="font-Parrafo
-             text-[var(--color-bordo)]
-             text-2xl
-             
-             tracking-widest"
-    >
-      ¡Te esperamos!
-    </p>
-    <!-- PÁRRAFO INTERNO -->
-  
-
-  </div>
-
+    
 </section>
-
 
 <!-- =======================================================
      SCRIPT
      ======================================================= -->
 
 <script>
-  import { backupToGoogleSheet, buildGuestCsv, buildMailtoLink } from '../lib/rsvp.mjs';
+  import {
+    backupToGoogleSheet,
+    buildGuestCsv,
+    buildMailtoLink,
+  } from "../lib/rsvp.mjs";
 
-  const rsvpRecipient = 'tomynahuel23@gmail.com';
-  const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyIcf4F9OO7tfETNd4BeP6kxXMId9ODFAxHTabhViNWji3AjawKEiUDZabQxq-nKgkS/exec';
-  const storageKey = 'sergio-y-carolina-rsvp';
+  const rsvpRecipient = "tomynahuel23@gmail.com";
+  const googleScriptUrl =
+    "https://script.google.com/macros/s/AKfycbyIcf4F9OO7tfETNd4BeP6kxXMId9ODFAxHTabhViNWji3AjawKEiUDZabQxq-nKgkS/exec";
+  const storageKey = "sergio-y-carolina-rsvp";
 
-  const rsvpForm = document.getElementById('rsvp-form') as HTMLFormElement;
-  const feedback = document.getElementById('rsvp-feedback');
-  const formContainer = document.getElementById('rsvp-form-container');
-  const successContainer = document.getElementById('rsvp-success-container');
-  const successName = document.getElementById('rsvp-success-name');
-  const successMessage = document.getElementById('rsvp-success-message');
+  const rsvpForm = document.getElementById("rsvp-form") as HTMLFormElement;
+  const feedback = document.getElementById("rsvp-feedback");
+  const formContainer = document.getElementById("rsvp-form-container");
+  const successContainer = document.getElementById("rsvp-success-container");
+  const successName = document.getElementById("rsvp-success-name");
+  const successMessage = document.getElementById("rsvp-success-message");
 
   function readGuestList() {
     try {
@@ -614,14 +287,14 @@ import { BODA_INFO } from '../data/InfoBoda';
   function downloadGuestCsv(entries) {
     const csvContent = buildGuestCsv(entries);
     const blob = new Blob([csvContent], {
-      type: 'text/csv;charset=utf-8;'
+      type: "text/csv;charset=utf-8;",
     });
 
-    const link = document.createElement('a');
+    const link = document.createElement("a");
     const href = URL.createObjectURL(blob);
 
     link.href = href;
-    link.download = 'invitados.csv';
+    link.download = "invitados.csv";
 
     document.body.appendChild(link);
     link.click();
@@ -631,33 +304,32 @@ import { BODA_INFO } from '../data/InfoBoda';
   }
 
   if (rsvpForm && feedback) {
-    rsvpForm.addEventListener('submit', async (event) => {
+    rsvpForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       const formData = new FormData(rsvpForm);
 
-      const name = String(formData.get('name') || '').trim();
-      const phone = String(formData.get('phone') || '').trim();
-      const guests = String(formData.get('guests') || '').trim();
-      const attendance = String(formData.get('attendance') || '').trim();
-      const message = String(formData.get('message') || '').trim();
+      const name = String(formData.get("name") || "").trim();
+      const phone = String(formData.get("phone") || "").trim();
+      const guests = String(formData.get("guests") || "").trim();
+      const attendance = String(formData.get("attendance") || "").trim();
+      const message = String(formData.get("message") || "").trim();
 
       if (!name || !phone || !guests || !attendance) {
         feedback.textContent =
-          'Completá los campos obligatorios para confirmar tu asistencia.';
+          "Completá los campos obligatorios para confirmar tu asistencia.";
 
         feedback.className =
-          'font-parrafo min-h-6 text-sm text-[var(--color-bordo)]';
+          "font-parrafo min-h-6 text-sm text-[var(--color-bordo)]";
 
         return;
       }
 
       if (!/^\+?[1-9]\d{7,14}$/.test(phone)) {
-        feedback.textContent =
-          'Ingresá un teléfono válido.';
+        feedback.textContent = "Ingresá un teléfono válido.";
 
         feedback.className =
-          'font-parrafo min-h-6 text-sm text-[var(--color-bordo)]';
+          "font-parrafo min-h-6 text-sm text-[var(--color-bordo)]";
 
         return;
       }
@@ -665,19 +337,16 @@ import { BODA_INFO } from '../data/InfoBoda';
       const guestsNumber = Number(guests);
 
       if (!Number.isInteger(guestsNumber) || guestsNumber < 1) {
-        feedback.textContent =
-          'La cantidad de invitados debe ser al menos 1.';
+        feedback.textContent = "La cantidad de invitados debe ser al menos 1.";
 
         feedback.className =
-          'font-parrafo min-h-6 text-sm text-[var(--color-bordo)]';
+          "font-parrafo min-h-6 text-sm text-[var(--color-bordo)]";
 
         return;
       }
 
       const attendanceLabel =
-        attendance === 'acepta'
-          ? 'Sí asistiré'
-          : 'Lamentablemente declino';
+        attendance === "acepta" ? "Sí asistiré" : "Lamentablemente declino";
 
       const formDataToSend = new FormData();
 
@@ -690,43 +359,31 @@ import { BODA_INFO } from '../data/InfoBoda';
 
       try {
         await fetch(googleScriptUrl, {
-          method: 'POST',
-          mode: 'no-cors',
+          method: "POST",
+          mode: "no-cors",
           body: formDataToSend,
         });
 
-        console.log(
-          'Confirmación enviada a Google Sheets con éxito.'
-        );
-
+        console.log("Confirmación enviada a Google Sheets con éxito.");
       } catch (error) {
-        console.error(
-          'Error al conectar con Google Sheets:',
-          error
-        );
+        console.error("Error al conectar con Google Sheets:", error);
       }
 
-      if (
-        formContainer &&
-        successContainer &&
-        successName &&
-        successMessage
-      ) {
-        formContainer.classList.add('hidden');
-        successContainer.classList.remove('hidden');
+      if (formContainer && successContainer && successName && successMessage) {
+        formContainer.classList.add("hidden");
+        successContainer.classList.remove("hidden");
 
         successName.textContent = `¡Hola ${name}!`;
 
-        successMessage.textContent =
-          `Confirmaste tu asistencia con ${guestsNumber} invitado${guestsNumber !== 1 ? 's' : ''}. ${attendanceLabel}.`;
+        successMessage.textContent = `Confirmaste tu asistencia con ${guestsNumber} invitado${guestsNumber !== 1 ? "s" : ""}. ${attendanceLabel}.`;
       }
 
       feedback.textContent = googleScriptUrl
-        ? 'Se abrió tu correo, se descargó la lista en CSV/Excel y se registró la confirmación en Google Sheets.'
-        : 'Se abrió tu correo y se descargó la lista de invitados en formato CSV/Excel.';
+        ? "Se abrió tu correo, se descargó la lista en CSV/Excel y se registró la confirmación en Google Sheets."
+        : "Se abrió tu correo y se descargó la lista de invitados en formato CSV/Excel.";
 
       feedback.className =
-        'font-parrafo min-h-6 text-sm text-[var(--color-acento)]';
+        "font-parrafo min-h-6 text-sm text-[var(--color-acento)]";
     });
   }
 </script>
