@@ -1,75 +1,135 @@
 ---
-import foto1 from "../img/ells1.png";
-import foto2 from "../img/ellos8.png";
-import foto3 from "../img/ellos7.png";
-import foto4 from "../img/ells4.png";
-import foto5 from "../img/ellos5.jpg";
+import foto1 from "../img/ellos1.png";
+import foto2 from "../img/ellos2.png";
+import foto3 from "../img/ellos3.png";
+import foto4 from "../img/ellos4.png";
+import foto5 from "../img/ellos5.png";
 import foto6 from "../img/ellos8.png";
+import foto7 from "../img/ellos7.png";
+import foto8 from "../img/ellos8.png";
+import foto9 from "../img/ellos9.jpeg";
 
-const imagenes = [foto1, foto2, foto3, foto4, foto5, foto6];
+const imagenes = [
+  foto1,
+  foto2,
+  foto3,
+  foto4,
+  foto5,
+  foto6,
+  foto7,
+  foto8,
+  foto9,
+];
+
+const rutasImagenes = imagenes.map((imagen) => imagen.src);
 ---
 
 <section id="gallery" class="section-shell pb-24">
   <div class="soft-card overflow-hidden p-8 sm:p-10">
+
     <!-- =====================================================
          ENCABEZADO
          ===================================================== -->
 
     <div class="mb-8 text-center">
-      <!-- Etiqueta -->
+
       <p
         class="font-destacado text-sm uppercase tracking-[0.3em] text-[var(--color-verde)]"
       >
         Galería
       </p>
 
-      <!-- Título -->
       <h2
         class="font-titulo mt-3 text-4xl text-[var(--color-bordo-rosa)] sm:text-5xl"
       >
         Nuestros momentos favoritos
       </h2>
+
     </div>
 
     <!-- =====================================================
          GALERÍA
          ===================================================== -->
 
-    <div class="grid gap-4 md:grid-cols-3">
+    <div class="grid gap-4 md:grid-cols-4">
       {
-        [0, 1, 2].map((indice) => (
+        [0, 1, 2, 3].map((indice) => (
           <div
             class="gallery-image group h-72 overflow-hidden rounded-[1.5rem] bg-[var(--color-blanco)] bg-cover bg-center"
-            style={`background-image: url('${imagenes[indice % imagenes.length].src}');`}
+            style={`background-image: url('${rutasImagenes[indice % rutasImagenes.length]}');`}
             data-indice={indice}
           />
         ))
       }
     </div>
+
   </div>
 </section>
 
-<script>
-  const imagenes = [
-    foto1.src,
-    foto2.src,
-    foto3.src,
-    foto4.src,
-    foto5.src,
-    foto6.src,
-  ];
+<script define:vars={{ rutasImagenes }}>
+  /*
+   * =====================================================
+   * CONFIGURACIÓN
+   * =====================================================
+   */
 
-  const galerias = document.querySelectorAll<HTMLElement>(".gallery-image");
+  const DURACION_CAMBIO = 6000;
 
-  let posicion = 0;
+  const galerias =
+    document.querySelectorAll(".gallery-image");
 
-  setInterval(() => {
+  let posicion = 1;
+
+  /*
+   * =====================================================
+   * CAMBIO DE IMÁGENES
+   * =====================================================
+   */
+
+  function cambiarImagenes() {
     galerias.forEach((galeria, indice) => {
-      const imagenIndex = (posicion + indice) % imagenes.length;
+      const imagenIndex =
+        (posicion + indice) % rutasImagenes.length;
 
-      galeria.style.backgroundImage = `url('${imagenes[imagenIndex]}')`;
+      galeria.classList.add("gallery-changing");
+
+      setTimeout(() => {
+        galeria.style.backgroundImage =
+          `url('${rutasImagenes[imagenIndex]}')`;
+
+        galeria.classList.remove("gallery-changing");
+      }, 400);
     });
 
-    posicion = (posicion + 1) % imagenes.length;
-  }, 3000);
+    posicion =
+      (posicion + 1) % rutasImagenes.length;
+  }
+
+  /*
+   * =====================================================
+   * INICIAR ROTACIÓN
+   * =====================================================
+   */
+
+  if (galerias.length > 0 && rutasImagenes.length > 0) {
+    setInterval(
+      cambiarImagenes,
+      DURACION_CAMBIO,
+    );
+  }
 </script>
+
+<style>
+  .gallery-image {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+  }
+
+  .gallery-image.gallery-changing {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+</style>
