@@ -1,24 +1,13 @@
 ---
 import { backupToGoogleSheet, buildGuestCsv, buildMailtoLink } from '../lib/rsvp.mjs';
 import { Image } from 'astro:assets';
-import marmolBg from '../img/marmol.png';
 ---
 
 <section id="rsvp" class="w-full max-w-3xl mx-auto px-4">
   
   <!-- Contenedor Principal -->
   <div class="relative overflow-hidden p-8 sm:p-12 rounded-[2rem] border border-[var(--color-borde)] shadow-sm transition-all duration-300 hover:shadow-md bg-[var(--color-blanco)]">
-    
-    <!-- Fondo Mármol -->
-    <!-- Fondo Mármol -->
-<div class="absolute inset-0 z-0 overflow-hidden">
-  <Image
-    src={marmolBg}
-    alt=""
-    class="absolute inset-0 w-full h-full object-cover object-center"
-    quality={100}
-  />
-</div>
+
 
     <!-- Capa protectora -->
     <div class="absolute inset-0 bg-[var(--color-overlay-media)] z-0"></div>

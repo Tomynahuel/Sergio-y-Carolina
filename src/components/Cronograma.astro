@@ -1,19 +1,17 @@
 ---
 import { BODA_INFO } from '../data/InfoBoda.js';
-import marmolB from '../img/marmol.png';
 ---
 
 <section id="itinerary" class="py-10">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
     <div class="max-w-10xl soft-card mx-auto p-8 sm:p-12">
-
+       
       <div class="text-center mb-12">
         <h2 class="font-serif text-4xl text-[var(--color-verde)] sm:text-5xl">
           Cronograma
         </h2>
       </div>
-
+    
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-center items-stretch max-w-4xl mx-auto">
 
         <!-- ========================= -->
@@ -23,22 +21,12 @@ import marmolB from '../img/marmol.png';
         <div
           class="relative overflow-hidden flex flex-col items-center h-full p-8 rounded-3xl shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl cursor-pointer"
         >
-
-          <!-- Fondo mármol -->
-          <div
-            class="absolute inset-0 bg-cover bg-center opacity-20"
-            style={`
-              background-image: url(${marmolB.src});
-              filter: brightness(var(--brillo-marmol));
-            `}
-          ></div>
-
           <!-- Contenido -->
           <div class="relative z-10 w-full flex flex-col items-center h-full">
-
+           
             <h3
               class="font-serif text-5xl text-[var(--color-titulos)] mb-6"
-              style="font-family: 'Great Vibes', serif;"
+              style="font-family:serif;"
             >
               Ceremonia
             </h3>
@@ -92,16 +80,6 @@ import marmolB from '../img/marmol.png';
         <div
           class="relative overflow-hidden flex flex-col items-center h-full p-8 rounded-3xl shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl cursor-pointer"
         >
-
-          <!-- Fondo mármol -->
-          <div
-            class="absolute inset-0 bg-cover bg-center opacity-20"
-            style={`
-                      background-image: url(${marmolB.src});
-                      filter: brightness(var(--brillo-marmol));
-                `}
-          ></div>
-
           <!-- Contenido -->
           <div class="relative z-10 w-full flex flex-col items-center h-full">
 

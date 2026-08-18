@@ -1,19 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
 @import './colores.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+/* =========================================================
+   TIPOGRAFÍAS Y VARIABLES GLOBALES
+   ========================================================= */
+
 :root {
   color-scheme: light;
+
+  --font-texto: 'Inter', sans-serif;
+  --font-titulo: 'Cormorant Garamond', serif;
 }
+
+
+/* =========================================================
+   BASE
+   ========================================================= */
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-texto);
   background-color: var(--color-fondo);
   color: var(--color-texto);
   -webkit-font-smoothing: antialiased;
@@ -21,12 +36,29 @@ body {
 }
 
 
+/* =========================================================
+   TIPOGRAFÍA
+   ========================================================= */
+
 h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 .font-serif {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-titulo);
+}
+
+p,
+span,
+li,
+label,
+input,
+textarea,
+button,
+a {
+  font-family: var(--font-texto);
 }
 
 a,
@@ -36,27 +68,70 @@ textarea {
   font-smooth: always;
 }
 
+
+/* =========================================================
+   SELECCIÓN
+   ========================================================= */
+
 ::selection {
   background: var(--color-selection);
   color: var(--color-superficie);
 }
 
+
+/* =========================================================
+   COMPONENTES GLOBALES
+   ========================================================= */
+
 @layer components {
+
   .section-shell {
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }
 
+
+  /*
+   * SUPERFICIE INTERNA
+   *
+   * Se utiliza para tarjetas, formularios,
+   * información y contenido interno.
+   */
+
   .soft-card {
-    @apply rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur-md;
+    @apply rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.08)];
 
     border: 1px solid var(--color-borde-suave);
-    background-color: var(--color-superficie-blanda);
+
+    background:
+      linear-gradient(
+        135deg,
+        var(--color-superficie-blanda),
+        var(--color-superficie)
+      );
+
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
+
 }
+
+
+/* =========================================================
+   HOME
+   ========================================================= */
 
 #home {
   position: relative;
 }
+
+
+/* =========================================================
+   HOJAS FLOTANTES
+   ========================================================= */
 
 .leaves {
   position: absolute;
@@ -171,13 +246,20 @@ textarea {
   --leaf-drift: 8px;
 }
 
+
+/* =========================================================
+   ANIMACIÓN DE HOJAS
+   ========================================================= */
+
 @keyframes leaf-fall {
+
   0% {
     transform: translate3d(
       var(--leaf-drift),
       -140%,
       0
-    ) scale(0.72)
+    )
+    scale(0.72)
     rotate(var(--leaf-start-rotate));
 
     opacity: 0;
@@ -226,4 +308,5 @@ textarea {
 
     opacity: 0;
   }
+
 }

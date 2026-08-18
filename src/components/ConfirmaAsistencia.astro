@@ -1,25 +1,13 @@
 ---
 import { BODA_INFO } from '../data/InfoBoda.js';
 import { Image } from 'astro:assets';
-import marmolBg from '../img/marmol.png';
 ---
 
 <div id="confirma-asistencia" class=" sm:pb-2 px-4 sm:px-2 w-full max-w-5xl mx-auto">
   <div class="relative overflow-hidden p-6 sm:p-10 rounded-[2rem] border border-[var(--color-borde)] shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md bg-[var(--color-blanco)] text-center">
     
-    <!-- Mármol Nativo y Capa Protectora -->
-    <div class="absolute inset-0 z-0 opacity-100 overflow-hidden">
-      <Image 
-        src={marmolBg} 
-        alt="Fondo Mármol" 
-        class="w-full h-full object-cover object-center" 
-      />
-    </div>
-
     <div class="absolute inset-0 bg-[var(--color-overlay-suave)] z-0"></div>
-
     <div class="relative z-10">
-      
       <h2 class="mt-3 font-serif text-4xl sm:text-5xl text-[var(--color-bordo-rosa)]">
         Confirma tu asistencia
       </h2>

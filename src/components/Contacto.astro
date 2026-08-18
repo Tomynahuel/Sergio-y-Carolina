@@ -1,23 +1,13 @@
 ---
 import { BODA_INFO } from '../data/InfoBoda.js';
 import { Image } from 'astro:assets';
-import marmolBg from '../img/marmol.png';
 ---
 
 <section id="contact" class="w-full max-w-xl mx-auto">
   <div
     class="soft-card relative overflow-hidden p-6 sm:p-10 w-full rounded-[2rem] border border-[var(--color-borde)] box-shadow"
   >
-    
     <!-- Mármol Nativo y Capa Protectora -->
-    <div class="absolute inset-0 z-0 opacity-40 overflow-hidden">
-      <Image
-        src={marmolBg}
-        alt="Fondo Mármol"
-        class="w-full h-full object-cover object-center"
-      />
-    </div>
-
     <div class="absolute inset-0 bg-[var(--color-overlay-suave)] z-0"></div>
 
     <div class="relative z-10">

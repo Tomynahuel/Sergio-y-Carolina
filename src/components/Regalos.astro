@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import { BODA_INFO } from '../data/InfoBoda.js';
-import marmolB from '../img/marmol.png';
 
 // WhatsApp
 const numeroWhatsApp = BODA_INFO.whatsappContacto.replace(/\D/g, '');
@@ -36,13 +35,6 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
         <div
           class="relative overflow-hidden flex flex-col h-full justify-between items-center p-8 rounded-3xl border border-[var(--color-borde-suave)] shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl"
         >
-
-          <!-- Fondo de mármol -->
-          <div
-            class="absolute inset-0 bg-cover bg-center opacity-20"
-            style={`background-image: url(${marmolB.src});`}
-          ></div>
-
           <!-- Contenido -->
           <div class="relative z-10 w-full flex flex-col items-center">
 
@@ -98,11 +90,7 @@ const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;
           class="relative overflow-hidden flex flex-col h-full justify-between items-center p-8 sm:p-10 rounded-3xl border border-[var(--color-borde-suave)] shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl"
         >
 
-          <!-- Fondo de mármol -->
-          <div
-            class="absolute inset-0 bg-cover bg-center opacity-20"
-            style={`background-image: url(${marmolB.src});`}
-          ></div>
+          
 
           <!-- Contenido -->
           <div class="relative z-10 w-full flex flex-col items-center">

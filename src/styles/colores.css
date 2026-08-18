@@ -44,7 +44,7 @@
 
   --color-superficie-blanda: color-mix(
     in srgb,
-    var(--color-blanco) 30%,
+    var(--color-blanco) 50%,
     transparent
   );
 

@@ -1,6 +1,5 @@
 ---
 import { BODA_INFO } from '../data/InfoBoda.js';
-import marmolB from '../img/marmol.png';
 ---
 
 <section class="section-shell pb-24">
@@ -12,16 +11,6 @@ import marmolB from '../img/marmol.png';
       <div
         class="relative overflow-hidden rounded-[1.5rem] p-6 sm:p-8"
       >
-
-        <!-- Fondo mármol -->
-        <div
-          class="absolute inset-0 bg-cover bg-center opacity-20"
-          style={`
-            background-image: url(${marmolB.src});
-            filter: brightness(var(--brillo-marmol));
-          `}
-        ></div>
-
         <!-- Contenido -->
         <div class="relative z-10">
 
@@ -62,16 +51,6 @@ import marmolB from '../img/marmol.png';
       <div
         class="relative overflow-hidden rounded-[1.5rem] border border-[var(--color-borde-suave)] p-2"
       >
-
-        <!-- Fondo mármol -->
-        <div
-          class="absolute inset-0 bg-cover bg-center opacity-40"
-          style={`
-            background-image: url(${marmolB.src});
-            filter: brightness(var(--brillo-marmol));
-          `}
-        ></div>
-
         <!-- Mapa -->
         <div class="relative z-10 overflow-hidden rounded-[1.2rem]">
           <iframe

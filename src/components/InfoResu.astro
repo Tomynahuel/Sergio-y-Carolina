@@ -1,7 +1,6 @@
 ---
 import { BODA_INFO } from '../data/InfoBoda.js';
 import { Image } from 'astro:assets';
-import marmolBg from '../img/marmol.png';
 ---
 
 <section class="w-full max-w-5xl mx-auto px-4 py-8">  
@@ -10,14 +9,6 @@ import marmolBg from '../img/marmol.png';
     <!-- Tarjeta Ceremonia -->
     <div class="relative overflow-hidden p-8 sm:p-10 rounded-[2rem] border border-[var(--color-borde)] shadow-sm transition-all duration-300 hover:shadow-md bg-[var(--color-blanco)]">
       
-      <!-- Fondo Mármol Nativo -->
-      <div class="absolute inset-0 z-0 opacity-1 overflow-hidden">
-        <Image 
-          src={marmolBg} 
-          alt="Fondo Mármol" 
-          class="w-full h-full object-cover object-center" 
-        />
-      </div>
 
       <div class="absolute inset-0 bg-[var(--color-overlay-suave)] z-0"></div>
       
@@ -47,16 +38,6 @@ import marmolBg from '../img/marmol.png';
 
     <!-- Tarjeta Almuerzo -->
     <div class="relative overflow-hidden p-8 sm:p-10 rounded-[2rem] border border-[var(--color-borde)] shadow-sm transition-all duration-300 hover:shadow-md bg-[var(--color-blanco)]">
-      
-      <!-- Fondo Mármol Nativo -->
-      <div class="absolute inset-0 z-0 opacity-100 overflow-hidden">
-        <Image 
-          src={marmolBg} 
-          alt="Fondo Mármol" 
-          class="w-full h-full object-cover object-center" 
-        />
-      </div>
-
       <div class="absolute inset-0 bg-[var(--color-overlay-suave)] z-0"></div>
       
       <div class="relative z-10">
