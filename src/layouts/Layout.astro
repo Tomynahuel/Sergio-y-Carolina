@@ -18,10 +18,7 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
   <head>
     <meta charset="UTF-8" />
 
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <meta
       name="description"
@@ -59,9 +56,7 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
       <div
         class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
       >
-        <!-- =================================================
-             LOGO
-             ================================================= -->
+        <!-- LOGO -->
 
         <a
           href="#home"
@@ -70,14 +65,12 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
         >
           <Image
             src={BODA_INFO.anillos}
-            alt="Anillo"
+            alt="Anillos de boda"
             class="h-12 w-12 object-contain sm:h-14 sm:w-14"
           />
         </a>
 
-        <!-- =================================================
-             BOTÓN MOBILE
-             ================================================= -->
+        <!-- BOTÓN MOBILE -->
 
         <button
           id="mobile-menu-button"
@@ -85,13 +78,12 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
           class="text-3xl text-[var(--color-principal)] lg:hidden"
           aria-label="Abrir menú"
           aria-expanded="false"
+          aria-controls="mobile-menu"
         >
           ☰
         </button>
 
-        <!-- =================================================
-             MENÚ DESKTOP
-             ================================================= -->
+        <!-- MENÚ DESKTOP -->
 
         <nav
           class="hidden gap-8 lg:flex"
@@ -125,8 +117,11 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
             Galería
           </a>
 
+          <!-- CONFIRMAR ASISTENCIA -->
+
           <a
-            href="/Sergio-y-Carolina/invitacion/"
+            id="nav-confirmar-asistencia"
+            href="#rsvp"
             class="font-parrafo text-sm uppercase tracking-[0.15em] text-[var(--color-texto)] transition hover:text-[var(--color-acento)]"
           >
             Confirmar asistencia
@@ -145,8 +140,9 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
         <div
           class="border-t border-[var(--color-borde-suave)] bg-[var(--color-superficie)] px-4 py-4 backdrop-blur-sm"
         >
-          <div
+          <nav
             class="flex flex-col gap-2 text-sm uppercase tracking-[0.15em] text-[var(--color-texto)]"
+            aria-label="Navegación móvil"
           >
             <a
               href="#home"
@@ -176,13 +172,16 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
               Galería
             </a>
 
+            <!-- CONFIRMAR ASISTENCIA MOBILE -->
+
             <a
-              href="/Sergio-y-Carolina/invitacion/"
+              id="nav-confirmar-asistencia-mobile"
+              href="#rsvp"
               class="font-parrafo block rounded-full px-4 py-3 transition hover:bg-[var(--color-acento-suave)]"
             >
               Confirmar asistencia
             </a>
-          </div>
+          </nav>
         </div>
       </div>
     </header>
@@ -255,68 +254,107 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
          ===================================================== -->
 
     <script>
-      let lastScrollY = window.scrollY;
+      /*
+       * =====================================================
+       * RSVP
+       * =====================================================
+       */
 
-      const header = document.getElementById("main-header");
-      const mobileMenu = document.getElementById("mobile-menu");
-      const mobileButton = document.getElementById("mobile-menu-button");
+      const rsvpStorageKey = "sergio-y-carolina-rsvp";
+
+      function actualizarBotonConfirmacion() {
+        const confirmarDesktop = document.getElementById(
+          "nav-confirmar-asistencia",
+        );
+
+        const confirmarMobile = document.getElementById(
+          "nav-confirmar-asistencia-mobile",
+        );
+
+        const yaConfirmo =
+          window.localStorage.getItem(rsvpStorageKey) === "confirmed";
+
+        /*
+         * Si ya confirmó:
+         *
+         * - Ocultamos Confirmar asistencia desktop.
+         * - Ocultamos Confirmar asistencia mobile.
+         */
+
+        if (yaConfirmo) {
+          if (confirmarDesktop) {
+            confirmarDesktop.remove();
+          }
+
+          if (confirmarMobile) {
+            confirmarMobile.remove();
+          }
+        }
+      }
+
+      actualizarBotonConfirmacion();
+
+      document.addEventListener(
+        "astro:page-load",
+        actualizarBotonConfirmacion,
+      );
 
       /*
        * =====================================================
-       * OCULTAR HEADER AL BAJAR
-       * MOSTRAR HEADER AL SUBIR
+       * HEADER / SCROLL
        * =====================================================
        */
+
+      let lastScrollY = window.scrollY;
+
+      const header = document.getElementById("main-header");
+
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      const mobileButton = document.getElementById(
+        "mobile-menu-button",
+      );
 
       function handleHeaderScroll() {
         if (!header) return;
 
         const currentScrollY = window.scrollY;
 
-        /*
-         * Siempre visible al comienzo de la página.
-         */
-
         if (currentScrollY <= 50) {
           header.classList.remove("-translate-y-full");
+
           lastScrollY = currentScrollY;
+
           return;
         }
 
-        /*
-         * Bajando.
-         */
-
         if (currentScrollY > lastScrollY) {
           header.classList.add("-translate-y-full");
-
-          /*
-           * Cerramos el menú mobile si estaba abierto.
-           */
 
           if (mobileMenu) {
             mobileMenu.classList.add("hidden");
           }
 
           if (mobileButton) {
-            mobileButton.setAttribute("aria-expanded", "false");
+            mobileButton.setAttribute(
+              "aria-expanded",
+              "false",
+            );
           }
-        }
-
-        /*
-         * Subiendo.
-         */
-
-        else if (currentScrollY < lastScrollY) {
+        } else if (currentScrollY < lastScrollY) {
           header.classList.remove("-translate-y-full");
         }
 
         lastScrollY = currentScrollY;
       }
 
-      window.addEventListener("scroll", handleHeaderScroll, {
-        passive: true,
-      });
+      window.addEventListener(
+        "scroll",
+        handleHeaderScroll,
+        {
+          passive: true,
+        },
+      );
 
       /*
        * =====================================================
@@ -325,44 +363,13 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
        */
 
       if (mobileButton && mobileMenu) {
-        mobileButton.addEventListener("click", () => {
-          const abierto = !mobileMenu.classList.contains("hidden");
+        mobileButton.addEventListener(
+          "click",
+          () => {
+            const abierto =
+              !mobileMenu.classList.contains("hidden");
 
-          if (abierto) {
-            mobileMenu.classList.add("hidden");
-
-            mobileButton.setAttribute(
-              "aria-expanded",
-              "false",
-            );
-
-            mobileButton.setAttribute(
-              "aria-label",
-              "Abrir menú",
-            );
-          } else {
-            mobileMenu.classList.remove("hidden");
-
-            mobileButton.setAttribute(
-              "aria-expanded",
-              "true",
-            );
-
-            mobileButton.setAttribute(
-              "aria-label",
-              "Cerrar menú",
-            );
-          }
-        });
-
-        /*
-         * Cerrar menú al tocar un enlace.
-         */
-
-        mobileMenu
-          .querySelectorAll("a")
-          .forEach((link) => {
-            link.addEventListener("click", () => {
+            if (abierto) {
               mobileMenu.classList.add("hidden");
 
               mobileButton.setAttribute(
@@ -374,7 +381,41 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
                 "aria-label",
                 "Abrir menú",
               );
-            });
+            } else {
+              mobileMenu.classList.remove("hidden");
+
+              mobileButton.setAttribute(
+                "aria-expanded",
+                "true",
+              );
+
+              mobileButton.setAttribute(
+                "aria-label",
+                "Cerrar menú",
+              );
+            }
+          },
+        );
+
+        mobileMenu
+          .querySelectorAll("a")
+          .forEach((link) => {
+            link.addEventListener(
+              "click",
+              () => {
+                mobileMenu.classList.add("hidden");
+
+                mobileButton.setAttribute(
+                  "aria-expanded",
+                  "false",
+                );
+
+                mobileButton.setAttribute(
+                  "aria-label",
+                  "Abrir menú",
+                );
+              },
+            );
           });
       }
     </script>

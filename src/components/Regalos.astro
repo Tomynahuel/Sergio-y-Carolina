@@ -3,10 +3,10 @@ import "../styles/global.css";
 import { BODA_INFO } from "../data/InfoBoda.js";
 
 // WhatsApp
-const numeroWhatsApp = BODA_INFO.whatsappContacto.replace(/\D/g, "");
+const numeroWhatsApp = BODA_INFO.whatsappContactoRegalos.replace(/\D/g, "");
 
 const mensajeWhatsApp = encodeURIComponent(
-  "¡Hola! Me encantaría ver la lista de regalos para la boda. 🎁",
+  "¡Hola! Me encantaría ver la lista de regalos para la boda.",
 );
 
 const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeWhatsApp}`;

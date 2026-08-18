@@ -9,23 +9,40 @@ import { BODA_INFO } from "../data/InfoBoda";
 ---
 
 <section id="rsvp" class="section-shell py-10">
-  <!-- Contenedor Principal -->
+  <!-- ===================================================== -->
+  <!-- CONTENEDOR PRINCIPAL -->
+  <!-- ===================================================== -->
+
   <div
     class="relative w-full overflow-hidden rounded-[2rem] border border-[var(--color-borde)] bg-[var(--color-blanco)] p-8 shadow-sm transition-all duration-300 hover:shadow-md sm:p-12"
   >
-    <!-- Capa protectora -->
-    <div class="absolute inset-0 z-0 bg-[var(--color-overlay-media)]"></div>
+    <!-- CAPA PROTECTORA -->
 
-    <!-- Contenido del Formulario -->
-    <div class="relative z-10" id="rsvp-form-container">
+    <div
+      class="absolute inset-0 z-0 bg-[var(--color-overlay-media)]"
+    ></div>
+
+    <!-- ===================================================== -->
+    <!-- CONTENEDOR DEL FORMULARIO -->
+    <!-- ===================================================== -->
+
+    <div
+      class="relative z-10"
+      id="rsvp-form-container"
+    >
       <!-- TÍTULO -->
+
       <h2
         class="font-titulo mb-8 mt-2 text-center text-4xl text-[var(--color-texto)] sm:text-5xl"
       >
         Completar el formulario
       </h2>
 
-      <form id="rsvp-form" class="space-y-5" novalidate>
+      <form
+        id="rsvp-form"
+        class="space-y-5"
+        novalidate
+      >
         <!-- ================================================= -->
         <!-- NOMBRE -->
         <!-- ================================================= -->
@@ -113,7 +130,9 @@ import { BODA_INFO } from "../data/InfoBoda";
             ¿Asistirás?
           </p>
 
-          <div class="mt-2 flex flex-col justify-center gap-4 sm:flex-row">
+          <div
+            class="mt-2 flex flex-col justify-center gap-4 sm:flex-row"
+          >
             <label
               class="font-parrafo inline-flex cursor-pointer items-center gap-3 text-[var(--color-texto)]"
             >
@@ -172,9 +191,9 @@ import { BODA_INFO } from "../data/InfoBoda";
         >
           Confirmar asistencia
         </button>
-        <!-- DESTACADO -->
 
-        <!-- PÁRRAFO INTERNO -->
+        <!-- PÁRRAFO -->
+
         <p class="font-parrafo mt-2 text-center">
           Por favor responde antes del 15 de Septiembre.
         </p>
@@ -186,8 +205,7 @@ import { BODA_INFO } from "../data/InfoBoda";
           class="font-parrafo mt-2 min-h-6 text-center text-sm"
           role="status"
           aria-live="polite"
-        >
-        </p>
+        ></p>
       </form>
     </div>
 
@@ -200,51 +218,43 @@ import { BODA_INFO } from "../data/InfoBoda";
       class="relative z-10 hidden py-6 text-center"
     >
       <div class="mb-8">
-        <p class="font-palabra mb-4 text-6xl">🥂</p>
-
-        <h3 class="font-titulo mb-3 text-4xl text-[var(--color-acento)]">
+        <h3
+          class="font-titulo mb-3 text-4xl text-[var(--color-acento)]"
+        >
           ¡Gracias por tu respuesta!
         </h3>
 
         <p
-          class="font-palabra mb-2 text-xl text-[var(--color-texto)]"
+          class="font-titulo mb-2 text-xl text-[var(--color-texto)]"
           id="rsvp-success-name"
-        >
-        </p>
+        ></p>
 
         <p
-          class="font-parrafo text-[var(--color-texto)]"
+          class="font-parrafo text-[var(--color-bordo)]"
           id="rsvp-success-message"
-        >
-        </p>
+        ></p>
       </div>
 
+      <!-- ================================================= -->
       <!-- MENSAJE DE CONFIRMACIÓN -->
+      <!-- ================================================= -->
 
       <div
         class="mx-auto max-w-sm rounded-[1.5rem] border border-[var(--color-acento-suave)] bg-[var(--color-superficie-media)] p-6 shadow-sm backdrop-blur-sm"
       >
-        <p class="font-destacado mb-2 text-sm text-[var(--color-texto)]">
-          Tu respuesta ha sido guardada exitosamente.
-        </p>
 
-        <p class="font-parrafo text-xs text-[var(--color-texto-suave)]">
+        <p
+          class="font-parrafo text-xs text-[var(--color-texto-suave)]"
+        >
           Se ha enviado un registro a Sergio y Carolina.
         </p>
       </div>
 
-      <!-- VOLVER -->
-
-      <button
-        onclick="window.location.href = '/Sergio-y-Carolina/'"
-        class="font-destacado mt-8 rounded-full bg-[var(--color-acento)] px-8 py-3.5 text-sm uppercase tracking-widest text-[var(--color-blanco)] shadow-md transition-all hover:-translate-y-0.5 hover:bg-[var(--color-acento-fuerte)] hover:shadow-lg"
-      >
-        Volver al inicio
-      </button>
+      <!-- ================================================= -->
+      <!-- IR AL INICIO -->
+      <!-- ================================================= -->
     </div>
-
-
-    
+  </div>
 </section>
 
 <!-- =======================================================
@@ -259,131 +269,421 @@ import { BODA_INFO } from "../data/InfoBoda";
   } from "../lib/rsvp.mjs";
 
   const rsvpRecipient = "tomynahuel23@gmail.com";
+
   const googleScriptUrl =
     "https://script.google.com/macros/s/AKfycbyIcf4F9OO7tfETNd4BeP6kxXMId9ODFAxHTabhViNWji3AjawKEiUDZabQxq-nKgkS/exec";
+
+  /*
+   * ==========================================================
+   * CONFIGURACIÓN
+   * ==========================================================
+   */
+
   const storageKey = "sergio-y-carolina-rsvp";
 
-  const rsvpForm = document.getElementById("rsvp-form") as HTMLFormElement;
-  const feedback = document.getElementById("rsvp-feedback");
-  const formContainer = document.getElementById("rsvp-form-container");
-  const successContainer = document.getElementById("rsvp-success-container");
-  const successName = document.getElementById("rsvp-success-name");
-  const successMessage = document.getElementById("rsvp-success-message");
+  /*
+   * ==========================================================
+   * ELEMENTOS DEL DOM
+   * ==========================================================
+   */
 
-  function readGuestList() {
+  const rsvpForm =
+    document.getElementById("rsvp-form") as HTMLFormElement;
+
+  const feedback =
+    document.getElementById("rsvp-feedback");
+
+  const formContainer =
+    document.getElementById("rsvp-form-container");
+
+  const successContainer =
+    document.getElementById("rsvp-success-container");
+
+  const successName =
+    document.getElementById("rsvp-success-name");
+
+  const successMessage =
+    document.getElementById("rsvp-success-message");
+
+  const homeButton =
+    document.getElementById("rsvp-home-button");
+
+  /*
+   * ==========================================================
+   * DATOS GUARDADOS
+   * ==========================================================
+   *
+   * Guardamos:
+   *
+   * {
+   *   confirmed: true,
+   *   name: "Juan Pérez",
+   *   guests: 3,
+   *   attendance: "acepta"
+   * }
+   *
+   * Esto permite mostrar nuevamente la confirmación
+   * aunque el invitado vuelva a entrar al sitio.
+   */
+
+  function getSavedConfirmation() {
     try {
-      const saved = window.localStorage.getItem(storageKey);
-      return saved ? JSON.parse(saved) : [];
+      const saved =
+        window.localStorage.getItem(storageKey);
+
+      if (!saved) {
+        return null;
+      }
+
+      const data = JSON.parse(saved);
+
+      if (
+        !data ||
+        data.confirmed !== true ||
+        !data.name ||
+        !data.guests
+      ) {
+        return null;
+      }
+
+      return data;
     } catch (error) {
-      console.error(error);
-      return [];
+      console.error(
+        "Error leyendo la confirmación guardada:",
+        error,
+      );
+
+      return null;
     }
   }
 
-  function saveGuestList(entries) {
-    window.localStorage.setItem(storageKey, JSON.stringify(entries));
+  /*
+   * ==========================================================
+   * GUARDAR CONFIRMACIÓN
+   * ==========================================================
+   */
+
+  function saveConfirmation({
+    name,
+    guests,
+    attendance,
+  }) {
+    const confirmation = {
+      confirmed: true,
+      name,
+      guests,
+      attendance,
+    };
+
+    window.localStorage.setItem(
+      storageKey,
+      JSON.stringify(confirmation),
+    );
   }
 
-  function downloadGuestCsv(entries) {
-    const csvContent = buildGuestCsv(entries);
-    const blob = new Blob([csvContent], {
-      type: "text/csv;charset=utf-8;",
-    });
+  /*
+   * ==========================================================
+   * MOSTRAR SUCCESS
+   * ==========================================================
+   */
 
-    const link = document.createElement("a");
-    const href = URL.createObjectURL(blob);
+  function showSuccess({
+    name,
+    guests,
+    attendance,
+  }) {
+    if (
+      !formContainer ||
+      !successContainer ||
+      !successName ||
+      !successMessage
+    ) {
+      return;
+    }
 
-    link.href = href;
-    link.download = "invitados.csv";
+    const attendanceLabel =
+      attendance === "acepta"
+        ? "Sí asistirás"
+        : "Lamentablemente has indicado que no asistirás";
 
-    document.body.appendChild(link);
-    link.click();
+    /*
+     * Ocultamos completamente el formulario.
+     */
 
-    document.body.removeChild(link);
-    URL.revokeObjectURL(href);
+    formContainer.classList.add(
+      "hidden",
+    );
+
+    /*
+     * Mostramos el success.
+     */
+
+    successContainer.classList.remove(
+      "hidden",
+    );
+
+    /*
+     * Nombre del invitado.
+     */
+
+    successName.textContent =
+      `¡Hola ${name}!`;
+
+    /*
+     * Cantidad + asistencia.
+     */
+
+    successMessage.textContent =
+      `Tu confirmación está registrada para ${guests} invitado${
+        guests !== 1
+          ? "s"
+          : ""
+      }. ${attendanceLabel}.`;
   }
+
+  /*
+   * ==========================================================
+   * COMPROBAR SI YA CONFIRMÓ
+   * ==========================================================
+   *
+   * Esto se ejecuta cuando el invitado vuelve a entrar.
+   *
+   * Si existe la confirmación guardada:
+   *
+   * - NO mostramos el formulario.
+   * - Mostramos directamente el success.
+   * - Recuperamos nombre.
+   * - Recuperamos cantidad.
+   * - Recuperamos asistencia.
+   */
+
+  const savedConfirmation =
+    getSavedConfirmation();
+
+  if (savedConfirmation) {
+    showSuccess(
+      savedConfirmation,
+    );
+  }
+
+  /*
+   * ==========================================================
+   * FORMULARIO
+   * ==========================================================
+   */
 
   if (rsvpForm && feedback) {
-    rsvpForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
+    rsvpForm.addEventListener(
+      "submit",
+      async (event) => {
+        event.preventDefault();
 
-      const formData = new FormData(rsvpForm);
+        const formData =
+          new FormData(rsvpForm);
 
-      const name = String(formData.get("name") || "").trim();
-      const phone = String(formData.get("phone") || "").trim();
-      const guests = String(formData.get("guests") || "").trim();
-      const attendance = String(formData.get("attendance") || "").trim();
-      const message = String(formData.get("message") || "").trim();
+        const name =
+          String(
+            formData.get("name") || "",
+          ).trim();
 
-      if (!name || !phone || !guests || !attendance) {
-        feedback.textContent =
-          "Completá los campos obligatorios para confirmar tu asistencia.";
+        const phone =
+          String(
+            formData.get("phone") || "",
+          ).trim();
 
-        feedback.className =
-          "font-parrafo min-h-6 text-sm text-[var(--color-bordo)]";
+        const guests =
+          String(
+            formData.get("guests") || "",
+          ).trim();
 
-        return;
-      }
+        const attendance =
+          String(
+            formData.get("attendance") || "",
+          ).trim();
 
-      if (!/^\+?[1-9]\d{7,14}$/.test(phone)) {
-        feedback.textContent = "Ingresá un teléfono válido.";
+        const message =
+          String(
+            formData.get("message") || "",
+          ).trim();
 
-        feedback.className =
-          "font-parrafo min-h-6 text-sm text-[var(--color-bordo)]";
+        /*
+         * ======================================================
+         * VALIDACIÓN
+         * ======================================================
+         */
 
-        return;
-      }
+        if (
+          !name ||
+          !phone ||
+          !guests ||
+          !attendance
+        ) {
+          feedback.textContent =
+            "Completá los campos obligatorios para confirmar tu asistencia.";
 
-      const guestsNumber = Number(guests);
+          feedback.className =
+            "font-parrafo min-h-6 text-sm text-[var(--color-bordo)]";
 
-      if (!Number.isInteger(guestsNumber) || guestsNumber < 1) {
-        feedback.textContent = "La cantidad de invitados debe ser al menos 1.";
+          return;
+        }
 
-        feedback.className =
-          "font-parrafo min-h-6 text-sm text-[var(--color-bordo)]";
+        if (
+          !/^\+?[1-9]\d{7,14}$/.test(
+            phone,
+          )
+        ) {
+          feedback.textContent =
+            "Ingresá un teléfono válido.";
 
-        return;
-      }
+          feedback.className =
+            "font-parrafo min-h-6 text-sm text-[var(--color-bordo)]";
 
-      const attendanceLabel =
-        attendance === "acepta" ? "Sí asistiré" : "Lamentablemente declino";
+          return;
+        }
 
-      const formDataToSend = new FormData();
+        const guestsNumber =
+          Number(guests);
 
-      formDataToSend.append("nombre", name);
-      formDataToSend.append("telefono", phone);
-      formDataToSend.append("invitados", guestsNumber);
-      formDataToSend.append("asistencia", attendance);
-      formDataToSend.append("mensaje", message);
-      formDataToSend.append("sys_ref_id", "Z3VhbmNodXBpdG8=");
+        if (
+          !Number.isInteger(
+            guestsNumber,
+          ) ||
+          guestsNumber < 1
+        ) {
+          feedback.textContent =
+            "La cantidad de invitados debe ser al menos 1.";
 
-      try {
-        await fetch(googleScriptUrl, {
-          method: "POST",
-          mode: "no-cors",
-          body: formDataToSend,
+          feedback.className =
+            "font-parrafo min-h-6 text-sm text-[var(--color-bordo)]";
+
+          return;
+        }
+
+        /*
+         * ======================================================
+         * DATOS PARA GOOGLE SHEETS
+         * ======================================================
+         */
+
+        const formDataToSend =
+          new FormData();
+
+        formDataToSend.append(
+          "nombre",
+          name,
+        );
+
+        formDataToSend.append(
+          "telefono",
+          phone,
+        );
+
+        formDataToSend.append(
+          "invitados",
+          String(guestsNumber),
+        );
+
+        formDataToSend.append(
+          "asistencia",
+          attendance,
+        );
+
+        formDataToSend.append(
+          "mensaje",
+          message,
+        );
+
+        formDataToSend.append(
+          "sys_ref_id",
+          "Z3VhbmNodXBpdG8=",
+        );
+
+        /*
+         * ======================================================
+         * ENVIAR A GOOGLE SHEETS
+         * ======================================================
+         */
+
+        try {
+          await fetch(
+            googleScriptUrl,
+            {
+              method: "POST",
+              mode: "no-cors",
+              body: formDataToSend,
+            },
+          );
+
+          console.log(
+            "Confirmación enviada a Google Sheets con éxito.",
+          );
+        } catch (error) {
+          console.error(
+            "Error al conectar con Google Sheets:",
+            error,
+          );
+
+          feedback.textContent =
+            "No se pudo registrar la confirmación. Intentá nuevamente.";
+
+          feedback.className =
+            "font-parrafo min-h-6 text-sm text-[var(--color-bordo)]";
+
+          return;
+        }
+
+        /*
+         * ======================================================
+         * GUARDAR DATOS EN EL DISPOSITIVO
+         * ======================================================
+         *
+         * Ahora guardamos los datos completos.
+         */
+
+        saveConfirmation({
+          name,
+          guests: guestsNumber,
+          attendance,
         });
 
-        console.log("Confirmación enviada a Google Sheets con éxito.");
-      } catch (error) {
-        console.error("Error al conectar con Google Sheets:", error);
-      }
+        /*
+         * ======================================================
+         * MOSTRAR SUCCESS
+         * ======================================================
+         */
 
-      if (formContainer && successContainer && successName && successMessage) {
-        formContainer.classList.add("hidden");
-        successContainer.classList.remove("hidden");
+        showSuccess({
+          name,
+          guests: guestsNumber,
+          attendance,
+        });
 
-        successName.textContent = `¡Hola ${name}!`;
+        feedback.textContent =
+          "Tu confirmación fue registrada correctamente.";
 
-        successMessage.textContent = `Confirmaste tu asistencia con ${guestsNumber} invitado${guestsNumber !== 1 ? "s" : ""}. ${attendanceLabel}.`;
-      }
+        feedback.className =
+          "font-parrafo min-h-6 text-sm text-[var(--color-acento)]";
+      },
+    );
+  }
 
-      feedback.textContent = googleScriptUrl
-        ? "Se abrió tu correo, se descargó la lista en CSV/Excel y se registró la confirmación en Google Sheets."
-        : "Se abrió tu correo y se descargó la lista de invitados en formato CSV/Excel.";
+  /*
+   * ==========================================================
+   * BOTÓN "IR AL INICIO"
+   * ==========================================================
+   *
+   * La información YA quedó guardada al enviar el formulario.
+   *
+   * Por eso acá solamente volvemos al inicio.
+   */
 
-      feedback.className =
-        "font-parrafo min-h-6 text-sm text-[var(--color-acento)]";
-    });
+  if (homeButton) {
+    homeButton.addEventListener(
+      "click",
+      () => {
+        window.location.href =
+          "/";
+      },
+    );
   }
 </script>

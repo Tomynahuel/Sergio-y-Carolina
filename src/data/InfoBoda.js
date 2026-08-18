@@ -4,8 +4,7 @@ import sobre from '../img/sobre.png'; // Asegúrate que esta ruta sea correcta
 import decoSobreBoton from '../img/deco-boton.png'; // Asegúrate que esta ruta sea correcta
 import EllosBailan from '../img/bailan.png'
 import nombresImagen from '../img/Nombres.png'; // Imagen de los nombres
-import letraS from '../img/s.png'; // Imagen de la letra S
-import letraC from '../img/c.png'; // Imagen de la letra C
+
 
 
 
@@ -14,8 +13,6 @@ export const BODA_INFO = {
 
   nombres: "Sergio & Carolina",
   nombresImagen: nombresImagen, // Imagen para reemplazar el texto de nombres
-  letraS: letraS, // Imagen de la letra S para el logo
-  letraC: letraC, // Imagen de la letra C para el logo
   novio: "Sergio", contactoNovio: "",
   novia: "Carolina", contactoNovia: "",
   fecha: "3 de Octubre de 2026",
@@ -53,12 +50,11 @@ export const BODA_INFO = {
 
   // Contacto
   whatsappContacto: "5491123456789",
+  whatsappContactoRegalos: "5493755456321",
   contacto1:"Tomas Nahuel Aguilar",
-  emailContacto1:"tomynahuel23@gmail.com",
-  numeroTelefono1:"+5491123456789",
+  numeroTelefono1:"5493757685481",
   contacto2: "Ana Belen Baez Barroso",
-  emailContacto2: "", 
-  numeroTelefono2: "+5491123456789",
+  numeroTelefono2: "5493764618983",
   
 
   // Vestimenta
@@ -94,10 +90,10 @@ export const BODA_INFO = {
 
 
   infoCuenta: "Si querés colaborar con nuestro viaje de novios, podés hacerlo a través de la siguiente cuenta bancaria:",
-  dueñoCuenta: "Sergio Caro",
-  aliasBoda: "boda.sergio.caro",
+  dueñoCuenta: "Ana Carolina Barroso",
+  aliasBoda: "carojoana",
   tarjeta: "",
-  cbu: "lorem ipsum",
+
 
   // Ubicacion 
   ubiEvento: "Parque de las naciones, Obera", // Link de Google Maps
