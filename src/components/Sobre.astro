@@ -107,14 +107,37 @@ import { Image } from 'astro:assets';
   const btn = document.getElementById('btn-abrir');
   const overlay = document.getElementById('sobre-overlay');
 
+  const SOBRE_ABIERTO_KEY = 'invitacion-sobre-abierto';
+
+  if (overlay) {
+    const sobreYaFueAbierto =
+  !import.meta.env.DEV &&
+  localStorage.getItem(SOBRE_ABIERTO_KEY) === 'true';
+
+    if (sobreYaFueAbierto) {
+      overlay.remove();
+      document.body.classList.add('scroll-permitido');
+    } else {
+      document.body.classList.remove('scroll-permitido');
+    }
+  }
+
   if (btn && overlay) {
     btn.addEventListener('click', () => {
+
+      // Guardamos que el invitado ya abrió el sobre
+      localStorage.setItem(SOBRE_ABIERTO_KEY, 'true');
+
+      // Comenzamos la animación de apertura
       overlay.classList.add('is-open');
+
+      // Permitimos nuevamente el scroll
       document.body.classList.add('scroll-permitido');
-      
+
+      // Eliminamos completamente el overlay
       setTimeout(() => {
-        overlay.style.display = 'none';
-      }, 1500); 
+        overlay.remove();
+      }, 1500);
     });
   }
 </script>
