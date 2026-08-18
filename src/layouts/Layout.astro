@@ -18,7 +18,10 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
   <head>
     <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
 
     <meta
       name="description"
@@ -28,6 +31,7 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
     <title>{title}</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+
     <link
       rel="preconnect"
       href="https://fonts.gstatic.com"
@@ -117,8 +121,6 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
             Galería
           </a>
 
-          <!-- CONFIRMAR ASISTENCIA -->
-
           <a
             id="nav-confirmar-asistencia"
             href="#rsvp"
@@ -172,8 +174,6 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
               Galería
             </a>
 
-            <!-- CONFIRMAR ASISTENCIA MOBILE -->
-
             <a
               id="nav-confirmar-asistencia-mobile"
               href="#rsvp"
@@ -219,41 +219,177 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
          ===================================================== -->
 
     <div
-      x-data="{ playing: false }"
-      x-init="$refs.audioEl.play().catch(() => {})"
+      id="music-player"
       class="fixed bottom-5 right-5 z-50"
     >
       <audio
-        x-ref="audioEl"
+        id="ambient-audio"
         src={musicaAmbiente}
         loop
-        @play="playing = true"
-        @pause="playing = false"
+        preload="auto"
       ></audio>
 
       <button
+        id="music-toggle"
         type="button"
-        @click="
-          playing
-            ? $refs.audioEl.pause()
-            : $refs.audioEl.play().catch(() => {})
-        "
         class="flex h-11 w-11 items-center justify-center rounded-full bg-[var(--color-principal)] text-[var(--color-blanco)] shadow-lg transition hover:bg-[var(--color-principal-hover)]"
-        :aria-label="playing ? 'Pausar música' : 'Reproducir música'"
+        aria-label="Reproducir música"
       >
         <span
+          id="music-icon"
           class="text-xl"
-          x-text="playing ? '⏸' : '▶'"
           aria-hidden="true"
-        ></span>
+        >
+          ▶
+        </span>
       </button>
     </div>
 
     <!-- =====================================================
-         CONTROL DEL HEADER
+         SCRIPTS
          ===================================================== -->
 
     <script>
+      /*
+       * =====================================================
+       * MÚSICA AMBIENTE
+       * =====================================================
+       *
+       * La música se inicia cuando el usuario interactúa
+       * con la página.
+       *
+       * Esto permite que el primer toque del sobre pueda
+       * iniciar la música sin ser bloqueado por el navegador.
+       */
+
+      const audio = document.getElementById(
+        "ambient-audio",
+      );
+
+      const musicButton = document.getElementById(
+        "music-toggle",
+      );
+
+      const musicIcon = document.getElementById(
+        "music-icon",
+      );
+
+      let musicaReproduciendo = false;
+
+      function actualizarControlMusica() {
+        if (!audio || !musicIcon || !musicButton) return;
+
+        if (!audio.paused) {
+          musicaReproduciendo = true;
+
+          musicIcon.textContent = "⏸";
+
+          musicButton.setAttribute(
+            "aria-label",
+            "Pausar música",
+          );
+        } else {
+          musicaReproduciendo = false;
+
+          musicIcon.textContent = "▶";
+
+          musicButton.setAttribute(
+            "aria-label",
+            "Reproducir música",
+          );
+        }
+      }
+
+      /*
+       * Esta función queda disponible globalmente.
+       *
+       * Tu Sobre.astro puede ejecutar:
+       *
+       * window.iniciarMusica();
+       *
+       * justo cuando el invitado toca el sobre.
+       */
+
+      window.iniciarMusica = function () {
+        if (!audio) return;
+
+        audio
+          .play()
+          .then(() => {
+            musicaReproduciendo = true;
+
+            actualizarControlMusica();
+          })
+          .catch(() => {
+            /*
+             * El navegador todavía puede bloquear el audio.
+             * En ese caso no hacemos nada y esperamos otra
+             * interacción del usuario.
+             */
+          });
+      };
+
+      /*
+       * Botón manual de música.
+       */
+
+      if (musicButton && audio) {
+        musicButton.addEventListener(
+          "click",
+          () => {
+            if (audio.paused) {
+              window.iniciarMusica();
+            } else {
+              audio.pause();
+            }
+          },
+        );
+      }
+
+      /*
+       * Mantener el estado del botón sincronizado.
+       */
+
+      if (audio) {
+        audio.addEventListener(
+          "play",
+          actualizarControlMusica,
+        );
+
+        audio.addEventListener(
+          "pause",
+          actualizarControlMusica,
+        );
+
+        audio.addEventListener(
+          "ended",
+          actualizarControlMusica,
+        );
+      }
+
+      /*
+       * Intento de autoplay.
+       *
+       * Algunos navegadores lo permiten.
+       * Si no lo permiten, no genera ningún error.
+       */
+
+      if (audio) {
+        audio
+          .play()
+          .then(() => {
+            actualizarControlMusica();
+          })
+          .catch(() => {
+            /*
+             * Autoplay bloqueado.
+             *
+             * Se iniciará mediante la primera interacción
+             * del usuario.
+             */
+          });
+      }
+
       /*
        * =====================================================
        * RSVP
@@ -272,14 +408,8 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
         );
 
         const yaConfirmo =
-          window.localStorage.getItem(rsvpStorageKey) === "confirmed";
-
-        /*
-         * Si ya confirmó:
-         *
-         * - Ocultamos Confirmar asistencia desktop.
-         * - Ocultamos Confirmar asistencia mobile.
-         */
+          window.localStorage.getItem(rsvpStorageKey) ===
+          "confirmed";
 
         if (yaConfirmo) {
           if (confirmarDesktop) {
@@ -307,13 +437,16 @@ const musicaAmbiente = `${baseUrl}mus/ambiente.mp3`;
 
       let lastScrollY = window.scrollY;
 
-      const header = document.getElementById("main-header");
+      const header =
+        document.getElementById("main-header");
 
-      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileMenu =
+        document.getElementById("mobile-menu");
 
-      const mobileButton = document.getElementById(
-        "mobile-menu-button",
-      );
+      const mobileButton =
+        document.getElementById(
+          "mobile-menu-button",
+        );
 
       function handleHeaderScroll() {
         if (!header) return;

@@ -4,12 +4,27 @@ import { Image } from "astro:assets";
 ---
 
 <div id="sobre-overlay" class="overlay">
-  <!-- SOBRE -->
-  <button id="btn-abrir" class="sobre-boton">
-    <Image src={BODA_INFO.sobre} alt="Abrir invitación" class="sobre-bg" />
+  <!-- =====================================================
+       SOBRE
+       ===================================================== -->
+
+  <button
+    id="btn-abrir"
+    class="sobre-boton"
+    type="button"
+    aria-label="Abrir invitación"
+  >
+    <Image
+      src={BODA_INFO.sobre}
+      alt="Abrir invitación"
+      class="sobre-bg"
+    />
   </button>
 
-  <!-- CAPA NEGRA -->
+  <!-- =====================================================
+       CAPA NEGRA
+       ===================================================== -->
+
   <div class="pantalla-negra"></div>
 </div>
 
@@ -67,6 +82,10 @@ import { Image } from "astro:assets";
     z-index: 1;
   }
 
+  .sobre-boton:disabled {
+    cursor: default;
+  }
+
   .sobre-bg {
     position: absolute;
     inset: 0;
@@ -78,6 +97,8 @@ import { Image } from "astro:assets";
     object-position: center;
 
     pointer-events: none;
+
+    user-select: none;
   }
 
   /* ==============================
@@ -129,100 +150,189 @@ import { Image } from "astro:assets";
 
 <script>
   /*
-   * ==========================================
+   * =====================================================
    * CONFIGURACIÓN DEL SOBRE
-   * ==========================================
+   * =====================================================
    *
-   * true  → mostrar el sobre SIEMPRE
-   * false → mostrarlo solo la primera vez
+   * true
+   * → El sobre aparece cada vez que se ingresa.
+   *
+   * false
+   * → El sobre aparece solamente la primera vez.
    */
+
   const MOSTRAR_SOBRE_SIEMPRE = false;
-  const SOBRE_ABIERTO_KEY = "invitacion-sobre-abierto";
-  const btn = document.getElementById("btn-abrir");
-  const overlay = document.getElementById("sobre-overlay");
+
+  const SOBRE_ABIERTO_KEY =
+    "invitacion-sobre-abierto";
+
+  const btn =
+    document.getElementById("btn-abrir");
+
+  const overlay =
+    document.getElementById("sobre-overlay");
+
+  /*
+   * =====================================================
+   * DECIDIR SI MOSTRAR EL SOBRE
+   * =====================================================
+   */
 
   if (overlay) {
-    /*
-     * ==========================================
-     * DECIDIR SI MOSTRAR EL SOBRE
-     * ==========================================
-     */
     const sobreYaFueAbierto =
-      localStorage.getItem(SOBRE_ABIERTO_KEY) === "true";
+      localStorage.getItem(SOBRE_ABIERTO_KEY) ===
+      "true";
+
     /*
+     * -----------------------------------------------------
      * MOSTRAR SIEMPRE
+     * -----------------------------------------------------
      */
+
     if (MOSTRAR_SOBRE_SIEMPRE) {
-      document.body.classList.remove("scroll-permitido");
+      document.body.classList.remove(
+        "scroll-permitido",
+      );
     }
+
     /*
-     * MOSTRAR SOLO LA PRIMERA VEZ
+     * -----------------------------------------------------
+     * PRIMERA VEZ
+     * -----------------------------------------------------
      */
+
     else if (!sobreYaFueAbierto) {
-      document.body.classList.remove("scroll-permitido");
+      document.body.classList.remove(
+        "scroll-permitido",
+      );
     }
+
     /*
+     * -----------------------------------------------------
      * YA FUE ABIERTO
+     * -----------------------------------------------------
      */
+
     else {
       overlay.remove();
-      document.body.classList.add("scroll-permitido");
+
+      document.body.classList.add(
+        "scroll-permitido",
+      );
     }
   }
+
   /*
-   * ==========================================
+   * =====================================================
    * ABRIR SOBRE
-   * ==========================================
+   * =====================================================
    */
 
   if (btn && overlay) {
     btn.addEventListener("click", () => {
+      /*
+       * ===================================================
+       * MÚSICA
+       * ===================================================
+       *
+       * IMPORTANTE:
+       *
+       * Esta llamada ocurre directamente dentro del
+       * evento "click".
+       *
+       * De esta forma el navegador considera que el
+       * usuario interactuó con la página y permite
+       * reproducir el audio.
+       */
+
+      if (
+        typeof window.iniciarMusica ===
+        "function"
+      ) {
+        window.iniciarMusica();
+      }
+
+      /*
+       * ===================================================
+       * BLOQUEAR DOBLE CLICK
+       * ===================================================
+       */
+
       btn.disabled = true;
 
       /*
-       * Guardamos que el invitado
-       * ya abrió el sobre.
+       * ===================================================
+       * GUARDAR ESTADO
+       * ===================================================
        *
-       * Esto solo tendrá efecto cuando
-       * MOSTRAR_SOBRE_SIEMPRE = false.
+       * Esto solamente tiene efecto cuando:
+       *
+       * MOSTRAR_SOBRE_SIEMPRE = false
        */
 
-      localStorage.setItem(SOBRE_ABIERTO_KEY, "true");
+      localStorage.setItem(
+        SOBRE_ABIERTO_KEY,
+        "true",
+      );
 
       /*
+       * ===================================================
        * OSCURECER
+       * ===================================================
        */
 
-      overlay.classList.add("oscureciendo");
+      overlay.classList.add(
+        "oscureciendo",
+      );
 
       /*
+       * ===================================================
        * ESPERAR A QUE ESTÉ COMPLETAMENTE NEGRO
+       * ===================================================
        */
 
       setTimeout(() => {
         /*
-         * Ocultamos el sobre mientras
-         * todavía estamos en negro.
+         * -------------------------------------------------
+         * OCULTAR SOBRE
+         * -------------------------------------------------
+         *
+         * La pantalla todavía está completamente negra.
          */
 
-        overlay.classList.add("sobre-oculto");
+        overlay.classList.add(
+          "sobre-oculto",
+        );
 
         /*
-         * Permitimos el scroll
+         * -------------------------------------------------
+         * PERMITIR SCROLL
+         * -------------------------------------------------
          */
 
-        document.body.classList.add("scroll-permitido");
+        document.body.classList.add(
+          "scroll-permitido",
+        );
 
         /*
+         * -------------------------------------------------
          * REVELAR INVITACIÓN
+         * -------------------------------------------------
          */
 
         requestAnimationFrame(() => {
-          overlay.classList.add("revelando");
+          overlay.classList.add(
+            "revelando",
+          );
         });
 
         /*
-         * ELIMINAR TRANSICIÓN
+         * -------------------------------------------------
+         * ELIMINAR OVERLAY
+         * -------------------------------------------------
+         *
+         * Coincide con la duración de la transición
+         * de revelado: 2.5 segundos.
          */
 
         setTimeout(() => {
