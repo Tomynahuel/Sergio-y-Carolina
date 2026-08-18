@@ -3,136 +3,324 @@ import { BODA_INFO } from '../data/InfoBoda.js';
 ---
 
 <section id="itinerary" class="py-10">
+
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
     <div class="max-w-10xl soft-card mx-auto p-8 sm:p-12">
-       
+
+      <!-- =====================================================
+           ENCABEZADO
+           ===================================================== -->
+
       <div class="text-center mb-12">
-        <h2 class="font-serif text-4xl text-[var(--color-verde)] sm:text-5xl">
+
+        <h2
+          class="font-titulo
+                 text-4xl sm:text-5xl
+                 text-[var(--color-verde)]"
+        >
           Cronograma
         </h2>
-      </div>
-    
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 text-center items-stretch max-w-4xl mx-auto">
 
-        <!-- ========================= -->
-        <!-- TARJETA CEREMONIA -->
-        <!-- ========================= -->
+      </div>
+
+
+      <!-- =====================================================
+           CONTENEDOR DE EVENTOS
+           ===================================================== -->
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2
+               gap-6 sm:gap-8
+               text-center
+               items-stretch
+               max-w-4xl mx-auto"
+      >
+
+
+        <!-- ===================================================
+             TARJETA CEREMONIA
+             =================================================== -->
 
         <div
-          class="relative overflow-hidden flex flex-col items-center h-full p-8 rounded-3xl shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl cursor-pointer"
+          class="relative overflow-hidden
+                 flex flex-col items-center
+                 h-full
+                 p-8
+                 rounded-3xl
+                 shadow-sm
+                 transition-all duration-300
+                 hover:scale-[1.03]
+                 hover:shadow-xl
+                 cursor-pointer"
         >
-          <!-- Contenido -->
-          <div class="relative z-10 w-full flex flex-col items-center h-full">
-           
+
+          <div
+            class="relative z-10
+                   w-full
+                   flex flex-col items-center
+                   h-full"
+          >
+
+            <!-- TÍTULO -->
             <h3
-              class="font-serif text-5xl text-[var(--color-titulos)] mb-6"
-              style="font-family:serif;"
+              class="font-subtitulo
+                     text-5xl
+                     text-[var(--color-titulos)]
+                     mb-6"
             >
               Ceremonia
             </h3>
 
-            <div class="flex items-center justify-center gap-6 w-full border-b border-[var(--color-borde-suave)] pb-4 mb-6">
+
+            <!-- =================================================
+                 FECHA Y HORA
+                 ================================================= -->
+
+            <div
+              class="flex items-center justify-center
+                     gap-6
+                     w-full
+                     border-b border-[var(--color-borde-suave)]
+                     pb-4 mb-6"
+            >
+
+              <!-- FECHA -->
 
               <div class="text-center">
-                <p class="text-3xl text-[var(--color-texto)] font-light">
+
+                <p
+                  class="font-palabra
+                         text-3xl
+                         text-[var(--color-texto)]"
+                >
                   {BODA_INFO.fechaCeremonia}
                 </p>
 
-                <p class="text-[9px] tracking-widest text-[var(--color-verde-claro)] uppercase mt-1">
+                <p
+                  class="font-destacado
+                         text-[9px]
+                         tracking-widest
+                         text-[var(--color-verde-claro)]
+                         uppercase
+                         mt-1"
+                >
                   {BODA_INFO.mesCeremonia}
                 </p>
+
               </div>
 
-              <div class="w-px h-10 bg-[var(--color-verde-claro)]"></div>
+
+              <!-- SEPARADOR -->
+
+              <div
+                class="w-px h-10
+                       bg-[var(--color-verde-claro)]"
+              ></div>
+
+
+              <!-- HORA -->
 
               <div class="text-center">
-                <p class="text-3xl text-[var(--color-texto)] font-light">
+
+                <p
+                  class="font-palabra
+                         text-3xl
+                         text-[var(--color-texto)]"
+                >
                   {BODA_INFO.horaCeremonia}
                 </p>
 
-                <p class="text-[9px] tracking-widest text-[var(--color-verde-claro)] uppercase mt-1">
+                <p
+                  class="font-destacado
+                         text-[9px]
+                         tracking-widest
+                         text-[var(--color-verde-claro)]
+                         uppercase
+                         mt-1"
+                >
                   Horas
                 </p>
+
               </div>
 
             </div>
 
+
+            <!-- =================================================
+                 UBICACIÓN
+                 ================================================= -->
+
             <div class="flex-grow mb-8 w-full">
 
-              <p class="font-bold text-[var(--color-texto)] mb-2">
+              <!-- Lugar -->
+              <p
+                class="font-destacado
+                       text-[var(--color-texto)]
+                       mb-2"
+              >
                 {BODA_INFO.salonCeremonia}
               </p>
 
-              <p class="text-sm text-[var(--color-texto-suave)]">
+              <!-- Dirección -->
+              <p
+                class="font-parrafo
+                       text-sm
+                       text-[var(--color-texto-suave)]"
+              >
                 {BODA_INFO.lugarCeremonia}
               </p>
 
             </div>
 
           </div>
+
         </div>
 
 
-        <!-- ========================= -->
-        <!-- TARJETA ALMUERZO -->
-        <!-- ========================= -->
+        <!-- ===================================================
+             TARJETA ALMUERZO
+             =================================================== -->
 
         <div
-          class="relative overflow-hidden flex flex-col items-center h-full p-8 rounded-3xl shadow-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-xl cursor-pointer"
+          class="relative overflow-hidden
+                 flex flex-col items-center
+                 h-full
+                 p-8
+                 rounded-3xl
+                 shadow-sm
+                 transition-all duration-300
+                 hover:scale-[1.03]
+                 hover:shadow-xl
+                 cursor-pointer"
         >
-          <!-- Contenido -->
-          <div class="relative z-10 w-full flex flex-col items-center h-full">
 
+          <div
+            class="relative z-10
+                   w-full
+                   flex flex-col items-center
+                   h-full"
+          >
+
+            <!-- TÍTULO -->
             <h3
-              class="font-serif text-5xl text-[var(--color-titulos)] mb-6"
-              style="font-family: 'Great Vibes', serif;"
+              class="font-subtitulo
+                     text-5xl
+                     text-[var(--color-titulos)]
+                     mb-6"
             >
               Almuerzo
             </h3>
 
-            <div class="flex items-center justify-center gap-6 w-full border-b border-[var(--color-borde-suave)] pb-4 mb-6">
+
+            <!-- =================================================
+                 FECHA Y HORA
+                 ================================================= -->
+
+            <div
+              class="flex items-center justify-center
+                     gap-6
+                     w-full
+                     border-b border-[var(--color-borde-suave)]
+                     pb-4 mb-6"
+            >
+
+              <!-- FECHA -->
 
               <div class="text-center">
-                <p class="text-3xl text-[var(--color-texto)] font-light">
+
+                <p
+                  class="font-palabra
+                         text-3xl
+                         text-[var(--color-texto)]"
+                >
                   {BODA_INFO.fechaAlmuerzo}
                 </p>
 
-                <p class="text-[9px] tracking-widest text-[var(--color-verde-claro)] uppercase mt-1">
+                <p
+                  class="font-destacado
+                         text-[9px]
+                         tracking-widest
+                         text-[var(--color-verde-claro)]
+                         uppercase
+                         mt-1"
+                >
                   {BODA_INFO.mesAlmuerzo}
                 </p>
+
               </div>
 
-              <div class="w-px h-10 bg-[var(--color-verde-claro)]"></div>
+
+              <!-- SEPARADOR -->
+
+              <div
+                class="w-px h-10
+                       bg-[var(--color-verde-claro)]"
+              ></div>
+
+
+              <!-- HORA -->
 
               <div class="text-center">
-                <p class="text-3xl text-[var(--color-texto)] font-light">
+
+                <p
+                  class="font-palabra
+                         text-3xl
+                         text-[var(--color-texto)]"
+                >
                   {BODA_INFO.horaAlmuerzo}
                 </p>
 
-                <p class="text-[9px] tracking-widest text-[var(--color-verde-claro)] uppercase mt-1">
+                <p
+                  class="font-destacado
+                         text-[9px]
+                         tracking-widest
+                         text-[var(--color-verde-claro)]
+                         uppercase
+                         mt-1"
+                >
                   Horas
                 </p>
+
               </div>
 
             </div>
 
+
+            <!-- =================================================
+                 UBICACIÓN
+                 ================================================= -->
+
             <div class="flex-grow mb-8 w-full">
 
-              <p class="font-bold text-[var(--color-texto)] mb-2">
+              <!-- Lugar -->
+              <p
+                class="font-destacado
+                       text-[var(--color-texto)]
+                       mb-2"
+              >
                 {BODA_INFO.lugarAlmuerzo}
               </p>
 
-              <p class="text-sm text-[var(--color-texto-suave)]">
+              <!-- Dirección -->
+              <p
+                class="font-parrafo
+                       text-sm
+                       text-[var(--color-texto-suave)]"
+              >
                 {BODA_INFO.direccionAlmuerzo}
               </p>
 
             </div>
 
           </div>
+
         </div>
 
       </div>
+
     </div>
 
   </div>
+
 </section>

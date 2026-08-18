@@ -3,39 +3,88 @@ import { Image } from 'astro:assets';
 import { BODA_INFO } from '../data/InfoBoda.js';
 ---
 
-<section id="story" class="section-shell py-10 ">
+<section id="story" class="section-shell py-10">
+
   <div class="soft-card overflow-hidden p-0">
 
+    <!-- =====================================================
+         IMAGEN
+         ===================================================== -->
+
     <div class="relative">
+
       <Image
         src={BODA_INFO.nuestraHistoria}
         alt="Sergio y Carolina"
         class="h-80 w-full object-cover"
       />
 
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--color-sombra-fondo-suave)] to-[var(--color-sombra-oscura)]"></div>
+      <div
+        class="absolute inset-0
+               bg-gradient-to-b
+               from-transparent
+               via-[var(--color-sombra-fondo-suave)]
+               to-[var(--color-sombra-oscura)]"
+      ></div>
+
     </div>
 
+
+    <!-- =====================================================
+         CONTENIDO
+         ===================================================== -->
+
     <div class="p-8 sm:p-10">
-      
-      <p class="font-serif text-sm uppercase tracking-[0.3em] text-[var(--color-verde)]">
+
+      <!-- Etiqueta -->
+      <p
+        class="font-destacado
+               text-sm
+               uppercase
+               tracking-[0.3em]
+               text-[var(--color-verde)]"
+      >
         Nuestra historia
       </p>
-      
 
-      <h2 class="mt-4 font-serif text-4xl text-[var(--color-texto)] sm:text-5xl">
+
+      <!-- Título -->
+      <h2
+        class="font-titulo
+               mt-4
+               text-4xl sm:text-5xl
+               text-[var(--color-texto)]"
+      >
         Amor, tiempo y recuerdos
       </h2>
 
-      <p class="font-serif mt-6 text-2xl text-[var(--color-texto-suave)]">
-        Lo que comenzó con una conversación sencilla se convirtió en una historia hermosa. Cada paso nos llevó a este día, cargado de emoción, familia y esperanza.
+
+      <!-- Párrafo 1 -->
+      <p
+        class="font-parrafo
+               mt-6
+               text-2xl
+               text-[var(--color-texto-suave)]"
+      >
+        Lo que comenzó con una conversación sencilla se convirtió
+        en una historia hermosa. Cada paso nos llevó a este día,
+        cargado de emoción, familia y esperanza.
       </p>
 
-      <p class="font-serif mt-2 text-2xl text-[var(--color-texto-suave)]">
-        Queremos compartirlo contigo con una ceremonia íntima, un ambiente acogedor y momentos que recordaremos por siempre.
+
+      <!-- Párrafo 2 -->
+      <p
+        class="font-parrafo
+               mt-2
+               text-2xl
+               text-[var(--color-texto-suave)]"
+      >
+        Queremos compartirlo contigo con una ceremonia íntima,
+        un ambiente acogedor y momentos que recordaremos por siempre.
       </p>
 
     </div>
 
   </div>
+
 </section>

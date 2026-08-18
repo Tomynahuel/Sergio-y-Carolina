@@ -11,47 +11,89 @@ import { BODA_INFO } from '../data/InfoBoda.js';
       <div
         class="relative overflow-hidden rounded-[1.5rem] p-6 sm:p-8"
       >
+
         <!-- Contenido -->
         <div class="relative z-10">
 
-          <p class="text-sm uppercase tracking-[0.3em] text-[var(--color-verde)]">
+          <!-- Etiqueta -->
+          <p
+            class="
+              text-sm
+              uppercase
+              tracking-[0.3em]
+              text-[var(--color-palabra)]
+              font-[var(--font-texto)]
+            "
+          >
             Ubicación
           </p>
 
-          <h2 class="mt-3 font-serif text-4xl text-[var(--color-titulos)]">
+
+          <!-- Título -->
+          <h2
+            class="
+              mt-3
+              text-4xl
+              sm:text-5xl
+              text-[var(--color-titulo)]
+              font-[var(--font-titulo)]
+            "
+          >
             Estamos esperándote
           </h2>
 
-          <p class="mt-4 text-lg text-[var(--color-bordo)]">
+
+          <!-- Descripción -->
+          <p
+            class="
+              mt-4
+              text-lg
+              text-[var(--color-parrafo)]
+              font-[var(--font-texto)]
+            "
+          >
             El evento será en un lugar especial, con ambiente íntimo y hermoso
             para compartir este día tan importante.
           </p>
-
-          <div class="mt-6 rounded-[1.5rem] bg-[var(--color-verde-claro)]/10 p-6 text-[var(--color-texto-fuerte)]">
-
-            <p class="font-semibold text-[var(--color-verde)]">
+          <!-- Información del salón -->
+          <div
+            class="
+              mt-6
+              rounded-[1.5rem]
+              bg-[var(--color-verde-claro)]/10
+              p-6
+              text-[var(--color-parrafo-fuerte)]
+              font-[var(--font-texto)]
+            "
+          >
+            <p
+              class="
+                font-semibold
+                text-[var(--color-palabra)]
+              "
+            >
               Salón de eventos
             </p>
-
             <p class="mt-2">
               {BODA_INFO.ubiEvento}
             </p>
-
             <p class="mt-1">
               Estacionamiento gratuito y acceso sencillo
             </p>
-
           </div>
-
         </div>
       </div>
-
-
       <!-- Mapa -->
       <div
-        class="relative overflow-hidden rounded-[1.5rem] border border-[var(--color-borde-suave)] p-2"
+        class="
+          relative
+          overflow-hidden
+          rounded-[1.5rem]
+          border
+          border-[var(--color-borde-suave)]
+          p-2
+        "
       >
-        <!-- Mapa -->
         <div class="relative z-10 overflow-hidden rounded-[1.2rem]">
           <iframe
             src={BODA_INFO.linkMaps}
@@ -61,10 +103,7 @@ import { BODA_INFO } from '../data/InfoBoda.js';
             title="Mapa del lugar"
           ></iframe>
         </div>
-
       </div>
-
     </div>
-
   </div>
 </section>

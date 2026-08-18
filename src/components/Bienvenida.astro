@@ -5,27 +5,70 @@ import { Image } from 'astro:assets';
 ---
 
 <section id="bienvenida" class="w-full max-w-4xl mx-auto px-4">
-  
-  <!-- Encabezado con Iniciales y Título -->
-  <div class="text-center mb-8">
-    <p class="font-serif text-3xl text-[var(--color-verde)]">S & C</p>
 
-    <h2 class="mt-2 font-serif text-4xl sm:text-5xl text-[var(--color-titulos)]">
+  <!-- =====================================================
+       ENCABEZADO
+       ===================================================== -->
+
+  <div class="text-center mb-8">
+
+    <!-- Iniciales -->
+    <p
+      class="font-palabra text-3xl text-[var(--color-verde)]"
+    >
+      S & C
+    </p>
+
+    <!-- Título -->
+    <h2
+      class="font-titulo mt-2 text-4xl sm:text-5xl text-[var(--color-titulos)]"
+    >
       Confirmar la Asistencia
     </h2>
+
   </div>
-  
-  <!-- Tarjeta Ancha CON Mármol y Borde -->
-  <div class="relative overflow-hidden rounded-[2rem] p-8 sm:p-12 shadow-sm border border-[var(--color-borde)] bg-[var(--color-blanco)] transition-all duration-300 hover:shadow-md">
-    <!-- 2. Capa aclaradora -->
-    <div class="absolute inset-0 bg-[var(--color-overlay-suave)] z-0"></div>
-    
-    <!-- 3. Contenido -->
+
+
+  <!-- =====================================================
+       TARJETA
+       ===================================================== -->
+
+  <div
+    class="relative overflow-hidden rounded-[2rem]
+           p-8 sm:p-12
+           shadow-sm
+           border border-[var(--color-borde)]
+           bg-[var(--color-blanco)]
+           transition-all duration-300
+           hover:shadow-md"
+  >
+
+    <!-- Capa aclaradora -->
+    <div
+      class="absolute inset-0
+             bg-[var(--color-overlay-suave)]
+             z-0"
+    ></div>
+
+
+    <!-- ===================================================
+         CONTENIDO
+         =================================================== -->
+
     <div class="relative z-10 text-center">
-      <p class="text-2xl md:text-xl text-[var(--color-texto)] font-serif leading-relaxed">
-        Qué alegría inmensa compartir este momento tan especial con vos. Estamos preparando una noche inolvidable.
+
+      <p
+        class="font-parrafo
+               text-2xl md:text-xl
+               text-[var(--color-texto)]
+               leading-relaxed"
+      >
+        Qué alegría inmensa compartir este momento tan especial
+        con vos. Estamos preparando una noche inolvidable.
       </p>
+
     </div>
+
   </div>
-  
+
 </section>

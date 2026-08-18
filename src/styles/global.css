@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
 @import './colores.css';
 
 @tailwind base;
@@ -8,14 +6,12 @@
 
 
 /* =========================================================
-   TIPOGRAFÍAS Y VARIABLES GLOBALES
+   VARIABLES GLOBALES
+   Las tipografías vienen desde colores.css
    ========================================================= */
 
 :root {
   color-scheme: light;
-
-  --font-texto: 'Inter', sans-serif;
-  --font-titulo: 'Cormorant Garamond', serif;
 }
 
 
@@ -28,7 +24,8 @@ html {
 }
 
 body {
-  font-family: var(--font-texto);
+  font-family: var(--font-parrafo);
+  font-weight: var(--peso-parrafo);
   background-color: var(--color-fondo);
   color: var(--color-texto);
   -webkit-font-smoothing: antialiased;
@@ -37,18 +34,80 @@ body {
 
 
 /* =========================================================
-   TIPOGRAFÍA
+   TIPOGRAFÍA GLOBAL
    ========================================================= */
 
-h1,
+/* Títulos principales */
+h1 {
+  font-family: var(--font-titulo);
+  font-weight: var(--peso-titulo);
+}
+
+/* Subtítulos */
 h2,
-h3,
+h3 {
+  font-family: var(--font-subtitulo);
+  font-weight: var(--peso-subtitulo);
+}
+
+/* Títulos secundarios */
 h4,
 h5,
-h6,
+h6 {
+  font-family: var(--font-titulo);
+  font-weight: var(--peso-titulo);
+}
+
+
+/* =========================================================
+   CLASES TIPOGRÁFICAS
+   ========================================================= */
+
+/* Título */
+.font-titulo {
+  font-family: var(--font-titulo);
+  font-weight: var(--peso-titulo);
+}
+
+
+/* Subtítulo */
+.font-subtitulo {
+  font-family: var(--font-subtitulo);
+  font-weight: var(--peso-subtitulo);
+}
+
+
+/* Párrafo */
+.font-parrafo {
+  font-family: var(--font-parrafo);
+  font-weight: var(--peso-parrafo);
+}
+
+
+/* Palabra */
+.font-palabra {
+  font-family: var(--font-palabra);
+  font-weight: var(--peso-palabra);
+}
+
+
+/* Texto destacado */
+.font-destacado {
+  font-family: var(--font-destacado);
+  font-weight: var(--peso-destacado);
+}
+
+
+/* Compatibilidad con tu clase anterior */
 .font-serif {
   font-family: var(--font-titulo);
+  font-weight: var(--peso-titulo);
 }
+
+
+/* =========================================================
+   ELEMENTOS DE TEXTO
+   ========================================================= */
 
 p,
 span,
@@ -58,8 +117,14 @@ input,
 textarea,
 button,
 a {
-  font-family: var(--font-texto);
+  font-family: var(--font-parrafo);
+  font-weight: var(--peso-parrafo);
 }
+
+
+/* =========================================================
+   CONTROLES
+   ========================================================= */
 
 a,
 button,
@@ -90,12 +155,9 @@ textarea {
   }
 
 
-  /*
-   * SUPERFICIE INTERNA
-   *
-   * Se utiliza para tarjetas, formularios,
-   * información y contenido interno.
-   */
+  /* =======================================================
+     SOFT CARD PRINCIPAL
+     ======================================================= */
 
   .soft-card {
     @apply rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.08)];
@@ -107,6 +169,34 @@ textarea {
         135deg,
         var(--color-superficie-blanda),
         var(--color-superficie)
+      );
+
+    box-shadow:
+      0 20px 60px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+
+  /* =======================================================
+     SOFT CARD INTERNO
+
+     Misma estética que .soft-card,
+     pero con colores independientes.
+     ======================================================= */
+
+  .softcard-interno {
+    @apply rounded-[2rem] shadow-[0_20px_60px_rgba(0,0,0,0.08)];
+
+    border: 1px solid var(--color-borde-interno);
+
+    background:
+      linear-gradient(
+        135deg,
+        var(--color-superficie-interno),
+        var(--color-superficie-interno)
       );
 
     box-shadow:

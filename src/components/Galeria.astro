@@ -17,24 +17,56 @@ const imagenes = [
 ---
 
 <section id="gallery" class="section-shell pb-24">
+
   <div class="soft-card overflow-hidden p-8 sm:p-10">
 
+    <!-- =====================================================
+         ENCABEZADO
+         ===================================================== -->
+
     <div class="mb-8 text-center">
-      <p class="text-sm uppercase tracking-[0.3em] text-[var(--color-verde)]">
+
+      <!-- Etiqueta -->
+      <p
+        class="font-destacado
+               text-sm
+               uppercase
+               tracking-[0.3em]
+               text-[var(--color-verde)]"
+      >
         Galería
       </p>
 
-      <h2 class="mt-3 font-serif text-4xl text-[var(--color-texto-fuerte)] sm:text-5xl">
+
+      <!-- Título -->
+      <h2
+        class="font-titulo
+               mt-3
+               text-4xl sm:text-5xl
+               text-[var(--color-texto-fuerte)]"
+      >
         Nuestros momentos favoritos
       </h2>
+
     </div>
+
+
+    <!-- =====================================================
+         GALERÍA
+         ===================================================== -->
 
     <div class="grid gap-4 md:grid-cols-3">
 
       {
         [0, 1, 2].map((indice) => (
           <div
-            class="gallery-image group h-72 overflow-hidden rounded-[1.5rem] bg-[var(--color-blanco)] bg-cover bg-center"
+            class="gallery-image group
+                   h-72
+                   overflow-hidden
+                   rounded-[1.5rem]
+                   bg-[var(--color-blanco)]
+                   bg-cover
+                   bg-center"
             style={`background-image: url('${imagenes[indice % imagenes.length].src}');`}
             data-indice={indice}
           ></div>
@@ -42,8 +74,11 @@ const imagenes = [
       }
 
     </div>
+
   </div>
+
 </section>
+
 
 <script>
   const imagenes = [
@@ -55,19 +90,25 @@ const imagenes = [
     foto6.src,
   ];
 
-  const galerias = document.querySelectorAll<HTMLElement>('.gallery-image');
+  const galerias =
+    document.querySelectorAll<HTMLElement>('.gallery-image');
 
   let posicion = 0;
 
   setInterval(() => {
+
     galerias.forEach((galeria, indice) => {
+
       const imagenIndex =
         (posicion + indice) % imagenes.length;
 
       galeria.style.backgroundImage =
         `url('${imagenes[imagenIndex]}')`;
+
     });
 
-    posicion = (posicion + 1) % imagenes.length;
+    posicion =
+      (posicion + 1) % imagenes.length;
+
   }, 3000);
 </script>

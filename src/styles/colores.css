@@ -186,6 +186,28 @@
      LINEAS
      ===================================================== */
 
-   --color-lineas: var(--color-verde)
+   --color-lineas: var(--color-verde);
+
+
+  /* =========================================================
+     TIPOGRAFÍAS
+     ========================================================= */
+
+  --font-titulo: 'Cormorant Garamond', serif;
+  --font-subtitulo: 'Cormorant Garamond', serif;
+  --font-parrafo: 'Inter', sans-serif;
+  --font-palabra: 'Inter', sans-serif;
+  --font-destacado: 'Inter', sans-serif;
+
+
+  /* =========================================================
+     PESOS TIPOGRÁFICOS
+     ========================================================= */
+
+  --peso-titulo: 600;
+  --peso-subtitulo: 500;
+  --peso-parrafo: 400;
+  --peso-palabra: 500;
+  --peso-destacado: 700;
 
 }
