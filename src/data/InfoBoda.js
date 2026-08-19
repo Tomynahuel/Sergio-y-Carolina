@@ -1,4 +1,4 @@
-import heroImage from '../img/manoconanillo.jpg'; // Asegúrate que esta ruta sea correcta
+import heroImage from '../img/manoconanillo.png'; // Asegúrate que esta ruta sea correcta
 import ringImage from '../img/anillos.png'; // Asegúrate que esta ruta sea correcta
 import sobre from '../img/sobre.png'; // Asegúrate que esta ruta sea correcta
 import decoSobreBoton from '../img/deco-boton.png'; // Asegúrate que esta ruta sea correcta
@@ -20,8 +20,6 @@ export const BODA_INFO = {
 
   // Fotos
   presentacion: heroImage,
-  organizador1: heroImage,
-  organizador2: heroImage,
   anillos: ringImage,
   nuestraHistoria: EllosBailan,
   sobre: sobre,

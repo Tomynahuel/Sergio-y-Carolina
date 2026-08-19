@@ -1,0 +1,1697 @@
+---
+import foto1 from "../img/ellos1.png";
+//import foto2 from "../img/ellos2.png";
+import foto3 from "../img/ellos3.png";
+import foto4 from "../img/ellos4.png";
+import foto5 from "../img/ellos5.png";
+import foto6 from "../img/ellos6.jpeg";
+import foto7 from "../img/ellos7.png";
+import foto8 from "../img/ellos8.png";
+import foto9 from "../img/ellos9.png";
+import foto11 from "../img/ellos11.png";
+import foto12 from "../img/ellos12.png";
+import marco from "../img/cuadro.png";
+
+const imagenes = [
+  foto1,
+  foto3,
+  foto4,
+  foto5,
+  foto6,
+  foto7,
+  foto8,
+  foto9,
+  foto11,
+  foto12,
+];
+
+const rutasImagenes = imagenes.map((imagen) => imagen.src);
+
+const rutaMarco = marco.src;
+---
+
+<section id="gallery" class="section-shell pb-24">
+  <div class="soft-card overflow-hidden p-8 sm:p-10">
+
+    <!-- =====================================================
+         ENCABEZADO
+         ===================================================== -->
+
+    <div class="mb-10 text-center">
+
+      <p
+        class="font-destacado text-sm uppercase tracking-[0.3em] text-[var(--color-verde)]"
+      >
+        Galería
+      </p>
+
+      <h2
+        class="font-titulo mt-3 text-4xl text-[var(--color-bordo-rosa)] sm:text-5xl"
+      >
+        Nuestros momentos favoritos
+      </h2>
+
+    </div>
+
+
+    <!-- =====================================================
+         MOSAICO
+         ===================================================== -->
+
+    <div class="gallery-mosaic">
+
+      {
+        imagenes.map((imagen, indice) => (
+          <button
+            type="button"
+            class={`cuadro-gallery cuadro-${indice + 1}`}
+            data-indice={indice}
+            aria-label={`Ver fotografía ${indice + 1}`}
+          >
+
+            <!-- =================================================
+                 MARCO
+                 ================================================= -->
+
+            <img
+              src={rutaMarco}
+              alt=""
+              class="cuadro-marco"
+              aria-hidden="true"
+            />
+
+
+            <!-- =================================================
+                 FOTO
+                 ================================================= -->
+
+            <div class="cuadro-foto-wrapper">
+
+              <img
+                src={imagen.src}
+                alt={`Momento favorito ${indice + 1}`}
+                class="cuadro-foto"
+              />
+
+            </div>
+
+          </button>
+        ))
+      }
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================================
+     LIGHTBOX
+     ========================================================= -->
+
+<div
+  id="gallery-lightbox"
+  class="gallery-lightbox"
+  aria-hidden="true"
+>
+
+  <!-- =====================================================
+       FONDO
+       ===================================================== -->
+
+  <div class="lightbox-backdrop"></div>
+
+
+  <!-- =====================================================
+       BOTÓN CERRAR
+       ===================================================== -->
+
+  <button
+    id="lightbox-close"
+    type="button"
+    class="lightbox-close"
+    aria-label="Cerrar fotografía"
+  >
+    ×
+  </button>
+
+
+  <!-- =====================================================
+       CONTENIDO
+       ===================================================== -->
+
+  <div
+    id="lightbox-content"
+    class="lightbox-content"
+  >
+
+    <!--
+      Este contenedor permite que el marco
+      pueda cambiar entre vertical y horizontal.
+    -->
+
+    <div
+      id="lightbox-frame-container"
+      class="lightbox-frame-container"
+    >
+
+      <div
+        id="lightbox-frame-rotator"
+        class="lightbox-frame-rotator"
+      >
+
+        <div class="lightbox-frame">
+
+          <!-- =================================================
+               MARCO
+               ================================================= -->
+
+          <img
+            src={rutaMarco}
+            alt=""
+            class="lightbox-frame-image"
+            aria-hidden="true"
+          />
+
+
+          <!-- =================================================
+               FOTO
+               ================================================= -->
+
+          <div class="lightbox-photo-wrapper">
+
+            <img
+              id="lightbox-photo"
+              src=""
+              alt="Fotografía ampliada"
+            />
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script define:vars={{ rutasImagenes }}>
+  /*
+   * =====================================================
+   * CONFIGURACIÓN
+   * =====================================================
+   */
+
+  const CONFIG_GALERIA = {
+
+    /*
+     * true
+     * → las fotografías cambian automáticamente.
+     *
+     * false
+     * → las fotografías quedan fijas.
+     */
+
+    CAMBIAR_FOTOS: false,
+
+
+    /*
+     * Tiempo que cada fotografía permanece
+     * dentro de su cuadro.
+     */
+
+    TIEMPO_FIJA: 15000,
+
+
+    /*
+     * Duración del cambio entre fotografías.
+     */
+
+    DURACION_TRANSICION: 500,
+
+  };
+
+
+  /*
+   * =====================================================
+   * CUADROS ROTADOS
+   * =====================================================
+   *
+   * Acá indicamos qué cuadros están girados.
+   *
+   * El número corresponde al número del cuadro.
+   *
+   * Por ejemplo:
+   *
+   * cuadro 2 → 90 grados
+   *
+   * Si en el futuro querés rotar otro:
+   *
+   * 4: 90
+   * 6: -90
+   *
+   */
+
+  const CUADROS_ROTADOS = {
+
+    
+
+  };
+
+
+  /*
+   * =====================================================
+   * ELEMENTOS
+   * =====================================================
+   */
+
+  const cuadros =
+    document.querySelectorAll(
+      ".cuadro-gallery",
+    );
+
+
+  const lightbox =
+    document.getElementById(
+      "gallery-lightbox",
+    );
+
+
+  const lightboxContent =
+    document.getElementById(
+      "lightbox-content",
+    );
+
+
+  const lightboxPhoto =
+    document.getElementById(
+      "lightbox-photo",
+    );
+
+
+  const lightboxClose =
+    document.getElementById(
+      "lightbox-close",
+    );
+
+
+  const lightboxFrameContainer =
+    document.getElementById(
+      "lightbox-frame-container",
+    );
+
+
+  const lightboxFrameRotator =
+    document.getElementById(
+      "lightbox-frame-rotator",
+    );
+
+
+  /*
+   * =====================================================
+   * POSICIÓN DE LAS FOTOS
+   * =====================================================
+   */
+
+  let posicion = 0;
+
+
+  /*
+   * =====================================================
+   * CAMBIAR FOTOS
+   * =====================================================
+   */
+
+  function cambiarImagenes() {
+
+    if (
+      !CONFIG_GALERIA.CAMBIAR_FOTOS
+    ) {
+
+      return;
+
+    }
+
+
+    cuadros.forEach(
+      (cuadro, indice) => {
+
+        const foto =
+          cuadro.querySelector(
+            ".cuadro-foto",
+          );
+
+
+        if (!foto) {
+
+          return;
+
+        }
+
+
+        /*
+         * Calcular nueva fotografía.
+         */
+
+        const imagenIndex =
+          (
+            posicion + indice + 1
+          ) %
+          rutasImagenes.length;
+
+
+        /*
+         * Iniciar desaparición.
+         */
+
+        cuadro.classList.add(
+          "gallery-changing",
+        );
+
+
+        /*
+         * Esperar a que desaparezca.
+         */
+
+        setTimeout(
+          () => {
+
+            foto.src =
+              rutasImagenes[
+                imagenIndex
+              ];
+
+
+            /*
+             * Volver a aparecer.
+             */
+
+            cuadro.classList.remove(
+              "gallery-changing",
+            );
+
+          },
+          CONFIG_GALERIA.DURACION_TRANSICION,
+        );
+
+      },
+    );
+
+
+    /*
+     * Avanzar posición.
+     */
+
+    posicion =
+      (
+        posicion + 1
+      ) %
+      rutasImagenes.length;
+
+  }
+
+
+  /*
+   * =====================================================
+   * INICIAR ROTACIÓN AUTOMÁTICA
+   * =====================================================
+   */
+
+  if (
+    CONFIG_GALERIA.CAMBIAR_FOTOS &&
+    cuadros.length > 0 &&
+    rutasImagenes.length > 0
+  ) {
+
+    setInterval(
+      cambiarImagenes,
+      CONFIG_GALERIA.TIEMPO_FIJA,
+    );
+
+  }
+
+
+  /*
+   * =====================================================
+   * OBTENER ROTACIÓN
+   * =====================================================
+   */
+
+  function obtenerRotacion(
+    indice,
+  ) {
+
+    const numeroCuadro =
+      indice + 1;
+
+
+    return (
+      CUADROS_ROTADOS[
+        numeroCuadro
+      ] || 0
+    );
+
+  }
+
+
+  /*
+   * =====================================================
+   * PREPARAR LIGHTBOX
+   * =====================================================
+   */
+
+  function prepararLightbox(
+    rotacion,
+  ) {
+
+    if (
+      !lightboxFrameContainer ||
+      !lightboxFrameRotator
+    ) {
+
+      return;
+
+    }
+
+
+    /*
+     * Limpiar clases anteriores.
+     */
+
+    lightboxFrameContainer.classList.remove(
+      "lightbox-horizontal",
+      "lightbox-vertical",
+    );
+
+
+    lightboxFrameRotator.classList.remove(
+      "rotated-90",
+      "rotated-180",
+      "rotated-minus-90",
+    );
+
+
+    /*
+     * ROTACIÓN 90°
+     */
+
+    if (rotacion === 90) {
+
+      lightboxFrameContainer.classList.add(
+        "lightbox-horizontal",
+      );
+
+      lightboxFrameRotator.classList.add(
+        "rotated-90",
+      );
+
+    }
+
+
+    /*
+     * ROTACIÓN -90°
+     */
+
+    else if (rotacion === -90) {
+
+      lightboxFrameContainer.classList.add(
+        "lightbox-horizontal",
+      );
+
+      lightboxFrameRotator.classList.add(
+        "rotated-minus-90",
+      );
+
+    }
+
+
+    /*
+     * ROTACIÓN 180°
+     */
+
+    else if (rotacion === 180) {
+
+      lightboxFrameContainer.classList.add(
+        "lightbox-vertical",
+      );
+
+      lightboxFrameRotator.classList.add(
+        "rotated-180",
+      );
+
+    }
+
+
+    /*
+     * Sin rotación.
+     */
+
+    else {
+
+      lightboxFrameContainer.classList.add(
+        "lightbox-vertical",
+      );
+
+    }
+
+  }
+
+
+  /*
+   * =====================================================
+   * ABRIR LIGHTBOX
+   * =====================================================
+   */
+
+  function abrirLightbox(
+    indice,
+  ) {
+
+    if (
+      !lightbox ||
+      !lightboxPhoto ||
+      !lightboxContent
+    ) {
+
+      return;
+
+    }
+
+
+    const cuadro =
+      cuadros[indice];
+
+
+    if (!cuadro) {
+
+      return;
+
+    }
+
+
+    const foto =
+      cuadro.querySelector(
+        ".cuadro-foto",
+      );
+
+
+    if (!foto) {
+
+      return;
+
+    }
+
+
+    /*
+     * Utilizamos la foto que actualmente
+     * está visible.
+     */
+
+    lightboxPhoto.src =
+      foto.currentSrc ||
+      foto.src;
+
+
+    lightboxPhoto.alt =
+      foto.alt;
+
+
+    /*
+     * Obtener rotación del cuadro.
+     */
+
+    const rotacion =
+      obtenerRotacion(
+        indice,
+      );
+
+
+    /*
+     * Preparar orientación
+     * del lightbox.
+     */
+
+    prepararLightbox(
+      rotacion,
+    );
+
+
+    /*
+     * Mostrar visor.
+     */
+
+    lightbox.classList.add(
+      "lightbox-visible",
+    );
+
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "false",
+    );
+
+
+    /*
+     * Bloquear scroll.
+     */
+
+    document.body.classList.add(
+      "lightbox-open",
+    );
+
+
+    /*
+     * Animación de entrada.
+     */
+
+    requestAnimationFrame(
+      () => {
+
+        lightboxContent.classList.add(
+          "lightbox-zoom",
+        );
+
+      },
+    );
+
+  }
+
+
+  /*
+   * =====================================================
+   * CERRAR LIGHTBOX
+   * =====================================================
+   */
+
+  function cerrarLightbox() {
+
+    if (
+      !lightbox ||
+      !lightboxContent
+    ) {
+
+      return;
+
+    }
+
+
+    /*
+     * Quitar zoom.
+
+     */
+
+    lightboxContent.classList.remove(
+      "lightbox-zoom",
+    );
+
+
+    /*
+     * Ocultar.
+
+     */
+
+    lightbox.classList.remove(
+      "lightbox-visible",
+    );
+
+
+    lightbox.setAttribute(
+      "aria-hidden",
+      "true",
+    );
+
+
+    /*
+     * Devolver scroll.
+
+     */
+
+    document.body.classList.remove(
+      "lightbox-open",
+    );
+
+  }
+
+
+  /*
+   * =====================================================
+   * CLICK EN LOS CUADROS
+   * =====================================================
+   */
+
+  cuadros.forEach(
+    (cuadro, indice) => {
+
+      cuadro.addEventListener(
+        "click",
+        () => {
+
+          abrirLightbox(
+            indice,
+          );
+
+        },
+      );
+
+    },
+  );
+
+
+  /*
+   * =====================================================
+   * BOTÓN CERRAR
+   * =====================================================
+   */
+
+  if (lightboxClose) {
+
+    lightboxClose.addEventListener(
+      "click",
+      (evento) => {
+
+        evento.stopPropagation();
+
+        cerrarLightbox();
+
+      },
+    );
+
+  }
+
+
+  /*
+   * =====================================================
+   * CERRAR TOCANDO AFUERA
+   * =====================================================
+   */
+
+  if (lightbox) {
+
+    lightbox.addEventListener(
+      "click",
+      (evento) => {
+
+        const objetivo =
+          evento.target;
+
+
+        if (
+          objetivo === lightbox ||
+          (
+            objetivo instanceof
+              HTMLElement &&
+            objetivo.classList.contains(
+              "lightbox-backdrop",
+            )
+          )
+        ) {
+
+          cerrarLightbox();
+
+        }
+
+      },
+    );
+
+  }
+
+
+  /*
+   * =====================================================
+   * EVITAR CIERRE AL TOCAR LA FOTO
+   * =====================================================
+   */
+
+  if (lightboxContent) {
+
+    lightboxContent.addEventListener(
+      "click",
+      (evento) => {
+
+        evento.stopPropagation();
+
+      },
+    );
+
+  }
+
+
+  /*
+   * =====================================================
+   * ESC
+   * =====================================================
+   */
+
+  document.addEventListener(
+    "keydown",
+    (evento) => {
+
+      if (
+        evento.key === "Escape" &&
+        lightbox?.classList.contains(
+          "lightbox-visible",
+        )
+      ) {
+
+        cerrarLightbox();
+
+      }
+
+    },
+  );
+
+</script>
+
+
+<style>
+
+  /* =====================================================
+     MOSAICO
+     ===================================================== */
+
+  .gallery-mosaic {
+
+    column-count: 2;
+
+    column-gap: 1.2rem;
+
+    max-width: 1050px;
+
+    margin: 0 auto;
+
+  }
+
+
+  /* =====================================================
+     CUADRO
+     ===================================================== */
+
+  .cuadro-gallery {
+
+    position: relative;
+
+    display: block;
+
+    width: 100%;
+
+    break-inside: avoid;
+
+    -webkit-column-break-inside: avoid;
+
+    margin: 0 0 1.2rem;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    aspect-ratio:
+      788 / 1057;
+
+    transition:
+      transform 0.45s ease,
+      filter 0.45s ease;
+
+  }
+
+
+  /* =====================================================
+     DIFERENTES TAMAÑOS
+     ===================================================== */
+
+  .cuadro-2,
+  .cuadro-6,
+  .cuadro-8 {
+
+    width: 78%;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+  }
+
+
+  .cuadro-1,
+  .cuadro-4,
+  .cuadro-5,
+  .cuadro-7,
+  .cuadro-9 {
+
+    width: 100%;
+
+  }
+
+
+  /* =====================================================
+     CUADRO 2 HORIZONTAL
+     ===================================================== */
+
+
+
+  /* =====================================================
+     CUADRO 3
+     ===================================================== */
+
+  .cuadro-3 {
+
+    width: 88%;
+
+    margin-left: auto;
+
+    margin-right: auto;
+
+  }
+
+
+  /* =====================================================
+     HOVER
+     ===================================================== */
+
+  .cuadro-gallery:hover {
+
+    transform:
+      translateY(-5px)
+      scale(1.015);
+
+    filter:
+      drop-shadow(
+        0 14px 22px
+        rgb(0 0 0 / 20%)
+      );
+
+  }
+
+
+  /* =====================================================
+     FOCUS
+     ===================================================== */
+
+  .cuadro-gallery:focus-visible {
+
+    outline:
+      3px solid
+      var(--color-bordo);
+
+    outline-offset: 4px;
+
+  }
+
+
+  /* =====================================================
+     MARCO
+     ===================================================== */
+
+  .cuadro-marco {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: fill;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    user-select: none;
+
+  }
+
+
+  /* =====================================================
+     ÁREA DE FOTO
+     ===================================================== */
+
+  .cuadro-foto-wrapper {
+
+    position: absolute;
+
+    top: 7.4%;
+
+    left: 9.4%;
+
+    width: 81.2%;
+
+    height: 84.5%;
+
+    overflow: hidden;
+
+    z-index: 1;
+
+    background: #ffffff;
+
+  }
+
+
+  /* =====================================================
+     FOTO
+     ===================================================== */
+
+  .cuadro-foto {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    background: #ffffff;
+
+    transition:
+      opacity 0.5s ease,
+      transform 0.6s ease;
+
+  }
+
+
+  /* =====================================================
+     CAMBIO DE FOTOGRAFÍA
+     ===================================================== */
+
+  .cuadro-gallery.gallery-changing
+    .cuadro-foto {
+
+    opacity: 0;
+
+    transform:
+      scale(1.025);
+
+  }
+
+
+  /* =====================================================
+     LIGHTBOX
+     ===================================================== */
+
+  .gallery-lightbox {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100000;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 2rem;
+
+    visibility: hidden;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition:
+      opacity 0.4s ease,
+      visibility 0.4s ease;
+
+  }
+
+
+  /* =====================================================
+     LIGHTBOX VISIBLE
+     ===================================================== */
+
+  .gallery-lightbox.lightbox-visible {
+
+    visibility: visible;
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+  }
+
+
+  /* =====================================================
+     FONDO DEL LIGHTBOX
+     ===================================================== */
+
+  .lightbox-backdrop {
+
+    position: absolute;
+
+    inset: 0;
+
+    /*
+     * Fondo blanco.
+     */
+
+    background:
+      rgba(255, 255, 255, 0.089);
+
+    /*
+     * Mantener un pequeño efecto
+     * de desenfoque sin oscurecer.
+     */
+
+    backdrop-filter:
+      blur(14px);
+
+    -webkit-backdrop-filter:
+      blur(14px);
+
+  }
+
+
+  /* =====================================================
+     CONTENIDO
+     ===================================================== */
+
+  .lightbox-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+      min(
+        90vw,
+        720px
+      );
+
+    max-height: 90vh;
+
+    transform:
+      scale(0.78)
+      translateY(25px);
+
+    opacity: 0;
+
+    transition:
+      transform 0.55s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+      opacity 0.4s ease;
+
+  }
+
+
+  /* =====================================================
+     ZOOM
+     ===================================================== */
+
+  .lightbox-content.lightbox-zoom {
+
+    transform:
+      scale(1)
+      translateY(0);
+
+    opacity: 1;
+
+  }
+
+
+  /* =====================================================
+     CONTENEDOR DEL MARCO
+     ===================================================== */
+
+  .lightbox-frame-container {
+
+    position: relative;
+
+    width: 100%;
+
+    margin: 0 auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+  }
+
+
+  /*
+   * Marco vertical.
+   */
+
+  .lightbox-frame-container.lightbox-vertical {
+
+    aspect-ratio:
+      788 / 1057;
+
+  }
+
+
+  /*
+   * Marco horizontal.
+   *
+   * Al rotar 90 grados,
+   * invertimos la proporción.
+   */
+
+  .lightbox-frame-container.lightbox-horizontal {
+
+    aspect-ratio:
+      1057 / 788;
+
+  }
+
+
+  /* =====================================================
+     ROTADOR
+     ===================================================== */
+
+  .lightbox-frame-rotator {
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+  }
+
+
+  /*
+   * Cuando no está rotado,
+   * ocupa todo el espacio.
+   */
+
+  .lightbox-frame-rotator:not(
+    .rotated-90
+  ):not(
+    .rotated-minus-90
+  ):not(
+    .rotated-180
+  ) {
+
+    transform:
+      rotate(0deg);
+
+  }
+
+
+  /*
+   * Rotación de 90 grados.
+   */
+
+  .lightbox-frame-rotator.rotated-90 {
+
+    transform:
+      rotate(90deg);
+
+  }
+
+
+  /*
+   * Rotación de -90 grados.
+   */
+
+  .lightbox-frame-rotator.rotated-minus-90 {
+
+    transform:
+      rotate(-90deg);
+
+  }
+
+
+  /*
+   * Rotación de 180 grados.
+   */
+
+  .lightbox-frame-rotator.rotated-180 {
+
+    transform:
+      rotate(180deg);
+
+  }
+
+
+  /* =====================================================
+     MARCO GRANDE
+     ===================================================== */
+
+  .lightbox-frame {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100%;
+
+    aspect-ratio:
+      788 / 1057;
+
+    background: #ffffff;
+
+  }
+
+
+  /*
+   * Para los cuadros rotados,
+   * el frame conserva su proporción
+   * original antes de girarse.
+   */
+
+  .lightbox-horizontal
+    .lightbox-frame {
+
+    width: 100%;
+
+    height: 100%;
+
+  }
+
+
+  /* =====================================================
+     MARCO
+     ===================================================== */
+
+  .lightbox-frame-image {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: fill;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    user-select: none;
+
+  }
+
+
+  /* =====================================================
+     FOTO GRANDE
+     ===================================================== */
+
+  .lightbox-photo-wrapper {
+
+    position: absolute;
+
+    top: 7.4%;
+
+    left: 9.4%;
+
+    width: 81.2%;
+
+    height: 84.5%;
+
+    overflow: hidden;
+
+    z-index: 1;
+
+    /*
+     * Blanco.
+     */
+
+    background: #ffffff;
+
+  }
+
+
+  /* =====================================================
+     FOTO LIGHTBOX
+     ===================================================== */
+
+  .lightbox-photo-wrapper img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    /*
+     * Mantener SIEMPRE la proporción
+     * original de la fotografía.
+     */
+
+    object-fit: contain;
+
+    object-position: center;
+
+    /*
+     * Fondo blanco para fotografías
+     * que no llenan completamente
+     * el espacio.
+     */
+
+    background: #ffffff;
+
+  }
+
+
+  /* =====================================================
+     BOTÓN CERRAR
+     ===================================================== */
+
+  .lightbox-close {
+
+    position: absolute;
+
+    top: 1.25rem;
+
+    right: 1.5rem;
+
+    z-index: 5;
+
+    width: 3rem;
+
+    height: 3rem;
+
+    border:
+      1px solid
+      rgb(82 19 26 / 25%);
+
+    border-radius: 999px;
+
+    background:
+      rgb(255 255 255 / 92%);
+
+    color:
+      var(--color-bordo);
+
+    font-size: 2rem;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+      background 0.25s ease,
+      transform 0.25s ease;
+
+  }
+
+
+  .lightbox-close:hover {
+
+    background:
+      #ffffff;
+
+    transform:
+      scale(1.08);
+
+  }
+
+
+  /* =====================================================
+     BLOQUEAR SCROLL
+     ===================================================== */
+
+  :global(body.lightbox-open) {
+
+    overflow: hidden;
+
+  }
+
+
+  /* =====================================================
+     TABLET
+     ===================================================== */
+
+  @media (max-width: 768px) {
+
+    .gallery-mosaic {
+
+      column-count: 2;
+
+      column-gap: 0.8rem;
+
+    }
+
+
+    .cuadro-gallery {
+
+      margin-bottom: 0.8rem;
+
+    }
+
+
+    .cuadro-2,
+    .cuadro-6,
+    .cuadro-8 {
+
+      width: 82%;
+
+    }
+
+
+    .cuadro-3 {
+
+      width: 92%;
+
+    }
+
+
+    .gallery-lightbox {
+
+      padding: 1rem;
+
+    }
+
+
+    .lightbox-content {
+
+      width:
+        min(
+          94vw,
+          620px
+        );
+
+    }
+
+
+    .lightbox-close {
+
+      top: 0.75rem;
+
+      right: 0.75rem;
+
+      width: 2.75rem;
+
+      height: 2.75rem;
+
+      font-size: 1.75rem;
+
+    }
+
+  }
+
+
+  /* =====================================================
+     CELULAR
+     ===================================================== */
+
+  @media (max-width: 480px) {
+
+    .gallery-mosaic {
+
+      column-count: 2;
+
+      column-gap: 0.55rem;
+
+    }
+
+
+    .cuadro-gallery {
+
+      margin-bottom: 0.55rem;
+
+    }
+
+
+    .cuadro-2,
+    .cuadro-6,
+    .cuadro-8 {
+
+      width: 88%;
+
+    }
+
+
+    .cuadro-3 {
+
+      width: 94%;
+
+    }
+
+
+    .gallery-lightbox {
+
+      padding: 0.75rem;
+
+    }
+
+
+    .lightbox-content {
+
+      width: 94vw;
+
+    }
+
+  }
+
+
+  /* =====================================================
+     CELULARES MUY PEQUEÑOS
+     ===================================================== */
+
+  @media (max-width: 360px) {
+
+    .gallery-mosaic {
+
+      column-gap: 0.4rem;
+
+    }
+
+
+    .cuadro-gallery {
+
+      margin-bottom: 0.4rem;
+
+    }
+
+  }
+
+
+</style>
