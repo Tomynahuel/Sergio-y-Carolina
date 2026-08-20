@@ -186,11 +186,25 @@ import { BODA_INFO } from "../data/InfoBoda";
         <!-- ================================================= -->
 
         <button
+          id="rsvp-submit-button"
           type="submit"
           class="font-destacado w-full rounded-full bg-[var(--color-bordo)] px-6 py-4 text-sm uppercase tracking-widest text-[var(--color-blanco)] shadow-md transition-all hover:-translate-y-0.5 hover:bg-[var(--color-principal-hover)] hover:shadow-lg"
         >
           Confirmar asistencia
         </button>
+
+        <!-- ================================================= -->
+        <!-- MENSAJE DE ESPERA -->
+        <!-- ================================================= -->
+
+        <p
+          id="rsvp-waiting-message"
+          class="font-parrafo hidden text-center text-sm text-[var(--color-texto-suave)]"
+          role="status"
+          aria-live="polite"
+        >
+          Aguarde un momento, estamos registrando su confirmación...
+        </p>
 
         <!-- PÁRRAFO -->
 
@@ -242,7 +256,6 @@ import { BODA_INFO } from "../data/InfoBoda";
       <div
         class="mx-auto max-w-sm rounded-[1.5rem] border border-[var(--color-acento-suave)] bg-[var(--color-superficie-media)] p-6 shadow-sm backdrop-blur-sm"
       >
-
         <p
           class="font-parrafo text-xs text-[var(--color-texto-suave)]"
         >
@@ -307,6 +320,36 @@ import { BODA_INFO } from "../data/InfoBoda";
 
   const homeButton =
     document.getElementById("rsvp-home-button");
+
+  /*
+   * ==========================================================
+   * BOTÓN DE ENVÍO
+   * ==========================================================
+   *
+   * Esta variable evita que un doble toque pueda generar
+   * dos envíos mientras el primero todavía está procesándose.
+   */
+
+  const submitButton =
+    document.getElementById(
+      "rsvp-submit-button",
+    ) as HTMLButtonElement | null;
+
+  const waitingMessage =
+    document.getElementById(
+      "rsvp-waiting-message",
+    );
+
+  /*
+   * ==========================================================
+   * PROTECCIÓN CONTRA DOBLE ENVÍO
+   * ==========================================================
+   *
+   * Aunque el invitado toque dos veces rápidamente,
+   * solamente se permite procesar un envío.
+   */
+
+  let isSubmitting = false;
 
   /*
    * ==========================================================
@@ -478,6 +521,19 @@ import { BODA_INFO } from "../data/InfoBoda";
       async (event) => {
         event.preventDefault();
 
+        /*
+         * ======================================================
+         * PROTECCIÓN CONTRA DOBLE TOQUE
+         * ======================================================
+         *
+         * Si ya hay un envío en curso, ignoramos cualquier
+         * segundo toque.
+         */
+
+        if (isSubmitting) {
+          return;
+        }
+
         const formData =
           new FormData(rsvpForm);
 
@@ -561,6 +617,34 @@ import { BODA_INFO } from "../data/InfoBoda";
 
         /*
          * ======================================================
+         * ACTIVAR PROTECCIÓN DE ENVÍO
+         * ======================================================
+         *
+         * A partir de este punto los datos ya son válidos.
+         *
+         * Bloqueamos inmediatamente el botón para que el
+         * invitado vea claramente que su toque fue recibido.
+         */
+
+        isSubmitting = true;
+
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.textContent = "Aguarde...";
+          submitButton.classList.add(
+            "opacity-70",
+            "cursor-not-allowed",
+          );
+        }
+
+        if (waitingMessage) {
+          waitingMessage.classList.remove(
+            "hidden",
+          );
+        }
+
+        /*
+         * ======================================================
          * DATOS PARA GOOGLE SHEETS
          * ======================================================
          */
@@ -622,6 +706,34 @@ import { BODA_INFO } from "../data/InfoBoda";
             "Error al conectar con Google Sheets:",
             error,
           );
+
+          /*
+           * ====================================================
+           * RESTAURAR BOTÓN SI HAY ERROR
+           * ====================================================
+           *
+           * Si el envío falla, permitimos que el invitado
+           * pueda volver a intentarlo.
+           */
+
+          isSubmitting = false;
+
+          if (submitButton) {
+            submitButton.disabled = false;
+            submitButton.textContent =
+              "Confirmar asistencia";
+
+            submitButton.classList.remove(
+              "opacity-70",
+              "cursor-not-allowed",
+            );
+          }
+
+          if (waitingMessage) {
+            waitingMessage.classList.add(
+              "hidden",
+            );
+          }
 
           feedback.textContent =
             "No se pudo registrar la confirmación. Intentá nuevamente.";
